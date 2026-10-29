@@ -1,0 +1,35 @@
+/* Chimera design tokens — dark scientific instrument theme. */
+:root {
+  --bg-0: #080b11;
+  --bg-1: #0c1119;
+  --bg-2: #111724;
+  --bg-3: #161e2e;
+  --bg-4: #1c2537;
+  --line-1: #20293d;
+  --line-2: #2c3750;
+  --ink-1: #e8ecf3;
+  --ink-2: #a6b0c2;
+  --ink-3: #8b96ad;
+  --cyan: #39d0d8;
+  --cyan-dim: rgba(57, 208, 216, 0.14);
+  --violet: #a78bfa;
+  --violet-dim: rgba(167, 139, 250, 0.14);
+  --green: #4cc38a;
+  --green-dim: rgba(76, 195, 138, 0.13);
+  --amber: #e5a83b;
+  --amber-dim: rgba(229, 168, 59, 0.13);
+  --red: #e5606e;
+  --red-dim: rgba(229, 96, 110, 0.13);
+  --blue: #6ea8fe;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --focus: 0 0 0 2px var(--bg-1), 0 0 0 4px var(--cyan);
+  --ease: 160ms ease;
+}

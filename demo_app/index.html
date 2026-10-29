@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chimera Task Manager</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+        .hidden { display: none; }
+        #confirmation { color: green; font-weight: bold; margin-top: 10px; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 8px; margin: 4px 0; background: #f0f0f0; border-radius: 4px; }
+        fieldset { margin: 16px 0; padding: 10px; }
+        fieldset legend { font-weight: bold; }
+        .status { font-family: monospace; font-size: 0.9em; color: #555; margin-top: 6px; }
+        button[disabled], input[disabled] { opacity: 0.5; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <h1>Project Chimera - Task Manager</h1>
+
+    <fieldset id="fault-panel" aria-label="Fault injection panel">
+        <legend>Fault injection (manual)</legend>
+        <label>
+            Slow load (ms):
+            <input type="number" id="fault-slow" min="0" step="100" value="0" aria-label="Slow load milliseconds">
+        </label>
+        <label>
+            <input type="checkbox" id="fault-disabled" aria-label="Disable Create button">
+            Disable Create button
+        </label>
+        <button type="button" id="apply-faults-btn" aria-label="Apply faults">Apply</button>
+        <button type="button" id="reset-btn" aria-label="Reset demo">Reset</button>
+        <div class="status" id="fault-status" aria-live="polite">No faults active.</div>
+    </fieldset>
+
+    <form id="project-form">
+        <label for="project-name">Project Name:</label><br>
+        <input type="text" id="project-name" name="project-name" required aria-label="Project Name"><br><br>
+        <button type="submit" id="create-btn">Create Project</button>
+    </form>
+
+    <div id="confirmation" class="hidden" role="status">Project created successfully!</div>
+
+    <h2>Projects</h2>
+    <ul id="project-list" aria-label="Projects"></ul>
+
+    <script>
+        (function () {
+            "use strict";
+
+            // ---- State (read from URL on first load, then mutated by UI) ----
+            var slowTimer = null;
+            var activeFaults = { slow: 0, disabled: false };
+
+            function getParam(name) {
+                var match = window.location.search.match(
+                    new RegExp("[?&]" + name + "=([^&]*)")
+                );
+                return match ? decodeURIComponent(match[1]) : null;
+            }
+
+            function readInitialFaultsFromUrl() {
+                var slowRaw = getParam("slow");
+                var disabledRaw = getParam("disabled");
+                if (slowRaw !== null) {
+                    var n = parseInt(slowRaw, 10);
+                    if (!isNaN(n) && n >= 0) {
+                        activeFaults.slow = n;
+                    }
+                }
+                if (disabledRaw === "1" || disabledRaw === "true") {
+                    activeFaults.disabled = true;
+                }
+            }
+
+            function describeFaults() {
+                var parts = [];
+                if (activeFaults.slow > 0) {
+                    parts.push("slow=" + activeFaults.slow + "ms");
+                }
+                if (activeFaults.disabled) {
+                    parts.push("disabled");
+                }
+                return parts.length
+                    ? "Active faults: " + parts.join(", ")
+                    : "No faults active.";
+            }
+
+            function applyFaultsToDom() {
+                var createBtn = document.getElementById("create-btn");
+                var nameInput = document.getElementById("project-name");
+                var status = document.getElementById("fault-status");
+
+                // Cancel any pending slow-load timer from a previous apply.
+                if (slowTimer !== null) {
+                    clearTimeout(slowTimer);
+                    slowTimer = null;
+                }
+
+                if (activeFaults.slow > 0) {
+                    // Simulate slow load: disable form, re-enable after delay.
+                    createBtn.disabled = true;
+                    nameInput.disabled = true;
+                    status.textContent =
+                        "Slow load: " + activeFaults.slow + "ms remaining...";
+                    slowTimer = setTimeout(function () {
+                        createBtn.disabled = activeFaults.disabled;
+                        nameInput.disabled = activeFaults.disabled;
+                        status.textContent = "Slow load complete. " + describeFaults();
+                        slowTimer = null;
+                    }, activeFaults.slow);
+                } else {
+                    createBtn.disabled = activeFaults.disabled;
+                    nameInput.disabled = activeFaults.disabled;
+                    status.textContent = describeFaults();
+                }
+
+                // Reflect the active state on the manual controls.
+                document.getElementById("fault-slow").value = String(activeFaults.slow);
+                document.getElementById("fault-disabled").checked = activeFaults.disabled;
+            }
+
+            function resetAll() {
+                activeFaults = { slow: 0, disabled: false };
+                if (slowTimer !== null) {
+                    clearTimeout(slowTimer);
+                    slowTimer = null;
+                }
+                // Clear projects, confirmation, and form input.
+                document.getElementById("project-list").innerHTML = "";
+                var confirmation = document.getElementById("confirmation");
+                confirmation.classList.add("hidden");
+                document.getElementById("project-name").value = "";
+                // Drop the query string so a fresh reload would start clean.
+                if (window.location.search) {
+                    history.replaceState(null, "", window.location.pathname);
+                }
+                applyFaultsToDom();
+            }
+
+            // ---- Form submit ----
+            document.getElementById("project-form").addEventListener("submit", function (event) {
+                event.preventDefault();
+                var nameInput = document.getElementById("project-name");
+                var projectName = nameInput.value.trim();
+                if (!projectName) return;
+                // Respect the disabled fault even if the DOM attribute was bypassed.
+                if (document.getElementById("create-btn").disabled) return;
+
+                var list = document.getElementById("project-list");
+                var item = document.createElement("li");
+                item.textContent = projectName;
+                list.appendChild(item);
+
+                var confirmation = document.getElementById("confirmation");
+                confirmation.classList.remove("hidden");
+                nameInput.value = "";
+            });
+
+            // ---- Apply / Reset buttons ----
+            document.getElementById("apply-faults-btn").addEventListener("click", function () {
+                var slowVal = parseInt(document.getElementById("fault-slow").value, 10);
+                activeFaults.slow = isNaN(slowVal) || slowVal < 0 ? 0 : slowVal;
+                activeFaults.disabled = document.getElementById("fault-disabled").checked;
+                applyFaultsToDom();
+            });
+
+            document.getElementById("reset-btn").addEventListener("click", resetAll);
+
+            // ---- Initialise from URL on first load ----
+            readInitialFaultsFromUrl();
+            applyFaultsToDom();
+        })();
+    </script>
+</body>
+</html>

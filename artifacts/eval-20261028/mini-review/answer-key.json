@@ -1,0 +1,223 @@
+{
+  "episodes": {
+    "eval-20261028-baseline-a::trial-0009": {
+      "agent_terminal_status": "succeeded",
+      "error": null,
+      "outcome": "succeeded",
+      "verifier_all_satisfied": true,
+      "verifier_checks": [
+        {
+          "detail": "confirmation_visible=True",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.snapshot.json#P1",
+          "postcondition_id": "P1",
+          "satisfied": true
+        },
+        {
+          "detail": "1 of 1 items equal 'Padded Name' (exact match)",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.snapshot.json#P2",
+          "postcondition_id": "P2",
+          "satisfied": true
+        },
+        {
+          "detail": "project-list count=1, expected 1",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.snapshot.json#P3",
+          "postcondition_id": "P3",
+          "satisfied": true
+        }
+      ],
+      "verifier_status": "verified"
+    },
+    "eval-20261028-baseline-a::trial-0052": {
+      "agent_terminal_status": "failed",
+      "error": "TimeoutError: Locator.fill: Timeout 100ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and editable\n    - element is not enabled\n  - retrying fill action\n    - waiting 100ms\n",
+      "outcome": "failed",
+      "verifier_all_satisfied": false,
+      "verifier_checks": [
+        {
+          "detail": "confirmation_visible=False",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.snapshot.json#P1",
+          "postcondition_id": "P1",
+          "satisfied": false
+        },
+        {
+          "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.snapshot.json#P2",
+          "postcondition_id": "P2",
+          "satisfied": false
+        },
+        {
+          "detail": "project-list count=0, expected 1",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.snapshot.json#P3",
+          "postcondition_id": "P3",
+          "satisfied": false
+        }
+      ],
+      "verifier_status": "verified"
+    },
+    "eval-20261028-baseline-a::trial-0098": {
+      "agent_terminal_status": "failed",
+      "error": "TimeoutError: Locator.fill: Timeout 100ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and editable\n    - element is not enabled\n  - retrying fill action\n    - waiting 100ms\n",
+      "outcome": "failed",
+      "verifier_all_satisfied": false,
+      "verifier_checks": [
+        {
+          "detail": "confirmation_visible=False",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.snapshot.json#P1",
+          "postcondition_id": "P1",
+          "satisfied": false
+        },
+        {
+          "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.snapshot.json#P2",
+          "postcondition_id": "P2",
+          "satisfied": false
+        },
+        {
+          "detail": "project-list count=0, expected 1",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.snapshot.json#P3",
+          "postcondition_id": "P3",
+          "satisfied": false
+        }
+      ],
+      "verifier_status": "verified"
+    },
+    "eval-20261028-baseline-a::trial-0143": {
+      "agent_terminal_status": "failed",
+      "error": "TimeoutError: Locator.fill: Timeout 100ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and editable\n    - element is not enabled\n  - retrying fill action\n    - waiting 100ms\n",
+      "outcome": "failed",
+      "verifier_all_satisfied": false,
+      "verifier_checks": [
+        {
+          "detail": "confirmation_visible=False",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.snapshot.json#P1",
+          "postcondition_id": "P1",
+          "satisfied": false
+        },
+        {
+          "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.snapshot.json#P2",
+          "postcondition_id": "P2",
+          "satisfied": false
+        },
+        {
+          "detail": "project-list count=0, expected 1",
+          "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.snapshot.json#P3",
+          "postcondition_id": "P3",
+          "satisfied": false
+        }
+      ],
+      "verifier_status": "verified"
+    },
+    "eval-20261028-chimera::trial-0006": {
+      "agent_terminal_status": "succeeded",
+      "error": null,
+      "outcome": "succeeded",
+      "verifier_all_satisfied": true,
+      "verifier_checks": [
+        {
+          "detail": "confirmation_visible=True",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.snapshot.json#P1",
+          "postcondition_id": "P1",
+          "satisfied": true
+        },
+        {
+          "detail": "1 of 1 items equal 'Padded Name' (exact match)",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.snapshot.json#P2",
+          "postcondition_id": "P2",
+          "satisfied": true
+        },
+        {
+          "detail": "project-list count=1, expected 1",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.snapshot.json#P3",
+          "postcondition_id": "P3",
+          "satisfied": true
+        }
+      ],
+      "verifier_status": "verified"
+    },
+    "eval-20261028-chimera::trial-0055": {
+      "agent_terminal_status": "succeeded",
+      "error": null,
+      "outcome": "succeeded",
+      "verifier_all_satisfied": true,
+      "verifier_checks": [
+        {
+          "detail": "confirmation_visible=True",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.snapshot.json#P1",
+          "postcondition_id": "P1",
+          "satisfied": true
+        },
+        {
+          "detail": "1 of 1 items equal 'Padded Name' (exact match)",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.snapshot.json#P2",
+          "postcondition_id": "P2",
+          "satisfied": true
+        },
+        {
+          "detail": "project-list count=1, expected 1",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.snapshot.json#P3",
+          "postcondition_id": "P3",
+          "satisfied": true
+        }
+      ],
+      "verifier_status": "verified"
+    },
+    "eval-20261028-chimera::trial-0100": {
+      "agent_terminal_status": "failed",
+      "error": "RetryBudgetExhaustedError: Action 'fill' failed after 2 attempt(s) (caused by TimeoutError: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n)",
+      "outcome": "failed",
+      "verifier_all_satisfied": false,
+      "verifier_checks": [
+        {
+          "detail": "confirmation_visible=False",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.snapshot.json#P1",
+          "postcondition_id": "P1",
+          "satisfied": false
+        },
+        {
+          "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.snapshot.json#P2",
+          "postcondition_id": "P2",
+          "satisfied": false
+        },
+        {
+          "detail": "project-list count=0, expected 1",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.snapshot.json#P3",
+          "postcondition_id": "P3",
+          "satisfied": false
+        }
+      ],
+      "verifier_status": "verified"
+    },
+    "eval-20261028-chimera::trial-0142": {
+      "agent_terminal_status": "failed",
+      "error": "RetryBudgetExhaustedError: Action 'fill' failed after 2 attempt(s) (caused by TimeoutError: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n)",
+      "outcome": "failed",
+      "verifier_all_satisfied": false,
+      "verifier_checks": [
+        {
+          "detail": "confirmation_visible=False",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.snapshot.json#P1",
+          "postcondition_id": "P1",
+          "satisfied": false
+        },
+        {
+          "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.snapshot.json#P2",
+          "postcondition_id": "P2",
+          "satisfied": false
+        },
+        {
+          "detail": "project-list count=0, expected 1",
+          "evidence_reference": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.snapshot.json#P3",
+          "postcondition_id": "P3",
+          "satisfied": false
+        }
+      ],
+      "verifier_status": "verified"
+    }
+  },
+  "packet_sha256": "881a5323aa72f508e97da23c6499a4d2bd20e174ac0132a20055301969251019",
+  "schema": "chimera-mini-review-answer-key/1",
+  "warning": "DO NOT distribute to the reviewer before their initial decisions are locked."
+}

@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chimera"
+version = "0.1.0"
+description = "Algorithm-first, deterministic browser automation agent with execution tracing and cooperative cancellation"
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = ["browser-automation", "playwright", "deterministic", "tracing"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+]
+
+# Runtime dependencies actually imported by the current code.
+# The only third-party import in `chimera/` is Playwright, and it is
+# imported lazily inside `create_project()` (chimera/agent.py) so the
+# URL builders and the stdlib-only safety/tracing modules remain usable
+# without it. `chimera.safety` and `chimera.tracing` import only the
+# Python standard library.
+#
+# The range below is identical to the one in `requirements-dev.txt`.
+dependencies = [
+    "playwright>=1.40,<2.0",
+]
+
+[project.optional-dependencies]
+# Development and test tooling. Install with:
+#     pip install -e ".[dev]"
+# These are NOT needed to import or use `chimera` at runtime.
+#
+# The range below is identical to the one in `requirements-dev.txt`.
+dev = [
+    "pytest>=7.4,<9.0",
+]
+
+# NOTE: no `license` key is declared. No license has been chosen for this
+# project yet, and inventing one here would be a claim the repository
+# does not support. Add it alongside a LICENSE file.
+#
+# NOTE: no `[project.scripts]` entry point. `chimera/agent.py` has a
+# `__main__` block but no importable `main()` function; adding a console
+# script would require changing application code.
+
+[tool.setuptools]
+# Explicit package list. The repository is a flat layout and also contains
+# `tests/` (which has an `__init__.py`), so setuptools' automatic
+# discovery would fail with "multiple top-level packages discovered".
+packages = ["chimera"]
+
+[tool.pytest.ini_options]
+# Rootdir is now the project root, because this file is the pytest
+# inifile. `pythonpath` makes `import chimera` resolve regardless of the
+# directory pytest is invoked from.
+testpaths = ["tests"]
+pythonpath = ["."]

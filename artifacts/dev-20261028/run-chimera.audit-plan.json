@@ -1,0 +1,1179 @@
+{
+  "auditor": "",
+  "cells": {
+    "S-DIS|I-PLAIN|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/ac52f51e-ac97-4297-92ac-0ddcdeeb6e28.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "d7ff8a0aed38d8e39a48918751ff5e0431975a047a03d5c70d1a8fc20b8ca296",
+            "snapshot": "670626cf5f746edea6cd1ed51edd797100a5683ab1d06c3a872d3351df631c48",
+            "trace": "476e5645299740071eed34895f20d45163528cc10191b053035f378e7d44827c"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "ac52f51e-ac97-4297-92ac-0ddcdeeb6e28",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/ac52f51e-ac97-4297-92ac-0ddcdeeb6e28.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/ac52f51e-ac97-4297-92ac-0ddcdeeb6e28.json",
+          "trial_id": "trial-0041",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/db241ba3-9cbf-4fc2-bf61-deeedf1133f2.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "0e5bcdef75f27871b7436261389d019c3f1dc72645ee06442b846d567753976b",
+            "snapshot": "ba097eff1f353076847e33ef7235979bc3e00b32f13be9924abfcbc158bd7376",
+            "trace": "205a03a5fa1f10dbe1805688cf799977b5b14b0bc7e943c65af303d96146bdfb"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "db241ba3-9cbf-4fc2-bf61-deeedf1133f2",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/db241ba3-9cbf-4fc2-bf61-deeedf1133f2.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/db241ba3-9cbf-4fc2-bf61-deeedf1133f2.json",
+          "trial_id": "trial-0042",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "dev-20261028-chimera:S-DIS|I-PLAIN|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0041": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0042": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-DIS|I-SPACE|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/1c0536af-2458-4751-91e6-e4c187e3d46b.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "d3e711282c8dc0c0c5f42c984f0794b8a372d3110035149902706a3ad6e372e8",
+            "snapshot": "ba6d9498af8b45d831894d4559df4e4402e79d53bedad0e1375ae555fcb5784f",
+            "trace": "4846646beb6c8a4cfee5272cdfb1b5f9045a2279883a224f4b2de24fb0531816"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "1c0536af-2458-4751-91e6-e4c187e3d46b",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/1c0536af-2458-4751-91e6-e4c187e3d46b.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/1c0536af-2458-4751-91e6-e4c187e3d46b.json",
+          "trial_id": "trial-0052",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/76bf6fb3-8870-4eba-970f-5a8bb7a2d084.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "5bcbbfa344195fc80c40445726077c7fd2a93986521fb9891f3975ec3dd90f88",
+            "snapshot": "bea789c92617f8567db66b5d161e519ac1424f86a6b541da51d4468e89d61997",
+            "trace": "3d3eb11294ef0ecc746c5b640315bdb0b88a7eb28aacaf21c08e30ae89820c65"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "76bf6fb3-8870-4eba-970f-5a8bb7a2d084",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/76bf6fb3-8870-4eba-970f-5a8bb7a2d084.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/76bf6fb3-8870-4eba-970f-5a8bb7a2d084.json",
+          "trial_id": "trial-0053",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "dev-20261028-chimera:S-DIS|I-SPACE|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0052": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0053": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-DIS|I-SUBSTR|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-SUBSTR",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/bd29563e-2031-4af2-8c7d-48608363fdd3.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "001740434064f27878e24077071e680c0fe12af4193e91b61af8fd6077cbdc72",
+            "snapshot": "111ae8c23346a47d356c36003ab5b15ff13985e5138d6b8adce05314d2a8b550",
+            "trace": "721292a731ee0b574e521f2979a3fb4d30e1716616dca362d82a04261b5cce91"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "bd29563e-2031-4af2-8c7d-48608363fdd3",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/bd29563e-2031-4af2-8c7d-48608363fdd3.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/bd29563e-2031-4af2-8c7d-48608363fdd3.json",
+          "trial_id": "trial-0046",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/e853f3c1-5378-44b0-973b-575b2e2f7d63.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "1ffd46c485587393da1dedee8e921c62ad1cf07cce45311a1a8f381a0f69976c",
+            "snapshot": "f4f3b054f1fe76f185dc9cfe004004d5916fd508bc147bb8acc0127c76d29fe6",
+            "trace": "27dc31b9d24fecd5094b1d324c628a1eb0f7a4b096ea175cd7eb6e77eef87c26"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "e853f3c1-5378-44b0-973b-575b2e2f7d63",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/e853f3c1-5378-44b0-973b-575b2e2f7d63.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/e853f3c1-5378-44b0-973b-575b2e2f7d63.json",
+          "trial_id": "trial-0050",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "dev-20261028-chimera:S-DIS|I-SUBSTR|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0046": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0050": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-DIS|I-UNICODE|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/e6070603-36b1-4f40-a6ea-51a008188d51.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "b827172bfd594bd6eecfa8aaf23fb2ae99f35fd78297c57c9c0e1b9605fd1db9",
+            "snapshot": "369301f6b4867ef90c3cd63399f65b85a3f8a4db89cc413cd3f9626c39c07b0f",
+            "trace": "3603aa59bb8f7f2ea205a5cff39484a4cc086cca36d69f45d2c43d739578bc4b"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "e6070603-36b1-4f40-a6ea-51a008188d51",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/e6070603-36b1-4f40-a6ea-51a008188d51.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/e6070603-36b1-4f40-a6ea-51a008188d51.json",
+          "trial_id": "trial-0058",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/ddcb9367-5968-4479-b2c0-061d0fb215e2.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "6fcce20a1e79749853e57c0bc55660d74c2607adb8e48ae3fc6d0dae8861ca4e",
+            "snapshot": "8f0c4703ab61431256bdac1be723f370084cbf4ff2d4126dd700eed09df18585",
+            "trace": "bc630482555c63bc48f146449c3d12052bd194e25480b38fabd4bc6e3eaa7d36"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "ddcb9367-5968-4479-b2c0-061d0fb215e2",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/ddcb9367-5968-4479-b2c0-061d0fb215e2.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/ddcb9367-5968-4479-b2c0-061d0fb215e2.json",
+          "trial_id": "trial-0056",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "dev-20261028-chimera:S-DIS|I-UNICODE|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0056": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0058": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-NORM|I-PLAIN|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/db69cfef-f00a-4705-be90-60c1823ffe73.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "74b13ddf16c7c49c0f1fd4780a9376416ca1654dcb34261ec6f216e5527f49f8",
+            "snapshot": "b781db71cc0fb6f124b840c64729c2bf33c0c2668113fa1e1e049c44f4235ccf",
+            "trace": "8a4af0edc7980b0590096f65efc67e13b6de99d28e6553a9b623a6661c5e795a"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "db69cfef-f00a-4705-be90-60c1823ffe73",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/db69cfef-f00a-4705-be90-60c1823ffe73.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/db69cfef-f00a-4705-be90-60c1823ffe73.json",
+          "trial_id": "trial-0003",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/0577f3e2-bb92-4803-b4b5-8a4eb64029a1.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "0bb911b936dc0141a6e060c649866fb867cb74de36fb1e8c46542879c8bdef1d",
+            "snapshot": "51b9acb4e185a76332ee318ae8f512f89a98ac94042a82253f286a10ed5e2c47",
+            "trace": "b5dc64583da52b176831a340fefee62ed388c6ac4a93022924bc92bc080482a8"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "0577f3e2-bb92-4803-b4b5-8a4eb64029a1",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/0577f3e2-bb92-4803-b4b5-8a4eb64029a1.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/0577f3e2-bb92-4803-b4b5-8a4eb64029a1.json",
+          "trial_id": "trial-0004",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "dev-20261028-chimera:S-NORM|I-PLAIN|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0003": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0004": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    },
+    "S-NORM|I-SPACE|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/78f0e723-3c83-40bb-8855-4584cb9bd3a8.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "6bd8f0f7c4cc188434859278551b1a1c7e44e81c852acb256e7b754c5153fcc0",
+            "snapshot": "04e4b813aa6aef994c887543bdaa765378fdb83ae7100c546530964480903005",
+            "trace": "8f45d3f3fa1bfd43cc1f161f13faa46600774480c7d3a127f59c4e59377171bc"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "78f0e723-3c83-40bb-8855-4584cb9bd3a8",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/78f0e723-3c83-40bb-8855-4584cb9bd3a8.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/78f0e723-3c83-40bb-8855-4584cb9bd3a8.json",
+          "trial_id": "trial-0011",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/feacda2a-a550-4f99-b294-de06d2a4ad9a.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "93d027989257dccf1e3cbd392bccb132d82944e1af65c5ebc8385d53932677b9",
+            "snapshot": "2e09ed9aaaa3abb7973b6ac4545e1f88c270a0a08d41fcb9fea281bb2289aecc",
+            "trace": "bfaa71e32036a0d3bf6b80d88290fafa021c9e1298ed9a715ac6ca0cda54a087"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "feacda2a-a550-4f99-b294-de06d2a4ad9a",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/feacda2a-a550-4f99-b294-de06d2a4ad9a.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/feacda2a-a550-4f99-b294-de06d2a4ad9a.json",
+          "trial_id": "trial-0012",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "dev-20261028-chimera:S-NORM|I-SPACE|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0011": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0012": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    },
+    "S-NORM|I-SUBSTR|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-SUBSTR",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/bf0afb52-55d8-4a41-ad43-8608c1544f01.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "2304310a7b75bd78848a5c3cc565865ec8b59de16c232d16c57cb81581788721",
+            "snapshot": "1dde32b2deda5d9db6d04d0b29416a03630e2caad75c6a5437437cd8bd38bc98",
+            "trace": "8d1a8232d7f4be161a66dc7b824c3c270b7eb2bce1cb744f34551220d64988f0"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "bf0afb52-55d8-4a41-ad43-8608c1544f01",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/bf0afb52-55d8-4a41-ad43-8608c1544f01.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/bf0afb52-55d8-4a41-ad43-8608c1544f01.json",
+          "trial_id": "trial-0008",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/0a589cb2-5e6d-4294-ab78-dd6369eb7eb0.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "f3b341f33888163b886ce5d004df026b0db66d1df038464d59e073b47e6f99cb",
+            "snapshot": "1b2f6bf75d6036778d4494147f9c8806b1ef46d96b850e5eeed3e7600934d329",
+            "trace": "e494a6aa1c450590d9c80351f9f88094167c1c48dda205282f6ed42ffe1d31d5"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "0a589cb2-5e6d-4294-ab78-dd6369eb7eb0",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/0a589cb2-5e6d-4294-ab78-dd6369eb7eb0.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/0a589cb2-5e6d-4294-ab78-dd6369eb7eb0.json",
+          "trial_id": "trial-0010",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "dev-20261028-chimera:S-NORM|I-SUBSTR|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0008": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0010": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    },
+    "S-NORM|I-UNICODE|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/95fb81f2-77b4-4de6-824b-2940870382fc.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "1cbeb2f0bb34f7d9a3f31df6ca93316d28ee6c1c3f41afce57a277b9a875ef5b",
+            "snapshot": "d19b8c92daf40a4f2fcf9867b6e9487f8e8fdb8fc9f6255b2864d016b9ae8208",
+            "trace": "5bae30c60426cd2ba9b134ced3beb54bf9e3b08dbbaf9a69031eca297ed329ad"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "95fb81f2-77b4-4de6-824b-2940870382fc",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/95fb81f2-77b4-4de6-824b-2940870382fc.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/95fb81f2-77b4-4de6-824b-2940870382fc.json",
+          "trial_id": "trial-0019",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/195e9b03-6549-4301-a54d-38ca316d04f4.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "1e9575aad688f96ad6204993051d074942911b8aeb01955983a0fcee5d56d1ab",
+            "snapshot": "ff5152cfb93f93511f879d3e9df2b3bc9b3c80d4a65b1de5b1974afa0ac0b8ad",
+            "trace": "db0f9e74db6605bba236cba78a34903d9426769ef19c4f017fc55c381663e654"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "195e9b03-6549-4301-a54d-38ca316d04f4",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/195e9b03-6549-4301-a54d-38ca316d04f4.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/195e9b03-6549-4301-a54d-38ca316d04f4.json",
+          "trial_id": "trial-0020",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "dev-20261028-chimera:S-NORM|I-UNICODE|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0019": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0020": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    },
+    "S-SLOWDIS|I-PLAIN|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/4366345c-5d2c-4c81-a155-2156ab10363f.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "c46a0120c7a1910f1ac08d2dcb94cc9c246b3cbc25c1bc345e558061adb7a160",
+            "snapshot": "0d8447d902c96182e876de448b9981978676b9d2fab8a41313a0ba2da20d0492",
+            "trace": "e989f71e9ce97f19aa3f3ea1d21f7983eb7d5d2a960c2906e5cd1d5f9ff7a373"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "4366345c-5d2c-4c81-a155-2156ab10363f",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/4366345c-5d2c-4c81-a155-2156ab10363f.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/4366345c-5d2c-4c81-a155-2156ab10363f.json",
+          "trial_id": "trial-0065",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/a44ff827-5b24-4aeb-900c-c7c0761b3578.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "01016fad8047b9d4a142a2fa18d81e42953aa62cc38b402dfa9e66a187ff9735",
+            "snapshot": "3f0b5502de1e6be0ab45f58070242a275ccdfc81be22d1eb119dc4fa6a3e7eba",
+            "trace": "f87116c1ba77f9328e15aa0a107980f88df57312c8012437c3c30051ef00642b"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "a44ff827-5b24-4aeb-900c-c7c0761b3578",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/a44ff827-5b24-4aeb-900c-c7c0761b3578.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/a44ff827-5b24-4aeb-900c-c7c0761b3578.json",
+          "trial_id": "trial-0064",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "dev-20261028-chimera:S-SLOWDIS|I-PLAIN|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0064": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0065": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-SLOWDIS|I-SPACE|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/d586b947-ab3d-4814-8443-f5fcf58ee2a0.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "f00f5107b74a3c224e53d236fc2b354332070a2a13ce4b99c892e7783b4457e6",
+            "snapshot": "c8385020ad19a16a6e5a61d941c73cc387cb6d01f53b786eb9904fe077950646",
+            "trace": "ea031643e2bfdfac26756655ac06910f2c8789bac49d92b3cce970757ee6d4be"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "d586b947-ab3d-4814-8443-f5fcf58ee2a0",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/d586b947-ab3d-4814-8443-f5fcf58ee2a0.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/d586b947-ab3d-4814-8443-f5fcf58ee2a0.json",
+          "trial_id": "trial-0071",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/4275f9b5-dbd9-4c4f-9596-7732aadc95a3.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "1df1035e2632853d5975f792134ab9ac4174799bf1a63e39fc02ea26b4085e9e",
+            "snapshot": "d9100099a9f4d4c2629c5fed1a3e1fa3394282e3ea42b92b83a2c49a678b51a3",
+            "trace": "b342efee17f48df532d2225439cf72958543ceb390cc56fa00ab65739b2926f3"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "4275f9b5-dbd9-4c4f-9596-7732aadc95a3",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/4275f9b5-dbd9-4c4f-9596-7732aadc95a3.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/4275f9b5-dbd9-4c4f-9596-7732aadc95a3.json",
+          "trial_id": "trial-0072",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "dev-20261028-chimera:S-SLOWDIS|I-SPACE|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0071": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0072": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-SLOWDIS|I-SUBSTR|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-SUBSTR",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/a0e238c1-38a5-4e4e-82ba-432fba3a57df.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "4823f357a2c920478fdbf2daa0c029ba7e25f8c9b63358f8bbc5bb890fb1224d",
+            "snapshot": "b07e364df67817d3551a1860663a4da1f631f73c13cc57206a8b6065d86a96f3",
+            "trace": "92b0950adcdb242bd120e5436d96fcbab6fa9779f69eaabc09108d6b9764229b"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "a0e238c1-38a5-4e4e-82ba-432fba3a57df",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/a0e238c1-38a5-4e4e-82ba-432fba3a57df.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/a0e238c1-38a5-4e4e-82ba-432fba3a57df.json",
+          "trial_id": "trial-0069",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/b3598566-6e84-464c-b9b8-a102123dc723.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "618fd30e6fa2293b6f12e26f528d5e6638781ab79acf81178225ea01fcf631aa",
+            "snapshot": "c4faf0aeac6b932efef9f2459d847058e69b9ee3b5646ee128aa31610bcd6eae",
+            "trace": "e46aea780d3a8d1eb7bee3146db71c4cf551e3f9e564930c926e06a135f5da27"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "b3598566-6e84-464c-b9b8-a102123dc723",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/b3598566-6e84-464c-b9b8-a102123dc723.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/b3598566-6e84-464c-b9b8-a102123dc723.json",
+          "trial_id": "trial-0070",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "dev-20261028-chimera:S-SLOWDIS|I-SUBSTR|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0069": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0070": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-SLOWDIS|I-UNICODE|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/ec0528ba-9fcc-409b-b2e3-cc2c67b7b97d.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "c419245f1b3078e6684e9512ac391108207e83edcd1ae18e6df952e2910f187a",
+            "snapshot": "2f21477587f6e2aa98cf806a91b3523c5d18540ecac6a33f121bd950188960d1",
+            "trace": "d86188e9671d1239ff9ba82b01218c3c469f20fb3892fa064e00359ddfcfc951"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "ec0528ba-9fcc-409b-b2e3-cc2c67b7b97d",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/ec0528ba-9fcc-409b-b2e3-cc2c67b7b97d.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/ec0528ba-9fcc-409b-b2e3-cc2c67b7b97d.json",
+          "trial_id": "trial-0080",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/82fffc25-83a3-43f2-8647-1f2b217b957c.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "2c3bb07f648f3831579ca36873b7c9a33e606c23f5ea2e7b59983c016390b420",
+            "snapshot": "eb6ac3cc3e4180f87d3c4a7d01b4b5c76678648fdb0aefef7241d3a0ff737a4c",
+            "trace": "5a7816cc7675bb1ce886f5bbb61c3db665fdc8fb70465de07fb6e2c75096d1e5"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "82fffc25-83a3-43f2-8647-1f2b217b957c",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/82fffc25-83a3-43f2-8647-1f2b217b957c.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/82fffc25-83a3-43f2-8647-1f2b217b957c.json",
+          "trial_id": "trial-0079",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "dev-20261028-chimera:S-SLOWDIS|I-UNICODE|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0079": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0080": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-SLOW|I-PLAIN|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/6b5a94d2-bd77-47ef-b6c2-42edc28b1831.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "aed9e6eb12436d18e5f2816adc8a1b0f4feb984095815fac94464f4352221d2f",
+            "snapshot": "d78ee2b4f0db5f07ed330c2343fbcdeea7f7467646bd67a7c95a28bec5619cd2",
+            "trace": "57b4d972b396d52e8497bf246619ae212d12fb30fc738860786d4060880e72f6"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "6b5a94d2-bd77-47ef-b6c2-42edc28b1831",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/6b5a94d2-bd77-47ef-b6c2-42edc28b1831.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/6b5a94d2-bd77-47ef-b6c2-42edc28b1831.json",
+          "trial_id": "trial-0022",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/f4ccce87-12ae-4dcc-a4c4-509414654440.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "9cedfd8c702dd236dc4538388c703f8461e9433781e0ad930da5b659bd26f7af",
+            "snapshot": "fd7925ec275e32f00517d489fe583c09c3fe9c14ef7fddf23a6524a881d4c686",
+            "trace": "89066f1608df709af9dee76c4909e637d036ef592068a753d1b953dec59ba4de"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "f4ccce87-12ae-4dcc-a4c4-509414654440",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/f4ccce87-12ae-4dcc-a4c4-509414654440.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/f4ccce87-12ae-4dcc-a4c4-509414654440.json",
+          "trial_id": "trial-0023",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "dev-20261028-chimera:S-SLOW|I-PLAIN|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0022": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0023": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    },
+    "S-SLOW|I-SPACE|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/4af599de-6943-4761-bb4d-cb0ee33b10e9.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "ff2e484e0df48442db4f05d5963c39ef4a5279c1f0e0e2d20b7277e087240574",
+            "snapshot": "2c7cbc71a8a39799807eb4382206a09a1c35a0e6ca5abe4a66890f143f70716f",
+            "trace": "78ba94c9698db1cb750ee12a6316889c9537bdf5158c147e50921b4b571294d6"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "4af599de-6943-4761-bb4d-cb0ee33b10e9",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/4af599de-6943-4761-bb4d-cb0ee33b10e9.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/4af599de-6943-4761-bb4d-cb0ee33b10e9.json",
+          "trial_id": "trial-0033",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/40c59695-2ef7-447f-97fc-0c0e1f75d846.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "1f8b5ae1f407e2b598f86168a9d3d7c75cca61acf4110b21569125e3ff472313",
+            "snapshot": "06b85ea85abbcd2d3bd4503908e5eb76697f311472dcf4b388cd49d9296c9bd8",
+            "trace": "3da8790f80ec1b7da269337e65353d0f2cfcb97d33ac5d7cc794e56da14aa62f"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "40c59695-2ef7-447f-97fc-0c0e1f75d846",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/40c59695-2ef7-447f-97fc-0c0e1f75d846.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/40c59695-2ef7-447f-97fc-0c0e1f75d846.json",
+          "trial_id": "trial-0035",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "dev-20261028-chimera:S-SLOW|I-SPACE|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0033": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0035": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    },
+    "S-SLOW|I-SUBSTR|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-SUBSTR",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/3a601a0c-85f2-430b-bd79-f5f36aa4ae91.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "2909b012694ad08134057f5bc477dc3c706ac6147a5b810d30169f8706b8ce5f",
+            "snapshot": "d3583018ccc970ac442be22f842db11512c5d0ba04e8bea32e67f9cba3793f6f",
+            "trace": "bcb91d3f6c3a479d9c947a587db74c6e4b9fa8081b97fadf2bc936f2043157f6"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "3a601a0c-85f2-430b-bd79-f5f36aa4ae91",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/3a601a0c-85f2-430b-bd79-f5f36aa4ae91.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/3a601a0c-85f2-430b-bd79-f5f36aa4ae91.json",
+          "trial_id": "trial-0030",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/a2c10057-ff1a-44d1-8f63-cc62eb72bc58.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "4485e488e75f7a4b010c45808c93d3f710c7be5b84fb2d0f1b3fd20082cf6a8d",
+            "snapshot": "833c99e9e9eb37f6ac04606bddcf7a58eac2daceb4bb51599b94426f4bbe9cef",
+            "trace": "d1e696ce58aa9b3db07c48c137df4c30f54ac41def1ae66b54438214b2b894ea"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "a2c10057-ff1a-44d1-8f63-cc62eb72bc58",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/a2c10057-ff1a-44d1-8f63-cc62eb72bc58.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/a2c10057-ff1a-44d1-8f63-cc62eb72bc58.json",
+          "trial_id": "trial-0028",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "dev-20261028-chimera:S-SLOW|I-SUBSTR|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0028": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0030": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    },
+    "S-SLOW|I-UNICODE|chimera": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/f8ac64ea-cb6d-4204-a876-beec1138f5f6.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "1758a22fb8a0d86a77217c20fc28d95a911a48e5ab6e9d65dde82239e0cfe9e5",
+            "snapshot": "c7500318fa06c3eb280d700af005773ea4e86d12369c84b5b926d5525a44e80a",
+            "trace": "8c9af051ba8b52b7085c107bbd3a4084c2a012120b6a059ad91f8ae86dc681f9"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "f8ac64ea-cb6d-4204-a876-beec1138f5f6",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/f8ac64ea-cb6d-4204-a876-beec1138f5f6.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/f8ac64ea-cb6d-4204-a876-beec1138f5f6.json",
+          "trial_id": "trial-0040",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-chimera/7c537b07-58a3-40be-b110-213813f38c8a.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "4530b7c6175e3f86920e0fe2e37d7864e5c0f11acace4aa5980e2001e1e5e7f1",
+            "snapshot": "a0d0246cf9bc55ce7afc108531b6d3f012bdf24e9222704040b502ef575e0a02",
+            "trace": "730212b4620223b6b906525deb22b58e1d61a19c1f6c8b646f2cc679b06f96a2"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "7c537b07-58a3-40be-b110-213813f38c8a",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-chimera/7c537b07-58a3-40be-b110-213813f38c8a.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-chimera/7c537b07-58a3-40be-b110-213813f38c8a.json",
+          "trial_id": "trial-0037",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "dev-20261028-chimera:S-SLOW|I-UNICODE|chimera",
+      "skipped": [],
+      "verdicts": {
+        "trial-0037": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0040": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    }
+  },
+  "created_at": "2026-10-28T11:31:02.238Z",
+  "manifest_id": "dev-v1",
+  "manifest_sha256": "54dc5bb6b5f4f9f810c37330b4ff69b604d0d491d23439563d6c7d34d31d9e28",
+  "run_id": "dev-20261028-chimera",
+  "sample_size": 2,
+  "schema": "chimera-audit-plan/1"
+}

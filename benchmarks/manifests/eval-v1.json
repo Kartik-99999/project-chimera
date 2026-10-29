@@ -1,0 +1,286 @@
+{
+  "benchmark_id": "chimera-local",
+  "benchmark_version": "1.0.0",
+  "config": {
+    "action_timeout_ms": 5000,
+    "episode_timeout_seconds": 60.0,
+    "policy": {
+      "base_delay_seconds": 0.05,
+      "max_attempts": 2,
+      "max_delay_seconds": 0.2,
+      "max_total_seconds": 5.0
+    },
+    "trials_per_cell": 5,
+    "warmup_episodes": 1
+  },
+  "description": "Evaluation manifest, held out. Uses slow values inside the documented [500, 4000] ms band that differ from the development manifest, and a subset of the input variations (I-SUBSTR is held back to development).",
+  "manifest_id": "eval-v1",
+  "scenarios": [
+    {
+      "description": "No fault. The controls are enabled on load.",
+      "expected_outcome": "succeeded",
+      "fault_variants": [
+        {
+          "disabled": false,
+          "slow_ms": 0
+        }
+      ],
+      "id": "S-NORM",
+      "inputs": [
+        {
+          "expected_stored_name": "Benchmark Project",
+          "id": "I-PLAIN",
+          "project_name": "Benchmark Project"
+        },
+        {
+          "expected_stored_name": "Padded Name",
+          "id": "I-SPACE",
+          "project_name": "  Padded Name  "
+        },
+        {
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "id": "I-UNICODE",
+          "project_name": "Проект — Ünïcode ✓"
+        }
+      ],
+      "postconditions": [
+        {
+          "description": "The confirmation element is visible.",
+          "id": "P1",
+          "kind": "confirmation_visible",
+          "verified_by": "independent_verifier"
+        },
+        {
+          "description": "Exactly one project-list entry whose textContent equals the expected stored name (trimmed).",
+          "id": "P2",
+          "kind": "exact_stored_name_in_list",
+          "verified_by": "independent_verifier"
+        },
+        {
+          "description": "The project list contains exactly one entry.",
+          "id": "P3",
+          "kind": "no_unexpected_entries",
+          "verified_by": "independent_verifier"
+        }
+      ],
+      "preconditions": [
+        {
+          "description": "The project list is empty before the agent's click (harness-only check at navigation time).",
+          "id": "P4",
+          "kind": "list_empty_before_click",
+          "verified_by": "independent_verifier"
+        }
+      ],
+      "timeout_seconds": 30.0
+    },
+    {
+      "description": "Transient fault: the controls start disabled and are re-enabled after the slow delay.",
+      "expected_outcome": "succeeded",
+      "fault_variants": [
+        {
+          "disabled": false,
+          "slow_ms": 800
+        },
+        {
+          "disabled": false,
+          "slow_ms": 1350
+        },
+        {
+          "disabled": false,
+          "slow_ms": 2100
+        },
+        {
+          "disabled": false,
+          "slow_ms": 3000
+        },
+        {
+          "disabled": false,
+          "slow_ms": 3900
+        }
+      ],
+      "id": "S-SLOW",
+      "inputs": [
+        {
+          "expected_stored_name": "Benchmark Project",
+          "id": "I-PLAIN",
+          "project_name": "Benchmark Project"
+        },
+        {
+          "expected_stored_name": "Padded Name",
+          "id": "I-SPACE",
+          "project_name": "  Padded Name  "
+        },
+        {
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "id": "I-UNICODE",
+          "project_name": "Проект — Ünïcode ✓"
+        }
+      ],
+      "postconditions": [
+        {
+          "description": "The confirmation element is visible.",
+          "id": "P1",
+          "kind": "confirmation_visible",
+          "verified_by": "independent_verifier"
+        },
+        {
+          "description": "Exactly one project-list entry whose textContent equals the expected stored name (trimmed).",
+          "id": "P2",
+          "kind": "exact_stored_name_in_list",
+          "verified_by": "independent_verifier"
+        },
+        {
+          "description": "The project list contains exactly one entry.",
+          "id": "P3",
+          "kind": "no_unexpected_entries",
+          "verified_by": "independent_verifier"
+        }
+      ],
+      "preconditions": [
+        {
+          "description": "The project list is empty before the agent's click (harness-only check at navigation time).",
+          "id": "P4",
+          "kind": "list_empty_before_click",
+          "verified_by": "independent_verifier"
+        }
+      ],
+      "timeout_seconds": 30.0
+    },
+    {
+      "description": "Persistent fault: the controls stay disabled until the in-page Reset is pressed. Success is impossible; the correct behaviour is a bounded failure.",
+      "expected_outcome": "failed",
+      "fault_variants": [
+        {
+          "disabled": true,
+          "slow_ms": 0
+        }
+      ],
+      "id": "S-DIS",
+      "inputs": [
+        {
+          "expected_stored_name": "Benchmark Project",
+          "id": "I-PLAIN",
+          "project_name": "Benchmark Project"
+        },
+        {
+          "expected_stored_name": "Padded Name",
+          "id": "I-SPACE",
+          "project_name": "  Padded Name  "
+        },
+        {
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "id": "I-UNICODE",
+          "project_name": "Проект — Ünïcode ✓"
+        }
+      ],
+      "postconditions": [
+        {
+          "description": "The confirmation element is visible.",
+          "id": "P1",
+          "kind": "confirmation_visible",
+          "verified_by": "independent_verifier"
+        },
+        {
+          "description": "Exactly one project-list entry whose textContent equals the expected stored name (trimmed).",
+          "id": "P2",
+          "kind": "exact_stored_name_in_list",
+          "verified_by": "independent_verifier"
+        },
+        {
+          "description": "The project list contains exactly one entry.",
+          "id": "P3",
+          "kind": "no_unexpected_entries",
+          "verified_by": "independent_verifier"
+        }
+      ],
+      "preconditions": [
+        {
+          "description": "The project list is empty before the agent's click (harness-only check at navigation time).",
+          "id": "P4",
+          "kind": "list_empty_before_click",
+          "verified_by": "independent_verifier"
+        }
+      ],
+      "timeout_seconds": 30.0
+    },
+    {
+      "description": "Persistent fault with a transient phase: the slow timer re-enables the controls only when disabled is unset, so the controls stay disabled.",
+      "expected_outcome": "failed",
+      "fault_variants": [
+        {
+          "disabled": true,
+          "slow_ms": 800
+        },
+        {
+          "disabled": true,
+          "slow_ms": 1350
+        },
+        {
+          "disabled": true,
+          "slow_ms": 2100
+        },
+        {
+          "disabled": true,
+          "slow_ms": 3000
+        },
+        {
+          "disabled": true,
+          "slow_ms": 3900
+        }
+      ],
+      "id": "S-SLOWDIS",
+      "inputs": [
+        {
+          "expected_stored_name": "Benchmark Project",
+          "id": "I-PLAIN",
+          "project_name": "Benchmark Project"
+        },
+        {
+          "expected_stored_name": "Padded Name",
+          "id": "I-SPACE",
+          "project_name": "  Padded Name  "
+        },
+        {
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "id": "I-UNICODE",
+          "project_name": "Проект — Ünïcode ✓"
+        }
+      ],
+      "postconditions": [
+        {
+          "description": "The confirmation element is visible.",
+          "id": "P1",
+          "kind": "confirmation_visible",
+          "verified_by": "independent_verifier"
+        },
+        {
+          "description": "Exactly one project-list entry whose textContent equals the expected stored name (trimmed).",
+          "id": "P2",
+          "kind": "exact_stored_name_in_list",
+          "verified_by": "independent_verifier"
+        },
+        {
+          "description": "The project list contains exactly one entry.",
+          "id": "P3",
+          "kind": "no_unexpected_entries",
+          "verified_by": "independent_verifier"
+        }
+      ],
+      "preconditions": [
+        {
+          "description": "The project list is empty before the agent's click (harness-only check at navigation time).",
+          "id": "P4",
+          "kind": "list_empty_before_click",
+          "verified_by": "independent_verifier"
+        }
+      ],
+      "timeout_seconds": 30.0
+    }
+  ],
+  "schema_version": 1,
+  "slow_band_ms": {
+    "max_ms": 4000,
+    "min_ms": 500
+  },
+  "split": "evaluation"
+}

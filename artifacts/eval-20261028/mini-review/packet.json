@@ -1,0 +1,1485 @@
+{
+  "blinding_note": "Recorded outcomes and verifier checks are masked during initial assessment in the review queue. Blinding is partial: trace structure differs between the Chimera driver (event trace) and Baseline A (replay report), so a knowledgeable reviewer may infer the driver from the evidence shape.",
+  "created_at": "2026-10-29T16:01:31.836+00:00",
+  "episodes": [
+    {
+      "artifacts": {
+        "actions": {
+          "bytes": 1708,
+          "path": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.actions.json",
+          "sha256": "806bf26bef41ea5973fb2b1237841f7aaf8da0260b80ab4e5dd3e325ba13f7e7"
+        },
+        "snapshot": {
+          "bytes": 150,
+          "path": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.snapshot.json",
+          "sha256": "4f0f420f4354cd6916c6a5d1144fbcc6068aecf12d38d5ead18a6454defc5e34"
+        },
+        "trace": {
+          "bytes": 560,
+          "path": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.replay.json",
+          "sha256": "b4f18476f11c6983d0fef4c4c0a6e4d4155e5629db1d57bf58d7bf9ce75f7b9b"
+        }
+      },
+      "baseline": "baseline-a",
+      "evidence": {
+        "actions": [
+          {
+            "action": "navigate",
+            "elapsed_ms": 234,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "navigation to the episode URL 'file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html'",
+            "seq": 1,
+            "target": "goto file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html"
+          },
+          {
+            "action": "fill",
+            "elapsed_ms": 250,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "fill on the permitted Project Name input",
+            "seq": 2,
+            "target": "fill label='Project Name'"
+          },
+          {
+            "action": "click",
+            "elapsed_ms": 280,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "click on the permitted Create Project button",
+            "seq": 3,
+            "target": "click role='button' name='Create Project'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 282,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 4,
+            "target": "observe selector='#confirmation'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 291,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 5,
+            "target": "observe selector='#project-list li'"
+          }
+        ],
+        "actions_meta": {
+          "attached": true,
+          "complete": true,
+          "run_id": "4606f72f-1e04-42e0-a694-f982366943d5"
+        },
+        "kind": "replay",
+        "screenshots": [],
+        "snapshot": {
+          "captured_at": "2026-10-28T13:33:15.169Z",
+          "confirmation_visible": true,
+          "items": [
+            "Padded Name"
+          ],
+          "run_id": "4606f72f-1e04-42e0-a694-f982366943d5"
+        },
+        "steps": [
+          {
+            "error_type": null,
+            "outcome": "ok",
+            "seq": 1,
+            "step": "navigate",
+            "target": "file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html"
+          },
+          {
+            "error_type": null,
+            "outcome": "ok",
+            "seq": 2,
+            "step": "fill",
+            "target": "label \"Project Name\""
+          },
+          {
+            "error_type": null,
+            "outcome": "ok",
+            "seq": 3,
+            "step": "click",
+            "target": "button \"Create Project\""
+          }
+        ]
+      },
+      "expected_stored_name": "Padded Name",
+      "gaps": [
+        "no screenshots attached (expected: the harness captures one only on action failure)",
+        "replay driver report carries step indexes only — no timestamps or trace sequence numbers"
+      ],
+      "input_id": "I-SPACE",
+      "key": "eval-20261028-baseline-a::trial-0009",
+      "plan": "artifacts/eval-20261028/run-baseline-a.audit-plan-mini.json",
+      "plan_cell": "S-NORM|I-SPACE|baseline-a|disabled=False,slow_ms=0",
+      "recorded": {
+        "agent_terminal_status": "succeeded",
+        "completed_at": "2026-10-28T13:33:15.193Z",
+        "duration_ms": 315,
+        "error": null,
+        "outcome": "succeeded",
+        "started_at": "2026-10-28T13:33:14.877Z"
+      },
+      "run_id": "eval-20261028-baseline-a",
+      "scenario_id": "S-NORM",
+      "trial_id": "trial-0009",
+      "verifier": {
+        "all_satisfied": true,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "artifacts": {
+        "actions": {
+          "bytes": 1440,
+          "path": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.actions.json",
+          "sha256": "297d464143c707bb1aa31fe3d9ed1189a0a6e1bc1a33ea4d2cf175a36ce62201"
+        },
+        "snapshot": {
+          "bytes": 138,
+          "path": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.snapshot.json",
+          "sha256": "aba5d0029801aaee8e43597f95f635355b0fdb6f117133cb7abe18afafddcee9"
+        },
+        "trace": {
+          "bytes": 485,
+          "path": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.replay.json",
+          "sha256": "061ca8b00e7a40f2da6d21ddf7d70b3079c850d6413b8b4ade1a72ffa1527f90"
+        }
+      },
+      "baseline": "baseline-a",
+      "evidence": {
+        "actions": [
+          {
+            "action": "navigate",
+            "elapsed_ms": 238,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "navigation to the episode URL 'file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?slow=2100'",
+            "seq": 1,
+            "target": "goto file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?slow=2100"
+          },
+          {
+            "action": "fill",
+            "elapsed_ms": 340,
+            "error_type": "TimeoutError",
+            "outcome": "error",
+            "policy": "allowed",
+            "policy_reason": "fill on the permitted Project Name input",
+            "seq": 2,
+            "target": "fill label='Project Name'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 343,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 3,
+            "target": "observe selector='#confirmation'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 354,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 4,
+            "target": "observe selector='#project-list li'"
+          }
+        ],
+        "actions_meta": {
+          "attached": true,
+          "complete": true,
+          "run_id": "9d2ec184-2bf1-4af0-b587-52be948a3273"
+        },
+        "kind": "replay",
+        "screenshots": [],
+        "snapshot": {
+          "captured_at": "2026-10-28T13:33:31.865Z",
+          "confirmation_visible": false,
+          "items": [],
+          "run_id": "9d2ec184-2bf1-4af0-b587-52be948a3273"
+        },
+        "steps": [
+          {
+            "error_type": null,
+            "outcome": "ok",
+            "seq": 1,
+            "step": "navigate",
+            "target": "file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?slow=2100"
+          },
+          {
+            "error_type": "TimeoutError",
+            "outcome": "error",
+            "seq": 2,
+            "step": "fill",
+            "target": "label \"Project Name\""
+          }
+        ]
+      },
+      "expected_stored_name": "Padded Name",
+      "gaps": [
+        "no screenshots attached (expected: the harness captures one only on action failure)",
+        "replay driver report carries step indexes only — no timestamps or trace sequence numbers"
+      ],
+      "input_id": "I-SPACE",
+      "key": "eval-20261028-baseline-a::trial-0052",
+      "plan": "artifacts/eval-20261028/run-baseline-a.audit-plan-mini.json",
+      "plan_cell": "S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=2100",
+      "recorded": {
+        "agent_terminal_status": "failed",
+        "completed_at": "2026-10-28T13:33:31.889Z",
+        "duration_ms": 378,
+        "error": "TimeoutError: Locator.fill: Timeout 100ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and editable\n    - element is not enabled\n  - retrying fill action\n    - waiting 100ms\n",
+        "outcome": "failed",
+        "started_at": "2026-10-28T13:33:31.511Z"
+      },
+      "run_id": "eval-20261028-baseline-a",
+      "scenario_id": "S-SLOW",
+      "trial_id": "trial-0052",
+      "verifier": {
+        "all_satisfied": false,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "artifacts": {
+        "actions": {
+          "bytes": 1443,
+          "path": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.actions.json",
+          "sha256": "8a2a0ec337979a44c739ff91cec393d06cd038a52e9cf7c5e000a02e5cfa1bcb"
+        },
+        "snapshot": {
+          "bytes": 138,
+          "path": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.snapshot.json",
+          "sha256": "71bea270be2778bcaf34816185c7d4ef3047093a202f4a80beda237035bd35b1"
+        },
+        "trace": {
+          "bytes": 486,
+          "path": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.replay.json",
+          "sha256": "a65a55e9a7cf2b0cfd247743189acf844dcaf5b26d5c88fcdf9ceea5a0ef054d"
+        }
+      },
+      "baseline": "baseline-a",
+      "evidence": {
+        "actions": [
+          {
+            "action": "navigate",
+            "elapsed_ms": 250,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "navigation to the episode URL 'file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?disabled=1'",
+            "seq": 1,
+            "target": "goto file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?disabled=1"
+          },
+          {
+            "action": "fill",
+            "elapsed_ms": 352,
+            "error_type": "TimeoutError",
+            "outcome": "error",
+            "policy": "allowed",
+            "policy_reason": "fill on the permitted Project Name input",
+            "seq": 2,
+            "target": "fill label='Project Name'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 355,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 3,
+            "target": "observe selector='#confirmation'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 365,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 4,
+            "target": "observe selector='#project-list li'"
+          }
+        ],
+        "actions_meta": {
+          "attached": true,
+          "complete": true,
+          "run_id": "db822f37-1c14-4b1f-bda9-70b813f84a6f"
+        },
+        "kind": "replay",
+        "screenshots": [],
+        "snapshot": {
+          "captured_at": "2026-10-28T13:33:50.318Z",
+          "confirmation_visible": false,
+          "items": [],
+          "run_id": "db822f37-1c14-4b1f-bda9-70b813f84a6f"
+        },
+        "steps": [
+          {
+            "error_type": null,
+            "outcome": "ok",
+            "seq": 1,
+            "step": "navigate",
+            "target": "file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?disabled=1"
+          },
+          {
+            "error_type": "TimeoutError",
+            "outcome": "error",
+            "seq": 2,
+            "step": "fill",
+            "target": "label \"Project Name\""
+          }
+        ]
+      },
+      "expected_stored_name": "Padded Name",
+      "gaps": [
+        "no screenshots attached (expected: the harness captures one only on action failure)",
+        "replay driver report carries step indexes only — no timestamps or trace sequence numbers"
+      ],
+      "input_id": "I-SPACE",
+      "key": "eval-20261028-baseline-a::trial-0098",
+      "plan": "artifacts/eval-20261028/run-baseline-a.audit-plan-mini.json",
+      "plan_cell": "S-DIS|I-SPACE|baseline-a|disabled=True,slow_ms=0",
+      "recorded": {
+        "agent_terminal_status": "failed",
+        "completed_at": "2026-10-28T13:33:50.339Z",
+        "duration_ms": 386,
+        "error": "TimeoutError: Locator.fill: Timeout 100ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and editable\n    - element is not enabled\n  - retrying fill action\n    - waiting 100ms\n",
+        "outcome": "failed",
+        "started_at": "2026-10-28T13:33:49.953Z"
+      },
+      "run_id": "eval-20261028-baseline-a",
+      "scenario_id": "S-DIS",
+      "trial_id": "trial-0098",
+      "verifier": {
+        "all_satisfied": false,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "artifacts": {
+        "actions": {
+          "bytes": 1473,
+          "path": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.actions.json",
+          "sha256": "f79965840a26352da78c6873e3bb8162e83f0de3d002ed5b1997c6a13b35cd74"
+        },
+        "snapshot": {
+          "bytes": 138,
+          "path": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.snapshot.json",
+          "sha256": "caea94761fe240dfee3cee2c0c81cb8d3800e5e1d7055c9745c552f085834669"
+        },
+        "trace": {
+          "bytes": 496,
+          "path": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.replay.json",
+          "sha256": "9185891fdae4689b0bb13c5b40e6a320730ebeb82acbafb6f92f3ab649d22dee"
+        }
+      },
+      "baseline": "baseline-a",
+      "evidence": {
+        "actions": [
+          {
+            "action": "navigate",
+            "elapsed_ms": 232,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "navigation to the episode URL 'file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?slow=2100&disabled=1'",
+            "seq": 1,
+            "target": "goto file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?slow=2100&disabled=1"
+          },
+          {
+            "action": "fill",
+            "elapsed_ms": 333,
+            "error_type": "TimeoutError",
+            "outcome": "error",
+            "policy": "allowed",
+            "policy_reason": "fill on the permitted Project Name input",
+            "seq": 2,
+            "target": "fill label='Project Name'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 336,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 3,
+            "target": "observe selector='#confirmation'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 346,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 4,
+            "target": "observe selector='#project-list li'"
+          }
+        ],
+        "actions_meta": {
+          "attached": true,
+          "complete": true,
+          "run_id": "62b89715-85fa-4232-a212-2ba3dadc7372"
+        },
+        "kind": "replay",
+        "screenshots": [],
+        "snapshot": {
+          "captured_at": "2026-10-28T13:34:07.615Z",
+          "confirmation_visible": false,
+          "items": [],
+          "run_id": "62b89715-85fa-4232-a212-2ba3dadc7372"
+        },
+        "steps": [
+          {
+            "error_type": null,
+            "outcome": "ok",
+            "seq": 1,
+            "step": "navigate",
+            "target": "file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?slow=2100&disabled=1"
+          },
+          {
+            "error_type": "TimeoutError",
+            "outcome": "error",
+            "seq": 2,
+            "step": "fill",
+            "target": "label \"Project Name\""
+          }
+        ]
+      },
+      "expected_stored_name": "Padded Name",
+      "gaps": [
+        "no screenshots attached (expected: the harness captures one only on action failure)",
+        "replay driver report carries step indexes only — no timestamps or trace sequence numbers"
+      ],
+      "input_id": "I-SPACE",
+      "key": "eval-20261028-baseline-a::trial-0143",
+      "plan": "artifacts/eval-20261028/run-baseline-a.audit-plan-mini.json",
+      "plan_cell": "S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=2100",
+      "recorded": {
+        "agent_terminal_status": "failed",
+        "completed_at": "2026-10-28T13:34:07.638Z",
+        "duration_ms": 369,
+        "error": "TimeoutError: Locator.fill: Timeout 100ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and editable\n    - element is not enabled\n  - retrying fill action\n    - waiting 100ms\n",
+        "outcome": "failed",
+        "started_at": "2026-10-28T13:34:07.268Z"
+      },
+      "run_id": "eval-20261028-baseline-a",
+      "scenario_id": "S-SLOWDIS",
+      "trial_id": "trial-0143",
+      "verifier": {
+        "all_satisfied": false,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "artifacts": {
+        "actions": {
+          "bytes": 2284,
+          "path": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.actions.json",
+          "sha256": "8b11825a290268393294d12cbc974bc2eeb205aac088f43a58730d98e9494f95"
+        },
+        "snapshot": {
+          "bytes": 150,
+          "path": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.snapshot.json",
+          "sha256": "dcacee610fc6e09ef8141897ea52f816ae0f6dad9f5b1d15029e5df735d71ed9"
+        },
+        "trace": {
+          "bytes": 2971,
+          "path": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.json",
+          "sha256": "e3f22addec8ce23504ac33b2a41ac121353c50fc98b6f61cfbeb2a6e9d3b415d"
+        }
+      },
+      "baseline": "chimera",
+      "evidence": {
+        "actions": [
+          {
+            "action": "navigate",
+            "elapsed_ms": 250,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "navigation to the episode URL 'file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html'",
+            "seq": 1,
+            "target": "goto file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html"
+          },
+          {
+            "action": "fill",
+            "elapsed_ms": 267,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "fill on the permitted Project Name input",
+            "seq": 2,
+            "target": "fill label='Project Name'"
+          },
+          {
+            "action": "click",
+            "elapsed_ms": 291,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "click on the permitted Create Project button",
+            "seq": 3,
+            "target": "click role='button' name='Create Project'"
+          },
+          {
+            "action": "wait",
+            "elapsed_ms": 295,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "wait is read-only: recorded, not scope-changing",
+            "seq": 4,
+            "target": "wait selector='#confirmation'"
+          },
+          {
+            "action": "wait",
+            "elapsed_ms": 302,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "wait is read-only: recorded, not scope-changing",
+            "seq": 5,
+            "target": "wait selector='#project-list li'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 306,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 6,
+            "target": "observe selector='#confirmation'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 319,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 7,
+            "target": "observe selector='#project-list li'"
+          }
+        ],
+        "actions_meta": {
+          "attached": true,
+          "complete": true,
+          "run_id": "391c7849-f7a5-4d27-b69f-5f933b3e8ac1"
+        },
+        "kind": "trace",
+        "screenshots": [],
+        "snapshot": {
+          "captured_at": "2026-10-28T13:21:11.222Z",
+          "confirmation_visible": true,
+          "items": [
+            "Padded Name"
+          ],
+          "run_id": "391c7849-f7a5-4d27-b69f-5f933b3e8ac1"
+        },
+        "steps": [
+          {
+            "action": null,
+            "error": null,
+            "event": "run_started",
+            "outcome": "ok",
+            "seq": 1,
+            "timestamp": "2026-10-28T13:21:10.884Z"
+          },
+          {
+            "action": "navigate",
+            "error": null,
+            "event": "action_attempted",
+            "outcome": "ok",
+            "seq": 2,
+            "timestamp": "2026-10-28T13:21:11.127Z"
+          },
+          {
+            "action": "navigate",
+            "error": null,
+            "event": "action_succeeded",
+            "outcome": "ok",
+            "seq": 3,
+            "timestamp": "2026-10-28T13:21:11.134Z"
+          },
+          {
+            "action": "fill",
+            "error": null,
+            "event": "action_attempted",
+            "outcome": "ok",
+            "seq": 4,
+            "timestamp": "2026-10-28T13:21:11.134Z"
+          },
+          {
+            "action": "fill",
+            "error": null,
+            "event": "action_succeeded",
+            "outcome": "ok",
+            "seq": 5,
+            "timestamp": "2026-10-28T13:21:11.151Z"
+          },
+          {
+            "action": "click",
+            "error": null,
+            "event": "action_attempted",
+            "outcome": "ok",
+            "seq": 6,
+            "timestamp": "2026-10-28T13:21:11.151Z"
+          },
+          {
+            "action": "click",
+            "error": null,
+            "event": "action_succeeded",
+            "outcome": "ok",
+            "seq": 7,
+            "timestamp": "2026-10-28T13:21:11.176Z"
+          },
+          {
+            "action": null,
+            "error": null,
+            "event": "verification_passed",
+            "outcome": "ok",
+            "seq": 8,
+            "timestamp": "2026-10-28T13:21:11.179Z"
+          },
+          {
+            "action": null,
+            "error": null,
+            "event": "verification_passed",
+            "outcome": "ok",
+            "seq": 9,
+            "timestamp": "2026-10-28T13:21:11.186Z"
+          },
+          {
+            "action": null,
+            "error": null,
+            "event": "run_succeeded",
+            "outcome": "ok",
+            "seq": 10,
+            "timestamp": "2026-10-28T13:21:11.186Z"
+          }
+        ]
+      },
+      "expected_stored_name": "Padded Name",
+      "gaps": [
+        "no screenshots attached (expected: the harness captures one only on action failure)"
+      ],
+      "input_id": "I-SPACE",
+      "key": "eval-20261028-chimera::trial-0006",
+      "plan": "artifacts/eval-20261028/run-chimera.audit-plan-mini.json",
+      "plan_cell": "S-NORM|I-SPACE|chimera|disabled=False,slow_ms=0",
+      "recorded": {
+        "agent_terminal_status": "succeeded",
+        "completed_at": "2026-10-28T13:21:11.222Z",
+        "duration_ms": 338,
+        "error": null,
+        "outcome": "succeeded",
+        "started_at": "2026-10-28T13:21:10.884Z"
+      },
+      "run_id": "eval-20261028-chimera",
+      "scenario_id": "S-NORM",
+      "trial_id": "trial-0006",
+      "verifier": {
+        "all_satisfied": true,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "artifacts": {
+        "actions": {
+          "bytes": 2320,
+          "path": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.actions.json",
+          "sha256": "9f8eb3b1f8260a1f04f9041fca8624957e44dc143057061e53efec943fbc5a67"
+        },
+        "snapshot": {
+          "bytes": 150,
+          "path": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.snapshot.json",
+          "sha256": "2279e2c9d9fe20c9e00f1d6c7c9c401be31a6124ed468f1ad05c94c333b6a5a4"
+        },
+        "trace": {
+          "bytes": 2981,
+          "path": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.json",
+          "sha256": "fa822659fb11d5e948de8434acb5d255c7fb062e36eecdacad9735c81ae4d9a2"
+        }
+      },
+      "baseline": "chimera",
+      "evidence": {
+        "actions": [
+          {
+            "action": "navigate",
+            "elapsed_ms": 238,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "navigation to the episode URL 'file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?slow=2100'",
+            "seq": 1,
+            "target": "goto file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?slow=2100"
+          },
+          {
+            "action": "fill",
+            "elapsed_ms": 2517,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "fill on the permitted Project Name input",
+            "seq": 2,
+            "target": "fill label='Project Name'"
+          },
+          {
+            "action": "click",
+            "elapsed_ms": 2546,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "click on the permitted Create Project button",
+            "seq": 3,
+            "target": "click role='button' name='Create Project'"
+          },
+          {
+            "action": "wait",
+            "elapsed_ms": 2552,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "wait is read-only: recorded, not scope-changing",
+            "seq": 4,
+            "target": "wait selector='#confirmation'"
+          },
+          {
+            "action": "wait",
+            "elapsed_ms": 2577,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "wait is read-only: recorded, not scope-changing",
+            "seq": 5,
+            "target": "wait selector='#project-list li'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 2579,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 6,
+            "target": "observe selector='#confirmation'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 2582,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 7,
+            "target": "observe selector='#project-list li'"
+          }
+        ],
+        "actions_meta": {
+          "attached": true,
+          "complete": true,
+          "run_id": "be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b"
+        },
+        "kind": "trace",
+        "screenshots": [],
+        "snapshot": {
+          "captured_at": "2026-10-28T13:22:36.474Z",
+          "confirmation_visible": true,
+          "items": [
+            "Padded Name"
+          ],
+          "run_id": "be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b"
+        },
+        "steps": [
+          {
+            "action": null,
+            "error": null,
+            "event": "run_started",
+            "outcome": "ok",
+            "seq": 1,
+            "timestamp": "2026-10-28T13:22:33.865Z"
+          },
+          {
+            "action": "navigate",
+            "error": null,
+            "event": "action_attempted",
+            "outcome": "ok",
+            "seq": 2,
+            "timestamp": "2026-10-28T13:22:34.096Z"
+          },
+          {
+            "action": "navigate",
+            "error": null,
+            "event": "action_succeeded",
+            "outcome": "ok",
+            "seq": 3,
+            "timestamp": "2026-10-28T13:22:34.104Z"
+          },
+          {
+            "action": "fill",
+            "error": null,
+            "event": "action_attempted",
+            "outcome": "ok",
+            "seq": 4,
+            "timestamp": "2026-10-28T13:22:34.104Z"
+          },
+          {
+            "action": "fill",
+            "error": null,
+            "event": "action_succeeded",
+            "outcome": "ok",
+            "seq": 5,
+            "timestamp": "2026-10-28T13:22:36.383Z"
+          },
+          {
+            "action": "click",
+            "error": null,
+            "event": "action_attempted",
+            "outcome": "ok",
+            "seq": 6,
+            "timestamp": "2026-10-28T13:22:36.383Z"
+          },
+          {
+            "action": "click",
+            "error": null,
+            "event": "action_succeeded",
+            "outcome": "ok",
+            "seq": 7,
+            "timestamp": "2026-10-28T13:22:36.412Z"
+          },
+          {
+            "action": null,
+            "error": null,
+            "event": "verification_passed",
+            "outcome": "ok",
+            "seq": 8,
+            "timestamp": "2026-10-28T13:22:36.417Z"
+          },
+          {
+            "action": null,
+            "error": null,
+            "event": "verification_passed",
+            "outcome": "ok",
+            "seq": 9,
+            "timestamp": "2026-10-28T13:22:36.443Z"
+          },
+          {
+            "action": null,
+            "error": null,
+            "event": "run_succeeded",
+            "outcome": "ok",
+            "seq": 10,
+            "timestamp": "2026-10-28T13:22:36.443Z"
+          }
+        ]
+      },
+      "expected_stored_name": "Padded Name",
+      "gaps": [
+        "no screenshots attached (expected: the harness captures one only on action failure)"
+      ],
+      "input_id": "I-SPACE",
+      "key": "eval-20261028-chimera::trial-0055",
+      "plan": "artifacts/eval-20261028/run-chimera.audit-plan-mini.json",
+      "plan_cell": "S-SLOW|I-SPACE|chimera|disabled=False,slow_ms=2100",
+      "recorded": {
+        "agent_terminal_status": "succeeded",
+        "completed_at": "2026-10-28T13:22:36.474Z",
+        "duration_ms": 2608,
+        "error": null,
+        "outcome": "succeeded",
+        "started_at": "2026-10-28T13:22:33.865Z"
+      },
+      "run_id": "eval-20261028-chimera",
+      "scenario_id": "S-SLOW",
+      "trial_id": "trial-0055",
+      "verifier": {
+        "all_satisfied": true,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "artifacts": {
+        "actions": {
+          "bytes": 1731,
+          "path": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.actions.json",
+          "sha256": "7d7dbbb2f560dc3128a2255a7c4a0e626d5db172ccda481a208137a7206f4123"
+        },
+        "snapshot": {
+          "bytes": 138,
+          "path": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.snapshot.json",
+          "sha256": "5faf55ab5b3c1148324f9099de4be647f3ff4a67033552e1fc696e12ec2580d7"
+        },
+        "trace": {
+          "bytes": 3912,
+          "path": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.json",
+          "sha256": "4ae396ff820e983f2541303b677f510d3f5c99ed4f70bff826d743f4d641efc6"
+        }
+      },
+      "baseline": "chimera",
+      "evidence": {
+        "actions": [
+          {
+            "action": "navigate",
+            "elapsed_ms": 259,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "navigation to the episode URL 'file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?disabled=1'",
+            "seq": 1,
+            "target": "goto file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?disabled=1"
+          },
+          {
+            "action": "fill",
+            "elapsed_ms": 5263,
+            "error_type": "TimeoutError",
+            "outcome": "error",
+            "policy": "allowed",
+            "policy_reason": "fill on the permitted Project Name input",
+            "seq": 2,
+            "target": "fill label='Project Name'"
+          },
+          {
+            "action": "screenshot",
+            "elapsed_ms": 5302,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "screenshot is read-only: recorded, not scope-changing",
+            "seq": 3,
+            "target": "screenshot target={'by': 'screenshot'}"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 5308,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 4,
+            "target": "observe selector='#confirmation'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 5320,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 5,
+            "target": "observe selector='#project-list li'"
+          }
+        ],
+        "actions_meta": {
+          "attached": true,
+          "complete": true,
+          "run_id": "a763e65d-273f-47aa-a128-e188bebf55d7"
+        },
+        "kind": "trace",
+        "screenshots": [
+          {
+            "exists": true,
+            "path": "/Users/kartikbhardwaj/project-chimera/data/screenshots/a763e65d-273f-47aa-a128-e188bebf55d7.png"
+          }
+        ],
+        "snapshot": {
+          "captured_at": "2026-10-28T13:25:48.118Z",
+          "confirmation_visible": false,
+          "items": [],
+          "run_id": "a763e65d-273f-47aa-a128-e188bebf55d7"
+        },
+        "steps": [
+          {
+            "action": null,
+            "error": null,
+            "event": "run_started",
+            "outcome": "ok",
+            "seq": 1,
+            "timestamp": "2026-10-28T13:25:42.772Z"
+          },
+          {
+            "action": "navigate",
+            "error": null,
+            "event": "action_attempted",
+            "outcome": "ok",
+            "seq": 2,
+            "timestamp": "2026-10-28T13:25:43.024Z"
+          },
+          {
+            "action": "navigate",
+            "error": null,
+            "event": "action_succeeded",
+            "outcome": "ok",
+            "seq": 3,
+            "timestamp": "2026-10-28T13:25:43.032Z"
+          },
+          {
+            "action": "fill",
+            "error": null,
+            "event": "action_attempted",
+            "outcome": "ok",
+            "seq": 4,
+            "timestamp": "2026-10-28T13:25:43.032Z"
+          },
+          {
+            "action": "fill",
+            "error": {
+              "cause_message": "Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+              "cause_type": "TimeoutError",
+              "message": "Action 'fill' failed after 2 attempt(s)",
+              "type": "RetryBudgetExhaustedError"
+            },
+            "event": "action_failed",
+            "outcome": "failure",
+            "seq": 5,
+            "timestamp": "2026-10-28T13:25:48.036Z"
+          },
+          {
+            "action": null,
+            "error": {
+              "cause_message": "Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+              "cause_type": "TimeoutError",
+              "message": "Action 'fill' failed after 2 attempt(s)",
+              "type": "RetryBudgetExhaustedError"
+            },
+            "event": "run_failed",
+            "outcome": "failure",
+            "seq": 6,
+            "timestamp": "2026-10-28T13:25:48.075Z"
+          }
+        ]
+      },
+      "expected_stored_name": "Padded Name",
+      "gaps": [],
+      "input_id": "I-SPACE",
+      "key": "eval-20261028-chimera::trial-0100",
+      "plan": "artifacts/eval-20261028/run-chimera.audit-plan-mini.json",
+      "plan_cell": "S-DIS|I-SPACE|chimera|disabled=True,slow_ms=0",
+      "recorded": {
+        "agent_terminal_status": "failed",
+        "completed_at": "2026-10-28T13:25:48.118Z",
+        "duration_ms": 5346,
+        "error": "RetryBudgetExhaustedError: Action 'fill' failed after 2 attempt(s) (caused by TimeoutError: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n)",
+        "outcome": "failed",
+        "started_at": "2026-10-28T13:25:42.772Z"
+      },
+      "run_id": "eval-20261028-chimera",
+      "scenario_id": "S-DIS",
+      "trial_id": "trial-0100",
+      "verifier": {
+        "all_satisfied": false,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "artifacts": {
+        "actions": {
+          "bytes": 1761,
+          "path": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.actions.json",
+          "sha256": "f3009b8d8d8ce96390525d17902e4accd328a0a498f4679c40d9a0cd4559d161"
+        },
+        "snapshot": {
+          "bytes": 138,
+          "path": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.snapshot.json",
+          "sha256": "08a594d9528a6e390256f255b723049a7a50f2784b4877ebc55d986fbf38fbfe"
+        },
+        "trace": {
+          "bytes": 3922,
+          "path": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.json",
+          "sha256": "cf4ea88c7dcf36a1d7510d024e667a5e114920eb19e3573567cf8f7ff2da736c"
+        }
+      },
+      "baseline": "chimera",
+      "evidence": {
+        "actions": [
+          {
+            "action": "navigate",
+            "elapsed_ms": 229,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "navigation to the episode URL 'file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?slow=2100&disabled=1'",
+            "seq": 1,
+            "target": "goto file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html?slow=2100&disabled=1"
+          },
+          {
+            "action": "fill",
+            "elapsed_ms": 5234,
+            "error_type": "TimeoutError",
+            "outcome": "error",
+            "policy": "allowed",
+            "policy_reason": "fill on the permitted Project Name input",
+            "seq": 2,
+            "target": "fill label='Project Name'"
+          },
+          {
+            "action": "screenshot",
+            "elapsed_ms": 5272,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "screenshot is read-only: recorded, not scope-changing",
+            "seq": 3,
+            "target": "screenshot target={'by': 'screenshot'}"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 5276,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 4,
+            "target": "observe selector='#confirmation'"
+          },
+          {
+            "action": "observe",
+            "elapsed_ms": 5287,
+            "error_type": null,
+            "outcome": "ok",
+            "policy": "allowed",
+            "policy_reason": "observe is read-only: recorded, not scope-changing",
+            "seq": 5,
+            "target": "observe selector='#project-list li'"
+          }
+        ],
+        "actions_meta": {
+          "attached": true,
+          "complete": true,
+          "run_id": "3c91e2a3-e1b9-4db5-bf54-e509bcb38e45"
+        },
+        "kind": "trace",
+        "screenshots": [
+          {
+            "exists": true,
+            "path": "/Users/kartikbhardwaj/project-chimera/data/screenshots/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.png"
+          }
+        ],
+        "snapshot": {
+          "captured_at": "2026-10-28T13:29:32.797Z",
+          "confirmation_visible": false,
+          "items": [],
+          "run_id": "3c91e2a3-e1b9-4db5-bf54-e509bcb38e45"
+        },
+        "steps": [
+          {
+            "action": null,
+            "error": null,
+            "event": "run_started",
+            "outcome": "ok",
+            "seq": 1,
+            "timestamp": "2026-10-28T13:29:27.488Z"
+          },
+          {
+            "action": "navigate",
+            "error": null,
+            "event": "action_attempted",
+            "outcome": "ok",
+            "seq": 2,
+            "timestamp": "2026-10-28T13:29:27.711Z"
+          },
+          {
+            "action": "navigate",
+            "error": null,
+            "event": "action_succeeded",
+            "outcome": "ok",
+            "seq": 3,
+            "timestamp": "2026-10-28T13:29:27.718Z"
+          },
+          {
+            "action": "fill",
+            "error": null,
+            "event": "action_attempted",
+            "outcome": "ok",
+            "seq": 4,
+            "timestamp": "2026-10-28T13:29:27.718Z"
+          },
+          {
+            "action": "fill",
+            "error": {
+              "cause_message": "Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+              "cause_type": "TimeoutError",
+              "message": "Action 'fill' failed after 2 attempt(s)",
+              "type": "RetryBudgetExhaustedError"
+            },
+            "event": "action_failed",
+            "outcome": "failure",
+            "seq": 5,
+            "timestamp": "2026-10-28T13:29:32.723Z"
+          },
+          {
+            "action": null,
+            "error": {
+              "cause_message": "Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+              "cause_type": "TimeoutError",
+              "message": "Action 'fill' failed after 2 attempt(s)",
+              "type": "RetryBudgetExhaustedError"
+            },
+            "event": "run_failed",
+            "outcome": "failure",
+            "seq": 6,
+            "timestamp": "2026-10-28T13:29:32.760Z"
+          }
+        ]
+      },
+      "expected_stored_name": "Padded Name",
+      "gaps": [],
+      "input_id": "I-SPACE",
+      "key": "eval-20261028-chimera::trial-0142",
+      "plan": "artifacts/eval-20261028/run-chimera.audit-plan-mini.json",
+      "plan_cell": "S-SLOWDIS|I-SPACE|chimera|disabled=True,slow_ms=2100",
+      "recorded": {
+        "agent_terminal_status": "failed",
+        "completed_at": "2026-10-28T13:29:32.797Z",
+        "duration_ms": 5308,
+        "error": "RetryBudgetExhaustedError: Action 'fill' failed after 2 attempt(s) (caused by TimeoutError: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_label(\"Project Name\")\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n)",
+        "outcome": "failed",
+        "started_at": "2026-10-28T13:29:27.488Z"
+      },
+      "run_id": "eval-20261028-chimera",
+      "scenario_id": "S-SLOWDIS",
+      "trial_id": "trial-0142",
+      "verifier": {
+        "all_satisfied": false,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    }
+  ],
+  "manifest": {
+    "manifest_id": "eval-v1",
+    "path": "benchmarks/manifests/eval-v1.json",
+    "sha256": "b23580c8c07c3528a33f10f25780138cd58455a1f334c48e4fd889125c038cf5"
+  },
+  "p4_note": "P4 (list empty before the agent's click) is harness-only context; the audit judges the verifier's P1–P3.",
+  "plans": [
+    {
+      "path": "artifacts/eval-20261028/run-chimera.audit-plan-mini.json",
+      "run_id": "eval-20261028-chimera",
+      "sample_size": 1,
+      "sha256": "e98339e260ca64f7528a4d7d0f718f82149fd89aba108d589ad883aa88f46030"
+    },
+    {
+      "path": "artifacts/eval-20261028/run-baseline-a.audit-plan-mini.json",
+      "run_id": "eval-20261028-baseline-a",
+      "sample_size": 1,
+      "sha256": "f1f2c76f601cbb27302b2d043ec17712e91821e045d8eecedceaef0d6c48f90b"
+    }
+  ],
+  "postconditions": [
+    {
+      "check": "`#confirmation` is visible",
+      "id": "P1",
+      "judge": "Is confirmation_visible true in the snapshot?",
+      "name": "Confirmation is visible"
+    },
+    {
+      "check": "exactly one `#project-list li` whose `textContent` equals the expected trimmed name",
+      "id": "P2",
+      "judge": "Does items contain exactly one entry whose text equals the expected stored name?",
+      "name": "The project appears in the list, exactly once"
+    },
+    {
+      "check": "the count of `#project-list li` equals 1",
+      "id": "P3",
+      "judge": "Does items contain exactly one entry?",
+      "name": "The list contains no unexpected entries"
+    }
+  ],
+  "schema": "chimera-mini-review-packet/1",
+  "task": "Create a project with a given name. The agent must navigate to the target, fill the name, click \"Create Project\", and satisfy the postconditions."
+}

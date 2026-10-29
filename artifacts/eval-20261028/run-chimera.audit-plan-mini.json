@@ -1,0 +1,435 @@
+{
+  "auditor": "",
+  "cells": {
+    "S-DIS|I-PLAIN|chimera|disabled=True,slow_ms=0": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-DIS",
+      "seed": "eval-20261028-chimera:S-DIS|I-PLAIN|chimera|disabled=True,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-DIS|I-SPACE|chimera|disabled=True,slow_ms=0": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "7d7dbbb2f560dc3128a2255a7c4a0e626d5db172ccda481a208137a7206f4123",
+            "snapshot": "5faf55ab5b3c1148324f9099de4be647f3ff4a67033552e1fc696e12ec2580d7",
+            "trace": "4ae396ff820e983f2541303b677f510d3f5c99ed4f70bff826d743f4d641efc6"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "a763e65d-273f-47aa-a128-e188bebf55d7",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-chimera/a763e65d-273f-47aa-a128-e188bebf55d7.json",
+          "trial_id": "trial-0100",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "eval-20261028-chimera:S-DIS|I-SPACE|chimera|disabled=True,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-DIS|I-UNICODE|chimera|disabled=True,slow_ms=0": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-DIS",
+      "seed": "eval-20261028-chimera:S-DIS|I-UNICODE|chimera|disabled=True,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-NORM|I-PLAIN|chimera|disabled=False,slow_ms=0": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-NORM",
+      "seed": "eval-20261028-chimera:S-NORM|I-PLAIN|chimera|disabled=False,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-NORM|I-SPACE|chimera|disabled=False,slow_ms=0": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "8b11825a290268393294d12cbc974bc2eeb205aac088f43a58730d98e9494f95",
+            "snapshot": "dcacee610fc6e09ef8141897ea52f816ae0f6dad9f5b1d15029e5df735d71ed9",
+            "trace": "e3f22addec8ce23504ac33b2a41ac121353c50fc98b6f61cfbeb2a6e9d3b415d"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "succeeded",
+          "run_id": "391c7849-f7a5-4d27-b69f-5f933b3e8ac1",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-chimera/391c7849-f7a5-4d27-b69f-5f933b3e8ac1.json",
+          "trial_id": "trial-0006",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "eval-20261028-chimera:S-NORM|I-SPACE|chimera|disabled=False,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-NORM|I-UNICODE|chimera|disabled=False,slow_ms=0": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-NORM",
+      "seed": "eval-20261028-chimera:S-NORM|I-UNICODE|chimera|disabled=False,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|chimera|disabled=True,slow_ms=1350": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-PLAIN|chimera|disabled=True,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|chimera|disabled=True,slow_ms=2100": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-PLAIN|chimera|disabled=True,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|chimera|disabled=True,slow_ms=3000": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-PLAIN|chimera|disabled=True,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|chimera|disabled=True,slow_ms=3900": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-PLAIN|chimera|disabled=True,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|chimera|disabled=True,slow_ms=800": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-PLAIN|chimera|disabled=True,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|chimera|disabled=True,slow_ms=1350": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-SPACE|chimera|disabled=True,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|chimera|disabled=True,slow_ms=2100": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "f3009b8d8d8ce96390525d17902e4accd328a0a498f4679c40d9a0cd4559d161",
+            "snapshot": "08a594d9528a6e390256f255b723049a7a50f2784b4877ebc55d986fbf38fbfe",
+            "trace": "cf4ea88c7dcf36a1d7510d024e667a5e114920eb19e3573567cf8f7ff2da736c"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "3c91e2a3-e1b9-4db5-bf54-e509bcb38e45",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-chimera/3c91e2a3-e1b9-4db5-bf54-e509bcb38e45.json",
+          "trial_id": "trial-0142",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-SPACE|chimera|disabled=True,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|chimera|disabled=True,slow_ms=3000": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-SPACE|chimera|disabled=True,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|chimera|disabled=True,slow_ms=3900": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-SPACE|chimera|disabled=True,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|chimera|disabled=True,slow_ms=800": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-SPACE|chimera|disabled=True,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|chimera|disabled=True,slow_ms=1350": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-UNICODE|chimera|disabled=True,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|chimera|disabled=True,slow_ms=2100": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-UNICODE|chimera|disabled=True,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|chimera|disabled=True,slow_ms=3000": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-UNICODE|chimera|disabled=True,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|chimera|disabled=True,slow_ms=3900": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-UNICODE|chimera|disabled=True,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|chimera|disabled=True,slow_ms=800": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-chimera:S-SLOWDIS|I-UNICODE|chimera|disabled=True,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|chimera|disabled=False,slow_ms=1350": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-PLAIN|chimera|disabled=False,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|chimera|disabled=False,slow_ms=2100": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-PLAIN|chimera|disabled=False,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|chimera|disabled=False,slow_ms=3000": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-PLAIN|chimera|disabled=False,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|chimera|disabled=False,slow_ms=3900": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-PLAIN|chimera|disabled=False,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|chimera|disabled=False,slow_ms=800": {
+      "baseline": "chimera",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-PLAIN|chimera|disabled=False,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|chimera|disabled=False,slow_ms=1350": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-SPACE|chimera|disabled=False,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|chimera|disabled=False,slow_ms=2100": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "chimera",
+          "digests": {
+            "actions": "9f8eb3b1f8260a1f04f9041fca8624957e44dc143057061e53efec943fbc5a67",
+            "snapshot": "2279e2c9d9fe20c9e00f1d6c7c9c401be31a6124ed468f1ad05c94c333b6a5a4",
+            "trace": "fa822659fb11d5e948de8434acb5d255c7fb062e36eecdacad9735c81ae4d9a2"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "succeeded",
+          "run_id": "be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-chimera/be95d9fb-aaf7-4aab-a1c8-1e2b45e2d56b.json",
+          "trial_id": "trial-0055",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-SPACE|chimera|disabled=False,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|chimera|disabled=False,slow_ms=3000": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-SPACE|chimera|disabled=False,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|chimera|disabled=False,slow_ms=3900": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-SPACE|chimera|disabled=False,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|chimera|disabled=False,slow_ms=800": {
+      "baseline": "chimera",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-SPACE|chimera|disabled=False,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|chimera|disabled=False,slow_ms=1350": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-UNICODE|chimera|disabled=False,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|chimera|disabled=False,slow_ms=2100": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-UNICODE|chimera|disabled=False,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|chimera|disabled=False,slow_ms=3000": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-UNICODE|chimera|disabled=False,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|chimera|disabled=False,slow_ms=3900": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-UNICODE|chimera|disabled=False,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|chimera|disabled=False,slow_ms=800": {
+      "baseline": "chimera",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-chimera:S-SLOW|I-UNICODE|chimera|disabled=False,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    }
+  },
+  "created_at": "2026-10-28T13:47:12.149Z",
+  "manifest_id": "eval-v1",
+  "manifest_sha256": "b23580c8c07c3528a33f10f25780138cd58455a1f334c48e4fd889125c038cf5",
+  "run_id": "eval-20261028-chimera",
+  "sample_size": 1,
+  "schema": "chimera-audit-plan/1"
+}

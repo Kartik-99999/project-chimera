@@ -1,0 +1,1179 @@
+{
+  "auditor": "",
+  "cells": {
+    "S-DIS|I-PLAIN|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/930b5bdf-2f7e-416e-99f2-771e24fa6f26.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "8b80691210b20de4a241911d9b80a1083f714a445c480b7ae4b9bb041d3f2d54",
+            "snapshot": "115c348426118084fef04ee46eeb1311e24184485fd9b9c5b4bcec9f02579e96",
+            "trace": "1d285e98674745c63826289b8313b136d575fa9dea8c88baa7f25ccfb65be86a"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "930b5bdf-2f7e-416e-99f2-771e24fa6f26",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/930b5bdf-2f7e-416e-99f2-771e24fa6f26.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/930b5bdf-2f7e-416e-99f2-771e24fa6f26.replay.json",
+          "trial_id": "trial-0041",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/e2392368-1d3c-4975-b75d-350b6b66f64b.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "a1a48a5aca1113bd9c77ac330037927f7be69e86cd3e836bb9f7744502ed0aa6",
+            "snapshot": "2ea4d831267de4cdc6e0b10d6d8838feb43c6a26da68c3994bcbfda33f472d1d",
+            "trace": "02feea182610db6fe8f49c6e17f3d21cbe859d9e2bebda067280120676da7f2b"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "e2392368-1d3c-4975-b75d-350b6b66f64b",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/e2392368-1d3c-4975-b75d-350b6b66f64b.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/e2392368-1d3c-4975-b75d-350b6b66f64b.replay.json",
+          "trial_id": "trial-0042",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "dev-20261028-baseline-a:S-DIS|I-PLAIN|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0041": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0042": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-DIS|I-SPACE|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/5cbb863c-1529-4625-855e-251d77b5ac34.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "2e0b050015bad677327e10184fc8bdebadf7aa28761c24c5139983b794d7ab13",
+            "snapshot": "8916565bdb709d80861aeea16d4a94bb27000d10c5096de76d508b4803257b15",
+            "trace": "7e153bf517ef24f902ac9553db9fc0a1e87ad754163686ad9a69fc7f697130a9"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "5cbb863c-1529-4625-855e-251d77b5ac34",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/5cbb863c-1529-4625-855e-251d77b5ac34.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/5cbb863c-1529-4625-855e-251d77b5ac34.replay.json",
+          "trial_id": "trial-0051",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/37b7f2e7-1a02-4c50-bb2f-e093b17b4fbb.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "6df3e6abb5b176f32fd11a149cd4942d01a8d4b675334a8892303df884c78598",
+            "snapshot": "2944f61989b339d64b0544ec05ae8ae146dca02ed2c25f0cd2b39c20316ebc88",
+            "trace": "62d0942ec611cb69ac4875b61585ba2c7f290f919fc2bf3e39b23d3b5bb8d218"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "37b7f2e7-1a02-4c50-bb2f-e093b17b4fbb",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/37b7f2e7-1a02-4c50-bb2f-e093b17b4fbb.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/37b7f2e7-1a02-4c50-bb2f-e093b17b4fbb.replay.json",
+          "trial_id": "trial-0055",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "dev-20261028-baseline-a:S-DIS|I-SPACE|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0051": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0055": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-DIS|I-SUBSTR|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-SUBSTR",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/5a7e8d7d-f098-4763-99df-1698e4c40f25.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "46875e475e0742312eaae24a73be9f554da88d2ea6d643d5e2dbfeb8ac1de76c",
+            "snapshot": "3b915a606dea2717d5159066b2e9335844cb0ce5fb31bc3b408fbc83823b9d1c",
+            "trace": "e1cf9a1b58ad13f4237861777f1358291a78feae58714b0db761db7c3f451291"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "5a7e8d7d-f098-4763-99df-1698e4c40f25",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/5a7e8d7d-f098-4763-99df-1698e4c40f25.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/5a7e8d7d-f098-4763-99df-1698e4c40f25.replay.json",
+          "trial_id": "trial-0050",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/b1980e94-2cdc-4ee0-ac32-66cd8dba06da.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "c8ec36feaa106d3204e9d4edd441868a6408317c45210e0145cdbb5eae4ca5f9",
+            "snapshot": "44ffaf2472478126c71a6bdf2c4f9734e904de4c841d2bf2d7720513968dcec8",
+            "trace": "32ef40350940bc9a54d49eedf53a226e2cdc8ba8ee56d5151e680e6687ad61e6"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "b1980e94-2cdc-4ee0-ac32-66cd8dba06da",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/b1980e94-2cdc-4ee0-ac32-66cd8dba06da.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/b1980e94-2cdc-4ee0-ac32-66cd8dba06da.replay.json",
+          "trial_id": "trial-0048",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "dev-20261028-baseline-a:S-DIS|I-SUBSTR|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0048": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0050": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-DIS|I-UNICODE|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/baf36d76-5c11-4bdc-956f-c880990a54af.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "1ff855f0db0f4ab416cba11f403363516284e746bf977a0c0cc101738beb4b14",
+            "snapshot": "1d418e74f14cddc6d4cc37929a2c4eac40b3860983eae115e8aaf99d3b519544",
+            "trace": "fceb3fd7271dea63e78d0b60de712cafca49c3bfd4b3de0c9a0508d633212c5c"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "baf36d76-5c11-4bdc-956f-c880990a54af",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/baf36d76-5c11-4bdc-956f-c880990a54af.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/baf36d76-5c11-4bdc-956f-c880990a54af.replay.json",
+          "trial_id": "trial-0060",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/fd816c57-062a-48c5-b905-999e6f448c74.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "cd6bb74e78c5fc2137a2f2c95093d297e913e13460d113d0cb99a28616cad2bd",
+            "snapshot": "483afc9add44a92b05d7096b801b8ff4ada3624f48be75559735bab32b4208d8",
+            "trace": "62ced8fbef529b634ed56ed6275af20758ef3eb929b4ff28cb6d7e9f02c8a94c"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "fd816c57-062a-48c5-b905-999e6f448c74",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/fd816c57-062a-48c5-b905-999e6f448c74.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/fd816c57-062a-48c5-b905-999e6f448c74.replay.json",
+          "trial_id": "trial-0057",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "dev-20261028-baseline-a:S-DIS|I-UNICODE|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0057": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0060": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-NORM|I-PLAIN|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/a7718f38-57df-4e1a-a546-9d1da257d7b8.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "208502589b32c49e52128aadd771c2f1025400652b04233c502d1fd499df61f0",
+            "snapshot": "828afcb228e9317f07ec6b9228782342d0e66e62e9ab4e7c967b5ea864c97032",
+            "trace": "2926235e742225ead67b448c11225d786c7e3bc70463481e0e265777c42dada1"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "a7718f38-57df-4e1a-a546-9d1da257d7b8",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/a7718f38-57df-4e1a-a546-9d1da257d7b8.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/a7718f38-57df-4e1a-a546-9d1da257d7b8.replay.json",
+          "trial_id": "trial-0001",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/17bd1b2a-422b-4d4d-a03c-bc530be1fdd8.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "51a07b739906c16e2fbd89dd194760fe898ad883f592b87d1a8d6f09e588406a",
+            "snapshot": "4d73c2127a879468ca0011c5d8a15e6276efe1baad5b65716c58a171e79c1f2a",
+            "trace": "8c31b7ce778b9146360e81a4aa3d9f9ec6b6077a06fb7058983c85962197996a"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "17bd1b2a-422b-4d4d-a03c-bc530be1fdd8",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/17bd1b2a-422b-4d4d-a03c-bc530be1fdd8.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/17bd1b2a-422b-4d4d-a03c-bc530be1fdd8.replay.json",
+          "trial_id": "trial-0004",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "dev-20261028-baseline-a:S-NORM|I-PLAIN|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0001": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0004": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    },
+    "S-NORM|I-SPACE|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/e6246356-dd69-4126-9f8b-bfb68cbf9667.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "b316d801180acf009ff3649b0825242505690fd7a42202b344d7b6f01fbc63b5",
+            "snapshot": "7f8d87d1e6be6a9f4bc5b7d5055941010d989460b59d8c0c3c0584628a9779fc",
+            "trace": "aaa41eb5f526c1de1f328196037763937324d297a0cbf574fadee1c04657187f"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "e6246356-dd69-4126-9f8b-bfb68cbf9667",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/e6246356-dd69-4126-9f8b-bfb68cbf9667.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/e6246356-dd69-4126-9f8b-bfb68cbf9667.replay.json",
+          "trial_id": "trial-0011",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/1e1180bb-d1e9-46f6-910c-cfd20f6fe364.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "a8a5c4795c5e856b363ef121c8bc1a8d887e423f9095a2e991ec8ab53181429c",
+            "snapshot": "6f6beb54e5c670d0ea70419f3c8592064bfcb5704f152bff3aa52f07fc7c894d",
+            "trace": "4a82e7c779e1a804185516dbf6ea08bbfb5fe153f704584a12e3a488e8919e44"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "1e1180bb-d1e9-46f6-910c-cfd20f6fe364",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/1e1180bb-d1e9-46f6-910c-cfd20f6fe364.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/1e1180bb-d1e9-46f6-910c-cfd20f6fe364.replay.json",
+          "trial_id": "trial-0014",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "dev-20261028-baseline-a:S-NORM|I-SPACE|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0011": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0014": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    },
+    "S-NORM|I-SUBSTR|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-SUBSTR",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/074dc0c4-0798-48cc-94dc-32ff4a6ec9e5.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "e84afeb3a0058b6e5c8769c3f3085bd7cf7f6511ba08ad597eb91c36439df908",
+            "snapshot": "533b925892809b9d37b1c5b05c76d36ef4b5b479ac25313d7491487998c3abe2",
+            "trace": "d92aab263a04b73217428b2dc52734aaae1373856cbd4d580be0b221b8c81a8c"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "074dc0c4-0798-48cc-94dc-32ff4a6ec9e5",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/074dc0c4-0798-48cc-94dc-32ff4a6ec9e5.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/074dc0c4-0798-48cc-94dc-32ff4a6ec9e5.replay.json",
+          "trial_id": "trial-0009",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/3f72d8db-60de-4e85-b3d3-478e78269b78.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "778645a27d670e799ae6bbec43e9cd05a4db9257ea500ef5d20f626f97b16100",
+            "snapshot": "9b8d5f788a771869d1de4b993aa19d938d11ec493f03aa5b2e288236ae4a5036",
+            "trace": "5838a4a20bacbf2bdf073bd310525e5e6d4a0169b8342c27014f3cb4ca52b4a2"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "3f72d8db-60de-4e85-b3d3-478e78269b78",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/3f72d8db-60de-4e85-b3d3-478e78269b78.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/3f72d8db-60de-4e85-b3d3-478e78269b78.replay.json",
+          "trial_id": "trial-0008",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "dev-20261028-baseline-a:S-NORM|I-SUBSTR|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0008": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0009": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    },
+    "S-NORM|I-UNICODE|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/b4f3351f-9058-452a-b44a-02b5d58aff0d.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "28179208c37ebc256c09cf382a0889756319c972bddfb9264fba664a125ef426",
+            "snapshot": "abfa37500dc3146416a16ce4326e4c7069f323f08d4c5b5dcba16c1b3276a713",
+            "trace": "aa3fc739ce4c3d4280044b594b9f1b7a2dc2250fe0cb09f38297f5700060585c"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "b4f3351f-9058-452a-b44a-02b5d58aff0d",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/b4f3351f-9058-452a-b44a-02b5d58aff0d.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/b4f3351f-9058-452a-b44a-02b5d58aff0d.replay.json",
+          "trial_id": "trial-0020",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/e0bd9094-011f-4cc7-a7c0-c91e52c493cc.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "8e5b00a4335850af819a05b133fe8204a66713dfe2c3fe1b68c9233ce0978845",
+            "snapshot": "1156426367b725d91e7e69c469b6d92dfc0357664b6df0b23bcf5904a17adbca",
+            "trace": "4ccb3c9296f6ae7d2512ade4a649ba0636fd8796a387e69b1011ddd9aed55307"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "succeeded",
+          "run_id": "e0bd9094-011f-4cc7-a7c0-c91e52c493cc",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/e0bd9094-011f-4cc7-a7c0-c91e52c493cc.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/e0bd9094-011f-4cc7-a7c0-c91e52c493cc.replay.json",
+          "trial_id": "trial-0017",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "dev-20261028-baseline-a:S-NORM|I-UNICODE|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0017": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        "trial-0020": {
+          "checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      }
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/de07318a-f835-46f3-bab1-01f3064362f6.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "156bfbaadec15523e2d5c9db3816429cc27c73daca5d954cac285cdf390f2d26",
+            "snapshot": "aff2c3dbad66e098ed84e7012a3a91b5048a6867ac45d2dcdd522c275b40ec25",
+            "trace": "3707bbb1c400aaeefe8d60dff01067ac063a4078c138bf5307fc1caa2ae80bfb"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "de07318a-f835-46f3-bab1-01f3064362f6",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/de07318a-f835-46f3-bab1-01f3064362f6.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/de07318a-f835-46f3-bab1-01f3064362f6.replay.json",
+          "trial_id": "trial-0061",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/ab80be72-94c3-4cf6-942b-7a7b88249aca.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "5a09abc0ef07ca9798332964251840ed4f0510b8accef2dbceff965e14a2164c",
+            "snapshot": "23abf3b9005824b822ab9fe865ca0f05577ac3b1efdbf58019bd60a10b110de3",
+            "trace": "8d1be6e49da8b0dcd93a928ebf7f1ffff9fcb2365508e8e79ca3b05bf72a95a7"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "ab80be72-94c3-4cf6-942b-7a7b88249aca",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/ab80be72-94c3-4cf6-942b-7a7b88249aca.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/ab80be72-94c3-4cf6-942b-7a7b88249aca.replay.json",
+          "trial_id": "trial-0065",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "dev-20261028-baseline-a:S-SLOWDIS|I-PLAIN|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0061": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0065": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-SLOWDIS|I-SPACE|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/9985c09e-2e4e-48a3-a2d3-04865807a4b4.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "7ef555b041d8367acb705f8cc3c31e16559ab6c79fb9f0ac8480b29aa5c90faf",
+            "snapshot": "f2bd63b4b6f2d610b3d5c70f90eb323a6df4d5b9c0388f3a2b938b76e5d73a34",
+            "trace": "a56b6671af91000025ea8bdbe01e5028b5715191dd9ec9f5aaf0f88b949e1411"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "9985c09e-2e4e-48a3-a2d3-04865807a4b4",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/9985c09e-2e4e-48a3-a2d3-04865807a4b4.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/9985c09e-2e4e-48a3-a2d3-04865807a4b4.replay.json",
+          "trial_id": "trial-0072",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/594daf9f-da8b-4fe5-a451-cb87ffa57504.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "bd554dc17633bb29dd5dc54eb1ef68ad08e9f5b69e6f8b3587860b2f6ab0d4ee",
+            "snapshot": "3146b9572db5d504522da7244cc9cb62f9b2fb54be2ccc5b6cc8a7eb7fbb6c8e",
+            "trace": "7cd0f8a9635a1090a8879083b59d23c88afc7b932fba7706dd96e3fe7216fcfd"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "594daf9f-da8b-4fe5-a451-cb87ffa57504",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/594daf9f-da8b-4fe5-a451-cb87ffa57504.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/594daf9f-da8b-4fe5-a451-cb87ffa57504.replay.json",
+          "trial_id": "trial-0074",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "dev-20261028-baseline-a:S-SLOWDIS|I-SPACE|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0072": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0074": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-SLOWDIS|I-SUBSTR|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-SUBSTR",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/d0ed2048-61f0-4130-b1e4-ff35852d5a5e.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "1e28fc70e4f9da748245e03a9ce7ebe9e954e51e69fabf1861feff3e8397b3b7",
+            "snapshot": "71b4a74cec4599d6392c06e5e3a4ab0895c0566ada9e0b0f4efd33b201ab99b7",
+            "trace": "c62e7fd41025de5053d3efcdf01327965926da2b00598e8596c4098a2813f0a6"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "d0ed2048-61f0-4130-b1e4-ff35852d5a5e",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/d0ed2048-61f0-4130-b1e4-ff35852d5a5e.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/d0ed2048-61f0-4130-b1e4-ff35852d5a5e.replay.json",
+          "trial_id": "trial-0068",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/44e0ce0e-cb3d-4395-93e4-d71dca8c8169.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "5b37984db4fca2855e6aa1eb5261b0207fdb3e1c85c22903701a83501c4d8068",
+            "snapshot": "c2d5e3b0defac82829eee4c53e3af37a8817717aa064efdef4771e6b92abf1ca",
+            "trace": "7e8d7ea94cd18053b2fc8f33d0cbb2c1593309f42db4dbd48157364c488563b4"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "44e0ce0e-cb3d-4395-93e4-d71dca8c8169",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/44e0ce0e-cb3d-4395-93e4-d71dca8c8169.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/44e0ce0e-cb3d-4395-93e4-d71dca8c8169.replay.json",
+          "trial_id": "trial-0067",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "dev-20261028-baseline-a:S-SLOWDIS|I-SUBSTR|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0067": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0068": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-SLOWDIS|I-UNICODE|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/2b3e7586-e2ab-4c2e-9c18-fb3ae7c7e4a4.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "f390b3b869f4631c3e51b7f4974ce1233d548679b787cf2f677fcccba3d0eaef",
+            "snapshot": "e0cbb6c137bc4cae8179f8257220df81703baeb90a0bb265cf171ca76bd4f019",
+            "trace": "b126e82e1700a9b7d983d5a2a561b9dd4feb15e6cdcf4ee0824541ae7ef066f2"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "2b3e7586-e2ab-4c2e-9c18-fb3ae7c7e4a4",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/2b3e7586-e2ab-4c2e-9c18-fb3ae7c7e4a4.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/2b3e7586-e2ab-4c2e-9c18-fb3ae7c7e4a4.replay.json",
+          "trial_id": "trial-0076",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/96029e0a-eafd-4926-b22a-e1912f7efb29.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "26eb648e21f9d77d9abb1004f3d37e81a96e072184e9f1c4b51bd136983a8b3b",
+            "snapshot": "506c71e50a885b75c98f4e6120b444d59d9b16ee8e526365d97f2172625a43c1",
+            "trace": "87bca0c86888badf4758bade9da5bb3747b7a3048d0d657c7b669c0ea7df2eb6"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "96029e0a-eafd-4926-b22a-e1912f7efb29",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/96029e0a-eafd-4926-b22a-e1912f7efb29.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/96029e0a-eafd-4926-b22a-e1912f7efb29.replay.json",
+          "trial_id": "trial-0079",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "dev-20261028-baseline-a:S-SLOWDIS|I-UNICODE|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0076": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0079": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-SLOW|I-PLAIN|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/a8324fe4-c39e-4bfb-b554-b72ca9a6617e.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "8d22e56eb939a53e3f19aca41e969477269b7eb55bf0ba3373753199eb3a419b",
+            "snapshot": "9d98c92beaa7df7c0822ac390dcf81eb785b39c4f7982effeb9f745dc290baff",
+            "trace": "8701cdf47fef5840f48d6bff11dd1cea06ae8d872646fd138ecb047425a35cee"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "a8324fe4-c39e-4bfb-b554-b72ca9a6617e",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/a8324fe4-c39e-4bfb-b554-b72ca9a6617e.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/a8324fe4-c39e-4bfb-b554-b72ca9a6617e.replay.json",
+          "trial_id": "trial-0025",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/69bdd3fc-0832-44df-908e-5df227cc4a7d.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "39ddbe3b0318e56de5d9f256adcdf095e88c0650e39879061e0d35274f7e8ce7",
+            "snapshot": "fbdf43a6997097b306b54d9c5a29b9d36e90983456b8efcb415e1b9d8f709192",
+            "trace": "94aa1416cc95864fb09a57d0e8030a96d666755a15f7a8c2a60d5d9a9fca9860"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "69bdd3fc-0832-44df-908e-5df227cc4a7d",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/69bdd3fc-0832-44df-908e-5df227cc4a7d.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/69bdd3fc-0832-44df-908e-5df227cc4a7d.replay.json",
+          "trial_id": "trial-0021",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "dev-20261028-baseline-a:S-SLOW|I-PLAIN|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0021": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0025": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-SLOW|I-SPACE|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/ae841e2b-cf81-4f61-b7fc-d36b956bf075.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "b4ce35170a8d5fcaef21f952aac0a5a08ff33343b8a8a1176e0a2d083fff7f38",
+            "snapshot": "4552edd33eadc564474f994cf15da9a2c92e06cb85e296141cf3034e72049219",
+            "trace": "5717f2f0bbcc23c9292e50810325fac659743a7b989809bf4fc6efc8aeddcd36"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "ae841e2b-cf81-4f61-b7fc-d36b956bf075",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/ae841e2b-cf81-4f61-b7fc-d36b956bf075.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/ae841e2b-cf81-4f61-b7fc-d36b956bf075.replay.json",
+          "trial_id": "trial-0031",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/13f4b02d-85e2-4de4-88c1-628d8780176c.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "80c1c67052f904815024b4e3f4b8d5635bcb4422fe9ce9b28fe829109d9a6e26",
+            "snapshot": "9e87222c6ae44e9de4ab458f751bcdb7331741d386102708f5507242a9ff0735",
+            "trace": "ac417bcbac3d9fcec51094a3f0bce041bc3f337f850728e21a79159495656c0f"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "13f4b02d-85e2-4de4-88c1-628d8780176c",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/13f4b02d-85e2-4de4-88c1-628d8780176c.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/13f4b02d-85e2-4de4-88c1-628d8780176c.replay.json",
+          "trial_id": "trial-0034",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "dev-20261028-baseline-a:S-SLOW|I-SPACE|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0031": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0034": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-SLOW|I-SUBSTR|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-SUBSTR",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/e3c55514-944e-42e9-b2c8-fc6bf6730774.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "82e07e36bdca92ebd44bde90f17fe76a33bbd3159c6ff7a87986b8b339f0c6ab",
+            "snapshot": "62f387000e95e4936023c27efd742369cc48d56d5a53a4cab7c8c97192708ff2",
+            "trace": "c2ff605d6f1fb2754890b9fdaa4ba9b92809393a09212e9c3e386a672f7c6258"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "e3c55514-944e-42e9-b2c8-fc6bf6730774",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/e3c55514-944e-42e9-b2c8-fc6bf6730774.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/e3c55514-944e-42e9-b2c8-fc6bf6730774.replay.json",
+          "trial_id": "trial-0028",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/78166440-80d7-4f19-b135-7c4e567d447d.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "d41d21372c38f556eb69e5bc97d1beeb7b0bff98f3c6328168fc67dd7e07cf41",
+            "snapshot": "6dcb1c0b2f910a0f548d9d72f6fc1e65f9a56a392ea301f2370e349412b1ef62",
+            "trace": "a9e301b6f9f6914fb96bbb9da3b549dc92ed7bbacea3d78fe5aa469b7f3a67a0"
+          },
+          "expected_stored_name": "Benchmark",
+          "input_id": "I-SUBSTR",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "78166440-80d7-4f19-b135-7c4e567d447d",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/78166440-80d7-4f19-b135-7c4e567d447d.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/78166440-80d7-4f19-b135-7c4e567d447d.replay.json",
+          "trial_id": "trial-0029",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "dev-20261028-baseline-a:S-SLOW|I-SUBSTR|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0028": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0029": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    },
+    "S-SLOW|I-UNICODE|baseline-a": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/0cbbe1e7-3955-4d59-8ef9-58bebcc26de5.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "4b3b51f70fc865d491323675a8bf3ad2bf2a20daa249f09c7ac368316e71f040",
+            "snapshot": "2a943a2e75244450745c1f6d88c7f400f3a35b5affb93b79aa5765feebc41b37",
+            "trace": "b2d0287bdd0d1d8ef349e947bebbcb8eec7d489f0d05f2c075f229418148b2a8"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "0cbbe1e7-3955-4d59-8ef9-58bebcc26de5",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/0cbbe1e7-3955-4d59-8ef9-58bebcc26de5.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/0cbbe1e7-3955-4d59-8ef9-58bebcc26de5.replay.json",
+          "trial_id": "trial-0039",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/dev-20261028/traces-baseline-a/705ac57f-9d91-479a-8803-ea074112aad9.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "1e0935baead947ab648c7350e548c85caa9fedcbae8d42bf8c70a3a354880cbf",
+            "snapshot": "d87e0ae2b660b8812e8ec9aebb07b8c0469493f0952e4f36537a4fa3211d074e",
+            "trace": "af199e22a1e6131bab352e8420a1836a53c513dba19ab124588fe539e3848194"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "dev-v1",
+          "outcome": "failed",
+          "run_id": "705ac57f-9d91-479a-8803-ea074112aad9",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/dev-20261028/traces-baseline-a/705ac57f-9d91-479a-8803-ea074112aad9.snapshot.json",
+          "trace_path": "artifacts/dev-20261028/traces-baseline-a/705ac57f-9d91-479a-8803-ea074112aad9.replay.json",
+          "trial_id": "trial-0036",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "dev-20261028-baseline-a:S-SLOW|I-UNICODE|baseline-a",
+      "skipped": [],
+      "verdicts": {
+        "trial-0036": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        "trial-0039": {
+          "checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      }
+    }
+  },
+  "created_at": "2026-10-28T11:31:02.265Z",
+  "manifest_id": "dev-v1",
+  "manifest_sha256": "54dc5bb6b5f4f9f810c37330b4ff69b604d0d491d23439563d6c7d34d31d9e28",
+  "run_id": "dev-20261028-baseline-a",
+  "sample_size": 2,
+  "schema": "chimera-audit-plan/1"
+}

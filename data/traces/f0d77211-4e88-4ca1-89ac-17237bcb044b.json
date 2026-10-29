@@ -1,0 +1,108 @@
+{
+  "agent_version": "milestone-1-foundation",
+  "completed_at": "2026-10-28T09:56:04.017Z",
+  "event_count": 10,
+  "events": [
+    {
+      "action_outcome": "ok",
+      "action_type": null,
+      "error_details": null,
+      "event_type": "run_started",
+      "evidence_references": [
+        "url=file:///Users/kartikbhardwaj/project-chimera/demo_app/index.html",
+        "project_name=Browser Snapshot"
+      ],
+      "sequence_number": 1,
+      "timestamp": "2026-10-28T09:56:03.724Z"
+    },
+    {
+      "action_outcome": "ok",
+      "action_type": "navigate",
+      "error_details": null,
+      "event_type": "action_attempted",
+      "evidence_references": [],
+      "sequence_number": 2,
+      "timestamp": "2026-10-28T09:56:03.944Z"
+    },
+    {
+      "action_outcome": "ok",
+      "action_type": "navigate",
+      "error_details": null,
+      "event_type": "action_succeeded",
+      "evidence_references": [],
+      "sequence_number": 3,
+      "timestamp": "2026-10-28T09:56:03.951Z"
+    },
+    {
+      "action_outcome": "ok",
+      "action_type": "fill",
+      "error_details": null,
+      "event_type": "action_attempted",
+      "evidence_references": [],
+      "sequence_number": 4,
+      "timestamp": "2026-10-28T09:56:03.951Z"
+    },
+    {
+      "action_outcome": "ok",
+      "action_type": "fill",
+      "error_details": null,
+      "event_type": "action_succeeded",
+      "evidence_references": [],
+      "sequence_number": 5,
+      "timestamp": "2026-10-28T09:56:03.967Z"
+    },
+    {
+      "action_outcome": "ok",
+      "action_type": "click",
+      "error_details": null,
+      "event_type": "action_attempted",
+      "evidence_references": [],
+      "sequence_number": 6,
+      "timestamp": "2026-10-28T09:56:03.967Z"
+    },
+    {
+      "action_outcome": "ok",
+      "action_type": "click",
+      "error_details": null,
+      "event_type": "action_succeeded",
+      "evidence_references": [],
+      "sequence_number": 7,
+      "timestamp": "2026-10-28T09:56:04.005Z"
+    },
+    {
+      "action_outcome": "ok",
+      "action_type": null,
+      "error_details": null,
+      "event_type": "verification_passed",
+      "evidence_references": [
+        "confirmation_message_visible"
+      ],
+      "sequence_number": 8,
+      "timestamp": "2026-10-28T09:56:04.010Z"
+    },
+    {
+      "action_outcome": "ok",
+      "action_type": null,
+      "error_details": null,
+      "event_type": "verification_passed",
+      "evidence_references": [
+        "project_in_list"
+      ],
+      "sequence_number": 9,
+      "timestamp": "2026-10-28T09:56:04.017Z"
+    },
+    {
+      "action_outcome": "ok",
+      "action_type": null,
+      "error_details": null,
+      "event_type": "run_succeeded",
+      "evidence_references": [],
+      "sequence_number": 10,
+      "timestamp": "2026-10-28T09:56:04.017Z"
+    }
+  ],
+  "run_id": "f0d77211-4e88-4ca1-89ac-17237bcb044b",
+  "schema_version": 1,
+  "started_at": "2026-10-28T09:56:03.724Z",
+  "terminal_status": "succeeded"
+}

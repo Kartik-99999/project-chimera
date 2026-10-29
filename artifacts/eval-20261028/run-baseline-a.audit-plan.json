@@ -1,0 +1,2099 @@
+{
+  "auditor": "",
+  "cells": {
+    "S-DIS|I-PLAIN|baseline-a|disabled=True,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/96ccc285-e02a-45c9-8c88-71eaaa1132c3.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "922b9b9ea0428217bb7bb1c61bca5b824199aaf0b2929add61706ac1ee38365c",
+            "snapshot": "7420ac6bc9b438e7ef0575979bc5bbc9b93006a1f3d349380f4766b446327a65",
+            "trace": "abc9c4186208ca7ccad5c7dade3d6470b95bad4d9cacb0aa38bf28cd6c1fb1e1"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "96ccc285-e02a-45c9-8c88-71eaaa1132c3",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/96ccc285-e02a-45c9-8c88-71eaaa1132c3.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/96ccc285-e02a-45c9-8c88-71eaaa1132c3.replay.json",
+          "trial_id": "trial-0093",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/b4bef28a-6c5e-4f22-9d7d-fad5a88afc15.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "99a9daba0a843cfc4e0cd57981b24fa0533c2b041c404aff9a256cab449b0275",
+            "snapshot": "3b6162e851336edbf8300dbba78def4b4b5b39ec04e3ed2f55b812ce2a567460",
+            "trace": "84fae4b8cbc62be9efba83d52c57b5764b3f35da51c109bc595beccfade3c027"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "b4bef28a-6c5e-4f22-9d7d-fad5a88afc15",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/b4bef28a-6c5e-4f22-9d7d-fad5a88afc15.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/b4bef28a-6c5e-4f22-9d7d-fad5a88afc15.replay.json",
+          "trial_id": "trial-0094",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "eval-20261028-baseline-a:S-DIS|I-PLAIN|baseline-a|disabled=True,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-DIS|I-SPACE|baseline-a|disabled=True,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "8a2a0ec337979a44c739ff91cec393d06cd038a52e9cf7c5e000a02e5cfa1bcb",
+            "snapshot": "71bea270be2778bcaf34816185c7d4ef3047093a202f4a80beda237035bd35b1",
+            "trace": "a65a55e9a7cf2b0cfd247743189acf844dcaf5b26d5c88fcdf9ceea5a0ef054d"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "db822f37-1c14-4b1f-bda9-70b813f84a6f",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.replay.json",
+          "trial_id": "trial-0098",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/6d0b1c63-6e01-4e1f-8917-b81491b34219.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "8d3f03a772b8d265ec76dd67abfff481631b06e33a62ca0c1932906da2d03ee5",
+            "snapshot": "d6a61f6fd517f199831f00b32b92df0daa355594dde0d629d59cf000d50e6007",
+            "trace": "79c8e3d73cc6c404cd6ff3aa9ff5447e71eb5b4ebf5f56b6d453d0e5aa80a634"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "6d0b1c63-6e01-4e1f-8917-b81491b34219",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/6d0b1c63-6e01-4e1f-8917-b81491b34219.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/6d0b1c63-6e01-4e1f-8917-b81491b34219.replay.json",
+          "trial_id": "trial-0100",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "eval-20261028-baseline-a:S-DIS|I-SPACE|baseline-a|disabled=True,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-DIS|I-UNICODE|baseline-a|disabled=True,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/b03fd3df-4e47-433e-be1a-a4c12b094af5.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "fac35be4b590dca0de541665a565f086bc370fb10387db5fb4f9fc04c810dfec",
+            "snapshot": "02257e4798bc2d9b4c9e9f72a8f88f7f8e9025ca84b8e9b8b0c9800f251817f5",
+            "trace": "d9e18c15a3a641d0c3570f2f84bb71d847c3b4335dff2f6883ae04f7f82e4576"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "b03fd3df-4e47-433e-be1a-a4c12b094af5",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/b03fd3df-4e47-433e-be1a-a4c12b094af5.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/b03fd3df-4e47-433e-be1a-a4c12b094af5.replay.json",
+          "trial_id": "trial-0102",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/123cf125-64c5-4d5a-8457-968a2457eb84.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "6cb33d6b74f992ef3894e1d474f60124725a8345f5bc0f76c18d9177fb063c9e",
+            "snapshot": "286979a4ad0d28cfd7d90a1fe4962c8f5eec226b095556b2c636cc826ef72209",
+            "trace": "7e8bd56041994f0fc0372e69c3d14df26ed30c39bd5013ec69f40b11d4220c85"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "123cf125-64c5-4d5a-8457-968a2457eb84",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/123cf125-64c5-4d5a-8457-968a2457eb84.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/123cf125-64c5-4d5a-8457-968a2457eb84.replay.json",
+          "trial_id": "trial-0104",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "eval-20261028-baseline-a:S-DIS|I-UNICODE|baseline-a|disabled=True,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-NORM|I-PLAIN|baseline-a|disabled=False,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/0c2e8c01-2fd5-43a3-aa83-e86b60eeb1b3.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "166517dbb93dda400ad63fbfdf75ae55511bef042e821176cbbbb02be394bc6f",
+            "snapshot": "eaf58298b037fb4193aa4484da09bed061f59d9b9a2a55d68a19d8c7749504dc",
+            "trace": "0592185d427339f14eef96ffd4684179e099d09d6f4eda27478c654509c316f9"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "succeeded",
+          "run_id": "0c2e8c01-2fd5-43a3-aa83-e86b60eeb1b3",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/0c2e8c01-2fd5-43a3-aa83-e86b60eeb1b3.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/0c2e8c01-2fd5-43a3-aa83-e86b60eeb1b3.replay.json",
+          "trial_id": "trial-0003",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/c207af31-eb95-4820-ac62-4a32bf11bcec.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "86a01029cd2b0fe5e8646dc4be9486cd81ee2f42c0f4c85be06f7c198c29d18b",
+            "snapshot": "1e23b680f6cb2a345eeb51bcfabdcf303f691fabb57fd33d39f035c51b11dfbc",
+            "trace": "531c53dcc619ab0e1926a0bb8d94bfe5f51349dd288d96929509128c7a16bcb7"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "succeeded",
+          "run_id": "c207af31-eb95-4820-ac62-4a32bf11bcec",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/c207af31-eb95-4820-ac62-4a32bf11bcec.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/c207af31-eb95-4820-ac62-4a32bf11bcec.replay.json",
+          "trial_id": "trial-0005",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "eval-20261028-baseline-a:S-NORM|I-PLAIN|baseline-a|disabled=False,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-NORM|I-SPACE|baseline-a|disabled=False,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "806bf26bef41ea5973fb2b1237841f7aaf8da0260b80ab4e5dd3e325ba13f7e7",
+            "snapshot": "4f0f420f4354cd6916c6a5d1144fbcc6068aecf12d38d5ead18a6454defc5e34",
+            "trace": "b4f18476f11c6983d0fef4c4c0a6e4d4155e5629db1d57bf58d7bf9ce75f7b9b"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "succeeded",
+          "run_id": "4606f72f-1e04-42e0-a694-f982366943d5",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.replay.json",
+          "trial_id": "trial-0009",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/10ea31c6-41d6-4ef5-baf7-f9b45ff749f3.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "45e382b2acbd22499d478e09d27c3bd775d96954f25a2856bfe4bb6057f8906d",
+            "snapshot": "7b6df03d6abb651349acaee7112519f6f992bfb7d01a9c7029532f3f49e446c3",
+            "trace": "6559199b20b9eab385df0c04238bca4ae873ca81331bf879dca294a67728fd4b"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "succeeded",
+          "run_id": "10ea31c6-41d6-4ef5-baf7-f9b45ff749f3",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/10ea31c6-41d6-4ef5-baf7-f9b45ff749f3.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/10ea31c6-41d6-4ef5-baf7-f9b45ff749f3.replay.json",
+          "trial_id": "trial-0007",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "eval-20261028-baseline-a:S-NORM|I-SPACE|baseline-a|disabled=False,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-NORM|I-UNICODE|baseline-a|disabled=False,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/21bee0e2-9c07-4663-b73b-bf86c5d2d450.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "5ca392040922dd3da7dc05412fba9743c0e80ba8cebffe41be9e4c5271dbd763",
+            "snapshot": "5972ae0ced6e9c40064d9a9a8de35f162fb79b8d50dae51abdd747c795869f80",
+            "trace": "c554cea91bb27a4b825b0a95b8aeef744bbc58a8b5bce33f7fed5625fb69e686"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "succeeded",
+          "run_id": "21bee0e2-9c07-4663-b73b-bf86c5d2d450",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/21bee0e2-9c07-4663-b73b-bf86c5d2d450.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/21bee0e2-9c07-4663-b73b-bf86c5d2d450.replay.json",
+          "trial_id": "trial-0013",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/1543fc77-078f-4474-9508-f569218c63bc.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "18617e13b8d5b062d712d3c266e7aa68400e908672b7bfe7e04ab1525897fd4f",
+            "snapshot": "989a334e108181a462115c2efc0bda64dfc2696fd81401b38bb7905311b49360",
+            "trace": "4ebe300ae1a5c631a1672b9239910bc85d6870e5f39dec1e562539c9dc7c51f5"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "succeeded",
+          "run_id": "1543fc77-078f-4474-9508-f569218c63bc",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/1543fc77-078f-4474-9508-f569218c63bc.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/1543fc77-078f-4474-9508-f569218c63bc.replay.json",
+          "trial_id": "trial-0011",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "eval-20261028-baseline-a:S-NORM|I-UNICODE|baseline-a|disabled=False,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/aef93e11-3e00-4982-9748-31ca20a7d777.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "cb4ce25f94203cc86e2f74983ddfce1a8b2f23bcc81904ae9a39b23dd3e53693",
+            "snapshot": "4fd45e9f7c001f9717db1d384678794d3338fa32521b2826c910007f5e9938ad",
+            "trace": "4d6e108edffe4bd83e691022062f9396c811788dac4c19de55e0aa570552daae"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "aef93e11-3e00-4982-9748-31ca20a7d777",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/aef93e11-3e00-4982-9748-31ca20a7d777.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/aef93e11-3e00-4982-9748-31ca20a7d777.replay.json",
+          "trial_id": "trial-0125",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/b251d0eb-8ad9-47d2-bf09-963796ad6247.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "acdbd06158b5e9143518d1ab84c02674715639f9fc78714e8caa723a76b8a371",
+            "snapshot": "67840c49b9b16340e4666fd85a8a6fc2a2e3cadf5450d80c77f39d0e0f89721e",
+            "trace": "1b629bb263576857a310b77ec89209c8ce9b978c596badb98576a28b54fc59fc"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "b251d0eb-8ad9-47d2-bf09-963796ad6247",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/b251d0eb-8ad9-47d2-bf09-963796ad6247.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/b251d0eb-8ad9-47d2-bf09-963796ad6247.replay.json",
+          "trial_id": "trial-0122",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/6a5f5f30-0d86-432f-a8ac-7d25ff2d2a1b.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "7b85fc214e86c91766d1fb12d301c40c46530c67cb53c6b951fbabbcf8c53f79",
+            "snapshot": "f94b60cad7e0fa8629c60b2b1c08269bb5260d29a81a42c751d1ddb8e7223a61",
+            "trace": "f62f2e24371d813c663cb1ded7b3b41a402eff3d797b548990a0a365010bf24e"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "6a5f5f30-0d86-432f-a8ac-7d25ff2d2a1b",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/6a5f5f30-0d86-432f-a8ac-7d25ff2d2a1b.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/6a5f5f30-0d86-432f-a8ac-7d25ff2d2a1b.replay.json",
+          "trial_id": "trial-0137",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/1105aad3-2db8-4050-a326-dc3d991b9578.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "54ee6c42ef5b2a231f37acc6c32b297bfbeb2dfaa368cb48aaef2754d0de1c04",
+            "snapshot": "c7a134f927ba68a07db9ae36dfbd5c61ebe7ef255b82b2fd6d9498ff424f685f",
+            "trace": "71780e33b48ff3a57d9a6fdc2190e0cd3b4461e5906dcf11a7e0d0b7ecd2cccf"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "1105aad3-2db8-4050-a326-dc3d991b9578",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/1105aad3-2db8-4050-a326-dc3d991b9578.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/1105aad3-2db8-4050-a326-dc3d991b9578.replay.json",
+          "trial_id": "trial-0140",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/342398a5-8e76-4084-afb6-8b63d43adc54.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "d5dde577c080b5274d8f1bd8a89f13b4cb9523d14e453b5304b3626d5dd596db",
+            "snapshot": "d346f95577a81654ae82221d8ffc8ad0334b4bce2c5588d50445766e38cbc704",
+            "trace": "b9a1ce47b3d0b26a6167d8fd16461ab306c9b35a3721fbeaf064c9780ac9842d"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "342398a5-8e76-4084-afb6-8b63d43adc54",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/342398a5-8e76-4084-afb6-8b63d43adc54.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/342398a5-8e76-4084-afb6-8b63d43adc54.replay.json",
+          "trial_id": "trial-0155",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/76f6e2b0-0cc2-4958-9531-b8cc3fb70136.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "109dd01c71b49d2fa4a4e47f66e44fec7960da61840c4d379987cbf9deada72f",
+            "snapshot": "4779df100badb18f73ae263ce86213d5c3d8e059c24e3c06548decf42fc24664",
+            "trace": "03c92b5696614c640781de896bf01f3b6f8329b16b37b90f8ede6941f36329dd"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "76f6e2b0-0cc2-4958-9531-b8cc3fb70136",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/76f6e2b0-0cc2-4958-9531-b8cc3fb70136.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/76f6e2b0-0cc2-4958-9531-b8cc3fb70136.replay.json",
+          "trial_id": "trial-0154",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/abf6f0ba-e199-47bf-a5ba-aedf9bf7ea54.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "1fbd5fe8da25cfce940bd06cf77e5079d40863f028832cf6aa4b62552c6ef8d5",
+            "snapshot": "3b01fa4251ab3a04afefc6c13d4acdb171052348a18ff405580dd8ce54e8f9ff",
+            "trace": "550a2e4e73e889afc0b28f6c4c4d13caa2c3a4653c75208fb820dfa7667f3073"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "abf6f0ba-e199-47bf-a5ba-aedf9bf7ea54",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/abf6f0ba-e199-47bf-a5ba-aedf9bf7ea54.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/abf6f0ba-e199-47bf-a5ba-aedf9bf7ea54.replay.json",
+          "trial_id": "trial-0167",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/b14d1f53-7db5-4a87-a2e8-8d8da2a1e46a.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "d21f8099838c2385f85a8e9e26c992dd8ebff5af61d453d568481c489f6c7210",
+            "snapshot": "8d163509da2306d24bea791718f11fd3723fddacc5817cc4ef7a2986a113006a",
+            "trace": "03bd55a2c28cebc124ef586acd64d77ad109120854520b4c590ebd78d2e0fcdf"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "b14d1f53-7db5-4a87-a2e8-8d8da2a1e46a",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/b14d1f53-7db5-4a87-a2e8-8d8da2a1e46a.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/b14d1f53-7db5-4a87-a2e8-8d8da2a1e46a.replay.json",
+          "trial_id": "trial-0169",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/7f27e4b0-d50f-4704-9936-7d6c95ab34fa.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "49dac576680d33a7eb1c51d37406d6d15f8f3845608417bee834f4aa105d9234",
+            "snapshot": "aa71bd5cbfc6dbce0b8f056e47fe22f0c238c56ead711ba29707513baa53d6c5",
+            "trace": "0224774119916cc566b0dd0e5382af434a5360e771ab73d805ca8c84ca1b6af9"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "7f27e4b0-d50f-4704-9936-7d6c95ab34fa",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/7f27e4b0-d50f-4704-9936-7d6c95ab34fa.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/7f27e4b0-d50f-4704-9936-7d6c95ab34fa.replay.json",
+          "trial_id": "trial-0108",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/2c7d0f54-be21-4bba-8d02-2797d207fb04.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "70d98233dc3d00ca093172a8b50d86536b2799c1cac6cbf1ffba7b7a59bcd8a1",
+            "snapshot": "96bed0a76944c0245bfcc73ae50f7d56cc7e9689ab6568e6019749da3485835e",
+            "trace": "d69cb6cb02e83bf5019e5bad5b0d80b8caa64e8b04e8228b1fff20493c9bd60d"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "2c7d0f54-be21-4bba-8d02-2797d207fb04",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/2c7d0f54-be21-4bba-8d02-2797d207fb04.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/2c7d0f54-be21-4bba-8d02-2797d207fb04.replay.json",
+          "trial_id": "trial-0107",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/3a80969d-70c2-4d68-a68e-80e5743be255.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "5c59830293c527a2181f812fa865b59a21a70a8c6ca213ad607a3e816586bf26",
+            "snapshot": "c88fa311e186a35a3282241f19dbde2374e406b52a63924cfe0113688cc586fe",
+            "trace": "effcff88c1cd2a8f0f3e9f25fd38a1b2af6143444302153dc3a0c8fcb4c2ebc5"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "3a80969d-70c2-4d68-a68e-80e5743be255",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/3a80969d-70c2-4d68-a68e-80e5743be255.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/3a80969d-70c2-4d68-a68e-80e5743be255.replay.json",
+          "trial_id": "trial-0126",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/814bc21e-5f6f-4717-bda1-95ae119e3cd4.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "0b2990b5954e53d6f5aede7e981e35b202c17f4ffd1fbde741ac8d953916af22",
+            "snapshot": "df58c157a080f327feb9d4439d1c9ec7fd5b316cb9ac9af74345f985ae24bb48",
+            "trace": "32e93078b71ac636f97809f315ebe5971c41956d54c47316707ec862833c44bf"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "814bc21e-5f6f-4717-bda1-95ae119e3cd4",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/814bc21e-5f6f-4717-bda1-95ae119e3cd4.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/814bc21e-5f6f-4717-bda1-95ae119e3cd4.replay.json",
+          "trial_id": "trial-0127",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "f79965840a26352da78c6873e3bb8162e83f0de3d002ed5b1997c6a13b35cd74",
+            "snapshot": "caea94761fe240dfee3cee2c0c81cb8d3800e5e1d7055c9745c552f085834669",
+            "trace": "9185891fdae4689b0bb13c5b40e6a320730ebeb82acbafb6f92f3ab649d22dee"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "62b89715-85fa-4232-a212-2ba3dadc7372",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.replay.json",
+          "trial_id": "trial-0143",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/0fd0047f-9e7e-4097-8ee2-659de4675be4.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "e3b1542b922061352fb5b0107ac63d0537525c11abe5078fb5352b37e0310f57",
+            "snapshot": "96ec55e3c7ceeefed156101f196652f5b8c62a98ba06745e4d6be94ce6fee38a",
+            "trace": "4ce3c58559c789f01beaf5167b022b4e9a0d93ae4fd7919468664db91038d02f"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "0fd0047f-9e7e-4097-8ee2-659de4675be4",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/0fd0047f-9e7e-4097-8ee2-659de4675be4.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/0fd0047f-9e7e-4097-8ee2-659de4675be4.replay.json",
+          "trial_id": "trial-0145",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/ae164c21-17ad-434e-b304-6a568aad574f.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "f4d4e2e682428eb58c7706ada4a7734e68aec9507284d1dce3e2ebc3a1fc00e8",
+            "snapshot": "0fbe2a5a3c38ed9319e2e3b5b794991f122ff7ce6c7e2e79e2ce62d389a043f7",
+            "trace": "d944f9b7d1e6634474bc5d4ece6e69f822e88205c2ee069ba15037653e232538"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "ae164c21-17ad-434e-b304-6a568aad574f",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/ae164c21-17ad-434e-b304-6a568aad574f.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/ae164c21-17ad-434e-b304-6a568aad574f.replay.json",
+          "trial_id": "trial-0156",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/1fa62c6b-f196-4cc9-b963-712baf2dce9e.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "f70bb4e868b212d2b4d2327df4994fefefe05ebe9413073e9171704a0de5e208",
+            "snapshot": "9d5e26004be652f9a877727558698bfab281e71ba2aa2c2fc03ee934ad9cf076",
+            "trace": "b116c7d610b36c2c4117e2e668560db278d5b6be59eabe699ed6b4d81bad3fcb"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "1fa62c6b-f196-4cc9-b963-712baf2dce9e",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/1fa62c6b-f196-4cc9-b963-712baf2dce9e.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/1fa62c6b-f196-4cc9-b963-712baf2dce9e.replay.json",
+          "trial_id": "trial-0159",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/858cfbd8-83d9-4819-a596-7a66711a3d51.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "d3fd5d21eaac9c21ebd3969a7f1e5b4dcdfaab8f0e717bf19e9685383a7a7db6",
+            "snapshot": "a9b46d80c2038441a2d48be74c7c1c5800284b5e41efd8dcc4004fda81a137ec",
+            "trace": "33a85279f89c9fbca49249f61ca02aa3a94e6a0ea07fcf666776d2831d812ad1"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "858cfbd8-83d9-4819-a596-7a66711a3d51",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/858cfbd8-83d9-4819-a596-7a66711a3d51.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/858cfbd8-83d9-4819-a596-7a66711a3d51.replay.json",
+          "trial_id": "trial-0173",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/54068f0e-d350-4d16-86a2-226685cb9562.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "4019e7cb68a9701c9d47cc6ddbf3225fb2b12e31c6cf36146eb5d42d94979e87",
+            "snapshot": "78c49acbeabdcd81007da4d18a609bdf3bf7d1a117a3f1e9ce635720dc8a8209",
+            "trace": "a92db9ef0ef690c258a6385e32ad5aa29b93ad1e713c418b57f6ca351f97b2ed"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "54068f0e-d350-4d16-86a2-226685cb9562",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/54068f0e-d350-4d16-86a2-226685cb9562.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/54068f0e-d350-4d16-86a2-226685cb9562.replay.json",
+          "trial_id": "trial-0171",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/b1c01a70-cc80-4e3a-8028-77a180c09ea6.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "8a30e869fd8ce808f2a0762256edc64c20af35e5667f35d68ca057a48f382b38",
+            "snapshot": "e1029103a60839198986421de302e9b28798b5920675c264b6322f379fb5ccc6",
+            "trace": "a1b610b906e93e56dc0f8822b6bb39fcf21fda2cca05d425e949a6ab32dfc7a6"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "b1c01a70-cc80-4e3a-8028-77a180c09ea6",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/b1c01a70-cc80-4e3a-8028-77a180c09ea6.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/b1c01a70-cc80-4e3a-8028-77a180c09ea6.replay.json",
+          "trial_id": "trial-0111",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/1b39fe14-0e89-4e4d-808a-628723a6f4f3.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "b7f68f45fb42c7cebdff7c918baa1e00d26c20a25510139305eca47d2ce67c29",
+            "snapshot": "63a1da10ac9cd58c2ab26ef727f7ca3b3dfdf9b54c96373d081a791ca7cf6565",
+            "trace": "0e3156d98cddad4fcbf13ffa644f392ad2e7328bc4787720fc973dabb4ad2af7"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "1b39fe14-0e89-4e4d-808a-628723a6f4f3",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/1b39fe14-0e89-4e4d-808a-628723a6f4f3.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/1b39fe14-0e89-4e4d-808a-628723a6f4f3.replay.json",
+          "trial_id": "trial-0115",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/b44d01e3-d266-4ebe-8d33-e55731de36f5.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "2c177dacd0a6d1a3017e5881deeba229444eede3b96d0ae9c2726c39d0ff923c",
+            "snapshot": "3bd74280e52b9b0b47f2d97bed7cdafa8906281b68a89d27d2e180fd5e339f7c",
+            "trace": "8f41a35b965f22a584c1912f3216a7386a365512665066452ebb1280609e5f89"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "b44d01e3-d266-4ebe-8d33-e55731de36f5",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/b44d01e3-d266-4ebe-8d33-e55731de36f5.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/b44d01e3-d266-4ebe-8d33-e55731de36f5.replay.json",
+          "trial_id": "trial-0131",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/b6c488d1-0fe9-4cee-a439-4624a2e2e4b9.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "9f2acc256d24cd67119dcf3eeecf8165feb427635ea6f2de12960f60ae6c3f09",
+            "snapshot": "7418046601ed099c1dc8996ae93e2af5def556e23b02b1f93e9745001d0b40cc",
+            "trace": "2012b6fe893ff4861c91de56c425059eb041cb815db7d84a4e9ab2f43695c647"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "b6c488d1-0fe9-4cee-a439-4624a2e2e4b9",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/b6c488d1-0fe9-4cee-a439-4624a2e2e4b9.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/b6c488d1-0fe9-4cee-a439-4624a2e2e4b9.replay.json",
+          "trial_id": "trial-0133",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/e62b13c4-bd7d-4549-b403-5316857f39dc.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "1c50fe2d52a960979916c0e03f9fd88ce9b2f1cff3de591e39abc139dce24ac0",
+            "snapshot": "fdc848c9809ccfd4fb664747bee615fe8a34137b19412521c1cf7c5a7b4ae014",
+            "trace": "06293280247060de5fb3981d127171c1de9fd1c16adb4f959c7e45d617910ea1"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "e62b13c4-bd7d-4549-b403-5316857f39dc",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/e62b13c4-bd7d-4549-b403-5316857f39dc.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/e62b13c4-bd7d-4549-b403-5316857f39dc.replay.json",
+          "trial_id": "trial-0147",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/87e97efe-bded-4745-b42d-c66392733c9d.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "7f10eba9d48ad9a7c711eb2b73f61f1a95de7c703dcfdd4fcdcb4f1b7929239c",
+            "snapshot": "4ce0278d739a130d0349636ae762dddf1a191cca045d4e7b5d047708f86e146c",
+            "trace": "708b38ffd088fe6adcda10720d49a3338fa159e0eb510594f79427b571a217ee"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "87e97efe-bded-4745-b42d-c66392733c9d",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/87e97efe-bded-4745-b42d-c66392733c9d.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/87e97efe-bded-4745-b42d-c66392733c9d.replay.json",
+          "trial_id": "trial-0148",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/ff0c774b-dff6-4af4-8af1-563dc40beb8e.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "837c91601d79b3c0534f86a21370a711954c3eb5a230d2a5836d88fc2de06fbd",
+            "snapshot": "bad9fd85bfe8777f08ddeda4249f4d0687928266d10602af09dc49ba4027899b",
+            "trace": "3a57d5d11e02d10c24f4cf7690af904a1b4ed27ecc7ff9d944f1f26ade3b57fd"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "ff0c774b-dff6-4af4-8af1-563dc40beb8e",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/ff0c774b-dff6-4af4-8af1-563dc40beb8e.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/ff0c774b-dff6-4af4-8af1-563dc40beb8e.replay.json",
+          "trial_id": "trial-0165",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/95abfcac-4280-40a8-96e1-ce67ea25ebd7.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "3e71e6c6fa6f154a1d5cb4deebbbcf80307842288f05437abc44a6663263d272",
+            "snapshot": "9e1ac31df0463a0f97a06e191bf22b0862fb4601e0f63fdc1e44b74d87ebb3f9",
+            "trace": "d16aab9e1fe4d773053db1f4f752446d9dd1383c5c341cb9e0b2d64b53e95225"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "95abfcac-4280-40a8-96e1-ce67ea25ebd7",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/95abfcac-4280-40a8-96e1-ce67ea25ebd7.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/95abfcac-4280-40a8-96e1-ce67ea25ebd7.replay.json",
+          "trial_id": "trial-0164",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/5bf12381-c4e8-4378-9f5c-5af860aecb75.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "cb2460d278abb62cef74f34f47ba3e673bda55a92635b17fd4c70f4bfd0e74ef",
+            "snapshot": "80accd8eb60f3f3aa6f05a6afe72c2d91acfb231c7c1784e4fadc953239c8378",
+            "trace": "873b8a67e5af466407309214173a62b22045963e44ef211d9a59c52b9876b642"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "5bf12381-c4e8-4378-9f5c-5af860aecb75",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/5bf12381-c4e8-4378-9f5c-5af860aecb75.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/5bf12381-c4e8-4378-9f5c-5af860aecb75.replay.json",
+          "trial_id": "trial-0177",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/f7ba3405-f614-4dfe-b181-8056f62e395c.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "3d298a39a44ef684903b0478edba1a6371fd958f7f7e10190b1765502244191b",
+            "snapshot": "25c25d60695ca8b5787fac4c073037a79c99f8352dee03787d42f76c8ecc3814",
+            "trace": "e4ff101cdaffaeada55151286fd5781047ac55b4fd90fab11094cedab2ae44b3"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "f7ba3405-f614-4dfe-b181-8056f62e395c",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/f7ba3405-f614-4dfe-b181-8056f62e395c.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/f7ba3405-f614-4dfe-b181-8056f62e395c.replay.json",
+          "trial_id": "trial-0176",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/c1200b02-a6a8-487e-a0a4-b8c7bcb4e198.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "1e35dca609288a92d72e899c2c06f99d4cced71741fd3ba977b922defa6bfeb9",
+            "snapshot": "f68dafaa9f1e0320cc9eb7e1cc3edd573bc15ac64877b2348852e029c6649f1b",
+            "trace": "10114750618a08d91de12ac56a0e90ae124c424913e9049267e3145675d6070c"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "c1200b02-a6a8-487e-a0a4-b8c7bcb4e198",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/c1200b02-a6a8-487e-a0a4-b8c7bcb4e198.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/c1200b02-a6a8-487e-a0a4-b8c7bcb4e198.replay.json",
+          "trial_id": "trial-0116",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/1ad38226-4ef6-4d31-bcc4-3dff443a68e9.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "18b46088f680d55cbf9a6819326e12f552e73d20bee425810126c0b28d239644",
+            "snapshot": "69c6d9c822f2ef35e85bc26efd5cea3f5ef9fe962110d90b5581643d15b4d28c",
+            "trace": "a9bc97d23b88e8774485f7cc9d9b7e4cdb00446126d601c2bd7cd8ca4077b687"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "1ad38226-4ef6-4d31-bcc4-3dff443a68e9",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/1ad38226-4ef6-4d31-bcc4-3dff443a68e9.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/1ad38226-4ef6-4d31-bcc4-3dff443a68e9.replay.json",
+          "trial_id": "trial-0119",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/87cf9a3c-e12a-4616-bf29-ad881e40cb83.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "536cee9066575c8539b3cffeb961c3659cce3b62f33f45073055edcb7068987e",
+            "snapshot": "2be14632bc6e3fa3fb5a7e1183d1bc7fa18b675804c73fcfb58c522c16a32c7b",
+            "trace": "df74e8891675f0d3e33f0aeaa4817353dd3fb0f1c77644c6e1b79bf4195cb919"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "87cf9a3c-e12a-4616-bf29-ad881e40cb83",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/87cf9a3c-e12a-4616-bf29-ad881e40cb83.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/87cf9a3c-e12a-4616-bf29-ad881e40cb83.replay.json",
+          "trial_id": "trial-0032",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/e1359c74-9a28-4740-8cd2-5056365f660b.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "e0e475ff707a2fa2d2795ba05ae08c491cba4c0738ee023ac8c10d43b4af25b9",
+            "snapshot": "f85018162a7372f0a4058edf2ae683803309af1a5320d6db8a87961d848f0f11",
+            "trace": "1958d69ab69eb97aa071d2ac7e697917862d002f57b0c02a0774aa2414ad5d35"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "e1359c74-9a28-4740-8cd2-5056365f660b",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/e1359c74-9a28-4740-8cd2-5056365f660b.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/e1359c74-9a28-4740-8cd2-5056365f660b.replay.json",
+          "trial_id": "trial-0035",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/89ea7ef1-280c-4399-bf9d-8ea272848b40.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "019a3fbc9d95f617c5a3639382121c9c0e8fd9264f670398e08fcebd685aaddc",
+            "snapshot": "5212da7553308c412645b1b3fd4cefa873f4b5be0ff5800d72be6e8c16f8d644",
+            "trace": "d9a6e891a9a27f6eeb81349a70effcdfe3bd7be66194c2e74c96d4b25ac8e5f8"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "89ea7ef1-280c-4399-bf9d-8ea272848b40",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/89ea7ef1-280c-4399-bf9d-8ea272848b40.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/89ea7ef1-280c-4399-bf9d-8ea272848b40.replay.json",
+          "trial_id": "trial-0046",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/320ee232-abea-49ad-8ba1-4871d7eb4a50.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "dcdee2ccacac7d0268bd932602a5d68fb94595965b82af91e676a6a07c81b451",
+            "snapshot": "85b26d92fee59c87630d6315a001b9107999597c171189cbcead22a14dc2eb0e",
+            "trace": "060d1456efa8593cbd88ae2750b3c9b96d33a221934fe0f6982901c5c75e24da"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "320ee232-abea-49ad-8ba1-4871d7eb4a50",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/320ee232-abea-49ad-8ba1-4871d7eb4a50.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/320ee232-abea-49ad-8ba1-4871d7eb4a50.replay.json",
+          "trial_id": "trial-0050",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/2ea32651-d02d-47a9-8aca-ebb2f522507c.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "45edd970923fc2372751389bf4e81d586a1c1b1e6245f5cd02d2e5e7a69ca6fb",
+            "snapshot": "12a0e3fb670d60551272ab66d2db096efb39d82bd0a8bc60aa7098b2ce2e50ea",
+            "trace": "d19143bd237fb355476f575d9bbd4b6106d0af315b77402098f6024348576534"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "2ea32651-d02d-47a9-8aca-ebb2f522507c",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/2ea32651-d02d-47a9-8aca-ebb2f522507c.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/2ea32651-d02d-47a9-8aca-ebb2f522507c.replay.json",
+          "trial_id": "trial-0061",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/d7506be2-9629-474f-b574-8f2d2fd7bd76.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "6d93d71cee006dac8895371baa97afeec7f3897cb8622b227123c1dc2c4e486f",
+            "snapshot": "52a9f716e8bc968d735eea00ea21da839af6c05da75544c01ccf24c2c875c889",
+            "trace": "8f8ff47784a97a390a4716167a9f4dcb370689bdcc2b0fc60b079c09c89298f2"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "d7506be2-9629-474f-b574-8f2d2fd7bd76",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/d7506be2-9629-474f-b574-8f2d2fd7bd76.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/d7506be2-9629-474f-b574-8f2d2fd7bd76.replay.json",
+          "trial_id": "trial-0063",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/19fedd5a-4e11-4147-a0cb-843720870695.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "0e8420985712eb5c5129ea1b1a5dfbbd727cd25177c0a6be360c806c7423ede4",
+            "snapshot": "89b9f90a84553aa5ad02b610e1954d7b890ed031ec3d40c4a92d0f264fd07d63",
+            "trace": "955bdb7e29194c2ebbdea1a4a788fdca4c5d8fc1438317f96155ea31ecaa1493"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "19fedd5a-4e11-4147-a0cb-843720870695",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/19fedd5a-4e11-4147-a0cb-843720870695.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/19fedd5a-4e11-4147-a0cb-843720870695.replay.json",
+          "trial_id": "trial-0076",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/692276e2-ea1e-4d22-90bc-6aca4077bfd6.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "b22c52b3a02d3b99de112b167744477a44112985145573f6dd0026edf0776e3c",
+            "snapshot": "75701dc3a2299e83e8fabd75b96834d22ac7956183cba9c98fbc4d44a1e8114d",
+            "trace": "a2d2443d82cd953d1a30e39922695e6d72c0cedc4b68ad348f899917e7469e1b"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "692276e2-ea1e-4d22-90bc-6aca4077bfd6",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/692276e2-ea1e-4d22-90bc-6aca4077bfd6.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/692276e2-ea1e-4d22-90bc-6aca4077bfd6.replay.json",
+          "trial_id": "trial-0078",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/850040ea-3a9e-4fef-8c6a-94b4d8c0378b.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "ad5086791fe218a2ec73ffaa3c7d5f6edc97ba5a2b616ba0b4797906eab8a9b2",
+            "snapshot": "0a042c74c0b9f9012ecda8e5134811d1c8ebdee6725a81060282c278329bbd8c",
+            "trace": "b13ab72754b90870213476f6b89069c4afe0bf4bf1d10ba889c925a9095d876f"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "850040ea-3a9e-4fef-8c6a-94b4d8c0378b",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/850040ea-3a9e-4fef-8c6a-94b4d8c0378b.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/850040ea-3a9e-4fef-8c6a-94b4d8c0378b.replay.json",
+          "trial_id": "trial-0017",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/57c7763a-a2f7-4663-ac85-18e8778f61e3.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "0e2b882d36c8ec1c68979585cacbeb4ff90772ab23277bc18b7786b1c0b67997",
+            "snapshot": "9e5c31635b6965ee4279e715fa0e4e0542400ded0bb3bfd68e51c81aa13d80de",
+            "trace": "3c42c337c6c2a76e103e481e4755c9a36cd4e72aaf777b27a2cd1bcf2cc158da"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "57c7763a-a2f7-4663-ac85-18e8778f61e3",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/57c7763a-a2f7-4663-ac85-18e8778f61e3.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/57c7763a-a2f7-4663-ac85-18e8778f61e3.replay.json",
+          "trial_id": "trial-0016",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/63d8e0a0-f3bb-4058-a4b3-22714a81691c.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "320ec42b55c8003a5a48bbedac89a75433e36afd7170ff94548f59d44552ba95",
+            "snapshot": "9a9ea5d7dd83dbf8a178624e016dd3e0c8f95716d90a04c0dadf97387e66d9dd",
+            "trace": "8556eed435cce35a7c26ffbad29278adf252168bc93820f62db8c2064f2cdabe"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "63d8e0a0-f3bb-4058-a4b3-22714a81691c",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/63d8e0a0-f3bb-4058-a4b3-22714a81691c.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/63d8e0a0-f3bb-4058-a4b3-22714a81691c.replay.json",
+          "trial_id": "trial-0036",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/d5bbed64-8ed3-4bb5-a525-eadaf79a49db.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "267517bac095ce33cfe2b7cdb819ac2f91d065e25964b61e34f4b8c291ffb043",
+            "snapshot": "ed319520dac99e066cb74c1dae1808799580079ca2a2affa42d3e783dec766f1",
+            "trace": "9637513d03632bd65156755272844ce7aca203134c525815f516d3fbf9a14815"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "d5bbed64-8ed3-4bb5-a525-eadaf79a49db",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/d5bbed64-8ed3-4bb5-a525-eadaf79a49db.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/d5bbed64-8ed3-4bb5-a525-eadaf79a49db.replay.json",
+          "trial_id": "trial-0037",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "297d464143c707bb1aa31fe3d9ed1189a0a6e1bc1a33ea4d2cf175a36ce62201",
+            "snapshot": "aba5d0029801aaee8e43597f95f635355b0fdb6f117133cb7abe18afafddcee9",
+            "trace": "061ca8b00e7a40f2da6d21ddf7d70b3079c850d6413b8b4ade1a72ffa1527f90"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "9d2ec184-2bf1-4af0-b587-52be948a3273",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.replay.json",
+          "trial_id": "trial-0052",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/78452480-471c-43cf-8d50-98fc54384cc8.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "adad1dcd438d1ad1550a956f6366acf3d9662d02a5ba02c47fa2a9f38dff1b4b",
+            "snapshot": "c7312fc92f17fbe4ef648c9af185ceed7e0c8162f2a255a917c1c1034ec3ee39",
+            "trace": "f78f8180b57074b2da4da4cecf490c45722f13dba0a599a271f01b0b7300f683"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "78452480-471c-43cf-8d50-98fc54384cc8",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/78452480-471c-43cf-8d50-98fc54384cc8.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/78452480-471c-43cf-8d50-98fc54384cc8.replay.json",
+          "trial_id": "trial-0051",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/023b46fa-b692-4c3f-bbed-adb9cdbb35c6.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "7b62f3ec371ed01f1c11d8d2dc4e4ef20895e5f960375a7138354df38f9d93af",
+            "snapshot": "12e64c9f14657b53e8f2de6b3b3110aeffbc43285c208de18c206b98364958fb",
+            "trace": "f70814e077c14a8877c42280e1793cf2e69d084a507ae6ec382a5b6612b1a154"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "023b46fa-b692-4c3f-bbed-adb9cdbb35c6",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/023b46fa-b692-4c3f-bbed-adb9cdbb35c6.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/023b46fa-b692-4c3f-bbed-adb9cdbb35c6.replay.json",
+          "trial_id": "trial-0069",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/a614409e-842b-4323-98f7-e222a5379ad7.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "897893c07d6e98c045f925acadbe2ef996b05da8ded3b42e2441d01e35107ad6",
+            "snapshot": "c5f2a6f2af61e8486dcbee1a2fce638505946deac340865ea25d36870f8c5b65",
+            "trace": "8eb7bdd2e72097b4b25e8d6ac2b3551b0b69dd9409578b643df9360d8075001d"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "a614409e-842b-4323-98f7-e222a5379ad7",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/a614409e-842b-4323-98f7-e222a5379ad7.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/a614409e-842b-4323-98f7-e222a5379ad7.replay.json",
+          "trial_id": "trial-0070",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/a1eec0a0-89c0-4ad6-b62d-4723f9556d9b.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "86a2fd1d1a9b31b6d9a4fa7c9497b6a246a84d9428dc2dd5d4e286f1e7baa3c7",
+            "snapshot": "372ba219ea44c483cf39a55d5799ae8867b2b6108c3975b25af023d803994eb8",
+            "trace": "10034a9d3107e4fbd92a42cd9a7cdae2ee751c8910165e7088862d7f839f5ba1"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "a1eec0a0-89c0-4ad6-b62d-4723f9556d9b",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/a1eec0a0-89c0-4ad6-b62d-4723f9556d9b.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/a1eec0a0-89c0-4ad6-b62d-4723f9556d9b.replay.json",
+          "trial_id": "trial-0084",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/428de1e6-719f-46e0-8ffc-bde8bf5bffc8.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "aa906c75104ed8c55ede0fcc4e2d716d19d36b7c49457f2172bcd7b95273072f",
+            "snapshot": "0d1ac58afeb20320bf9adf36c43c27423edabd7e175693a84094fc268bbb6ef0",
+            "trace": "517b9302dcdf6ae561fbbeafdff1d7c89a238a7aa5446dcd97ce19fa53f488e1"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "428de1e6-719f-46e0-8ffc-bde8bf5bffc8",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/428de1e6-719f-46e0-8ffc-bde8bf5bffc8.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/428de1e6-719f-46e0-8ffc-bde8bf5bffc8.replay.json",
+          "trial_id": "trial-0085",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/7448b361-dac8-4969-a8da-58425ec5b90c.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "dcb12bca399480b8bad7403df73a210003adefd6f66dff03d9d8b9815f8397b0",
+            "snapshot": "52a6b4a1d5a55508728bedaa27c8a29050f760f64ab885c3deae3dd66d233b2a",
+            "trace": "03807e4fa633b7afeaa53a9c0da93fb91fd517717e76726c7e007e745a87e976"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "7448b361-dac8-4969-a8da-58425ec5b90c",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/7448b361-dac8-4969-a8da-58425ec5b90c.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/7448b361-dac8-4969-a8da-58425ec5b90c.replay.json",
+          "trial_id": "trial-0021",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/93033cf6-5b5c-42fa-b48f-00f797dd2ef6.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "f96d4f544cfea035b5ceaaf0812ce63635ebc74adff92f791dc34845b023575c",
+            "snapshot": "ec64f87fb5f1de2917558ab6672de83b4113031052d19d80010d7fc9cb28be28",
+            "trace": "b9c70d7bc20197a4c3d5e30d60d5e034db9c9600c370da350c3526d0ebdbe26d"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "93033cf6-5b5c-42fa-b48f-00f797dd2ef6",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/93033cf6-5b5c-42fa-b48f-00f797dd2ef6.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/93033cf6-5b5c-42fa-b48f-00f797dd2ef6.replay.json",
+          "trial_id": "trial-0024",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/2d2e1e1d-439b-4649-b767-46326467075d.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "ce9e5300fd75bb0a38cd5fafbbf20183ec74489af7259600a2db99f72cb579a7",
+            "snapshot": "6ac24aeeaac3f81550a64f01b01cd0c228e74f381bd3dd635f687a8d709e3d9f",
+            "trace": "c71feec29b2b77f43f1d2f1469b00b9bfe722bd7fd833170a988edc28db95783"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "2d2e1e1d-439b-4649-b767-46326467075d",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/2d2e1e1d-439b-4649-b767-46326467075d.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/2d2e1e1d-439b-4649-b767-46326467075d.replay.json",
+          "trial_id": "trial-0042",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/f9b2d09d-281e-4785-9606-3ac3898a8ecd.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "7e6db1065fc4c5b53861d092877fdd7519171b7f4f2b0fc952ce92b9dc1ebb87",
+            "snapshot": "a5a9ed7cb391fe2eb574e11c6a97ffe18bcc6a3b75e340e232a7bd0f81394224",
+            "trace": "f04715129de174110f45d6f0ef62362fbd0843b0d92f37d6f90fa69816ab8bb9"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "f9b2d09d-281e-4785-9606-3ac3898a8ecd",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/f9b2d09d-281e-4785-9606-3ac3898a8ecd.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/f9b2d09d-281e-4785-9606-3ac3898a8ecd.replay.json",
+          "trial_id": "trial-0041",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/30610e12-7096-41ef-bdde-f08c0a951bac.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "16634b32ca2171f8ba5296bcfa580a9981f5849906d6e2e0e045423e9db853b0",
+            "snapshot": "fc553d7f8d2a5d65267d23f2461259bd3893527138e1bada872d8e2e7941c09b",
+            "trace": "bc8411e6b83ccc4611c686fa02760cc8ee4d28ad888e174d652102fbe9b280a2"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "30610e12-7096-41ef-bdde-f08c0a951bac",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/30610e12-7096-41ef-bdde-f08c0a951bac.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/30610e12-7096-41ef-bdde-f08c0a951bac.replay.json",
+          "trial_id": "trial-0059",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/f4fea0ca-24fe-4b16-b4a9-8aade6eafb1d.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "3205af52a5c1f942557c0b3c62c6f052a5a99c11614b6844b8195bb7442e1b2c",
+            "snapshot": "c20c13efd0aafe77a00c3b7762e6ff09c33bf2a637e938407dd198d55269f880",
+            "trace": "24255c02f87d7da1acf1907674a43d728a6c9468ca9451484f06bfc23bf86e6e"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "f4fea0ca-24fe-4b16-b4a9-8aade6eafb1d",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/f4fea0ca-24fe-4b16-b4a9-8aade6eafb1d.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/f4fea0ca-24fe-4b16-b4a9-8aade6eafb1d.replay.json",
+          "trial_id": "trial-0060",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/5a4ab056-d930-4a32-97c9-013f9c400710.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "4d91d0a075ff09272e4fd031cdd7784ca71dcc37349e3b6bce045df19266c881",
+            "snapshot": "2270b2e515453ec81b3c5a5ec3a5738dc47bce08cf419cc46482ef36d6df1dd4",
+            "trace": "a3297779035f215e8a6fe2c896b9a3f15819e2f3e5044a08eabb58cf78ee67f3"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "5a4ab056-d930-4a32-97c9-013f9c400710",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/5a4ab056-d930-4a32-97c9-013f9c400710.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/5a4ab056-d930-4a32-97c9-013f9c400710.replay.json",
+          "trial_id": "trial-0073",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/4db72e66-4f91-49ae-84db-56a6e291b1d3.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "b07ec493e04bc458bc4c20952bea4a7780036d41375b10da262a0bd7d8b0b3d5",
+            "snapshot": "da8afad19b5b215253a5039609072ff2497f8e88e3997cdc085b898aac67f9cc",
+            "trace": "1e35e57c56514ce51eaa065ff71d8b433e4cfedd7677cc5ad660e3407ec8a12e"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "4db72e66-4f91-49ae-84db-56a6e291b1d3",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/4db72e66-4f91-49ae-84db-56a6e291b1d3.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/4db72e66-4f91-49ae-84db-56a6e291b1d3.replay.json",
+          "trial_id": "trial-0071",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/f549119c-e6cd-491e-9e60-aa03524652ab.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "20bf756e505668a0b40c7088b3bde3c4f62c2363d5dd5ba164f1d05bd1e934a5",
+            "snapshot": "0b6801bfe9448ee6c6455890e3e12b6636d6fee69414b3d3ee1cfd1016cbc877",
+            "trace": "a648f599d9f5ca7e71fc9c354501a6cca083d609892dafd30ea22336c68b270e"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "f549119c-e6cd-491e-9e60-aa03524652ab",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/f549119c-e6cd-491e-9e60-aa03524652ab.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/f549119c-e6cd-491e-9e60-aa03524652ab.replay.json",
+          "trial_id": "trial-0090",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/6992dc18-3c77-456f-815c-52f171948b9f.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "04feef9d54a266a1f7724f4f88e9c9b9e59eb28a260bdbcb84a33ce57ffa8ad1",
+            "snapshot": "06b8595d9629d174f0e7ca4ba89c512962538c4b4f4bf04373b97fa76b40a5e6",
+            "trace": "9500d38711f5d29f3cfaaf330179aa1d4631e49ae63d4ac4003225d388340d26"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "6992dc18-3c77-456f-815c-52f171948b9f",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/6992dc18-3c77-456f-815c-52f171948b9f.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/6992dc18-3c77-456f-815c-52f171948b9f.replay.json",
+          "trial_id": "trial-0086",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/02640753-5cde-48b4-8638-f91a5e549493.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "42fe8968511a369a80aa2c860e2a628c303e2c388a9c1848a868513318d192cb",
+            "snapshot": "6c59ed77abceaf3e9f3f395f0c3cd1731ae1932aa376846613ebadb38e50a688",
+            "trace": "f4a109970b267aee3ab4765ff7624f85fe76fd1115539582d0092df84507e72a"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "02640753-5cde-48b4-8638-f91a5e549493",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/02640753-5cde-48b4-8638-f91a5e549493.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/02640753-5cde-48b4-8638-f91a5e549493.replay.json",
+          "trial_id": "trial-0029",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/328db666-0da8-4891-995b-d485ef0bb0f4.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "efcce84220d541327d965e2d950b5418a677650179d05f67b397ce1f719539f0",
+            "snapshot": "d1a3d1f11f8fb3b6fc09775a277f2e7f79e7393c0483e2f85a4ada832da114f0",
+            "trace": "5e760337e6ec84df190be0720852e7949fa806d607bf23ce875562292ec95a11"
+          },
+          "expected_stored_name": "Проект — Ünïcode ✓",
+          "input_id": "I-UNICODE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "328db666-0da8-4891-995b-d485ef0bb0f4",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/328db666-0da8-4891-995b-d485ef0bb0f4.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/328db666-0da8-4891-995b-d485ef0bb0f4.replay.json",
+          "trial_id": "trial-0027",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    }
+  },
+  "created_at": "2026-10-28T13:37:47.537Z",
+  "manifest_id": "eval-v1",
+  "manifest_sha256": "b23580c8c07c3528a33f10f25780138cd58455a1f334c48e4fd889125c038cf5",
+  "run_id": "eval-20261028-baseline-a",
+  "sample_size": 2,
+  "schema": "chimera-audit-plan/1"
+}

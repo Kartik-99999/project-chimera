@@ -1,0 +1,435 @@
+{
+  "auditor": "",
+  "cells": {
+    "S-DIS|I-PLAIN|baseline-a|disabled=True,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-DIS",
+      "seed": "eval-20261028-baseline-a:S-DIS|I-PLAIN|baseline-a|disabled=True,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-DIS|I-SPACE|baseline-a|disabled=True,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "8a2a0ec337979a44c739ff91cec393d06cd038a52e9cf7c5e000a02e5cfa1bcb",
+            "snapshot": "71bea270be2778bcaf34816185c7d4ef3047093a202f4a80beda237035bd35b1",
+            "trace": "a65a55e9a7cf2b0cfd247743189acf844dcaf5b26d5c88fcdf9ceea5a0ef054d"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "db822f37-1c14-4b1f-bda9-70b813f84a6f",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/db822f37-1c14-4b1f-bda9-70b813f84a6f.replay.json",
+          "trial_id": "trial-0098",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "eval-20261028-baseline-a:S-DIS|I-SPACE|baseline-a|disabled=True,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-DIS|I-UNICODE|baseline-a|disabled=True,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-DIS",
+      "seed": "eval-20261028-baseline-a:S-DIS|I-UNICODE|baseline-a|disabled=True,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-NORM|I-PLAIN|baseline-a|disabled=False,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-NORM",
+      "seed": "eval-20261028-baseline-a:S-NORM|I-PLAIN|baseline-a|disabled=False,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-NORM|I-SPACE|baseline-a|disabled=False,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "806bf26bef41ea5973fb2b1237841f7aaf8da0260b80ab4e5dd3e325ba13f7e7",
+            "snapshot": "4f0f420f4354cd6916c6a5d1144fbcc6068aecf12d38d5ead18a6454defc5e34",
+            "trace": "b4f18476f11c6983d0fef4c4c0a6e4d4155e5629db1d57bf58d7bf9ce75f7b9b"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "succeeded",
+          "run_id": "4606f72f-1e04-42e0-a694-f982366943d5",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/4606f72f-1e04-42e0-a694-f982366943d5.replay.json",
+          "trial_id": "trial-0009",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "eval-20261028-baseline-a:S-NORM|I-SPACE|baseline-a|disabled=False,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-NORM|I-UNICODE|baseline-a|disabled=False,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-NORM",
+      "seed": "eval-20261028-baseline-a:S-NORM|I-UNICODE|baseline-a|disabled=False,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "f79965840a26352da78c6873e3bb8162e83f0de3d002ed5b1997c6a13b35cd74",
+            "snapshot": "caea94761fe240dfee3cee2c0c81cb8d3800e5e1d7055c9745c552f085834669",
+            "trace": "9185891fdae4689b0bb13c5b40e6a320730ebeb82acbafb6f92f3ab649d22dee"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "62b89715-85fa-4232-a212-2ba3dadc7372",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/62b89715-85fa-4232-a212-2ba3dadc7372.replay.json",
+          "trial_id": "trial-0143",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-SPACE|baseline-a|disabled=True,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "eval-20261028-baseline-a:S-SLOWDIS|I-UNICODE|baseline-a|disabled=True,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [
+        {
+          "actions_path": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "297d464143c707bb1aa31fe3d9ed1189a0a6e1bc1a33ea4d2cf175a36ce62201",
+            "snapshot": "aba5d0029801aaee8e43597f95f635355b0fdb6f117133cb7abe18afafddcee9",
+            "trace": "061ca8b00e7a40f2da6d21ddf7d70b3079c850d6413b8b4ade1a72ffa1527f90"
+          },
+          "expected_stored_name": "Padded Name",
+          "input_id": "I-SPACE",
+          "manifest_id": "eval-v1",
+          "outcome": "failed",
+          "run_id": "9d2ec184-2bf1-4af0-b587-52be948a3273",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.snapshot.json",
+          "trace_path": "artifacts/eval-20261028/traces-baseline-a/9d2ec184-2bf1-4af0-b587-52be948a3273.replay.json",
+          "trial_id": "trial-0052",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-SPACE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-SPACE|baseline-a|disabled=False,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=1350": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=1350",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=3000": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=3000",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=3900": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=3900",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=800": {
+      "baseline": "baseline-a",
+      "input_id": "I-UNICODE",
+      "sampled": [],
+      "scenario_id": "S-SLOW",
+      "seed": "eval-20261028-baseline-a:S-SLOW|I-UNICODE|baseline-a|disabled=False,slow_ms=800",
+      "skipped": [],
+      "verdicts": {}
+    }
+  },
+  "created_at": "2026-10-28T13:47:12.163Z",
+  "manifest_id": "eval-v1",
+  "manifest_sha256": "b23580c8c07c3528a33f10f25780138cd58455a1f334c48e4fd889125c038cf5",
+  "run_id": "eval-20261028-baseline-a",
+  "sample_size": 1,
+  "schema": "chimera-audit-plan/1"
+}
