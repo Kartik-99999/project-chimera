@@ -1,8 +1,20 @@
 # Project Chimera — Submission Snapshot
 
-Deterministic browser-automation agent + independent benchmark harness.
-Dev runs complete and audited; held-out eval runs complete with a
-**PROVISIONAL** report (human audit deferred). Primary evidence:
+**Muse Spark proposes. Chimera proves.** Meta's Muse Spark acts in a
+real browser; Chimera's deterministic, model-free referee (independent
+P1–P3 verifier + action observer) judges every episode.
+
+- **Demo video (94 s, captioned):**
+  [chimera-baseline-b.mp4](https://github.com/Kartik-99999/project-chimera/releases/download/v1.0-demo/chimera-baseline-b.mp4)
+- **Baseline B headline:** 30 measured episodes, 20 model claims,
+  18 verified, **2 false successes caught** (upper 95% bound 30.1%).
+  Method and evidence:
+  [`experiments/model-baseline-v1/REPORT.md`](experiments/model-baseline-v1/REPORT.md).
+
+Deterministic drivers + independent benchmark harness. Dev runs
+complete and audited; held-out eval runs complete with a
+**PROVISIONAL** report (human audit deferred). Primary frozen
+evidence:
 [`artifacts/eval-20261028/report.md`](artifacts/eval-20261028/report.md).
 
 ## Architecture and safety boundaries
@@ -62,9 +74,16 @@ Dev runs complete and audited; held-out eval runs complete with a
   errors. Verdict **PROVISIONAL** (0 full-sample eval verdicts
   recorded; the separate 8-episode mini-audit does not change
   the verdict).
-- Regression: **421 tests pass** (83 application + 338 harness;
-  30 need Chromium). Full evidence (traces, snapshots, action logs,
-  driver reports, plans) preserved under `artifacts/`.
+- Baseline B (`model-b`, 2026-11-04, 30 measured episodes + 1
+  warm-up): S-NORM 10 claims / 8 verified / 2 false successes
+  (both padded-input duplicates the model over-claimed); S-SLOW
+  10/10/0; S-DIS 0 claims, honest failures. 116 model calls,
+  181,910 tokens; 0 unauthorised, 0 safety violations.
+- Regression: **847 Python tests pass** (plus 88 JavaScript tests;
+  browser tests need Chromium). Full evidence (traces, snapshots,
+  action logs, driver reports, plans, per-episode model sidecars)
+  preserved under `artifacts/` and `experiments/model-baseline-v1/
+  runs/`.
 
 ## Reproduction instructions
 
@@ -73,7 +92,7 @@ From the project root, with the provisioned `.venv` (Chromium via
 browser launch):
 
 ```bash
-.venv/bin/python -m pytest -q                                   # 421 tests
+.venv/bin/python -m pytest tests/ -q                           # 847 tests
 .venv/bin/python -c "                                         # re-render (read-only)
 from benchmarks.report import render_report
 print(render_report(['artifacts/eval-20261028/run-chimera.json',
@@ -96,8 +115,10 @@ runs, evidence, or `eval-v1.json`.
   disagreement cases, and any rate claim await adjudication.
 - One local workflow against one local target; two fault parameters;
   the eval split varies values, not fault types.
-- No Baseline B (no model adapter): no model comparison, cost, or
-  adversarial coverage exists.
+- Baseline B is n=30 on one task with one prompt: the false-success
+  detector is shown to fire, but no general model failure rate is
+  claimed (upper 95% bound 30.1%). No USD cost recorded (no pricing
+  data); no adversarial/prompt-injection scenario exists.
 - Latencies are same-machine only; absolute values carry start-up
   overhead (see report §Latency).
 - No recovery layer, no target allowlist, no `INCONCLUSIVE` state,
@@ -105,3 +126,12 @@ runs, evidence, or `eval-v1.json`.
 - **No generalization claim is made.** Nothing here transfers to
   other sites, workflows, fault models, browsers, or model-driven
   agents.
+
+## Provenance note
+
+The deterministic harness, drivers, and frozen October evidence
+predate this event (developed mid-to-late October 2026). Built
+2026-11-03/04 for this submission: the Muse Spark integration
+(`chimera/llm.py`, `benchmarks/baseline_b.py`), the measured
+Baseline B run (2026-11-04), the security fixes, the demo video,
+and this submission package.
