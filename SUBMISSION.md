@@ -4,8 +4,9 @@
 real browser; Chimera's deterministic, model-free referee (independent
 P1–P3 verifier + action observer) judges every episode.
 
-- **Demo video (94 s, captioned):**
-  [chimera-baseline-b.mp4](https://github.com/Kartik-99999/project-chimera/releases/download/v1.0-demo/chimera-baseline-b.mp4)
+- **Demo video (180 s, captioned):**
+  [chimera-3min.mp4](https://github.com/Kartik-99999/project-chimera/releases/download/v1.0-demo/chimera-3min.mp4)
+  ([94 s short cut](https://github.com/Kartik-99999/project-chimera/releases/download/v1.0-demo/chimera-baseline-b.mp4))
 - **Baseline B headline:** 30 measured episodes, 20 model claims,
   18 verified, **2 false successes caught** (upper 95% bound 30.1%).
   Method and evidence:

@@ -20,10 +20,13 @@ When a model claims a success that never happened, Chimera counts it as a
 Meta Global AI Developer Hackathon · theme **Push the Frontier** (agent
 reliability: autonomy you can verify) · [MIT licence](LICENSE).
 
-**Demo video (94 s, captioned, 1080p):**
-[chimera-baseline-b.mp4](https://github.com/Kartik-99999/project-chimera/releases/download/v1.0-demo/chimera-baseline-b.mp4)
-— a live Muse Spark episode, the false success it caught, and the measured
-30-episode run. ([Release page](https://github.com/Kartik-99999/project-chimera/releases/tag/v1.0-demo).)
+**Demo video (180 s, captioned, 1080p):**
+[chimera-3min.mp4](https://github.com/Kartik-99999/project-chimera/releases/download/v1.0-demo/chimera-3min.mp4)
+— two live Muse Spark episodes (a success and an honest failure), the
+false success the verifier caught, the Workbench running, and the
+measured 30-episode run.
+([Release page](https://github.com/Kartik-99999/project-chimera/releases/tag/v1.0-demo);
+[94 s short cut](https://github.com/Kartik-99999/project-chimera/releases/download/v1.0-demo/chimera-baseline-b.mp4).)
 
 ---
 
