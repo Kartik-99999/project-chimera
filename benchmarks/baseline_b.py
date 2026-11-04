@@ -32,7 +32,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Mapping, Optional, Tuple
 
-from chimera.llm import LLMError, MetaModelClient, extract_json_object
+# NOTE: ``chimera.llm`` is imported as a module and its members are
+# resolved via attribute on every use (``llm.LLMError``), never via
+# from-imports. The test-suite reloads the module, which rebinds its
+# classes; attribute resolution keeps ``except`` clauses matching no
+# matter the import/test order.
+from chimera import llm
 
 #: Baseline id used by the runner, manifests, and reports.
 MODEL_BASELINE_ID = "baseline-b"
@@ -263,7 +268,7 @@ def run_model(
     token: Any = None,
     observe: Optional[Callable[[Any], Any]] = None,
     browser_factory: Optional[Callable[[Any], Tuple[Any, Any, Any]]] = None,
-    client: Optional[MetaModelClient] = None,
+    client: Optional["llm.MetaModelClient"] = None,
     max_steps: int = MAX_STEPS,
 ) -> ModelOutcome:
     """Run one Baseline B episode: Muse Spark acts, the harness watches.
@@ -278,7 +283,7 @@ def run_model(
     from benchmarks.observer import ActionLog, recording_browser_factory
 
     if client is None:
-        client = MetaModelClient.from_env()
+        client = llm.MetaModelClient.from_env()
     trace_dir = Path(trace_dir)
     trace_dir.mkdir(parents=True, exist_ok=True)
     recorder = TraceRecorder(trace_dir=trace_dir)
@@ -373,7 +378,7 @@ def run_model(
                      {"role": "user", "content": prompt}],
                     max_tokens=MODEL_MAX_TOKENS, temperature=0.0,
                     json_mode=True)
-            except LLMError as exc:
+            except (llm.LLMError, llm.TransportError) as exc:
                 _fail_step("model", f"model call failed: {exc}")
                 consecutive_failures += 1
                 last_result = f"model call failed ({exc}); try again."
@@ -384,7 +389,7 @@ def run_model(
                 continue
             action = result.parsed
             if action is None:
-                action = extract_json_object(result.text)
+                action = llm.extract_json_object(result.text)
             calls.append({
                 "step": step, "latency_ms": result.latency_ms,
                 "prompt_tokens": result.prompt_tokens,
@@ -502,7 +507,7 @@ def model_executor(
     trace_dir: Path,
     token: Any,
     timeout_seconds: float,
-    client: Optional[MetaModelClient] = None,
+    client: Optional["llm.MetaModelClient"] = None,
     browser_factory: Optional[Callable] = None,
 ) -> Any:
     """Execute one Baseline B episode (the runner's executor seam)."""

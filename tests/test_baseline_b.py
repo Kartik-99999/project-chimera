@@ -17,7 +17,7 @@ from benchmarks.baseline_b import (
     snapshot_elements,
     validate_action,
 )
-from chimera.llm import FakeTransport, MetaModelClient, completion_body
+from chimera import llm
 
 
 URL = "file:///demo/index.html?test=1"
@@ -25,9 +25,9 @@ URL = "file:///demo/index.html?test=1"
 
 def _client(*actions):
     """A model client scripted to emit the given action objects."""
-    bodies = [completion_body(json.dumps(a)) for a in actions]
-    return MetaModelClient(api_key="fake-key-for-tests",
-                           transport=FakeTransport(bodies))
+    bodies = [llm.completion_body(json.dumps(a)) for a in actions]
+    return llm.MetaModelClient(api_key="fake-key-for-tests",
+                           transport=llm.FakeTransport(bodies))
 
 
 class _Row:
@@ -230,15 +230,15 @@ def test_run_model_blocks_off_page_navigate(tmp_path):
 
 
 def test_run_model_recovers_from_non_json(tmp_path):
-    transport = FakeTransport([
-        completion_body("I will now fill the form…"),
-        completion_body(json.dumps({"action": "fill", "index": 0,
+    transport = llm.FakeTransport([
+        llm.completion_body("I will now fill the form…"),
+        llm.completion_body(json.dumps({"action": "fill", "index": 0,
                                     "value": "Acme"})),
-        completion_body(json.dumps({"action": "click", "index": 1})),
-        completion_body(json.dumps({"action": "done",
+        llm.completion_body(json.dumps({"action": "click", "index": 1})),
+        llm.completion_body(json.dumps({"action": "done",
                                     "claim": "success"})),
     ])
-    client = MetaModelClient(api_key="fake", transport=transport)
+    client = llm.MetaModelClient(api_key="fake", transport=transport)
     outcome = run_model(
         project_name="Acme", url=URL, trace_dir=tmp_path,
         browser_factory=_factory(_rows()), client=client)
@@ -268,10 +268,8 @@ def test_run_model_step_budget_exhaustion(tmp_path):
 
 
 def test_run_model_reports_model_errors(tmp_path):
-    from chimera.llm import TransportError
-
-    transport = FakeTransport([TransportError("boom")] * 9)
-    client = MetaModelClient(api_key="fake", transport=transport,
+    transport = llm.FakeTransport([llm.TransportError("boom")] * 9)
+    client = llm.MetaModelClient(api_key="fake", transport=transport,
                              max_retries=0, sleep=lambda s: None)
     outcome = run_model(
         project_name="Acme", url=URL, trace_dir=tmp_path,
