@@ -1,35 +1,74 @@
-/* Chimera design tokens — dark scientific instrument theme. */
+/* Chimera Research Console — Sarvam-grade redesign tokens.
+ * Light airy foundation, serif display, deep-navy immersive panels.
+ * Procedural only: system font stacks, CSS gradients, inline SVG.
+ * Legacy bg, line, and ink names are kept as aliases so every
+ * existing component (and convergence.css) keeps working. */
 :root {
-  --bg-0: #080b11;
-  --bg-1: #0c1119;
-  --bg-2: #111724;
-  --bg-3: #161e2e;
-  --bg-4: #1c2537;
-  --line-1: #20293d;
-  --line-2: #2c3750;
-  --ink-1: #e8ecf3;
-  --ink-2: #a6b0c2;
-  --ink-3: #8b96ad;
-  --cyan: #39d0d8;
-  --cyan-dim: rgba(57, 208, 216, 0.14);
-  --violet: #a78bfa;
-  --violet-dim: rgba(167, 139, 250, 0.14);
-  --green: #4cc38a;
-  --green-dim: rgba(76, 195, 138, 0.13);
-  --amber: #e5a83b;
-  --amber-dim: rgba(229, 168, 59, 0.13);
-  --red: #e5606e;
-  --red-dim: rgba(229, 96, 110, 0.13);
-  --blue: #6ea8fe;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  --r-sm: 6px;
-  --r-md: 10px;
-  --r-lg: 14px;
+  --paper: #fbfbf9;
+  --card: #ffffff;
+  --ink: #14161a;
+  --ink-2: #3f4750;
+  --muted: #6e6e73;
+  --hair: #e8e8e4;
+  --hair-2: #efefea;
+  --navy: #0c1330;
+  --navy-2: #141c44;
+  --chimera: #0e7490;
+  --replay: #6d28d9;
+  --ok: #15803d;
+  --bad: #b91c1c;
+  --amber: #b45309;
+  --chimera-soft: rgba(14, 116, 144, 0.12);
+  --replay-soft: rgba(109, 40, 217, 0.10);
+  --ok-soft: rgba(21, 128, 61, 0.12);
+  --bad-soft: rgba(185, 28, 28, 0.10);
+  --amber-soft: rgba(180, 83, 9, 0.13);
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --r-lg: 28px;
+  --r-md: 20px;
+  --r-sm: 12px;
+  --r-full: 999px;
+  --shadow: 0 1px 2px rgba(20, 22, 26, 0.05), 0 16px 48px -16px rgba(20, 22, 26, 0.14);
+  --shadow-sm: 0 1px 2px rgba(20, 22, 26, 0.06), 0 8px 24px -12px rgba(20, 22, 26, 0.12);
   --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
   --sp-5: 24px; --sp-6: 32px; --sp-7: 48px;
-  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
-  --shadow-2: 0 8px 28px rgba(0, 0, 0, 0.45);
-  --focus: 0 0 0 2px var(--bg-1), 0 0 0 4px var(--cyan);
+  --focus: 0 0 0 2px var(--paper), 0 0 0 4px var(--chimera);
   --ease: 160ms ease;
+  --ease-snap: 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --track-tight: -0.02em;
+  /* Verification seal: the one warm accent. Reserved for verified /
+   * converged states — never for generic chrome. */
+  --seal: #c2410c;
+  --seal-dim: rgba(194, 65, 12, 0.10);
+  /* Luminous accents are for focal points only, never for card chrome. */
+  --glow-cyan: 0 0 0 3px rgba(14, 116, 144, 0.18);
+  --glow-violet: 0 0 0 3px rgba(109, 40, 217, 0.14);
+  /* Legacy aliases (stable names used across pages + convergence.css). */
+  --bg-0: var(--paper);
+  --bg-1: var(--card);
+  --bg-2: #f4f4f1;
+  --bg-3: #f1f1ee;
+  --bg-4: #e6e6e1;
+  --line-1: var(--hair);
+  --line-2: #d9d9d4;
+  --line-faint: var(--hair-2);
+  --grid-faint: rgba(110, 99, 70, 0.12);
+  --ink-1: var(--ink);
+  --ink-3: var(--muted);
+  --cyan: var(--chimera);
+  --cyan-dim: var(--chimera-soft);
+  --violet: var(--replay);
+  --violet-dim: var(--replay-soft);
+  --green: var(--ok);
+  --green-dim: var(--ok-soft);
+  --red: var(--bad);
+  --red-dim: var(--bad-soft);
+  --blue: #1d4ed8;
+  --shadow-1: var(--shadow-sm);
+  --shadow-2: var(--shadow);
+  --font-display: var(--serif);
+  --font-sans: var(--sans);
+  --font-mono: var(--mono);
 }

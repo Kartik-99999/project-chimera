@@ -229,7 +229,8 @@ def capture_failure_screenshot(
     try:
         out_dir.mkdir(parents=True, exist_ok=True)
         path = out_dir / f"{run_id}.png"
-        page.screenshot(path=str(path))
+        # Explicit timeout: a wedged page must not stall teardown.
+        page.screenshot(path=str(path), timeout=8000)
         return path
     except Exception:  # noqa: BLE001 — best effort
         return None

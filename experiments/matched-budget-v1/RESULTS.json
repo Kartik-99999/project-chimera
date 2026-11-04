@@ -1,0 +1,441 @@
+{
+ "arms": {
+  "mb-v1-chimera": {
+   "by_scenario": {
+    "S-NORM": {
+     "k": 5,
+     "n": 5,
+     "wilson95": [
+      0.5655,
+      1.0
+     ]
+    },
+    "S-SLOW": {
+     "k": 5,
+     "n": 5,
+     "wilson95": [
+      0.5655,
+      1.0
+     ]
+    },
+    "S-DIS": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    },
+    "S-SLOWDIS": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    }
+   },
+   "timeouts": 10,
+   "retries_values": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "terminals": {
+    "failed": 10,
+    "succeeded": 10
+   },
+   "false_successes": 0,
+   "durations_ms": {
+    "min": 310,
+    "p50": 2592,
+    "p95": 5335,
+    "max": 5350
+   },
+   "outcomes": {
+    "failed": 10,
+    "succeeded": 10
+   }
+  },
+  "mb-v1-replay-100": {
+   "by_scenario": {
+    "S-NORM": {
+     "k": 5,
+     "n": 5,
+     "wilson95": [
+      0.5655,
+      1.0
+     ]
+    },
+    "S-SLOW": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    },
+    "S-DIS": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    },
+    "S-SLOWDIS": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    }
+   },
+   "timeouts": 15,
+   "retries_values": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "terminals": {
+    "failed": 15,
+    "succeeded": 5
+   },
+   "false_successes": 0,
+   "durations_ms": {
+    "min": 297,
+    "p50": 371,
+    "p95": 394,
+    "max": 1413
+   },
+   "outcomes": {
+    "failed": 15,
+    "succeeded": 5
+   }
+  },
+  "mb-v1-replay-1000": {
+   "by_scenario": {
+    "S-NORM": {
+     "k": 5,
+     "n": 5,
+     "wilson95": [
+      0.5655,
+      1.0
+     ]
+    },
+    "S-SLOW": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    },
+    "S-DIS": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    },
+    "S-SLOWDIS": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    }
+   },
+   "timeouts": 15,
+   "retries_values": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "terminals": {
+    "failed": 15,
+    "succeeded": 5
+   },
+   "false_successes": 0,
+   "durations_ms": {
+    "min": 294,
+    "p50": 1283,
+    "p95": 1297,
+    "max": 1298
+   },
+   "outcomes": {
+    "failed": 15,
+    "succeeded": 5
+   }
+  },
+  "mb-v1-replay-2500": {
+   "by_scenario": {
+    "S-NORM": {
+     "k": 5,
+     "n": 5,
+     "wilson95": [
+      0.5655,
+      1.0
+     ]
+    },
+    "S-SLOW": {
+     "k": 5,
+     "n": 5,
+     "wilson95": [
+      0.5655,
+      1.0
+     ]
+    },
+    "S-DIS": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    },
+    "S-SLOWDIS": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    }
+   },
+   "timeouts": 10,
+   "retries_values": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "terminals": {
+    "failed": 10,
+    "succeeded": 10
+   },
+   "false_successes": 0,
+   "durations_ms": {
+    "min": 297,
+    "p50": 2578,
+    "p95": 2788,
+    "max": 2790
+   },
+   "outcomes": {
+    "failed": 10,
+    "succeeded": 10
+   }
+  },
+  "mb-v1-replay-5000": {
+   "by_scenario": {
+    "S-NORM": {
+     "k": 5,
+     "n": 5,
+     "wilson95": [
+      0.5655,
+      1.0
+     ]
+    },
+    "S-SLOW": {
+     "k": 5,
+     "n": 5,
+     "wilson95": [
+      0.5655,
+      1.0
+     ]
+    },
+    "S-DIS": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    },
+    "S-SLOWDIS": {
+     "k": 0,
+     "n": 5,
+     "wilson95": [
+      0.0,
+      0.4345
+     ]
+    }
+   },
+   "timeouts": 10,
+   "retries_values": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "terminals": {
+    "failed": 10,
+    "succeeded": 10
+   },
+   "false_successes": 0,
+   "durations_ms": {
+    "min": 297,
+    "p50": 3324,
+    "p95": 5297,
+    "max": 5302
+   },
+   "outcomes": {
+    "failed": 10,
+    "succeeded": 10
+   }
+  }
+ },
+ "paired": {
+  "overall": {
+   "both_succeed": 10,
+   "both_fail": 10,
+   "chimera_only": 0,
+   "replay_only": 0
+  },
+  "per_scenario": {
+   "S-DIS": {
+    "both_succeed": 0,
+    "both_fail": 5,
+    "chimera_only": 0,
+    "replay_only": 0
+   },
+   "S-NORM": {
+    "both_succeed": 5,
+    "both_fail": 0,
+    "chimera_only": 0,
+    "replay_only": 0
+   },
+   "S-SLOW": {
+    "both_succeed": 5,
+    "both_fail": 0,
+    "chimera_only": 0,
+    "replay_only": 0
+   },
+   "S-SLOWDIS": {
+    "both_succeed": 0,
+    "both_fail": 5,
+    "chimera_only": 0,
+    "replay_only": 0
+   }
+  }
+ },
+ "mcnemar": {
+  "b_chimera_only": 0,
+  "c_replay_only": 0,
+  "exact_two_sided_p": 1.0,
+  "note": "Exact McNemar on 20 pooled matched pairs; pooling mixes heterogeneous scenarios."
+ },
+ "evidence": {
+  "mb-v1-chimera": {
+   "traces": 20,
+   "verified": 20,
+   "n": 20
+  },
+  "mb-v1-replay-100": {
+   "traces": 20,
+   "verified": 20,
+   "n": 20
+  },
+  "mb-v1-replay-1000": {
+   "traces": 20,
+   "verified": 20,
+   "n": 20
+  },
+  "mb-v1-replay-2500": {
+   "traces": 20,
+   "verified": 20,
+   "n": 20
+  },
+  "mb-v1-replay-5000": {
+   "traces": 20,
+   "verified": 20,
+   "n": 20
+  }
+ }
+}

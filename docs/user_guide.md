@@ -957,6 +957,13 @@ episodes describe only themselves: no reliability claim, and
 the 95% rule applies to full audits, not this sample.
 The audit is not complete until a human records all 8.
 
+*Completed 2026-10-30:* reviewer Kartik recorded 8/8 decisions
+(3 verified successes, 5 verified failures, 8 agreements, 8
+sufficient); `validate` reports COMPLETE. Formal record:
+`artifacts/eval-20261028/mini-review/MINI_AUDIT_REPORT.md`.
+The full-run eval samples are still unadjudicated, so the
+held-out eval report stays provisional.
+
 Finalize the distributable evidence with:
 
 ```bash
@@ -975,6 +982,104 @@ plus the evidence files only — withhold `answer-key.json`,
 entries record outcomes/checks), and `decisions.json` until
 initial decisions are locked. Reviewer procedure:
 `artifacts/eval-20261028/mini-review/READY_FOR_REVIEW.md`.
+
+### 15.1.2 Consolidated full-audit packet (184 episodes, human gate)
+
+The full-run audit samples for the held-out eval and the
+matched-budget follow-up are served as one prioritized review
+packet with strictly separate populations:
+
+- **Primary evaluation** (`eval-20261028`): 144 episodes (72
+  Chimera + 72 Baseline A) from the pre-drawn
+  `run-{chimera,baseline-a}.audit-plan.json` plans (36 cells × 2,
+  seeded, auditor-recorded).
+- **Matched-budget follow-up** (`mb-v1`): 40 episodes (5 arms ×
+  8) from `experiments/matched-budget-v1/audit-plans/
+  mb-v1-*.audit-plan.json` (4 cells × 2, drawn 2026-10-30 with
+  `plan_audit`, default run-derived seeds).
+
+The two denominators are never combined: agreement is computed
+per population and per run, and the 95% rule (§15.1 step 4)
+applies per population once its sample is fully adjudicated.
+The 8 adjudicated mini-audit episodes are a subset of the 184;
+their frozen mini decisions are preserved untouched, and the
+full packet re-adjudicates those episodes under the check-level
+protocol below.
+
+The packet lives at `artifacts/audit-full-v1/review/`
+(`packet.json` sha256
+`fd846db60e83f40489fce8f05cadd05648f0393fe4eb23516fabb32188fa1ce7`,
+`PACKET.md`, pending `decisions.json`, `reviewer-packet.json`,
+separate `answer-key.json`, `evidence-bundle.zip` with 600
+verified originals + manifest). It was built with:
+
+```bash
+.venv/bin/python tools/mini_review.py build-packet \
+  --plans artifacts/eval-20261028/run-chimera.audit-plan.json \
+          artifacts/eval-20261028/run-baseline-a.audit-plan.json \
+          experiments/matched-budget-v1/audit-plans/mb-v1-chimera.audit-plan.json \
+          experiments/matched-budget-v1/audit-plans/mb-v1-replay-100.audit-plan.json \
+          experiments/matched-budget-v1/audit-plans/mb-v1-replay-1000.audit-plan.json \
+          experiments/matched-budget-v1/audit-plans/mb-v1-replay-2500.audit-plan.json \
+          experiments/matched-budget-v1/audit-plans/mb-v1-replay-5000.audit-plan.json \
+  --runs artifacts/eval-20261028/run-chimera.json \
+         artifacts/eval-20261028/run-baseline-a.json \
+         experiments/matched-budget-v1/runs/main-mb-v1-chimera.json \
+         experiments/matched-budget-v1/runs/main-mb-v1-replay-100.json \
+         experiments/matched-budget-v1/runs/main-mb-v1-replay-1000.json \
+         experiments/matched-budget-v1/runs/main-mb-v1-replay-2500.json \
+         experiments/matched-budget-v1/runs/main-mb-v1-replay-5000.json \
+  --manifests benchmarks/manifests/eval-v1.json \
+              benchmarks/manifests/eval-v1.json \
+              experiments/matched-budget-v1/manifest-mb-v1.json \
+              experiments/matched-budget-v1/manifest-mb-v1.json \
+              experiments/matched-budget-v1/manifest-mb-v1.json \
+              experiments/matched-budget-v1/manifest-mb-v1.json \
+              experiments/matched-budget-v1/manifest-mb-v1.json \
+  --order eval-20261028-chimera eval-20261028-baseline-a \
+          main-mb-v1-chimera main-mb-v1-replay-100 \
+          main-mb-v1-replay-1000 main-mb-v1-replay-2500 \
+          main-mb-v1-replay-5000 \
+  --populations "primary evaluation (eval-20261028)" \
+                "primary evaluation (eval-20261028)" \
+                "matched-budget follow-up (mb-v1)" \
+                "matched-budget follow-up (mb-v1)" \
+                "matched-budget follow-up (mb-v1)" \
+                "matched-budget follow-up (mb-v1)" \
+                "matched-budget follow-up (mb-v1)" \
+  --neutral-gaps --driver-codes --check-level \
+  --title "Full audit review packet — eval-20261028 + matched-budget v1 (184 episodes)" \
+  --expect 184 --out artifacts/audit-full-v1/review
+```
+
+Adjudicate in the console's **Full audit queue**
+(`#/review?packet=full`): episodes are addressed by number with
+driver identity masked behind neutral Driver A–G codes (a
+seeded shuffle, recorded answer-side); judge P1, P2, P3 from
+the evidence with recorded verdicts masked, record your own
+true/false per check (or unauditable with a reason), and reveal
+only after saving. Agreement is strict per-check equality and
+is computed, not judged. Blinding is partial: step/trace shape
+differs by driver (a documented residual), and anything served
+to the browser is inspectable — for an independent review,
+distribute `reviewer-packet.json` plus the evidence files only
+and withhold the answer key, packet, plans, and decisions
+until initial decisions are locked.
+
+After reviewing, export `decisions.json` from the console,
+save it over the packet's `decisions.json`, then:
+
+```bash
+.venv/bin/python tools/mini_review.py validate artifacts/audit-full-v1/review/decisions.json --packet artifacts/audit-full-v1/review
+.venv/bin/python tools/mini_review.py apply-verdicts --packet artifacts/audit-full-v1/review            # dry run
+.venv/bin/python tools/mini_review.py apply-verdicts --packet artifacts/audit-full-v1/review --write   # merge into plans
+```
+
+`apply-verdicts` refuses invalid files, unknown episodes, and
+overwriting differing verdicts; it merges only into the plans'
+`cells.<key>.verdicts`. Then `apply_audit` each run and
+re-render (§15.1 step 3, §15.2) per population. Status: 0/184
+recorded — both reports stay provisional.
 
 ### 15.2 Rendering a report (design §11, evaluation §6)
 

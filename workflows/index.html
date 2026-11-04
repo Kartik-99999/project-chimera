@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="What Chimera can run: seventeen runnable workflows, Workflow Studio's nine step types, and the honest implemented-vs-roadmap split.">
+<title>Workflows — what Chimera can run</title>
+<link rel="stylesheet" href="/research/css/tokens.css">
+<link rel="icon" type="image/svg+xml" href="/site/assets/favicon.svg">
+<link rel="stylesheet" href="/site/site.css?v=20261101d">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <!--
+    Chimera main-site UI icon set · elegance pass (design artifact).
+    24-grid, 1.8px round stroke, currentColor body + ONE weave accent (#535BD5).
+    Rule (mirrors workbench sprite): NAV icons carry exactly one accent element;
+    BUTTON GLYPHS are monochrome currentColor (12-16px affordances).
+    Symbols marked COPIED are byte-copies of workbench/web/index.html art
+    (source of truth for shared concepts); NEW symbols are authored here.
+    Deployment note (PLAN.md risk): inline this block per page; do NOT load as an
+    external file (file:// <use> fails). Icons are aria-hidden, never focusable.
+  -->
+
+  <!-- ===== NAV ICONS (10) · one accent each ===== -->
+  <!-- NEW · Home -->
+  <symbol id="site-home" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4.5 11.2L12 4.8l7.5 6.4"/>
+      <path d="M6.3 10.4V19a1 1 0 0 0 1 1h9.4a1 1 0 0 0 1-1v-8.6"/>
+    </g>
+    <circle cx="12" cy="14.6" r="1.5" fill="#535BD5"/>
+  </symbol>
+  <!-- NEW · Product (cube; accent vertex) -->
+  <symbol id="site-product" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12,4.6 19,8.6 19,16 12,20 5,16 5,8.6"/>
+      <path d="M12 12v8M12 12l-7-3.4M12 12l7-3.4"/>
+    </g>
+    <circle cx="12" cy="4.6" r="1.6" fill="#535BD5"/>
+  </symbol>
+  <!-- NEW · Workflows (S-route with accent terminus) -->
+  <symbol id="site-workflows" viewBox="0 0 24 24">
+    <path d="M4.5 18.5H12a3.75 3.75 0 0 0 0-7.5h0A3.75 3.75 0 0 1 12 3.5h7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="4.5" cy="18.5" r="1.4" fill="currentColor"/>
+    <circle cx="19.5" cy="3.5" r="1.7" fill="#535BD5"/>
+  </symbol>
+  <!-- COPIED from #act-play · Demo -->
+  <symbol id="site-demo" viewBox="0 0 24 24">
+    <path d="M8 5.5v13l10-6.5z" fill="currentColor"/>
+  </symbol>
+  <!-- COPIED from #nav-analytics · Results -->
+  <symbol id="site-results" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4.5" y="12" width="3.6" height="7" rx="1"/>
+      <rect x="10.2" y="8.6" width="3.6" height="10.4" rx="1"/>
+      <rect x="15.9" y="5.2" width="3.6" height="13.8" rx="1"/>
+      <path d="M4 21.5h16"/>
+    </g>
+    <polyline points="4,14.5 9,10.5 14,12 20,5" fill="none" stroke="#535BD5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="20" cy="5" r="1.9" fill="#535BD5"/>
+  </symbol>
+  <!-- NEW · Evidence (shield; accent check) -->
+  <symbol id="site-evidence" viewBox="0 0 24 24">
+    <path d="M12 3.5l7 2.6v5.2c0 4.6-3 7.6-7 9.2-4-1.6-7-4.6-7-9.2V6.1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M8.8 12l2.3 2.3 4.2-4.6" fill="none" stroke="#535BD5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <!-- NEW · Applications grid (accent tile) -->
+  <symbol id="site-apps" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="4.5" y="4.5" width="6.6" height="6.6" rx="1.8"/>
+      <rect x="12.9" y="4.5" width="6.6" height="6.6" rx="1.8"/>
+      <rect x="4.5" y="12.9" width="6.6" height="6.6" rx="1.8"/>
+    </g>
+    <rect x="12.9" y="12.9" width="6.6" height="6.6" rx="1.8" fill="#535BD5"/>
+  </symbol>
+  <!-- COPIED from #nav-workspace · Workbench -->
+  <symbol id="site-workbench" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="7" height="7" rx="2"/>
+      <rect x="4" y="13" width="7" height="7" rx="2"/>
+      <rect x="13" y="13" width="7" height="7" rx="2"/>
+    </g>
+    <circle cx="16.5" cy="7.5" r="4.4" fill="none" stroke="#535BD5" stroke-width="1.4" opacity="0.38"/>
+    <circle cx="16.5" cy="7.5" r="2" fill="#535BD5"/>
+  </symbol>
+  <!-- COPIED from #nav-studio · Workflow Studio -->
+  <symbol id="site-studio" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7.2 15.3l2.9-2M13.9 11l2.9-2"/>
+      <circle cx="5" cy="17" r="2.6"/>
+      <circle cx="12" cy="12" r="2.6"/>
+    </g>
+    <circle cx="19" cy="7" r="4.3" fill="none" stroke="#535BD5" stroke-width="1.4" opacity="0.38"/>
+    <circle cx="19" cy="7" r="2" fill="#535BD5"/>
+  </symbol>
+  <!-- COPIED from #nav-lab · Campaign Lab -->
+  <symbol id="site-lab" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 3.5h4"/>
+      <path d="M10.7 3.5v5.1L5.8 17.6a1.6 1.6 0 0 0 1.4 2.4h9.6a1.6 1.6 0 0 0 1.4-2.4L13.3 8.6V3.5"/>
+      <path d="M8 14.8h8"/>
+    </g>
+    <circle cx="15.5" cy="5.8" r="1.5" fill="#535BD5"/>
+    <circle cx="18.2" cy="9.4" r="1" fill="none" stroke="currentColor" stroke-width="1.3"/>
+  </symbol>
+  <!-- COPIED from #nav-research · Research Console -->
+  <symbol id="site-research" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3.5" y="5" width="17" height="14" rx="2.5"/>
+      <path d="M3.5 9.2h17"/>
+      <polyline points="7.5,13.6 10,15.4 7.5,17.2"/>
+      <path d="M12.5 17.4h4.5"/>
+    </g>
+    <circle cx="5.9" cy="7.1" r="1" fill="currentColor"/>
+    <circle cx="8.7" cy="7.1" r="1" fill="currentColor" opacity="0.45"/>
+    <circle cx="18.2" cy="7.1" r="1.3" fill="#535BD5"/>
+  </symbol>
+
+  <!-- ===== BUTTON GLYPHS (7) · monochrome ===== -->
+  <!-- NEW · arrow-up-right (pairs with #act-external box variant) -->
+  <symbol id="g-arrow-ur" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6.5 17.5L17.5 6.5"/>
+      <path d="M9 6.5h8.5V15"/>
+    </g>
+  </symbol>
+  <!-- NEW · arrow-down -->
+  <symbol id="g-arrow-down" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 4.5V19"/>
+      <path d="M6.5 13.5L12 19l5.5-5.5"/>
+    </g>
+  </symbol>
+  <!-- NEW · arrow-right (replaces text glyph) -->
+  <symbol id="g-arrow-right" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4.5 12H19"/>
+      <path d="M13.5 6.5L19 12l-5.5 5.5"/>
+    </g>
+  </symbol>
+  <!-- NEW · dossier / book -->
+  <symbol id="g-dossier" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 3.5h8L19 8.5V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"/>
+      <path d="M14 3.5V8.5H19"/>
+      <path d="M8.5 12.5h7M8.5 15.8h4.5"/>
+    </g>
+    <circle cx="16.5" cy="15.8" r="1.4" fill="#535BD5"/>
+  </symbol>
+  <!-- NEW · menu (formalizes existing hamburger) -->
+  <symbol id="g-menu" viewBox="0 0 24 24">
+    <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <!-- COPIED from #act-cancel · close -->
+  <symbol id="g-close" viewBox="0 0 24 24">
+    <path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <!-- NEW · chevron (replaces text caret) -->
+  <symbol id="g-chevron" viewBox="0 0 24 24">
+    <path d="M6 9.5l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+<header class="site-top">
+  <a class="brand" href="/" aria-label="Chimera home"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 20,8 20,16 12,22 4,16 4,8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><line x1="12" y1="2" x2="12" y2="22" stroke="#C0563B" stroke-width="2"/><line x1="4" y1="8" x2="20" y2="16" stroke="#1E9A8A" stroke-width="1.4"/><line x1="20" y1="8" x2="4" y2="16" stroke="#3A6EA5" stroke-width="1.4"/></svg>chimera</a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="/"><svg class="nav-ic" aria-hidden="true"><use href="#site-home"/></svg>Home</a>
+    <div class="nav-drop">
+      <a href="/product/" aria-haspopup="true" aria-expanded="false"><svg class="nav-ic" aria-hidden="true"><use href="#site-product"/></svg>Product <svg class="nav-caret" aria-hidden="true"><use href="#g-chevron"/></svg></a>
+      <ul class="nav-menu" aria-label="Product sections">
+        <li><div class="mega-inner">
+          <div><p class="mega-kicker">Product</p>
+            <ul class="mega-grid">
+              <li><a href="/product/#arch"><span class="tile" style="--t:#0e7490"><svg aria-hidden="true"><use href="#site-product"/></svg></span><span><strong>Architecture</strong><small>Fixed script, five stages</small></span></a></li>
+        <li><a href="/product/#verify"><span class="tile" style="--t:#0e7a3d"><svg aria-hidden="true"><use href="#site-evidence"/></svg></span><span><strong>Verification &amp; P1–P3</strong><small>Independent checker</small></span></a></li>
+        <li><a href="/product/#retry"><span class="tile" style="--t:#b45309"><svg aria-hidden="true"><use href="#site-workflows"/></svg></span><span><strong>Retry policies</strong><small>Bounded, evidence-gated</small></span></a></li>
+        <li><a href="/product/#bounds"><span class="tile" style="--t:#C0563B"><svg aria-hidden="true"><use href="#g-dossier"/></svg></span><span><strong>Boundaries</strong><small>What is not claimed</small></span></a></li>
+            </ul>
+          </div>
+          <a class="mega-card" href="/demo/"><span class="mega-card-art" aria-hidden="true"><svg viewBox="0 0 288 190" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".8"><path d="M-10 150 C 70 110, 150 160, 300 90"/><path d="M-10 165 C 90 130, 180 175, 300 110" opacity=".6"/><circle cx="228" cy="42" r="16" opacity=".7"/><circle cx="52" cy="52" r="8" opacity=".6"/></g></svg><b>See it run</b></span><span class="mega-card-cap"><span>Demo · Recorded executions</span><strong>Every run, check by check</strong><em>Watch a recorded execution →</em></span></a>
+        </div></li>
+      </ul>
+    </div>
+    <div class="nav-drop">
+      <a href="/workflows/" aria-current="page" aria-haspopup="true" aria-expanded="false"><svg class="nav-ic" aria-hidden="true"><use href="#site-workflows"/></svg>Workflows <svg class="nav-caret" aria-hidden="true"><use href="#g-chevron"/></svg></a>
+      <ul class="nav-menu" aria-label="Workflow sections">
+        <li><div class="mega-inner">
+          <div><p class="mega-kicker">Workflows</p>
+            <ul class="mega-grid">
+              <li><a href="/workflows/#demo-flows"><span class="tile" style="--t:#0B9FB8"><svg aria-hidden="true"><use href="#site-demo"/></svg></span><span><strong>Demo flows</strong><small>Task Manager + contact form</small></span></a></li>
+        <li><a href="/workflows/#saucedemo"><span class="tile" style="--t:#1E9A8A"><svg aria-hidden="true"><use href="#site-workflows"/></svg></span><span><strong>Stores</strong><small>SauceDemo + Flipkart</small></span></a></li>
+        <li><a href="/workflows/#general-use"><span class="tile" style="--t:#0e7490"><svg aria-hidden="true"><use href="#site-apps"/></svg></span><span><strong>General-use lookups</strong><small>10 site adapters</small></span></a></li>
+        <li><a href="/workflows/#pilots"><span class="tile" style="--t:#b45309"><svg aria-hidden="true"><use href="#site-lab"/></svg></span><span><strong>User-session pilots</strong><small>SO + Amazon</small></span></a></li>
+        <li><a href="/workflows/#studio"><span class="tile" style="--t:#3A6EA5"><svg aria-hidden="true"><use href="#site-studio"/></svg></span><span><strong>Workflow Studio</strong><small>9 step types</small></span></a></li>
+        <li><a href="/workflows/#roadmap"><span class="tile" style="--t:#64748b"><svg aria-hidden="true"><use href="#g-arrow-right"/></svg></span><span><strong>Implemented vs roadmap</strong><small>Honest split</small></span></a></li>
+            </ul>
+          </div>
+          <a class="mega-card" href="/workbench/web/#/studio"><span class="mega-card-art" aria-hidden="true"><svg viewBox="0 0 288 190" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".8"><path d="M-10 150 C 70 110, 150 160, 300 90"/><path d="M-10 165 C 90 130, 180 175, 300 110" opacity=".6"/><circle cx="228" cy="42" r="16" opacity=".7"/><circle cx="52" cy="52" r="8" opacity=".6"/></g></svg><b>Compose a workflow</b></span><span class="mega-card-cap"><span>Workflow Studio · 9 step types</span><strong>Steps compose, runs verify</strong><em>Open the Studio →</em></span></a>
+        </div></li>
+      </ul>
+    </div>
+    <a href="/demo/"><svg class="nav-ic" aria-hidden="true"><use href="#site-demo"/></svg>Demo</a>
+    <div class="nav-drop">
+      <a href="/results/" aria-haspopup="true" aria-expanded="false"><svg class="nav-ic" aria-hidden="true"><use href="#site-results"/></svg>Results <svg class="nav-caret" aria-hidden="true"><use href="#g-chevron"/></svg></a>
+      <ul class="nav-menu" aria-label="Result sections">
+        <li><div class="mega-inner">
+          <div><p class="mega-kicker">Results</p>
+            <ul class="mega-grid">
+              <li><a href="/results/#heldout"><span class="tile" style="--t:#0e7490"><svg aria-hidden="true"><use href="#site-results"/></svg></span><span><strong>Held-out evaluation</strong><small>Chimera vs replay</small></span></a></li>
+        <li><a href="/results/#matched-budget"><span class="tile" style="--t:#b45309"><svg aria-hidden="true"><use href="#site-workflows"/></svg></span><span><strong>Matched-budget</strong><small>Budget, not capability</small></span></a></li>
+        <li><a href="/results/#sauce"><span class="tile" style="--t:#1E9A8A"><svg aria-hidden="true"><use href="#site-lab"/></svg></span><span><strong>SauceDemo campaigns</strong><small>Stress v2 · 40 trials</small></span></a></li>
+        <li><a href="/results/#smoke"><span class="tile" style="--t:#0e7a3d"><svg aria-hidden="true"><use href="#site-demo"/></svg></span><span><strong>Live smoke check</strong><small>17 workflows run</small></span></a></li>
+            </ul>
+          </div>
+          <a class="mega-card" href="/evidence/"><span class="mega-card-art" aria-hidden="true"><svg viewBox="0 0 288 190" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".8"><path d="M-10 150 C 70 110, 150 160, 300 90"/><path d="M-10 165 C 90 130, 180 175, 300 110" opacity=".6"/><circle cx="228" cy="42" r="16" opacity=".7"/><circle cx="52" cy="52" r="8" opacity=".6"/></g></svg><b>Where results come from</b></span><span class="mega-card-cap"><span>Evidence · Reports + traces</span><strong>Every report, trace, and hash</strong><em>Inspect the evidence →</em></span></a>
+        </div></li>
+      </ul>
+    </div>
+    <div class="nav-drop">
+      <a href="/evidence/" aria-haspopup="true" aria-expanded="false"><svg class="nav-ic" aria-hidden="true"><use href="#site-evidence"/></svg>Evidence <svg class="nav-caret" aria-hidden="true"><use href="#g-chevron"/></svg></a>
+      <ul class="nav-menu" aria-label="Evidence sections">
+        <li><div class="mega-inner">
+          <div><p class="mega-kicker">Evidence</p>
+            <ul class="mega-grid">
+              <li><a href="/evidence/#method"><span class="tile" style="--t:#0e7490"><svg aria-hidden="true"><use href="#g-dossier"/></svg></span><span><strong>Method</strong><small>Design + criteria</small></span></a></li>
+        <li><a href="/evidence/#provenance"><span class="tile" style="--t:#3A6EA5"><svg aria-hidden="true"><use href="#site-evidence"/></svg></span><span><strong>Provenance</strong><small>Seed, hashes, chain</small></span></a></li>
+        <li><a href="/evidence/#audits"><span class="tile" style="--t:#0e7a3d"><svg aria-hidden="true"><use href="#site-results"/></svg></span><span><strong>Audits</strong><small>Mini 8/8 · full pending</small></span></a></li>
+        <li><a href="/evidence/#reports"><span class="tile" style="--t:#64748b"><svg aria-hidden="true"><use href="#g-arrow-down"/></svg></span><span><strong>Reports</strong><small>Every rendered report</small></span></a></li>
+            </ul>
+          </div>
+          <a class="mega-card" href="/research/#/audit"><span class="mega-card-art" aria-hidden="true"><svg viewBox="0 0 288 190" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".8"><path d="M-10 150 C 70 110, 150 160, 300 90"/><path d="M-10 165 C 90 130, 180 175, 300 110" opacity=".6"/><circle cx="228" cy="42" r="16" opacity=".7"/><circle cx="52" cy="52" r="8" opacity=".6"/></g></svg><b>Audit &amp; reproducibility</b></span><span class="mega-card-cap"><span>Research Console · Human-gated</span><strong>Samples, verdicts, manifests</strong><em>Reproduce every figure →</em></span></a>
+        </div></li>
+      </ul>
+    </div>
+    <div class="nav-drop">
+      <button type="button" aria-haspopup="true" aria-expanded="false"><svg class="nav-ic" aria-hidden="true"><use href="#site-apps"/></svg>Applications <svg class="nav-caret" aria-hidden="true"><use href="#g-chevron"/></svg></button>
+      <ul class="nav-menu" aria-label="Applications">
+        <li><div class="mega-inner">
+          <div><p class="mega-kicker">Applications</p>
+            <ul class="mega-grid">
+              <li><a href="/workbench/web/#/workspace"><span class="tile" style="--t:#0f172a"><svg aria-hidden="true"><use href="#site-workbench"/></svg></span><span><strong>Workbench</strong><small>Run + inspect executions</small></span></a></li>
+        <li><a href="/workbench/web/#/studio"><span class="tile" style="--t:#3A6EA5"><svg aria-hidden="true"><use href="#site-studio"/></svg></span><span><strong>Workflow Studio</strong><small>Compose step workflows</small></span></a></li>
+        <li><a href="/workbench/web/#/lab"><span class="tile" style="--t:#1E9A8A"><svg aria-hidden="true"><use href="#site-lab"/></svg></span><span><strong>Campaign Lab</strong><small>Campaign analytics</small></span></a></li>
+        <li><a href="/research/#/command"><span class="tile" style="--t:#0e7490"><svg aria-hidden="true"><use href="#site-research"/></svg></span><span><strong>Research Console</strong><small>Evidence explorer</small></span></a></li>
+            </ul>
+          </div>
+          <a class="mega-card" href="/research/#/river"><span class="mega-card-art" aria-hidden="true"><svg viewBox="0 0 288 190" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".8"><path d="M-10 150 C 70 110, 150 160, 300 90"/><path d="M-10 165 C 90 130, 180 175, 300 110" opacity=".6"/><circle cx="228" cy="42" r="16" opacity=".7"/><circle cx="52" cy="52" r="8" opacity=".6"/></g></svg><b>Evidence River</b></span><span class="mega-card-cap"><span>Research Console · One trial</span><strong>Follow one trial end to end</strong><em>Open the River →</em></span></a>
+        </div></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="site-ctas">
+    <a class="btn-obsidian btn-sm" href="/workbench/web/#/workspace">Open Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-ur"/></svg></a>
+    <a class="btn-ivory-pill btn-sm hide-sm" href="/research/#/command"><svg class="btn-ic" aria-hidden="true"><use href="#site-research"/></svg>Research Console</a>
+    <button id="menuBtn" type="button" class="menu-btn" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Toggle menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><use href="#g-menu"/></svg>
+    </button>
+  </div>
+  <div id="mobileDrawer" class="mobile-drawer" hidden>
+    <nav class="drawer-nav" aria-label="Mobile">
+      <a href="/"><svg class="drawer-ic" aria-hidden="true"><use href="#site-home"/></svg>Home</a>
+      <a href="/demo/"><svg class="drawer-ic" aria-hidden="true"><use href="#site-demo"/></svg>Demo</a>
+      <div class="drawer-group"><span>Product</span>
+        <a class="top" href="/product/"><svg class="drawer-ic" aria-hidden="true"><use href="#site-product"/></svg>Product overview</a>
+        <a href="/product/#arch">Architecture</a>
+        <a href="/product/#verify">Verification &amp; P1–P3</a>
+        <a href="/product/#retry">Retry policies</a>
+        <a href="/product/#bounds">Boundaries</a>
+      </div>
+      <div class="drawer-group"><span>Workflows</span>
+        <a class="top" href="/workflows/" aria-current="page"><svg class="drawer-ic" aria-hidden="true"><use href="#site-workflows"/></svg>Workflows overview</a>
+        <a href="/workflows/#demo-flows">Demo flows</a>
+        <a href="/workflows/#saucedemo">Stores</a>
+        <a href="/workflows/#general-use">General-use lookups</a>
+        <a href="/workflows/#pilots">User-session pilots</a>
+        <a href="/workflows/#studio">Workflow Studio</a>
+        <a href="/workflows/#roadmap">Implemented vs roadmap</a>
+      </div>
+      <div class="drawer-group"><span>Results</span>
+        <a class="top" href="/results/"><svg class="drawer-ic" aria-hidden="true"><use href="#site-results"/></svg>Results overview</a>
+        <a href="/results/#heldout">Held-out evaluation</a>
+        <a href="/results/#matched-budget">Matched-budget</a>
+        <a href="/results/#sauce">SauceDemo campaigns</a>
+        <a href="/results/#smoke">Live smoke check</a>
+      </div>
+      <div class="drawer-group"><span>Evidence</span>
+        <a class="top" href="/evidence/"><svg class="drawer-ic" aria-hidden="true"><use href="#site-evidence"/></svg>Evidence overview</a>
+        <a href="/evidence/#method">Method</a>
+        <a href="/evidence/#provenance">Provenance</a>
+        <a href="/evidence/#audits">Audits</a>
+        <a href="/evidence/#reports">Reports</a>
+      </div>
+      <div class="drawer-group"><span>Applications</span>
+        <a class="top" href="/workbench/web/#/workspace"><svg class="drawer-ic" aria-hidden="true"><use href="#site-workbench"/></svg>Workbench</a>
+        <a class="top" href="/workbench/web/#/studio"><svg class="drawer-ic" aria-hidden="true"><use href="#site-studio"/></svg>Workflow Studio</a>
+        <a class="top" href="/workbench/web/#/lab"><svg class="drawer-ic" aria-hidden="true"><use href="#site-lab"/></svg>Campaign Lab</a>
+        <a class="top" href="/research/#/command"><svg class="drawer-ic" aria-hidden="true"><use href="#site-research"/></svg>Research Console</a>
+      </div>
+      <div class="drawer-group"><span>Featured</span>
+        <a href="/demo/">See it run — recorded executions</a>
+        <a href="/workbench/web/#/studio">Compose a workflow — Studio</a>
+        <a href="/evidence/">Where results come from</a>
+        <a href="/research/#/audit">Audit &amp; reproducibility</a>
+        <a href="/research/#/river">Evidence River — follow one trial</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<section class="page-hero" aria-labelledby="page-h">
+  <div class="page-hero-inner">
+    <figure class="page-hero-art" aria-label="Glowing workflow sigils woven together over lavender arches">
+      <svg viewBox="0 0 1280 440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <defs>
+          <linearGradient id="wp-bg" x1="640" y1="0" x2="640" y2="440" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="50%" stop-color="#E0E7FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="wp-glow" cx="50%" cy="44%" r="42%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.45"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="wp-tierA" x1="640" y1="330" x2="640" y2="440" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.72"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="wp-tierB" x1="640" y1="370" x2="640" y2="440" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="1280" height="440" fill="url(#wp-bg)"/>
+        <ellipse cx="640" cy="195" rx="480" ry="170" fill="url(#wp-glow)"/>
+        <g opacity="0.5" stroke="#FFFFFF" stroke-width="1.4">
+          <path d="M60 200 C300 150, 420 250, 640 200 S980 150, 1220 200"/>
+          <path d="M60 200 C300 250, 420 150, 640 200 S980 250, 1220 200"/>
+          <path d="M60 200 C400 182, 880 218, 1220 200"/>
+        </g>
+        <g opacity="0.4" stroke="#FFFFFF" stroke-width="1.2">
+          <path d="M640 200 C520 260, 400 340, 300 440"/><path d="M640 200 C580 270, 520 350, 480 440"/>
+          <path d="M640 200 C700 270, 760 350, 800 440"/><path d="M640 200 C760 260, 880 340, 980 440"/>
+          <path d="M640 200 C460 240, 280 320, 140 440"/><path d="M640 200 C820 240, 1000 320, 1140 440"/>
+        </g>
+        <g opacity="0.6" stroke="#FFFFFF" stroke-width="1.2">
+          <circle cx="200" cy="200" r="72" stroke-dasharray="2 4"/><circle cx="490" cy="200" r="72" stroke-dasharray="2 4"/>
+          <circle cx="790" cy="200" r="72" stroke-dasharray="2 4"/><circle cx="1080" cy="200" r="72" stroke-dasharray="2 4"/>
+          <circle cx="640" cy="200" r="150" stroke-dasharray="1.5 5"/>
+        </g>
+        <path d="M0 440 V396 q32-36 64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 V440 Z" fill="url(#wp-tierA)"/>
+        <path d="M-32 440 V424 q32-32 64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 t64 0 V440 Z" fill="url(#wp-tierB)"/>
+        <g transform="translate(200, 200) scale(1.6)" stroke="#FFFFFF" stroke-width="2">
+          <circle cx="0" cy="-15" r="14"/><circle cx="13" cy="-7.5" r="14"/><circle cx="13" cy="7.5" r="14"/>
+          <circle cx="0" cy="15" r="14"/><circle cx="-13" cy="7.5" r="14"/><circle cx="-13" cy="-7.5" r="14"/>
+          <circle cx="0" cy="0" r="5" fill="#FFFFFF" stroke="none"/>
+        </g>
+        <g transform="translate(490, 200) scale(1.45)">
+          <g stroke="#FFFFFF" stroke-width="2.2">
+            <rect x="-38" y="-32" width="76" height="64" rx="10"/>
+            <path d="M-26 -16 h52 M-26 -4 h52 M-26 8 h36" stroke-width="1.8" stroke-linecap="round"/>
+          </g>
+          <circle cx="26" cy="24" r="13" fill="#FFFFFF" opacity="0.92"/>
+          <path d="M20 24 l5 5 l9-10" stroke="#6366F1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <g transform="translate(790, 200) scale(1.45)" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round">
+          <path d="M-38 -16 L38 -16 L29 26 L-29 26 Z"/>
+          <path d="M-28 -16 Q0 -42 28 -16"/>
+          <path d="M-12 -16 L-14 26 M0 -16 L0 26 M12 -16 L14 26" stroke-width="1.6"/>
+          <circle cx="-12" cy="36" r="4" fill="#FFFFFF" stroke="none"/><circle cx="12" cy="36" r="4" fill="#FFFFFF" stroke="none"/>
+        </g>
+        <g transform="translate(1080, 200) scale(1.45)">
+          <path d="M-56 0 h26 l10-24 l13 40 l12-28 l8 12 h31" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <g fill="#FFFFFF">
+            <circle cx="-44" cy="-42" r="3.2"/><circle cx="-22" cy="-50" r="3.2"/><circle cx="0" cy="-52" r="3.2"/>
+            <circle cx="22" cy="-50" r="3.2"/><circle cx="44" cy="-42" r="3.2"/><circle cx="0" cy="38" r="3.2"/>
+          </g>
+          <path d="M-40 -32 Q0 -48 40 -32" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="2 3" opacity="0.8"/>
+        </g>
+        <g fill="#FFFFFF" opacity="0.9">
+          <circle cx="345" cy="200" r="4"/><circle cx="640" cy="200" r="4"/><circle cx="935" cy="200" r="4"/>
+        </g>
+        <g transform="translate(640, 200)">
+          <circle cx="0" cy="0" r="52" fill="#FFFFFF" opacity="0.28"/>
+          <circle cx="0" cy="0" r="40" stroke="#FFFFFF" stroke-width="1.6" opacity="0.9"/>
+          <g stroke="#FFFFFF" stroke-width="2.2">
+            <circle cx="0" cy="-19" r="17"/><circle cx="16.5" cy="-9.5" r="17"/><circle cx="16.5" cy="9.5" r="17"/>
+            <circle cx="0" cy="19" r="17"/><circle cx="-16.5" cy="9.5" r="17"/><circle cx="-16.5" cy="-9.5" r="17"/>
+          </g>
+          <circle cx="0" cy="0" r="6" fill="#FFFFFF"/>
+          <path d="M0 -10 L7 0 L0 10 L-7 0 Z" fill="#8B93F8"/>
+        </g>
+      </svg>
+    </figure>
+    <p class="kicker">Workflows · seventeen runnable, zero implied</p>
+    <h1 id="page-h" class="display-serif">What Chimera can run.</h1>
+    <p class="lede">Every workflow below is implemented in <code>workbench/workflows.py</code> and runnable
+      from the <a href="/workbench/web/#/workspace">Workbench</a> today. Parameters are the real knobs;
+      the roadmap section names what does not exist yet. Nothing is implied.</p>
+    <p class="hero-load-error loading" id="hero-load-error" hidden></p>
+  </div>
+</section>
+
+<section class="band" id="demo-flows" aria-labelledby="demo-flows-h">
+  <div class="band-head">
+    <p class="kicker">Bundled demo targets</p>
+    <h2 id="demo-flows-h" class="display-serif">Demo Task Manager &amp; contact form.</h2>
+    <p class="lede">Local pages under <code>demo_app/</code> with built-in fault knobs
+      (<code>?slow=</code> delay, disabled submit) — the only fault injection that exists anywhere in the system.</p>
+  </div>
+  <div class="wf-grid">
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Glowing white woven sigil over lavender arches: the create-project workflow">
+        <defs>
+          <linearGradient id="w1-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w1-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w1-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w1-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w1-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w1-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <path d="M160 76 C120 90, 70 120, 30 180"/><path d="M160 76 C140 100, 110 130, 90 180"/>
+          <path d="M160 76 C200 90, 250 120, 290 180"/><path d="M160 76 C180 100, 210 130, 230 180"/>
+          <circle cx="160" cy="76" r="42" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="58" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w1-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w1-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2">
+          <circle cx="0" cy="-11" r="12"/><circle cx="9.5" cy="-5.5" r="12"/><circle cx="9.5" cy="5.5" r="12"/>
+          <circle cx="0" cy="11" r="12"/><circle cx="-9.5" cy="5.5" r="12"/><circle cx="-9.5" cy="-5.5" r="12"/>
+          <circle cx="0" cy="0" r="4" fill="#FFFFFF" stroke="none"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">create-project</span>
+      <h3>Demo Task Manager</h3>
+      <p>Create a project in the bundled demo page — the workflow behind all 520 benchmark episodes.
+        Page condition, slow-load delay, and an action-timeout override are configurable per run.</p>
+      <ul class="wf-params">
+        <li><code>project_name</code> — the project to create</li>
+        <li><code>scenario</code> — normal · slow · disabled · slow-disabled</li>
+        <li><code>slow_ms</code> — slow-load delay, default 2100 ms</li>
+        <li><code>action_timeout_ms</code> — per-action timeout override</li>
+      </ul>
+      <div class="wf-links"><a href="/demo/">Recorded executions <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White form lines with a sealed check over lavender arches: the contact-form workflow">
+        <defs>
+          <linearGradient id="w2-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w2-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w2-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w2-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w2-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w2-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+          <path d="M160 12 v10 M160 130 v10 M96 76 h10 M214 76 h10"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w2-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w2-tierB)"/>
+        <g stroke="#FFFFFF" stroke-width="2.5">
+          <rect x="128" y="46" width="64" height="60" rx="9"/>
+          <path d="M140 62 h40 M140 74 h40 M140 86 h26" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <circle cx="184" cy="102" r="11" fill="#FFFFFF" opacity="0.92"/>
+        <path d="M179 102 l4 4 l7-8" stroke="#6366F1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></div>
+      <span class="wf-id">fill-contact-form</span>
+      <h3>Contact form</h3>
+      <p>Fill and submit <code>demo_app/contact.html</code>. Submission cases include must-fail variants
+        the page rejects — the workflow passes only when the page behaves as the case requires.</p>
+      <ul class="wf-params">
+        <li><code>submission_case</code> — complete · missing-message · invalid-email</li>
+        <li><code>scenario</code> — normal · slow · disabled · slow-disabled</li>
+        <li><code>slow_ms</code> — slow-load delay, default 2100 ms</li>
+        <li><code>action_timeout_ms</code> — per-action timeout override</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+  </div>
+</section>
+
+<section class="band" id="saucedemo" aria-labelledby="sauce-h">
+  <div class="band-head">
+    <p class="kicker">Approved external stores</p>
+    <h2 id="sauce-h" class="display-serif">Store checkouts &amp; carts.</h2>
+    <p class="lede">Two approved store origins. SauceDemo order covers the
+      happy path plus must-fail login and checkout cases; stress covers behaviourally challenging
+      accounts with six T-checks (T1–T6). Flipkart adds a real marketplace — guest cart only,
+      never logged in, never purchased.</p>
+  </div>
+  <div class="wf-grid">
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White basket sigil with orbit rings over lavender arches: the store-order workflow">
+        <defs>
+          <linearGradient id="w3-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w3-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w3-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w3-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w3-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w3-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <path d="M160 76 C120 90, 70 120, 30 180"/><path d="M160 76 C200 90, 250 120, 290 180"/>
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w3-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w3-tierB)"/>
+        <g stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round">
+          <path d="M132 68 L188 68 L180 108 L140 108 Z"/>
+          <path d="M142 68 Q160 48 178 68"/>
+          <path d="M152 68 L150 108 M160 68 L160 108 M168 68 L170 108" stroke-width="1.6"/>
+        </g>
+        <circle cx="150" cy="118" r="3.4" fill="#FFFFFF"/><circle cx="170" cy="118" r="3.4" fill="#FFFFFF"/>
+      </svg></div>
+      <span class="wf-id">saucedemo-order</span>
+      <h3>Store order</h3>
+      <p>Log in, sort the catalog, add items to the cart, check out with test details, and confirm.
+        Login, cart, sort, and checkout cases are all selectable.</p>
+      <ul class="wf-params">
+        <li><code>login_case</code> — standard · locked-out · wrong-password (must fail)</li>
+        <li><code>cart_preset</code> — backpack+bike-light · single-backpack · empty-cart</li>
+        <li><code>sort</code> — none · az · za · lohi · hilo</li>
+        <li><code>checkout_case</code> — complete · missing-postal · blank-info (must fail)</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White pulse trace with six check nodes over lavender arches: the behavioural-stress workflow">
+        <defs>
+          <linearGradient id="w4-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w4-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w4-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w4-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w4-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w4-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="42" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="58" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w4-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w4-tierB)"/>
+        <path d="M104 82 h22 l9-20 l11 34 l10-24 l7 10 h33" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="#FFFFFF">
+          <circle cx="112" cy="34" r="3.2"/><circle cx="136" cy="27" r="3.2"/><circle cx="160" cy="25" r="3.2"/>
+          <circle cx="184" cy="27" r="3.2"/><circle cx="208" cy="34" r="3.2"/><circle cx="160" cy="112" r="3.2"/>
+        </g>
+        <path d="M118 46 q42-18 84 0" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="2 3" opacity="0.8"/>
+      </svg></div>
+      <span class="wf-id">saucedemo-stress</span>
+      <h3>Behavioural stress</h3>
+      <p>Order flow under difficult accounts — slow login, site defects — graded by six checks:
+        login readiness (T1), product images (T2), sort (T3), cart contents (T4), remainder after
+        removal (T5), and order completion (T6).</p>
+      <ul class="wf-params">
+        <li><code>account</code> — standard (control) · glitch · problem</li>
+        <li><code>cart_preset</code> — backpack+bike-light · single-backpack</li>
+        <li><code>remove_item</code> — last-added · none</li>
+        <li><code>sort</code> — none · az · za · lohi · hilo</li>
+        <li><code>settle_timeout_ms</code> — post-click settle budget</li>
+      </ul>
+      <div class="wf-links"><a href="/results/#sauce">Stress v2 results <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a><a href="/workbench/web/#/lab">Campaign Lab <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White price tag with orbit rings over lavender arches: the Flipkart guest-cart workflow">
+        <defs>
+          <linearGradient id="w5-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w5-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w5-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w5-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w5-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w5-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w5-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w5-tierB)"/>
+        <g transform="translate(160, 76) rotate(-18)">
+          <path d="M-30 -20 h44 l18 18 -18 18 h-44 a6 6 0 0 1-6-6 v-24 a6 6 0 0 1 6-6z" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="-22" cy="-2" r="3.4" fill="#FFFFFF"/>
+          <path d="M-8 6 h22" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">flipkart-add-to-cart</span>
+      <h3>Flipkart guest cart</h3>
+      <p>Search the Flipkart marketplace, open one product, add it to the guest cart, and confirm
+        the cart names the picked product. No login, no checkout, no purchase — bot gates fail honestly.</p>
+      <ul class="wf-params">
+        <li><code>query</code> — search text, default 'yonex badminton'</li>
+        <li><code>pick</code> — which result to open, default 1</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+  </div>
+</section>
+
+<section class="band" id="general-use" aria-labelledby="general-h">
+  <div class="band-head">
+    <p class="kicker">Approved external origins · read-only</p>
+    <h2 id="general-h" class="display-serif">Ten general-use lookups.</h2>
+    <p class="lede">One fixed adapter per site under <code>adapters/</code>, each with its own approved
+      origin, stage readers, and independent verifier. All ten are read-only — they open pages
+      and record evidence, changing nothing on the target site.</p>
+  </div>
+  <div class="wf-grid">
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White globe sigil over lavender arches: the Wikipedia lookup workflow">
+        <defs>
+          <linearGradient id="w6-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w6-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w6-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w6-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w6-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w6-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w6-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w6-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2.2">
+          <circle cx="0" cy="0" r="26"/>
+          <ellipse cx="0" cy="0" rx="12" ry="26"/>
+          <path d="M-26 0 h52 M-22 -13 h44 M-22 13 h44" stroke-width="1.6"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">wikipedia-article-lookup</span>
+      <h3>Wikipedia article</h3>
+      <p>Search English Wikipedia, open one article, and record its title and summary. Read-only;
+        missing articles fail honestly, never as empty success.</p>
+      <ul class="wf-params">
+        <li><code>query</code> — search text, default 'badminton'</li>
+        <li><code>pick</code> — which result to open, default 1</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White open-book sigil over lavender arches: the Wiktionary lookup workflow">
+        <defs>
+          <linearGradient id="w7-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w7-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w7-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w7-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w7-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w7-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w7-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w7-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round">
+          <path d="M0 -22 C-12 -28, -28 -28, -38 -22 V20 C-28 14, -12 14, 0 20 V-22"/>
+          <path d="M0 -22 C12 -28, 28 -28, 38 -22 V20 C28 14, 12 14, 0 20"/>
+          <path d="M-28 -12 h16 M-28 -4 h16 M12 -12 h16 M12 -4 h16" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">wiktionary-word-lookup</span>
+      <h3>Wiktionary word</h3>
+      <p>Look up one English word and record its definitions. Read-only.</p>
+      <ul class="wf-params">
+        <li><code>word</code> — the word to define, default 'badminton'</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White package sigil over lavender arches: the PyPI lookup workflow">
+        <defs>
+          <linearGradient id="w8-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w8-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w8-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w8-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w8-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w8-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w8-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w8-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round">
+          <path d="M0 -26 L30 -10 V16 L0 32 L-30 16 V-10 Z"/>
+          <path d="M0 -26 V2 M-30 -10 L0 2 L30 -10" stroke-width="1.8"/>
+          <path d="M0 2 V32" stroke-width="1.8"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">pypi-package-lookup</span>
+      <h3>PyPI package</h3>
+      <p>Open one PyPI project page and record its name and latest version. Read-only;
+        missing projects fail honestly.</p>
+      <ul class="wf-params">
+        <li><code>package</code> — project name, default 'playwright'</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White broadcast arcs over lavender arches: the BBC headlines workflow">
+        <defs>
+          <linearGradient id="w9-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w9-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w9-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w9-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w9-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w9-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w9-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w9-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="0" cy="0" r="4" fill="#FFFFFF" stroke="none"/>
+          <path d="M-10 -10 a14 14 0 0 1 0 20 M10 -10 a14 14 0 0 0 0 20"/>
+          <path d="M-18 -18 a26 26 0 0 1 0 36 M18 -18 a26 26 0 0 0 0 36"/>
+          <path d="M-26 -26 a38 38 0 0 1 0 52 M26 -26 a38 38 0 0 0 0 52" opacity="0.7"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">bbc-headlines</span>
+      <h3>BBC headlines</h3>
+      <p>Capture one BBC section's current headlines with links. Read-only.</p>
+      <ul class="wf-params">
+        <li><code>section</code> — news · business · technology</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White person sigil over lavender arches: the GitHub profile workflow">
+        <defs>
+          <linearGradient id="w10-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w10-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w10-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w10-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w10-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w10-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w10-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w10-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2.2">
+          <circle cx="0" cy="-10" r="12"/>
+          <path d="M-24 26 C-24 10, -12 4, 0 4 C12 4, 24 10, 24 26" stroke-linecap="round"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">github-profile</span>
+      <h3>GitHub profile</h3>
+      <p>Open one GitHub profile and record its name, bio, and counts. Read-only.</p>
+      <ul class="wf-params">
+        <li><code>username</code> — profile handle, default 'torvalds'</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White crate sigil over lavender arches: the crates.io lookup workflow">
+        <defs>
+          <linearGradient id="w11-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w11-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w11-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w11-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w11-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w11-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w11-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w11-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round">
+          <rect x="-26" y="-20" width="52" height="44" rx="4"/>
+          <path d="M-26 -6 h52 M-26 10 h52 M-8 -20 v44 M8 -20 v44" stroke-width="1.6"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">crates-lookup</span>
+      <h3>Rust crate</h3>
+      <p>Open one crates.io listing and record its version and description. Read-only.</p>
+      <ul class="wf-params">
+        <li><code>crate</code> — crate name, default 'serde'</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White sun-behind-cloud sigil over lavender arches: the BBC Weather workflow">
+        <defs>
+          <linearGradient id="w12-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w12-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w12-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w12-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w12-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w12-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w12-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w12-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="-8" cy="-8" r="9"/>
+          <path d="M-8 -22 v-4 M-22 -8 h-4 M-18 -18 l-3 -3 M2 -18 l3 -3" stroke-width="1.8"/>
+          <path d="M-22 14 a8 8 0 0 1 2-16 a11 11 0 0 1 21-3 a9 9 0 0 1 13 8 a7 7 0 0 1 -3 11 z" stroke-linejoin="round"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">bbc-weather</span>
+      <h3>BBC Weather city</h3>
+      <p>Open one BBC Weather city forecast and record the outlook. Read-only.</p>
+      <ul class="wf-params">
+        <li><code>city</code> — london · new-york · tokyo · sydney · paris</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White magnifier sigil over lavender arches: the GitHub search workflow">
+        <defs>
+          <linearGradient id="w13-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w13-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w13-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w13-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w13-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w13-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w13-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w13-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
+          <circle cx="-4" cy="-4" r="16"/>
+          <path d="M8 8 L24 24"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">github-search</span>
+      <h3>GitHub search</h3>
+      <p>Search GitHub repositories and record the top matches. Read-only.</p>
+      <ul class="wf-params">
+        <li><code>query</code> — search text, default 'playwright'</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White gauge sigil over lavender arches: the Steam price workflow">
+        <defs>
+          <linearGradient id="w14-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w14-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w14-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w14-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w14-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w14-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w14-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w14-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round">
+          <path d="M-26 12 a28 28 0 0 1 52 0"/>
+          <path d="M-26 12 h-6 M26 12 h6 M0 -20 v-6" stroke-width="1.8"/>
+          <path d="M0 12 L14 -4"/>
+          <circle cx="0" cy="12" r="3.4" fill="#FFFFFF" stroke="none"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">steam-price-check</span>
+      <h3>Steam price</h3>
+      <p>Search the Steam store, open one game, and record its price. Read-only — nothing is bought.</p>
+      <ul class="wf-params">
+        <li><code>query</code> — search text, default 'portal'</li>
+        <li><code>pick</code> — which result to open, default 1</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White atom sigil over lavender arches: the arXiv search workflow">
+        <defs>
+          <linearGradient id="w15-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w15-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w15-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w15-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w15-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w15-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w15-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w15-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2">
+          <ellipse cx="0" cy="0" rx="28" ry="11"/>
+          <ellipse cx="0" cy="0" rx="28" ry="11" transform="rotate(60)"/>
+          <ellipse cx="0" cy="0" rx="28" ry="11" transform="rotate(120)"/>
+          <circle cx="0" cy="0" r="3.6" fill="#FFFFFF" stroke="none"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">arxiv-search</span>
+      <h3>arXiv papers</h3>
+      <p>Search arXiv and record the top matching papers. Read-only.</p>
+      <ul class="wf-params">
+        <li><code>query</code> — search text, default 'transformer'</li>
+      </ul>
+      <div class="wf-links"><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+  </div>
+</section>
+
+<section class="band" id="pilots" aria-labelledby="pilots-h">
+  <div class="band-head">
+    <p class="kicker">User-session pilots</p>
+    <h2 id="pilots-h" class="display-serif">Two pilots for bot-walled sites.</h2>
+    <p class="lede">Stack Overflow and Amazon refuse clean automation sessions, so these two may run on
+      your own logged-in browser profile instead. Chimera never sees credentials: you log in once
+      in a normal browser window and the profile stays on your machine.
+      <a href="/docs/user-sessions.md">How user sessions work</a>.</p>
+  </div>
+  <div class="wf-grid">
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White stacked-layers sigil over lavender arches: the Stack Overflow pilot workflow">
+        <defs>
+          <linearGradient id="w16-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w16-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w16-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w16-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w16-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w16-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w16-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w16-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round">
+          <path d="M-28 -16 L0 -26 L28 -16 L0 -6 Z"/>
+          <path d="M-28 -2 L0 8 L28 -2"/>
+          <path d="M-28 12 L0 22 L28 12"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">stackoverflow-search</span>
+      <h3>Stack Overflow search</h3>
+      <p>Search questions and record the top matches. On a clean session the Cloudflare gate fails
+        the run honestly with login instructions; on your own profile it reads results.</p>
+      <ul class="wf-params">
+        <li><code>query</code> — search text, default 'playwright python click'</li>
+        <li><code>sessions</code> — clean · user (logged-in profile)</li>
+      </ul>
+      <div class="wf-links"><a href="/docs/user-sessions.md">User sessions <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+    <article class="wf-card">
+      <div class="wf-art"><svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White carton-and-arrow sigil over lavender arches: the Amazon pilot workflow">
+        <defs>
+          <linearGradient id="w17-bg" x1="160" y1="0" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#A5B4FC"/><stop offset="55%" stop-color="#DDE4FF"/><stop offset="100%" stop-color="#C7D2FE"/></linearGradient>
+          <radialGradient id="w17-glow" cx="50%" cy="42%" r="45%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/><stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.4"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/></radialGradient>
+          <linearGradient id="w17-tierA" x1="160" y1="120" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366F1" stop-opacity="0.7"/><stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/></linearGradient>
+          <linearGradient id="w17-tierB" x1="160" y1="140" x2="160" y2="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.85"/><stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/></linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#w17-bg)"/>
+        <circle cx="160" cy="76" r="70" fill="url(#w17-glow)"/>
+        <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+          <circle cx="160" cy="76" r="52" stroke-dasharray="2 3"/><circle cx="160" cy="76" r="64" stroke-dasharray="1.5 4"/>
+        </g>
+        <path d="M0 180 V148 q16-18 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w17-tierA)"/>
+        <path d="M-16 180 V160 q16-16 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 V180 Z" fill="url(#w17-tierB)"/>
+        <g transform="translate(160, 76)" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round">
+          <path d="M-26 -18 h52 v30 h-52 z"/>
+          <path d="M-26 -18 l8 -6 h36 l8 6 M0 -24 v-6" stroke-linecap="round"/>
+          <path d="M-14 22 C-4 30, 12 30, 22 20 M16 16 l6 4 l1 -7" stroke-linecap="round"/>
+        </g>
+      </svg></div>
+      <span class="wf-id">amazon-price-check</span>
+      <h3>Amazon price</h3>
+      <p>Search Amazon, open one product, and record its price. Read-only — guest results only,
+        no cart, no checkout; bot gates fail honestly with login instructions.</p>
+      <ul class="wf-params">
+        <li><code>query</code> — search text, default 'kindle'</li>
+        <li><code>pick</code> — which result to open, default 1</li>
+        <li><code>sessions</code> — clean · user (logged-in profile)</li>
+      </ul>
+      <div class="wf-links"><a href="/docs/user-sessions.md">User sessions <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a><a href="/workbench/web/#/workspace">Run in Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></div>
+    </article>
+  </div>
+</section>
+
+<section class="band" id="studio" aria-labelledby="studio-h">
+  <div class="band-head">
+    <p class="kicker">Workflow Studio</p>
+    <h2 id="studio-h" class="display-serif">Compose step workflows, within bounds.</h2>
+    <p class="lede">Studio (<code>workbench/studio.py</code>) composes workflows from nine step types with
+      validation and versioning. Wait conditions are <code>visible</code>, <code>hidden</code>, and
+      <code>text-present</code>; environments are <code>demo</code> and <code>saucedemo</code>.</p>
+  </div>
+  <ul class="chip-row" aria-label="Nine Studio step types">
+    <li>navigate</li>
+    <li>click</li>
+    <li>fill</li>
+    <li>select</li>
+    <li class="step-read">wait</li>
+    <li class="step-verify">verify-text</li>
+    <li class="step-verify">verify-count</li>
+    <li class="step-read">capture</li>
+    <li class="step-verify">verify-state</li>
+  </ul>
+  <div class="spec-grid" style="margin-top:24px">
+    <div class="spec-card">
+      <h3>Per-step bounds</h3>
+      <ul>
+        <li>At most 50 steps per workflow</li>
+        <li>Label ≤ 120 chars · selector ≤ 500 · text ≤ 2000</li>
+        <li><code>timeout_ms</code> 100–60000 (default 5000)</li>
+        <li><code>max_attempts</code> 1–5 (default 3)</li>
+      </ul>
+    </div>
+    <div class="spec-card">
+      <h3>Idempotency defaults</h3>
+      <ul>
+        <li>Clicks default <strong>non-idempotent</strong> — blind repeats refused</li>
+        <li>Fills and selects overwrite, default idempotent</li>
+        <li>Navigate, waits, verifications, captures repeat-safe</li>
+      </ul>
+    </div>
+    <div class="spec-card">
+      <h3>Secrets</h3>
+      <p>Variables accept non-secret defaults, but <strong>secrets accept no saved
+        default</strong> — a secret is missing unless provided for the run, and values are
+        redacted from evidence.</p>
+      <p><a href="/workbench/web/#/studio">Open Workflow Studio <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="roadmap" aria-labelledby="roadmap-h">
+  <div class="band-head">
+    <p class="kicker">Implemented vs roadmap</p>
+    <h2 id="roadmap-h" class="display-serif">The honest split.</h2>
+  </div>
+  <div class="split-cols">
+    <div class="spec-card">
+      <span class="shipped-tag">Implemented</span>
+      <h3>Runnable today</h3>
+      <ul>
+        <li>17 workflows: create-project, fill-contact-form, saucedemo-order, saucedemo-stress, flipkart-add-to-cart, wikipedia-article-lookup, wiktionary-word-lookup, pypi-package-lookup, bbc-headlines, github-profile, crates-lookup, bbc-weather, github-search, steam-price-check, arxiv-search, stackoverflow-search, amazon-price-check</li>
+        <li>Demo-page fault knobs: <code>?slow=</code> delay + disabled submit</li>
+        <li>Studio: 9 step types, validation, versioning, per-step bounds</li>
+        <li>Campaign Lab analytics over persisted runs</li>
+        <li>Latest <a href="/results/#smoke">live smoke run</a>: 16/17 verified-success on 2026-11-03 (Stack Overflow refused by its bot gate)</li>
+      </ul>
+    </div>
+    <div class="spec-card is-roadmap">
+      <span class="roadmap-tag">Roadmap — not built</span>
+      <h3>Explicitly future</h3>
+      <ul>
+        <li>Arbitrary third-party sites (<code>FUTURE_WORKFLOWS.third-party-sites</code> — needs site-specific adapters; fourteen exist: SauceDemo, Flipkart, Wikipedia, Wiktionary, PyPI, BBC, GitHub, crates.io, BBC Weather, GitHub search, Steam, arXiv, Stack Overflow, Amazon)</li>
+        <li>Studio or Lab fault injection — no such feature; demo-page knobs only</li>
+        <li>Studio campaign support — under consideration only</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:28px"><a class="btn-obsidian" href="/demo/">Watch recorded executions <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></p>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="foot-word">chimera</span>
+      <p>An experimental browser agent you can check up on. Action → Execution → Observation → Independent Verification → Inspectable Evidence.</p>
+    </div>
+    <div>
+      <div class="foot-h">Application surfaces</div>
+      <ul>
+        <li><a href="/workbench/web/#/workspace"><svg class="foot-ic" aria-hidden="true"><use href="#site-workbench"/></svg>Workbench</a></li>
+        <li><a href="/workbench/web/#/studio"><svg class="foot-ic" aria-hidden="true"><use href="#site-studio"/></svg>Workflow Studio</a></li>
+        <li><a href="/workbench/web/#/lab"><svg class="foot-ic" aria-hidden="true"><use href="#site-lab"/></svg>Campaign Lab</a></li>
+        <li><a href="/research/#/command"><svg class="foot-ic" aria-hidden="true"><use href="#site-research"/></svg>Research Console</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Sitemap</div>
+      <ul>
+        <li><a href="/"><svg class="foot-ic" aria-hidden="true"><use href="#site-home"/></svg>Home</a></li>
+        <li><a href="/product/"><svg class="foot-ic" aria-hidden="true"><use href="#site-product"/></svg>Product</a></li>
+        <li><a href="/workflows/"><svg class="foot-ic" aria-hidden="true"><use href="#site-workflows"/></svg>Workflows</a></li>
+        <li><a href="/demo/"><svg class="foot-ic" aria-hidden="true"><use href="#site-demo"/></svg>Demo</a></li>
+        <li><a href="/results/"><svg class="foot-ic" aria-hidden="true"><use href="#site-results"/></svg>Results</a></li>
+        <li><a href="/evidence/"><svg class="foot-ic" aria-hidden="true"><use href="#site-evidence"/></svg>Evidence</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Evidence</div>
+      <ul>
+        <li><a href="/artifacts/eval-20261028/report.md"><svg class="foot-ic" aria-hidden="true"><use href="#g-arrow-down"/></svg>Held-out report</a></li>
+        <li><a href="/docs/benchmark_design.md"><svg class="foot-ic" aria-hidden="true"><use href="#g-dossier"/></svg>Benchmark design</a></li>
+        <li><a href="/docs/evaluation.md"><svg class="foot-ic" aria-hidden="true"><use href="#g-dossier"/></svg>Evaluation criteria</a></li>
+        <li><a href="/research/#/audit"><svg class="foot-ic" aria-hidden="true"><use href="#site-research"/></svg>Audit &amp; reproducibility</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>Chimera research prototype · figures computed live from frozen evidence</span>
+    <span>Pure white foundation (#FFFFFF) · zero runtime dependencies</span>
+  </div>
+</footer>
+<script type="module" src="/site/workflows.js"></script>
+</body>
+</html>

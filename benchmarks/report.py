@@ -76,6 +76,7 @@ WILSON_Z = 1.96
 BASELINE_DISPLAY = {
     "chimera": "Chimera",
     "baseline-a": "A — replay",
+    "baseline-b": "B — Muse Spark",
 }
 
 #: Disclaimer block, evaluation.md §6.3, reproduced verbatim. Guarded

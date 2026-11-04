@@ -83,4 +83,6 @@ test('scopeStrip: zoom changes pixel width; empty lanes stay explicit', () => {
   assert.match(narrow.svg, /no marks recorded/);
   assert.match(narrow.svg, /categorical slots/);
   assert.equal(countClass(narrow.svg, 'scope-event'), 1);
+  assert.match(narrow.svg, /Trace <tspan[^>]*>\(1\)<\/tspan>/);
+  assert.match(narrow.svg, /Verdicts <tspan[^>]*>\(0\)<\/tspan>/);
 });

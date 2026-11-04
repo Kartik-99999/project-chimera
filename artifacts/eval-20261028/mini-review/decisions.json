@@ -1,8 +1,97 @@
 {
-  "decisions": {},
-  "exported_at": null,
+  "schema": "chimera-mini-review-decisions/1",
   "packet": "packet.json",
   "packet_sha256": "881a5323aa72f508e97da23c6499a4d2bd20e174ac0132a20055301969251019",
-  "reviewer": "",
-  "schema": "chimera-mini-review-decisions/1"
+  "reviewer": "Kartik",
+  "exported_at": "2026-10-30T06:24:18.677Z",
+  "decisions": {
+    "eval-20261028-baseline-a::trial-0009": {
+      "assessment": "verified-success",
+      "agreement": "agrees",
+      "sufficiency": "sufficient",
+      "reason": "The recorded snapshot directly supports all three postconditions. P1 passes because confirmation_visible is true. P2 passes because the project list contains exactly one entry matching the expected stored name, \"Padded Name\". P3 passes because the list contains exactly one entry and no unexpected items. The observed navigation, fill, and click actions all completed with outcome \"ok\", providing additional context. The snapshot is sufficient to judge the specified postconditions without requiring a screenshot.",
+      "missing_evidence": "",
+      "blinded": true,
+      "assessed_at": "2026-10-30T05:55:16.802Z",
+      "revealed_at": "2026-10-30T06:01:01.230Z",
+      "corrections": []
+    },
+    "eval-20261028-baseline-a::trial-0052": {
+      "assessment": "verified-failure",
+      "agreement": "agrees",
+      "sufficiency": "sufficient",
+      "reason": "The captured snapshot shows confirmation_visible=false and an empty project list (items count = 0). Therefore P1 is not satisfied, P2 is not satisfied because the expected project \"Padded Name\" does not appear, and P3 is not satisfied because the list does not contain exactly one entry. The replay report additionally records a TimeoutError during the fill step, after successful navigation. The snapshot provides sufficient direct evidence to establish failure of all three postconditions.",
+      "missing_evidence": "",
+      "blinded": true,
+      "assessed_at": "2026-10-30T06:02:25.431Z",
+      "revealed_at": "2026-10-30T06:04:21.130Z",
+      "corrections": []
+    },
+    "eval-20261028-baseline-a::trial-0098": {
+      "assessment": "verified-failure",
+      "agreement": "agrees",
+      "sufficiency": "sufficient",
+      "reason": "The captured snapshot shows confirmation_visible=false and an empty project list (items count = 0). Therefore P1 is not satisfied, P2 is not satisfied because the expected project \"Padded Name\" does not appear, and P3 is not satisfied because the list does not contain exactly one entry. The replay report records a TimeoutError during the fill step after successful navigation. The structured snapshot provides sufficient direct evidence to establish failure of all three postconditions.",
+      "missing_evidence": "",
+      "blinded": true,
+      "assessed_at": "2026-10-30T06:07:18.163Z",
+      "revealed_at": "2026-10-30T06:09:05.429Z",
+      "corrections": []
+    },
+    "eval-20261028-baseline-a::trial-0143": {
+      "assessment": "verified-failure",
+      "agreement": "agrees",
+      "sufficiency": "sufficient",
+      "reason": "The captured snapshot shows confirmation_visible=false and an empty project list (items count = 0). Therefore P1 is not satisfied, P2 is not satisfied because the expected project \"Padded Name\" does not appear, and P3 is not satisfied because the list does not contain exactly one entry. The replay report records successful navigation followed by a TimeoutError during the fill step. The structured snapshot provides sufficient direct evidence to establish failure of all three postconditions.",
+      "missing_evidence": "",
+      "blinded": true,
+      "assessed_at": "2026-10-30T06:11:32.611Z",
+      "revealed_at": "2026-10-30T06:12:31.297Z",
+      "corrections": []
+    },
+    "eval-20261028-chimera::trial-0006": {
+      "assessment": "verified-success",
+      "agreement": "agrees",
+      "sufficiency": "sufficient",
+      "reason": "The captured snapshot shows confirmation_visible=true and exactly one project-list entry matching the expected stored name \"Padded Name\". Therefore P1, P2, and P3 are all satisfied. The trace additionally records successful navigation, fill, and click actions, followed by two verification_passed events for the confirmation message and project list, and a final run_succeeded event. The structured snapshot and trace provide sufficient evidence to establish success of all three postconditions.",
+      "missing_evidence": "",
+      "blinded": true,
+      "assessed_at": "2026-10-30T06:14:14.948Z",
+      "revealed_at": "2026-10-30T06:14:33.264Z",
+      "corrections": []
+    },
+    "eval-20261028-chimera::trial-0055": {
+      "assessment": "verified-success",
+      "agreement": "agrees",
+      "sufficiency": "sufficient",
+      "reason": "The captured snapshot shows confirmation_visible=true and exactly one project-list entry matching the expected stored name \"Padded Name\". Therefore P1, P2, and P3 are all satisfied. The trace records successful navigation, fill, and click operations. The fill operation took 2,517 ms under the S-SLOW condition, but completed successfully. Two subsequent verification_passed events confirm the confirmation message and project list. The snapshot and trace provide sufficient evidence to establish success of all three postconditions.",
+      "missing_evidence": "",
+      "blinded": true,
+      "assessed_at": "2026-10-30T06:16:24.147Z",
+      "revealed_at": "2026-10-30T06:16:28.015Z",
+      "corrections": []
+    },
+    "eval-20261028-chimera::trial-0100": {
+      "assessment": "verified-failure",
+      "agreement": "agrees",
+      "sufficiency": "sufficient",
+      "reason": "The captured snapshot shows confirmation_visible=false and an empty project list (items count = 0). Therefore P1 is not satisfied, P2 is not satisfied because the expected project \"Padded Name\" does not appear, and P3 is not satisfied because the list does not contain exactly one entry. The trace records successful navigation followed by a failed fill operation. The retry mechanism exhausted its retry budget because the Project Name input remained disabled, and the run ended with run_failed. The snapshot and detailed failure trace provide sufficient evidence to establish failure of all three postconditions.",
+      "missing_evidence": "",
+      "blinded": true,
+      "assessed_at": "2026-10-30T06:19:24.962Z",
+      "revealed_at": "2026-10-30T06:19:37.047Z",
+      "corrections": []
+    },
+    "eval-20261028-chimera::trial-0142": {
+      "assessment": "verified-failure",
+      "agreement": "agrees",
+      "sufficiency": "sufficient",
+      "reason": "The captured snapshot shows confirmation_visible=false and an empty project list (items count = 0). Therefore P1 is not satisfied, P2 is not satisfied because the expected project \"Padded Name\" does not appear, and P3 is not satisfied because the list does not contain exactly one entry. The trace records successful navigation followed by a failed fill operation because the Project Name input remained disabled. The retry budget was exhausted and the run ended with run_failed. The structured snapshot and detailed failure trace provide sufficient evidence to establish failure of all three postconditions.",
+      "missing_evidence": "",
+      "blinded": true,
+      "assessed_at": "2026-10-30T06:21:38.878Z",
+      "revealed_at": "2026-10-30T06:21:41.813Z",
+      "corrections": []
+    }
+  }
 }

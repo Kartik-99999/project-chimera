@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="146" role="img" aria-label="v2 funnel — cumulative survivors (n=40 verified)">
+<rect width="640" height="146" fill="#0b0f1a"/>
+<text x="16" y="24" fill="#e8ecf4" font-size="15" font-family="sans-serif" font-weight="bold">v2 funnel — cumulative survivors (n=40 verified)</text>
+<text x="190" y="50" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">login (T1)</text>
+<rect x="200" y="38" width="290.0" height="15" fill="#39d0d8"/>
+<text x="498.0" y="51" fill="#8b93a7" font-size="12" font-family="monospace">40/40</text>
+<text x="190" y="84" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">cart (T4)</text>
+<rect x="200" y="72" width="203.0" height="15" fill="#39d0d8"/>
+<text x="411.0" y="85" fill="#8b93a7" font-size="12" font-family="monospace">28/40</text>
+<text x="190" y="118" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">order complete (T6)</text>
+<rect x="200" y="106" width="116.0" height="15" fill="#39d0d8"/>
+<text x="324.0" y="119" fill="#8b93a7" font-size="12" font-family="monospace">16/40</text>
+</svg>

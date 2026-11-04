@@ -9,12 +9,12 @@ import { sliceCells, matchCellKey } from '../viz/stats.js';
 import { buildLineage, cellKeyOf } from '../viz/lineageModel.js';
 import { attachTip } from '../viz/tooltip.js';
 import { link } from '../app.js';
-import { pageHead, emptyState, kvList } from '../components.js';
+import { pageHead, emptyState, kvList, pill, globes, secHead } from '../components.js';
 
 const LAYERS = ['Manifest', 'Run', 'Cell', 'Episodes', 'Artifacts', 'Verdicts', 'Plans & reports'];
 const KIND_COLORS = {
-  manifest: '#a78bfa', run: '#39d0d8', audited: '#2aa8af', cell: '#6ea8fe',
-  episode: '#a6b0c2', artifacts: '#69748a', verdict: '#e5a83b', plan: '#a78bfa', report: '#8b94a7',
+  manifest: '#6d28d9', run: '#0e7490', audited: '#0e7490', cell: '#1d4ed8',
+  episode: '#5b6b80', artifacts: '#8a94a6', verdict: '#b45309', plan: '#6d28d9', report: '#8a94a6',
 };
 
 async function fetchOk(path) {
@@ -86,7 +86,7 @@ export async function pageLineage(el, { query }) {
 
   const hrefOf = (h) => (h ? link(h.route, h.params || [], h.query || {}) : '');
   let svg = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="group" aria-label="Provenance graph for cell ${esc(cellKey)}">`;
-  svg += LAYERS.map((t, i) => `<text x="${padL + i * colW}" y="16" text-anchor="middle" font-size="12" font-weight="700" fill="#e8ecf3">${esc(t)}</text>`).join('');
+  svg += LAYERS.map((t, i) => `<text x="${padL + i * colW}" y="16" text-anchor="middle" font-size="12" font-weight="700" fill="#1b2431">${esc(t)}</text>`).join('');
   for (const e of edges) {
     const a = pos.get(e.from), b = pos.get(e.to);
     if (!a || !b) continue;
@@ -95,31 +95,44 @@ export async function pageLineage(el, { query }) {
     const d = `M${x0},${y0} C${mx},${y0} ${mx},${y1} ${x1},${y1}`;
     const tip = `${e.from} → ${e.to}: ${e.label}`;
     svg += `<g class="lineage-edge${dimmed(e.from) || dimmed(e.to) ? ' dimmed' : ''}">`
-      + `<path d="${d}" fill="none" stroke="${e.valid ? '#3b4763' : '#e5606e'}" stroke-width="${e.valid ? 1.6 : 2.4}"${e.valid ? '' : ' stroke-dasharray="5 3"'}>`
+      + `<path d="${d}" fill="none" stroke="${e.valid ? '#cfc4a8' : '#b91c1c'}" stroke-width="${e.valid ? 1.6 : 2.4}"${e.valid ? '' : ' stroke-dasharray="5 3"'}>`
       + `<title>${esc(tip)}</title></path></g>`;
   }
   for (const n of nodes) {
     const p = pos.get(n.id);
-    const col = KIND_COLORS[n.kind] || '#a6b0c2';
+    const col = KIND_COLORS[n.kind] || '#5b6b80';
     const tip = `${n.label} — ${n.sub || n.kind}${n.missing ? ' (missing)' : ''}`;
     const label = n.label.length > 20 ? `${n.label.slice(0, 19)}…` : n.label;
     const sub = (n.sub || '').length > 24 ? `${(n.sub || '').slice(0, 23)}…` : (n.sub || '');
     svg += `<g class="lineage-node${dimmed(n.id) ? ' dimmed' : ''}${selected === n.id ? ' sel' : ''}" data-node="${esc(n.id)}" tabindex="0" role="button" aria-label="${esc(tip)}" data-tip="${esc(tip)} — select for details">`
       + `<circle class="halo" cx="${p.x}" cy="${p.y + NH / 2}" r="30" fill="transparent"/>`
-      + `<rect x="${p.x - NW / 2}" y="${p.y}" width="${NW}" height="${NH}" rx="8" fill="#101623" stroke="${n.missing ? '#e5606e' : col}" stroke-width="${selected === n.id ? 2.6 : 1.6}"${n.missing ? ' stroke-dasharray="5 3"' : ''}/>`
+      + `<rect x="${p.x - NW / 2}" y="${p.y}" width="${NW}" height="${NH}" rx="8" fill="#ffffff" stroke="${n.missing ? '#b91c1c' : col}" stroke-width="${selected === n.id ? 2.6 : 1.6}"${n.missing ? ' stroke-dasharray="5 3"' : ''}/>`
       + `<circle cx="${p.x - NW / 2 + 13}" cy="${p.y + 14}" r="4" fill="${col}"/>`
-      + `<text x="${p.x - NW / 2 + 22}" y="${p.y + 18}" font-size="10.5" font-weight="700" fill="#e8ecf3">${esc(label)}</text>`
-      + `<text x="${p.x - NW / 2 + 10}" y="${p.y + 35}" font-size="9.5" fill="#a6b0c2">${esc(sub)}</text>`
+      + `<text x="${p.x - NW / 2 + 22}" y="${p.y + 18}" font-size="10.5" font-weight="700" fill="#1b2431">${esc(label)}</text>`
+      + `<text x="${p.x - NW / 2 + 10}" y="${p.y + 35}" font-size="9.5" fill="#5b6b80">${esc(sub)}</text>`
       + `<title>${esc(tip)}</title></g>`;
   }
   svg += '</svg>';
 
   const sel = selected && nodes.find((n) => n.id === selected);
+  const rels = sel ? edges.filter((e) => e.from === sel.id || e.to === sel.id) : [];
+  const relHtml = !sel ? '' : rels.length
+    ? `<h4 style="font-size:12px;margin:12px 0 6px">Relationships (${rels.length})</h4><ul class="rel-list">`
+      + rels.map((e) => {
+        const out = e.from === sel.id;
+        const other = nodes.find((n) => n.id === (out ? e.to : e.from));
+        const name = other ? other.label : (out ? e.to : e.from);
+        const hop = link('lineage', [], { run: runId, cell: cellKey, q: query.q || '', node: out ? e.to : e.from });
+        return `<li><a href="${hop}">${out ? '→' : '←'} ${esc(name)}</a> `
+          + `<span style="color:var(--ink-3)">${esc(e.label)}</span> ${e.valid ? '✓' : '<strong>✗ INVALID</strong>'}</li>`;
+      }).join('') + `</ul>`
+    : '<p style="color:var(--ink-3)">No recorded edges touch this node.</p>';
   const detail = !sel
     ? '<p style="color:var(--ink-3)">Select a node to inspect its identifiers and open the underlying record. Search dims non-matching nodes.</p>'
     : `<h3 style="font-size:13px;margin:0 0 6px">${esc(sel.label)}</h3>`
       + `<p style="color:var(--ink-2);margin-top:0">${esc(LAYERS[sel.layer])} · ${esc(sel.kind)}${sel.missing ? ' · <strong>missing</strong>' : ''}<br>${esc(sel.sub || '')}</p>`
       + kvList((sel.meta || []).map(([k, v]) => [k, `<code>${esc(v)}</code>`]))
+      + relHtml
       + (hrefOf(sel.href) ? `<p><a class="btn" href="${hrefOf(sel.href)}">Open record →</a></p>` : '<p style="color:var(--ink-3)">No console view for this node; identifiers above are the evidence.</p>');
 
   const nodeRows = nodes.map((n) => (
@@ -131,7 +144,20 @@ export async function pageLineage(el, { query }) {
     + `<td style="font-size:12px">${esc(e.label)}</td><td>${e.valid ? '✓ valid' : '✗ INVALID'}</td></tr>`)).join('');
   const banners = issues.map((i) => `<div class="banner ${i.severity === 'error' ? 'bad' : 'info'}">${esc(i.text)}</div>`).join('');
 
-  el.innerHTML = pageHead('Provenance Graph', [['Provenance Graph']]) + banners
+  const invalidEdges = edges.filter((e) => !e.valid).length;
+  const missingNodes = nodes.filter((n) => n.missing).length;
+  const navy = `<div class="navy">${globes()}<h2>From manifest to verdict</h2>`
+    + `<p class="sub">Layers as a descending narrative — manifest, run, cell, episodes, artifacts, verdicts, plans. Every edge a verified relationship check; the story reads top to bottom, and the node + edge tables persist beneath as the checkable substrate.</p>`
+    + `<p>${manifest ? `<span class="glass"><span class="dot" style="background:#8fb4ff"></span>manifest ${esc(manifest.manifest_id)}</span>` : ''}`
+    + `<span class="glass"><span class="dot" style="background:#6ee7a0"></span>${fmtInt(nodes.length)} nodes · ${fmtInt(edges.length)} edges</span>`
+    + (invalidEdges === 0 && missingNodes === 0
+      ? `<span class="glass"><span class="dot" style="background:#6ee7a0"></span>all edges valid · nothing missing</span>`
+      : `<span class="glass"><span class="dot" style="background:#f87171"></span>${invalidEdges} invalid edges · ${missingNodes} missing</span>`) + `</p></div>`;
+  el.innerHTML = pageHead('Provenance Graph', [['Provenance Graph']], '', {
+    kicker: `Routes #/river · #/lineage · ${esc(runId)}`,
+    lede: 'Validated lineage for one run cell — manifest to run to cell to episodes to artifacts, plus verdict, plan, and report nodes joined by recorded identifiers.',
+    meta: `<span class="pill"><span class="dot"></span>${fmtInt(nodes.length)} nodes · ${fmtInt(edges.length)} edges</span>${invalidEdges === 0 ? pill('ok', 'edges valid') : pill('bad', `${invalidEdges} invalid`)}`,
+  }) + banners + navy + secHead('Provenance Graph', 'Soft-graph pattern timeline narrative — layers as a vertical story, checks as checkpoints.')
     + `<div class="card"><div class="filters">
         <div class="field"><label for="l-run">Run</label><select id="l-run">${['eval-20261028-chimera', 'eval-20261028-baseline-a', 'dev-20261028-chimera', 'dev-20261028-baseline-a'].map((r) => `<option value="${r}"${r === runId ? ' selected' : ''}>${r}</option>`).join('')}</select></div>
         <div class="field" style="min-width:280px"><label for="l-cell">Cell</label><select id="l-cell">${options.map((o) => `<option value="${esc(o.key)}"${o.key === cellKey ? ' selected' : ''}>${esc(o.label)}</option>`).join('')}</select></div>

@@ -1,14 +1,48 @@
 /* Shared presentational components. Pure render helpers + small widgets. */
 import { esc, mVal, fmtInt, baselineLabel } from './data.js';
 
-export function pageHead(title, crumb = [], actions = '') {
+export function pageHead(title, crumb = [], actions = '', opts = null) {
   const trail = crumb.map((c, i) => {
     const last = i === crumb.length - 1;
     return last ? `<span aria-current="page">${esc(c[0])}</span>`
       : `<a href="${c[1]}">${esc(c[0])}</a>`;
   }).join(' <span aria-hidden="true">›</span> ');
+  // Hero variant: the same h1/crumb inside the organic pastel field.
+  // opts = { kicker, lede, meta } — all values are caller-trusted HTML.
+  if (opts && (opts.kicker || opts.lede || opts.meta)) {
+    return `<div class="hero"><div class="crumb">${trail}</div>`
+      + (opts.kicker ? `<span class="kicker">${opts.kicker}</span>` : '')
+      + `<div class="page-head"><div><h1>${esc(title)}</h1></div><div class="btn-row">${actions}</div></div>`
+      + (opts.lede ? `<p class="lede">${opts.lede}</p>` : '')
+      + (opts.meta ? `<div class="meta">${opts.meta}</div>` : '')
+      + `</div>`;
+  }
   return `<div class="crumb">${trail}</div>
     <div class="page-head"><div><h1>${esc(title)}</h1></div><div class="btn-row">${actions}</div></div>`;
+}
+
+/* Card-top art banner: pastel contour wash, procedural inline SVG. */
+const ART_PATHS = [
+  '<path d="M-10 70 C 120 40, 200 84, 330 52 S 520 30, 620 58"/><path d="M-10 80 C 140 52, 230 92, 360 62 S 530 44, 620 68" opacity=".6"/><circle cx="492" cy="24" r="14" opacity=".55"/><circle cx="120" cy="20" r="7" opacity=".5"/>',
+  '<path d="M-10 60 C 150 20, 260 78, 420 40 S 560 30, 620 52"/><circle cx="90" cy="26" r="9"/><circle cx="500" cy="60" r="6"/>',
+  '<path d="M-10 50 C 160 80, 300 24, 460 58 S 570 50, 620 40"/><circle cx="200" cy="30" r="7"/><circle cx="430" cy="62" r="10"/>',
+  '<path d="M-10 64 C 170 30, 280 74, 440 44 S 570 36, 620 56"/><circle cx="150" cy="58" r="8"/>',
+  '<path d="M-10 44 C 150 70, 300 30, 470 60 S 570 52, 620 46"/><circle cx="330" cy="26" r="8"/>',
+];
+const ART_HUES = ['peach', 'sky', 'mint', 'lilac', 'rose'];
+export function art(i = 0) {
+  const n = ((i % ART_HUES.length) + ART_HUES.length) % ART_HUES.length;
+  return `<div class="art ${ART_HUES[n]}" aria-hidden="true"><svg viewBox="0 0 600 88" preserveAspectRatio="none"><g fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".85">${ART_PATHS[n]}</g></svg></div>`;
+}
+
+/* Wireframe globes for navy immersive panels (decorative). */
+export function globes() {
+  return `<svg class="globe" viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="#8fb4ff" stroke-width="1"><circle cx="100" cy="100" r="90"/><circle cx="100" cy="100" r="66"/><circle cx="100" cy="100" r="42"/><ellipse cx="100" cy="100" rx="90" ry="34"/><ellipse cx="100" cy="100" rx="90" ry="66"/><line x1="10" y1="100" x2="190" y2="100"/><line x1="100" y1="10" x2="100" y2="190"/></g></svg>`
+    + `<svg class="globe two" viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="#ffc9a3" stroke-width="1"><circle cx="100" cy="100" r="90"/><ellipse cx="100" cy="100" rx="90" ry="36"/><line x1="100" y1="10" x2="100" y2="190"/></g></svg>`;
+}
+
+export function secHead(title, sub = '', side = '') {
+  return `<div class="sec-head"><h2>${esc(title)}</h2>${sub ? `<p>${sub}</p>` : ''}${side ? `<span class="side">${side}</span>` : ''}</div>`;
 }
 
 export function pill(kind, text) {
@@ -29,11 +63,12 @@ export function auditPill(state) {
   return pill('warn', 'provisional');
 }
 
-export function statCard({ value, label, sub = '', href = '' }) {
+export function statCard({ value, label, sub = '', href = '', cls = '' }) {
   const inner = `<div class="stat-value">${value}</div><div class="stat-label">${esc(label)}</div>`
     + (sub ? `<div class="stat-sub">${sub}</div>` : '');
-  return href ? `<a class="card tight stat" href="${href}">${inner}</a>`
-    : `<div class="card tight stat">${inner}</div>`;
+  const klass = cls ? `card tight stat ${cls}` : 'card tight stat';
+  return href ? `<a class="${klass}" href="${href}">${inner}</a>`
+    : `<div class="${klass}">${inner}</div>`;
 }
 
 export function emptyState(title, body, action = '') {

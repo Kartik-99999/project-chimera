@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Chimera Workbench: run real browser workflows, verify the result, analyse executions.">
+<title>Chimera Workbench</title>
+<link rel="stylesheet" href="/research/css/tokens.css">
+<link rel="stylesheet" href="/research/css/convergence.css">
+<link rel="stylesheet" href="/workbench/web/css/wb.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpolygon points='12,2 20,8 20,16 12,22 4,16 4,8' fill='none' stroke='%230f172a' stroke-width='2' stroke-linejoin='round'/%3E%3Cline x1='12' y1='2' x2='12' y2='22' stroke='%23C0563B' stroke-width='2'/%3E%3Cline x1='4' y1='8' x2='20' y2='16' stroke='%231E9A8A' stroke-width='1.4'/%3E%3Cline x1='20' y1='8' x2='4' y2='16' stroke='%233A6EA5' stroke-width='1.4'/%3E%3C/svg%3E">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="nav-workspace" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="7" height="7" rx="2"/>
+      <rect x="4" y="13" width="7" height="7" rx="2"/>
+      <rect x="13" y="13" width="7" height="7" rx="2"/>
+    </g>
+    <circle cx="16.5" cy="7.5" r="4.4" fill="none" stroke="#535BD5" stroke-width="1.4" opacity="0.38"/>
+    <circle cx="16.5" cy="7.5" r="2" fill="#535BD5"/>
+  </symbol>
+  <symbol id="nav-history" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 9.5A8 8 0 0 1 19 7"/>
+      <polyline points="16.2,4.6 19.2,6.8 16.9,9.6"/>
+      <circle cx="12" cy="14" r="6"/>
+      <path d="M12 14v-3.2M12 14l2.6 1.4"/>
+    </g>
+    <circle cx="12" cy="14" r="1.5" fill="#535BD5"/>
+  </symbol>
+  <symbol id="nav-analytics" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4.5" y="12" width="3.6" height="7" rx="1"/>
+      <rect x="10.2" y="8.6" width="3.6" height="10.4" rx="1"/>
+      <rect x="15.9" y="5.2" width="3.6" height="13.8" rx="1"/>
+      <path d="M4 21.5h16"/>
+    </g>
+    <polyline points="4,14.5 9,10.5 14,12 20,5" fill="none" stroke="#535BD5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="20" cy="5" r="1.9" fill="#535BD5"/>
+  </symbol>
+  <symbol id="nav-lab" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 3.5h4"/>
+      <path d="M10.7 3.5v5.1L5.8 17.6a1.6 1.6 0 0 0 1.4 2.4h9.6a1.6 1.6 0 0 0 1.4-2.4L13.3 8.6V3.5"/>
+      <path d="M8 14.8h8"/>
+    </g>
+    <circle cx="15.5" cy="5.8" r="1.5" fill="#535BD5"/>
+    <circle cx="18.2" cy="9.4" r="1" fill="none" stroke="currentColor" stroke-width="1.3"/>
+  </symbol>
+  <symbol id="nav-studio" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7.2 15.3l2.9-2M13.9 11l2.9-2"/>
+      <circle cx="5" cy="17" r="2.6"/>
+      <circle cx="12" cy="12" r="2.6"/>
+    </g>
+    <circle cx="19" cy="7" r="4.3" fill="none" stroke="#535BD5" stroke-width="1.4" opacity="0.38"/>
+    <circle cx="19" cy="7" r="2" fill="#535BD5"/>
+  </symbol>
+  <symbol id="nav-research" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3.5" y="5" width="17" height="14" rx="2.5"/>
+      <path d="M3.5 9.2h17"/>
+      <polyline points="7.5,13.6 10,15.4 7.5,17.2"/>
+      <path d="M12.5 17.4h4.5"/>
+    </g>
+    <circle cx="5.9" cy="7.1" r="1" fill="currentColor"/>
+    <circle cx="8.7" cy="7.1" r="1" fill="currentColor" opacity="0.45"/>
+    <circle cx="18.2" cy="7.1" r="1.3" fill="#535BD5"/>
+  </symbol>
+  <symbol id="st-pass" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="8.5"/>
+      <path d="M8.3 12.3l2.5 2.5 4.9-5.4"/>
+    </g>
+  </symbol>
+  <symbol id="st-fail" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="8.5"/>
+      <path d="M9.2 9.2l5.6 5.6M14.8 9.2l-5.6 5.6"/>
+    </g>
+  </symbol>
+  <symbol id="st-running" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="2.3" fill="currentColor"/>
+    <circle cx="12" cy="12" r="5.2" fill="none" stroke="currentColor" stroke-width="1.6" opacity="0.55"/>
+    <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6" opacity="0.3"/>
+  </symbol>
+  <symbol id="st-pending" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-dasharray="3.6 3.2" stroke-linecap="round"/>
+    <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
+  </symbol>
+  <symbol id="st-unreachable" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5" y="4.5" width="14" height="5.6" rx="1.6"/>
+      <rect x="5" y="13.9" width="14" height="5.6" rx="1.6"/>
+      <path d="M4.5 19.5L19.5 4.5" stroke-width="2"/>
+    </g>
+    <circle cx="8" cy="7.3" r="1" fill="currentColor"/>
+    <circle cx="8" cy="16.7" r="1" fill="currentColor"/>
+  </symbol>
+  <symbol id="empty-runs" viewBox="0 0 48 48">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 22h34v10a5 5 0 0 1-5 5H12a5 5 0 0 1-5-5z"/>
+      <path d="M16 22l2.5 5h11L32 22"/>
+    </g>
+    <circle cx="24" cy="11" r="5.4" fill="none" stroke="#535BD5" stroke-width="1.6" opacity="0.38"/>
+    <circle cx="24" cy="11" r="2.6" fill="#535BD5"/>
+  </symbol>
+  <symbol id="empty-filter" viewBox="0 0 48 48">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 11h28l-9.5 11v7.5L24 33l-4.5-3.5V22z"/>
+      <path d="M12 39L36 9" stroke-width="2.2"/>
+    </g>
+  </symbol>
+  <symbol id="empty-chart" viewBox="0 0 48 48">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 9v27h27"/>
+      <rect x="16" y="24" width="5" height="9" stroke-dasharray="3 2.4"/>
+      <rect x="24" y="18" width="5" height="15" stroke-dasharray="3 2.4"/>
+      <rect x="32" y="26" width="5" height="7" stroke-dasharray="3 2.4"/>
+    </g>
+    <circle cx="38" cy="10" r="2.2" fill="#535BD5"/>
+  </symbol>
+  <symbol id="empty-flask" viewBox="0 0 48 48">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8h8"/>
+      <path d="M21.5 8v7L13 30a3 3 0 0 0 2.6 4.6h16.8A3 3 0 0 0 35 30l-8.5-15V8"/>
+      <path d="M17.5 27h13" stroke-dasharray="3.5 3"/>
+    </g>
+  </symbol>
+  <symbol id="empty-layers" viewBox="0 0 48 48">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 9l13 7-13 7-13-7z"/>
+      <path d="M11 24l13 7 13-7" stroke-dasharray="4 3"/>
+      <path d="M11 30l13 7 13-7" stroke-dasharray="4 3"/>
+    </g>
+    <circle cx="24" cy="16" r="2.2" fill="#535BD5"/>
+  </symbol>
+  <symbol id="empty-shot" viewBox="0 0 48 48">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 16l2-4h6l2 4"/>
+      <rect x="8" y="16" width="24" height="16" rx="3"/>
+      <circle cx="20" cy="24" r="5"/>
+      <path d="M8 40L40 8" stroke-width="2.2"/>
+    </g>
+  </symbol>
+  <symbol id="empty-server" viewBox="0 0 48 48">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="13" y="8" width="22" height="9" rx="2"/>
+      <rect x="13" y="21" width="22" height="9" rx="2"/>
+      <path d="M10 40L38 8" stroke-width="2.2"/>
+    </g>
+    <circle cx="17.5" cy="12.5" r="1.3" fill="currentColor"/>
+    <circle cx="17.5" cy="25.5" r="1.3" fill="currentColor"/>
+  </symbol>
+  <symbol id="act-play" viewBox="0 0 24 24">
+    <path d="M8 5.5v13l10-6.5z" fill="currentColor"/>
+  </symbol>
+  <symbol id="act-pause" viewBox="0 0 24 24">
+    <rect x="7.5" y="5.5" width="3.2" height="13" rx="1" fill="currentColor"/>
+    <rect x="13.3" y="5.5" width="3.2" height="13" rx="1" fill="currentColor"/>
+  </symbol>
+  <symbol id="act-cancel" viewBox="0 0 24 24">
+    <path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="act-download" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 4v10"/>
+      <polyline points="7.5,10.5 12,15 16.5,10.5"/>
+      <path d="M5 19.5h14"/>
+    </g>
+  </symbol>
+  <symbol id="act-search" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="10.5" cy="10.5" r="6"/>
+      <path d="M15.2 15.2L20 20"/>
+    </g>
+  </symbol>
+  <symbol id="act-plus" viewBox="0 0 24 24">
+    <path d="M12 5.5v13M5.5 12h13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="act-external" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 4h6v6"/>
+      <path d="M20 4l-9 9"/>
+      <path d="M18 13.5V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5.5"/>
+    </g>
+  </symbol>
+  <symbol id="act-check" viewBox="0 0 24 24">
+    <path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="brand-chimera" viewBox="0 0 24 24">
+    <polygon points="12,2 20,8 20,16 12,22 4,16 4,8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="12" y1="2" x2="12" y2="22" stroke="#C0563B" stroke-width="2"/>
+    <line x1="4" y1="8" x2="20" y2="16" stroke="#1E9A8A" stroke-width="1.4"/>
+    <line x1="20" y1="8" x2="4" y2="16" stroke="#3A6EA5" stroke-width="1.4"/>
+  </symbol>
+  <!-- ===== WORKFLOW EMBLEMS (17) · filled-gradient language, shared defs ===== -->
+  <!--
+    Workspace tile art. Same visual language as the evidence-page icons:
+    soft glow disc, saturated gradient shapes (cool upper, warm lower),
+    white core accents. One symbol per runnable workflow id
+    (wfart-<workflow_id>); referenced from js/views/workspace.js.
+    objectBoundingBox gradients so symbols scale to any tile size.
+  -->
+  <defs>
+    <filter id="wf-soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
+    <radialGradient id="wf-halo"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".95"/><stop offset=".65" stop-color="#EEF2FF" stop-opacity=".5"/><stop offset="1" stop-color="#EEF2FF" stop-opacity="0"/></radialGradient>
+    <linearGradient id="wf-sky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B8E7FF"/><stop offset="1" stop-color="#3989EE"/></linearGradient>
+    <linearGradient id="wf-deep" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A6E6F7"/><stop offset="1" stop-color="#576DE8"/></linearGradient>
+    <linearGradient id="wf-teal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#79DCD5"/><stop offset="1" stop-color="#377FDF"/></linearGradient>
+    <linearGradient id="wf-violet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C5A2FF"/><stop offset="1" stop-color="#7451DB"/></linearGradient>
+    <linearGradient id="wf-coral" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF9D61"/><stop offset="1" stop-color="#F05C48"/></linearGradient>
+    <linearGradient id="wf-amber" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB86B"/><stop offset="1" stop-color="#E85B78"/></linearGradient>
+    <linearGradient id="wf-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE98E"/><stop offset="1" stop-color="#F2765D"/></linearGradient>
+    <linearGradient id="wf-rose" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB5C7"/><stop offset="1" stop-color="#E34F77"/></linearGradient>
+  </defs>
+  <!-- 01 · create-project: plus medallion -->
+  <symbol id="wfart-create-project" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#576DE8" opacity=".16" filter="url(#wf-soft)"/>
+    <circle cx="56" cy="56" r="27" fill="none" stroke="url(#wf-deep)" stroke-width="9"/>
+    <circle cx="56" cy="56" r="17" fill="#FFFFFF"/>
+    <path d="M56 46 v20 M46 56 h20" stroke="url(#wf-coral)" stroke-width="9" stroke-linecap="round"/>
+  </symbol>
+  <!-- 02 · fill-contact-form: form card + sealed check -->
+  <symbol id="wfart-fill-contact-form" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#3989EE" opacity=".16" filter="url(#wf-soft)"/>
+    <rect x="30" y="24" width="52" height="64" rx="10" fill="url(#wf-sky)"/>
+    <path d="M38 40 h36 M38 52 h36 M38 64 h22" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="78" cy="80" r="13" fill="url(#wf-coral)" stroke="#FFFFFF" stroke-width="3"/>
+    <path d="M72 80 l5 5 l9-10" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <!-- 03 · saucedemo-order: basket -->
+  <symbol id="wfart-saucedemo-order" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#F05C48" opacity=".15" filter="url(#wf-soft)"/>
+    <path d="M42 38 Q56 18 70 38" stroke="url(#wf-teal)" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <path d="M30 44 h52 l-7 30 h-38 z" fill="url(#wf-coral)"/>
+    <rect x="26" y="38" width="60" height="9" rx="4.5" fill="url(#wf-amber)"/>
+    <path d="M48 52 v14 M56 52 v14 M64 52 v14" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity=".8"/>
+    <circle cx="46" cy="82" r="5" fill="#576DE8" stroke="#FFFFFF" stroke-width="2.5"/>
+    <circle cx="66" cy="82" r="5" fill="#576DE8" stroke="#FFFFFF" stroke-width="2.5"/>
+  </symbol>
+  <!-- 04 · saucedemo-stress: pulse trace + nodes -->
+  <symbol id="wfart-saucedemo-stress" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#7451DB" opacity=".15" filter="url(#wf-soft)"/>
+    <path d="M14 62 h14 l8-18 l10 32 l9-24 l7 10 h30" stroke="url(#wf-violet)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M14 62 h14 l8-18 l10 32 l9-24 l7 10 h30" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".55"/>
+    <circle cx="30" cy="26" r="4.5" fill="#FDBB45" stroke="#FFFFFF" stroke-width="2"/>
+    <circle cx="56" cy="20" r="4.5" fill="#FDBB45" stroke="#FFFFFF" stroke-width="2"/>
+    <circle cx="82" cy="26" r="4.5" fill="#FDBB45" stroke="#FFFFFF" stroke-width="2"/>
+    <path d="M30 38 Q56 28 82 38" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="3 4" opacity=".8" fill="none"/>
+  </symbol>
+  <!-- 05 · flipkart-add-to-cart: price tag -->
+  <symbol id="wfart-flipkart-add-to-cart" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#E85B78" opacity=".15" filter="url(#wf-soft)"/>
+    <g transform="rotate(-18 56 56)">
+      <path d="M34 40 h30 l20 16 -20 16 h-30 a6 6 0 0 1-6-6 v-20 a6 6 0 0 1 6-6z" fill="url(#wf-amber)"/>
+      <circle cx="38" cy="56" r="4.5" fill="#FFFFFF"/>
+      <path d="M50 62 h20" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </symbol>
+  <!-- 06 · wikipedia-article-lookup: globe -->
+  <symbol id="wfart-wikipedia-article-lookup" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#3989EE" opacity=".16" filter="url(#wf-soft)"/>
+    <circle cx="56" cy="56" r="28" fill="url(#wf-sky)"/>
+    <ellipse cx="56" cy="56" rx="13" ry="28" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+    <path d="M28 56 h56 M31 42 h50 M31 70 h50" stroke="#FFFFFF" stroke-width="3" fill="none"/>
+    <circle cx="56" cy="56" r="28" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+  </symbol>
+  <!-- 07 · wiktionary-word-lookup: open book -->
+  <symbol id="wfart-wiktionary-word-lookup" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#576DE8" opacity=".15" filter="url(#wf-soft)"/>
+    <path d="M56 34 C46 28, 34 28, 28 32 V80 C34 76, 46 76, 56 82 Z" fill="url(#wf-teal)"/>
+    <path d="M56 34 C66 28, 78 28, 84 32 V80 C78 76, 66 76, 56 82 Z" fill="url(#wf-violet)"/>
+    <path d="M35 46 h12 M35 54 h12 M65 46 h12 M65 54 h12" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+    <path d="M56 34 V82" stroke="#FFFFFF" stroke-width="2.5"/>
+  </symbol>
+  <!-- 08 · pypi-package-lookup: package cube -->
+  <symbol id="wfart-pypi-package-lookup" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#576DE8" opacity=".15" filter="url(#wf-soft)"/>
+    <path d="M56 26 L82 40 L56 54 L30 40 Z" fill="url(#wf-sky)" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M30 40 L56 54 V84 L30 70 Z" fill="url(#wf-deep)" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M82 40 L56 54 V84 L82 70 Z" fill="url(#wf-coral)" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"/>
+  </symbol>
+  <!-- 09 · bbc-headlines: broadcast -->
+  <symbol id="wfart-bbc-headlines" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#F05C48" opacity=".15" filter="url(#wf-soft)"/>
+    <path d="M40 40 a22 22 0 0 0 0 32 M30 30 a36 36 0 0 0 0 52" stroke="url(#wf-teal)" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M72 40 a22 22 0 0 1 0 32 M82 30 a36 36 0 0 1 0 52" stroke="url(#wf-teal)" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <circle cx="56" cy="56" r="8" fill="url(#wf-coral)" stroke="#FFFFFF" stroke-width="3"/>
+  </symbol>
+  <!-- 10 · github-profile: person -->
+  <symbol id="wfart-github-profile" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#7451DB" opacity=".15" filter="url(#wf-soft)"/>
+    <path d="M28 88 C28 68, 42 60, 56 60 C70 60, 84 68, 84 88 Z" fill="url(#wf-deep)" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="56" cy="42" r="14" fill="url(#wf-violet)" stroke="#FFFFFF" stroke-width="3"/>
+  </symbol>
+  <!-- 11 · crates-lookup: crate -->
+  <symbol id="wfart-crates-lookup" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#E85B78" opacity=".15" filter="url(#wf-soft)"/>
+    <rect x="28" y="34" width="56" height="46" rx="6" fill="url(#wf-amber)" stroke="#FFFFFF" stroke-width="3"/>
+    <path d="M28 49 h56 M28 65 h56 M47 34 v46 M65 34 v46" stroke="#FFFFFF" stroke-width="3"/>
+  </symbol>
+  <!-- 12 · bbc-weather: sun + cloud -->
+  <symbol id="wfart-bbc-weather" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#FDBB45" opacity=".18" filter="url(#wf-soft)"/>
+    <path d="M40 20 v-7 M22 40 h-7 M27 27 l-5-5 M53 27 l5-5" stroke="#FDBB45" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="40" cy="40" r="13" fill="url(#wf-gold)"/>
+    <path d="M38 80 a10 10 0 0 1 2-20 a13 13 0 0 1 25-3 a11 11 0 0 1 15 10 a8 8 0 0 1 -4 13 z" fill="url(#wf-sky)" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+  </symbol>
+  <!-- 13 · github-search: magnifier -->
+  <symbol id="wfart-github-search" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#377FDF" opacity=".15" filter="url(#wf-soft)"/>
+    <circle cx="48" cy="48" r="20" fill="none" stroke="url(#wf-teal)" stroke-width="10"/>
+    <path d="M62 62 L80 80" stroke="url(#wf-coral)" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="41" cy="41" r="4" fill="#FFFFFF" opacity=".9"/>
+  </symbol>
+  <!-- 14 · steam-price-check: gauge -->
+  <symbol id="wfart-steam-price-check" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#576DE8" opacity=".15" filter="url(#wf-soft)"/>
+    <path d="M26 72 a30 30 0 0 1 60 0" stroke="url(#wf-deep)" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <path d="M20 72 h-7 M92 72 h7 M56 36 v-7" stroke="#8AA7E9" stroke-width="3" stroke-linecap="round"/>
+    <path d="M56 72 L70 52" stroke="url(#wf-coral)" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="56" cy="72" r="7" fill="#F05C48" stroke="#FFFFFF" stroke-width="3"/>
+  </symbol>
+  <!-- 15 · arxiv-search: atom -->
+  <symbol id="wfart-arxiv-search" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#7955E0" opacity=".15" filter="url(#wf-soft)"/>
+    <ellipse cx="56" cy="56" rx="30" ry="12" fill="none" stroke="url(#wf-violet)" stroke-width="5"/>
+    <ellipse cx="56" cy="56" rx="30" ry="12" fill="none" stroke="url(#wf-violet)" stroke-width="5" transform="rotate(60 56 56)"/>
+    <ellipse cx="56" cy="56" rx="30" ry="12" fill="none" stroke="url(#wf-violet)" stroke-width="5" transform="rotate(120 56 56)"/>
+    <circle cx="56" cy="56" r="8" fill="url(#wf-gold)" stroke="#FFFFFF" stroke-width="3"/>
+  </symbol>
+  <!-- 16 · stackoverflow-search: stacked layers -->
+  <symbol id="wfart-stackoverflow-search" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#54C5D4" opacity=".15" filter="url(#wf-soft)"/>
+    <path d="M28 40 L56 54 L84 40" stroke="url(#wf-teal)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M28 56 L56 70 L84 56" stroke="url(#wf-violet)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M28 72 L56 86 L84 72" stroke="url(#wf-coral)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <!-- 17 · amazon-price-check: carton + smile -->
+  <symbol id="wfart-amazon-price-check" viewBox="0 0 112 112">
+    <circle cx="56" cy="56" r="46" fill="url(#wf-halo)"/>
+    <circle cx="56" cy="56" r="38" fill="#F2765D" opacity=".15" filter="url(#wf-soft)"/>
+    <path d="M28 32 l10-8 h36 l10 8" stroke="url(#wf-amber)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <rect x="28" y="32" width="56" height="38" rx="6" fill="url(#wf-rose)"/>
+    <path d="M56 32 v38" stroke="#FFFFFF" stroke-width="3"/>
+    <path d="M36 82 C46 90, 66 90, 76 80" stroke="url(#wf-amber)" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <path d="M69 75 l8 5 l-2 -9" stroke="url(#wf-amber)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell shell-top">
+  <header class="wb-top">
+    <a class="brand" href="#/workspace" aria-label="Chimera Workbench home">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><use href="#brand-chimera"/></svg>
+      <span class="brand-text"><span class="brand-name">chimera</span><span class="brand-sub">Workbench</span></span>
+    </a>
+    <nav class="wb-nav" aria-label="Workbench"><ul class="nav-list wb-nav-list" id="nav-list"></ul></nav>
+    <div class="wb-actions">
+      <span class="wb-status" role="status"><span class="data-dot" id="data-dot" aria-hidden="true"></span><span id="data-status">Connecting…</span></span>
+      <a class="btn wb-research" href="/research/"><svg aria-hidden="true"><use href="#nav-research"/></svg>Research Console</a>
+      <button class="icon-btn menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-list">
+        <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="main-col">
+    <div class="subbar">
+      <div class="topbar-title" id="topbar-title">Workspace</div>
+      <div class="topbar-badges" id="topbar-badges"></div>
+    </div>
+    <main id="main" class="main" tabindex="-1"></main>
+    <footer class="footer"><div class="footer-grid">
+      <div><div class="footer-brand">chimera</div><p class="footer-tag">Real browser workflows, verified results.</p></div>
+      <div class="footer-col"><h3>Run &amp; inspect</h3><ul><li><a href="#/workspace">Workspace</a></li><li><a href="#/history">History</a></li><li><a href="#/analytics">Analytics</a></li></ul></div>
+      <div class="footer-col"><h3>Build</h3><ul><li><a href="#/lab">Campaign Lab</a></li><li><a href="#/studio">Workflow Studio</a></li></ul></div>
+      <div class="footer-col"><h3>Evidence</h3><ul><li><a href="/research/">Research Console</a></li><li><a href="/">Chimera home</a></li></ul></div>
+    </div><div class="footer-base"><span>Chimera Workbench · fixed-script drivers, verified results · <a href="/research/">Research Console →</a></span><span id="footer-status"></span></div></footer>
+  </div>
+  <div class="scrim" id="scrim" hidden></div>
+</div>
+<noscript><p style="padding:2rem">The workbench needs JavaScript to run and inspect executions.</p></noscript>
+<script type="module" src="/workbench/web/js/app.js"></script>
+</body>
+</html>

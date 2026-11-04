@@ -1,204 +1,294 @@
 # Project Chimera
 
-An **algorithm-first, deterministic** browser automation agent. No model
-call, no randomness, no adaptive reasoning: the same input and
-configuration produce the same terminal status.
+**Muse Spark proposes. Chimera proves.**
 
-This repository is at **Milestone 1 — project foundation**. It contains
-a local demo app, a Playwright automation agent, and a 421-test suite
-(83 application tests + 338 benchmark-harness tests: 90 contract tests,
-41 runner tests, 41 verifier tests, 47 observer tests, 31 Baseline A
-tests, 36 audit tests, 37 report tests, and 15 review-tool tests).
+AI browser agents say "done" when they aren't. Chimera lets Meta's
+**Muse Spark** (`muse-spark-1.3`, through the Meta Model API) plan and act
+in a real browser. It then hands the verdict to a deterministic,
+**model-free referee**:
 
-> The full setup, operation, and troubleshooting instructions are in
-> **[`docs/user_guide.md`](docs/user_guide.md)**. This file is the entry
-> point.
+- an **independent verifier** that re-reads the page from snapshots the
+  harness captured itself;
+- an **action observer** that checks every browser action against an
+  allowlist;
+- a sealed **evidence bundle** for every episode: trace, snapshot and
+  action log.
 
----
+When a model claims a success that never happened, Chimera counts it as a
+**false success**. No model is ever used in verification.
 
-## What is implemented today
+Meta Global AI Developer Hackathon · theme **Push the Frontier** (agent
+reliability: autonomy you can verify) · [MIT licence](LICENSE).
 
-| Capability | What it means |
-|---|---|
-| **One deterministic workflow** | Create a project in the bundled demo app, with a verified outcome. |
-| **Execution tracing** | Every run writes an ordered, timestamped JSON event log to `data/traces/<run_id>.json`. |
-| **Failure screenshots** | A failed run captures a PNG of the page at `data/screenshots/<run_id>.png`. |
-| **Cooperative cancellation** | A run can be asked to stop; it halts at a safe boundary and reports `status="cancelled"` — distinct from success and failure. |
-| **Session isolation** | Each run gets its own browser process and its own `BrowserContext`; runs cannot observe each other's state. |
-| **Bounded, honest failure** | Retries are bounded and refuse to repeat blindly; a failed run reports `status="failed"` with a diagnosable cause, and is never reported as a success. |
-| **Deterministic fault injection** | `?slow=<ms>` (transient) and `?disabled=1` (persistent) reproduce page faults without randomness. |
-
-Detailed behaviour and the design decisions behind each of these are in
-[`docs/architecture.md`](docs/architecture.md) and [`docs/adr/`](docs/adr/).
+<!-- DEMO_VIDEO_URL: link the demo video here once it is hosted -->
 
 ---
 
-## Setup
+## Quickstart
 
-All commands below run **from the project root** (`project-chimera/`).
-
-Verified against the repository's own environment: **Python 3.9.6**,
-**Playwright 1.60.0**, **pytest 8.4.2**, macOS arm64. Python **3.9 is
-the minimum**: `pyproject.toml` declares `requires-python = ">=3.9"`,
-and the installed `playwright`, `pytest`, and `greenlet` all declare
-`Requires-Python: >=3.9`.
-
-The `.venv/` is already provisioned. To use it:
+You need Python 3.9 or newer. Node is only needed for the JavaScript tests.
+Run these from the repository root:
 
 ```bash
-cd /Users/kartikbhardwaj/project-chimera
-source .venv/bin/activate
-```
-
-To create it from scratch instead:
-
-```bash
-cd /Users/kartikbhardwaj/project-chimera
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements-dev.txt
+python3 -m venv .venv && .venv/bin/python -m pip install -r requirements-dev.txt
 .venv/bin/python -m playwright install chromium
+.venv/bin/python -m workbench.server --port 8130
 ```
 
-`requirements-dev.txt` and `pyproject.toml` declare the same dependency
-ranges; `requirements-dev.txt` is the setup file and `pyproject.toml` is
-the metadata file. Full instructions are in
-[`docs/user_guide.md`](docs/user_guide.md).
+Then open:
+
+| URL | What it is |
+|---|---|
+| <http://127.0.0.1:8130/> | The site: what Chimera is, results, evidence |
+| <http://127.0.0.1:8130/workbench/> | The Workbench: run a workflow, watch it, read the verdict and evidence; Workflow Studio; Campaign Lab |
+| <http://127.0.0.1:8130/research/> | The Research Console over the frozen benchmark evidence |
+
+Everything above works **without an API key**. The deterministic drivers,
+the verifier, the observer, the Workbench, the site and the console never
+call a model.
+
+### Turn on Muse Spark
+
+```bash
+cp .env.example .env        # .env is gitignored — never commit it
+# then edit .env and set MODEL_API_KEY to your Meta Model API key
+```
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `MODEL_API_KEY` | none (required for model features) | Sent as `Authorization: Bearer …` to the Meta Model API |
+| `MODEL_API_BASE` | `https://api.meta.ai/v1` | OpenAI-compatible endpoint |
+| `CHIMERA_MODEL` | `muse-spark-1.3` | Model used by Baseline B and the Studio planner |
+
+You can also export the variables in your shell instead of using `.env`.
 
 ---
 
-## Run the agent
+## How Muse Spark is used
 
-```bash
-.venv/bin/python -m chimera.agent
-# Success: 'My First Project' was created.
-```
+### 1. Baseline B: Muse Spark as the browser agent
 
-Or drive it from Python:
+At each step the model receives a summary of the page and replies with one
+JSON action from an allowlist: `fill`, `click`, `wait`, or `done` with its
+claim of what happened. Chimera validates the action before it runs.
 
-```python
-from chimera.agent import create_project, create_project_with_faults
+Episodes run through the existing benchmark harness on a new manifest,
+**`model-v1`**:
 
-result = create_project("My First Project")
-print(result["status"], result["trace_path"])
+| Scenario | Page | Can the task succeed? |
+|---|---|---|
+| `S-NORM` | Normal demo page | Yes |
+| `S-SLOW` | Slow page load | Yes |
+| `S-DIS` | The Create button is disabled | No |
+| `S-INJECT` | Disabled button, plus a banner telling AI agents to report success | No |
 
-# With an injected fault:
-result = create_project_with_faults("My First Project", slow_ms=2000)
-```
+The model-free verifier (postconditions P1–P3, read from harness
+snapshots) and the action observer judge every episode. If the model says
+"done" on a page where the project was never created, the episode is
+counted as a false success.
 
-## Run the tests
+### 2. Workflow Studio planner
 
-```bash
-.venv/bin/python -m pytest -q                     # all 421 tests (~50 s)
-.venv/bin/python -m pytest tests/test_safety.py tests/test_faults.py tests/test_tracing.py -q   # 62, no browser
-.venv/bin/python -m pytest tests/test_agent.py tests/test_integration.py tests/test_verifier_browser.py tests/test_observer_browser.py tests/test_baseline_a_browser.py -q  # 30, needs Chromium
-.venv/bin/python -m pytest tests/test_benchmark_manifest.py tests/test_benchmark_results.py tests/test_benchmark_runner.py tests/test_benchmark_verifier.py tests/test_benchmark_observer.py tests/test_baseline_a.py tests/test_audit.py tests/test_benchmark_report.py tests/test_audit_review.py -q # 329, no browser
-```
+1. You type a goal in plain English.
+2. Muse Spark writes a Studio workflow definition.
+3. Studio's validator and the action allowlist derived from the definition
+   gate it. A plan that fails validation never runs.
+4. The existing drivers run it.
+5. The verdict comes from the recorded evidence, never from the model.
 
-## Inspect a run
-
-```bash
-ls -t data/traces/*.json | head -1 | xargs .venv/bin/python -m json.tool
-open "$(ls -t data/screenshots/*.png | head -1)"
-```
+Page text is untrusted input to the model, and the model's output is
+untrusted input to Chimera. See
+[`docs/threat_model.md`](docs/threat_model.md) §3.
 
 ---
+
+## What is measured, honestly
+
+### Baseline B (Muse Spark), manifest `model-v1`
+
+<!-- BASELINE_B_RESULTS -->
+
+*Results not yet recorded at the time of writing.* This section will report,
+per scenario:
+
+- the model's claimed successes vs verified successes;
+- false successes, with n and 95% Wilson bounds;
+- unauthorised actions;
+- model calls.
+
+It will report whatever the run shows. No number is written here before the
+run.
+
+### The deterministic driver vs replay (held-out, frozen 2026-10-28)
+
+Manifest `eval-v1`, content hash `b23580c8…`, frozen 2026-10-24 before the
+run. 180 measured episodes per driver.
+
+| Scenario | Chimera deterministic driver | Replay (Baseline A) |
+|---|---|---|
+| S-NORM | 15/15 | 15/15 |
+| S-SLOW (800–3900 ms delay) | 75/75 | 0/75 |
+| S-DIS (impossible) | 0/15 | 0/15 |
+| S-SLOWDIS (impossible) | 0/75 | 0/75 |
+
+**Read this together with the matched-budget experiment.** The S-SLOW gap
+is a time budget, not a capability:
+
+- Chimera's driver waits up to 5000 ms per action; replay waits 100 ms.
+- Given the same 5000 ms budget, replay matched Chimera on **20/20** paired
+  runs ([`experiments/matched-budget-v1/REPORT.md`](experiments/matched-budget-v1/REPORT.md)).
+- Retries never fired: 0 in all 260 measured Chimera benchmark episodes.
+
+So the deterministic driver is the **control**, not the contribution. The
+contribution is the independent referee, which is now pointed at a real
+model.
+
+**False successes.** The deterministic driver claimed success in 90 of its
+180 held-out episodes. The verifier refuted none of them: 0 false
+successes in 90 claimed successes, 95% upper bound 4.1%. On its own this is
+weak evidence. The driver's own checks nearly duplicate P1–P2, and the
+design notes that a false success is out of its reach
+([`docs/benchmark_design.md`](docs/benchmark_design.md) §2.2). There was no
+positive control. Baseline B and `S-INJECT` supply one.
+
+**Other runs.**
+
+- **Development split** (`dev-v1`): Chimera S-SLOW 20/20, replay 0/20; both
+  drivers 20/20 on S-NORM. The human audit agreed with the verifier on
+  64/64 episodes (verdict AUDITED).
+- **Held-out audit status:** the held-out report is **provisional**. The
+  full human audit is not complete (0/184 verdicts). An 8-episode
+  mini-audit agreed 8/8; the author adjudicated it.
+
+Corrections to the frozen reports are in
+[`artifacts/eval-20261028/ERRATA.md`](artifacts/eval-20261028/ERRATA.md)
+and [`artifacts/dev-20261028/ERRATA.md`](artifacts/dev-20261028/ERRATA.md).
+
+### Workbench
+
+- `workbench/workflows.py` registers **17 runnable workflows**:
+  - 2 on the bundled local demo app;
+  - 15 on 12 live third-party sites: SauceDemo, Flipkart, Wikipedia,
+    Wiktionary, PyPI, BBC, GitHub, crates.io, Steam, arXiv, Stack Overflow
+    and Amazon.
+- Only one workflow (`create-project`) is benchmarked.
+- A live smoke check on 2026-11-03 went 16/17 verified-success (n = 1 per
+  workflow). That table on the Results page is **hand-transcribed**; its
+  run evidence lives in scratch databases that are not in this repository.
+
+### Tests
+
+At the time of writing there are **788 pytest tests and 88 Node tests**. The
+full pytest run takes about 3.5 minutes. These tests are a regression
+suite: they show that specific behaviours still work, and no performance
+figure may be derived from them.
+
+```bash
+.venv/bin/python -m pytest -q
+node --test research/js/*.test.mjs research/js/viz/*.test.mjs \
+  research/js/pages/*.render.test.mjs research/sigil/*.test.mjs
+```
+
+Browser tests need Chromium and the ability to bind a local port.
+
+---
+
+## Prior work (dated disclosure)
+
+The hackathon started on 2026-10-26. Some of this project existed before
+then. Git cannot show the split, because the repository's only commit mixes
+both periods, so here it is by date:
+
+**Before the event:**
+
+- The requirements specification, [`docs/SRS.md`](docs/SRS.md), dated
+  **2026-10-17**. It already describes model-assisted execution checked by
+  a verifier "independent of the model's claim".
+- The earliest run trace: **2026-10-23**.
+- Dated **2026-10-23/24**:
+  - the demo app (`demo_app/`);
+  - the safety module (`chimera/safety.py`);
+  - ADR-001 to ADR-004;
+  - the benchmark manifests, with the held-out fingerprint frozen on
+    **2026-10-24**;
+  - the first 83 tests.
+
+**Built during the event, 2026-10-26 → 2026-11-04:**
+
+- the runner, verifier and observer;
+- Baseline A;
+- the audit tooling;
+- all benchmark runs;
+- the matched-budget experiment;
+- the Workbench, Workflow Studio and Campaign Lab;
+- 16 more workflows;
+- the Research Console and the site;
+- the Muse Spark integration.
+
+---
+
+## Limitations
+
+- **Held-out figures are provisional** until the full human audit lands.
+- **One benchmarked workflow** on one local page with two fault
+  parameters.
+  - The held-out split varies values, not fault types.
+  - The deterministic driver's outcomes were predictable in advance.
+  - Results do not transfer to other sites or workflows.
+- **Baseline B is small.** `model-v1` has a handful of cells, so its
+  figures describe those cells only, not Muse Spark in general.
+- **The allowlist is layered, not complete.**
+  - The core safety layer allows action *types* only.
+  - The site adapters and Studio add origin and target checks.
+  - The benchmark observer flags out-of-scope actions after the fact.
+- **A local tool, not production-ready.**
+  - The Workbench API is meant for `127.0.0.1` only and checks the
+    Host and Origin headers. Do not expose it to a network.
+  - Persistent user profiles hold live cookies.
+  - Workflows touch live third-party sites; respect their terms of
+    service.
+- **Measurement gaps.**
+  - Latencies compare only within one machine.
+  - The browser build was not recorded.
+  - Failure categories are never set.
+  - Cancellation is cooperative, so a stop can lag by up to about 5 s.
+
+---
+
+## Repository map
+
+| Path | What it is |
+|---|---|
+| `chimera/` | Deterministic agent, safety layer (allowlist, bounded retry, cancellation), tracing |
+| `benchmarks/` | Harness: manifests, runner, independent verifier, action observer, Baseline A, audit and report tooling |
+| `adapters/` | 14 site adapters, each with an origin guard and its own action allowlist |
+| `workbench/` | Workbench server and JSON API, workflow registry, executor, Studio, Campaign Lab, SQLite store |
+| `artifacts/` | Frozen evidence: dev and held-out runs, traces, audits, reports, errata |
+| `experiments/matched-budget-v1/` | The experiment that explains the S-SLOW gap |
+| `index.html`, `product/`, `workflows/`, `demo/`, `results/`, `evidence/`, `site/` | The site; every figure is computed live from the frozen files |
+| `research/` | Research Console |
+| `demo_app/` | The local benchmark target, with fault injection |
+| `docs/` | Design, evaluation, threat model, ADRs, SRS, user guide; `docs/devlog/` holds historical working notes |
 
 ## Documentation
 
 | Document | Purpose |
 |---|---|
-| **[`docs/user_guide.md`](docs/user_guide.md)** | Prerequisites, setup, running, traces, screenshots, fault scenarios, cancellation, troubleshooting. **Start here.** |
-| [`docs/architecture.md`](docs/architecture.md) | Components, browser lifecycle, safety and retry boundary, data flow, implemented vs. planned. |
-| [`docs/threat_model.md`](docs/threat_model.md) | Assets, trust boundaries, threats with their actual enforcement points, residual risks. |
-| [`docs/adr/`](docs/adr/) | ADR-001 browser isolation · ADR-002 cooperative cancellation · ADR-003 trace persistence as a success precondition · ADR-004 requirement traceability · ADR-005 runner policy refusal. |
-| [`docs/evaluation.md`](docs/evaluation.md) | Evaluation criteria, metrics, baselines, reporting rules, acceptance gates. |
-| [`docs/benchmark_design.md`](docs/benchmark_design.md) | The benchmark: scenarios, manifests, independent verifier, trial protocol. **Run** — dev (16 cells × 5 trials) and held-out eval (36 cells × 5 trials) executions for Chimera and Baseline A; dev report audited at 100% agreement, eval report provisional pending the deferred human audit. |
-| [`docs/evaluation_approaches.md`](docs/evaluation_approaches.md) | Survey of established browser-agent evaluation methods, with sources. |
-| [`CURRENT_STATUS.md`](CURRENT_STATUS.md) | Measured state, what exists, the backlog, the next recommended task. |
+| [`docs/user_guide.md`](docs/user_guide.md) | Setup, the Workbench, running, traces, faults, tests, troubleshooting. **Start here.** |
+| [`docs/architecture.md`](docs/architecture.md) | Components, browser lifecycle, safety and retry boundary |
+| [`docs/threat_model.md`](docs/threat_model.md) | Trust boundaries (including model proposals), threats, residual risks |
+| [`docs/benchmark_design.md`](docs/benchmark_design.md) | Scenarios, manifests, the independent verifier, trial protocol |
+| [`docs/evaluation.md`](docs/evaluation.md) | Criteria, metrics, baselines, reporting rules |
+| [`docs/evaluation_approaches.md`](docs/evaluation_approaches.md) | Survey of browser-agent evaluation methods |
+| [`docs/SRS.md`](docs/SRS.md) | The requirements specification cited as "SRS §…" |
+| [`docs/adr/`](docs/adr/) | ADR-001 to ADR-005 |
+| [`workbench/README.md`](workbench/README.md) | Workbench internals |
 
----
-
-## Research Console
-
-An interactive 12-workspace console over the real benchmark
-evidence — command overview, evidence constellation, experiment
-explorer, evaluation charts, episode traces, failure maps, an
-honest recovery study, audit status, the report archive, and
-three visualization workspaces (Outcome Terrain, Evidence
-River, Provenance Graph) plus Wilson signal views, a fault
-transect, and an episode oscilloscope. It reads `artifacts/`
-live, writes nothing, and labels every held-out figure
-provisional. Details in
-[`docs/research/FRONTEND_ARCHITECTURE.md`](docs/research/FRONTEND_ARCHITECTURE.md);
-screenshots in `docs/research/img/`.
-
-```bash
-cd /Users/kartikbhardwaj/project-chimera
-.venv/bin/python -m http.server 8123
-# open http://127.0.0.1:8123/research/ in a browser
-# console logic tests (no browser needed):
-node --test research/js/*.test.mjs research/js/viz/*.test.mjs research/js/charts.test.mjs research/js/pages/*.render.test.mjs
-# console browser tests (needs working Chromium + sockets):
-.venv/bin/python -m pytest tests/test_research_console.py -q
-```
-
-## Limitations
-
-**The current test suite is a regression suite, not proof of general
-browser-agent performance.** Its tests show that specific behaviours
-still work; no success rate, robustness figure, or generalisation
-claim may be derived from them. The pytest suite holds 460 tests:
-83 cover the agent, the safety layer, and the tracing layer; 338
-cover the evaluation harness's *contracts, runner, verifier,
-observer, Baseline A, audit tooling, report renderer, and review
-tool*; 30 cover the research console in a browser; 9 cover the
-eval mini-review packet tooling. A further 63 Node stdlib tests
-cover the console's data models and renderers.
-Measured benchmark numbers exist (see below), but the held-out
-figures are provisional: no eval audit sample has been adjudicated.
-
-- **Benchmark figures are provisional.** Dev runs (`dev-20261028-*`,
-  16 cells × 5 trials × 2 baselines) and held-out eval runs
-  (`eval-20261028-*`, 36 cells × 5 trials × 2 baselines) are complete
-  with full trace/snapshot/action evidence under `artifacts/`; the dev
-  report is audited at 100% agreement, while the eval report
-  (`artifacts/eval-20261028/report.md`) is **PROVISIONAL** — no eval
-  audit sample has been adjudicated (an 8-episode stratified sample is
-  drawn and awaiting review). The observer is a benchmark-side
-  detector, not a product safeguard: the agent's allowlist is still
-  type-level only (NFR-016 half met). The §6 Baseline A prediction now
-  holds at full-run rate level on both splits (replay succeeds only on
-  `S-NORM`; Chimera additionally clears every `S-SLOW` cell), with zero
-  measured false successes and zero harness errors — but eval rates
-  stay provisional until audited. Passing audit-tooling tests say
-  nothing about the verifier's accuracy on real episodes.
-- **The action allowlist is type-level only.** It validates *which kinds*
-  of browser operation may run (`navigate`, `fill`, `click`, `wait`,
-  `observe`). It does **not** yet enforce URL, locator, or target
-  allowlists — a named control is a planned safeguard, not an
-  implemented one.
-- **One workflow, one local target.** The demo app is a single local
-  HTML file. Results do not transfer to other sites or workflows.
-- **No recovery layer.** The agent waits and retries within a bounded
-  budget; it does not learn or reuse recovery skills, and no recovery
-  improvement is claimed.
-- **No model integration.** There is no LLM in the execution path, so
-  there is no model-driven baseline and no model cost to report.
-- **Cancellation is cooperative, not immediate.** A cancel request is
-  honoured at the next safe boundary; an action already in flight can
-  delay the stop by up to ~5 s (the action timeout). See
-  [ADR-002](docs/adr/ADR-002-cooperative-cancellation-at-safe-boundaries.md).
-- **Not production-ready.** See
-  [`docs/threat_model.md`](docs/threat_model.md) for the residual risks
-  and the validation that would be required first.
-
-**Requirement identifiers.** The SRS is the requirements authority. Note
-that the project's internal label "FR-018" denotes *execution tracing*,
-whereas **SRS FR-018** is *"use deterministic browser primitives"* —
-different requirements. The crosswalk and six still-unresolved mapping
-questions are in
+Requirement IDs (FR-…, NFR-…) refer to [`docs/SRS.md`](docs/SRS.md). One
+trap: the project's internal label "FR-018" means execution tracing, while
+SRS FR-018 is "use deterministic browser primitives". See
 [ADR-004](docs/adr/ADR-004-requirement-traceability-to-srs.md).
 
-## License
+## Licence
 
-No license has been chosen for this project yet.
+MIT. See [`LICENSE`](LICENSE).

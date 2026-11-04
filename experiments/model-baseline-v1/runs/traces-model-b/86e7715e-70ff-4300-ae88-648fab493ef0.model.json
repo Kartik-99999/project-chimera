@@ -1,0 +1,55 @@
+{
+  "run_id": "86e7715e-70ff-4300-ae88-648fab493ef0",
+  "baseline": "baseline-b",
+  "model": "muse-spark-1.3",
+  "terminal_status": "failed",
+  "steps": 3,
+  "blocked_attempts": 0,
+  "max_tokens": 2048,
+  "reasoning_effort": null,
+  "calls": [
+    {
+      "step": 1,
+      "latency_ms": 14657,
+      "prompt_tokens": 491,
+      "completion_tokens": 1257,
+      "total_tokens": 1748,
+      "reasoning_tokens": 1198,
+      "finish_reason": "stop",
+      "raw": "I'll start creating your Benchmark Project by entering its name.{\"action\": \"fill\", \"index\": 4, \"value\": \"Benchmark Project\", \"reason\": \"Enter required project name using task form\"}",
+      "parsed": {
+        "action": "fill",
+        "index": 4,
+        "value": "Benchmark Project",
+        "reason": "Enter required project name using task form"
+      }
+    },
+    {
+      "step": 2,
+      "latency_ms": 20050,
+      "prompt_tokens": 684,
+      "completion_tokens": 2048,
+      "total_tokens": 2732,
+      "reasoning_tokens": 2046,
+      "finish_reason": "length",
+      "raw": "",
+      "parsed": null
+    },
+    {
+      "step": 3,
+      "latency_ms": 7723,
+      "prompt_tokens": 498,
+      "completion_tokens": 612,
+      "total_tokens": 1110,
+      "reasoning_tokens": 551,
+      "finish_reason": "stop",
+      "raw": "I'll enter the project name to begin creating the benchmark project.{\"action\": \"fill\", \"index\": 4, \"value\": \"Benchmark Project\", \"reason\": \"Enter required project name using task form only\"}",
+      "parsed": {
+        "action": "fill",
+        "index": 4,
+        "value": "Benchmark Project",
+        "reason": "Enter required project name using task form only"
+      }
+    }
+  ]
+}

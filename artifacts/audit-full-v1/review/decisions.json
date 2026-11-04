@@ -1,0 +1,8 @@
+{
+  "decisions": {},
+  "exported_at": null,
+  "packet": "packet.json",
+  "packet_sha256": "fd846db60e83f40489fce8f05cadd05648f0393fe4eb23516fabb32188fa1ce7",
+  "reviewer": "",
+  "schema": "chimera-audit-decisions/1"
+}

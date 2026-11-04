@@ -5,8 +5,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import {
-  DECISIONS_SCHEMA, validateDecision, validateImport, summarize,
-  loadState, saveState, exportDoc, episodeKey,
+  DECISIONS_SCHEMA, AUDIT_DECISIONS_SCHEMA, AUDIT_STORAGE_KEY,
+  validateDecision, validateAuditDecision, validateImport, summarize,
+  summarizeAudit, loadState, saveState, exportDoc, episodeKey,
 } from './reviewModel.js';
 
 const KEYS = ['r1::t1', 'r1::t2'];
@@ -107,4 +108,83 @@ test('exportDoc binds decisions to packet bytes via sha256', async () => {
 
 test('episodeKey matches the packet key convention', () => {
   assert.equal(episodeKey('r', 't'), 'r::t');
+});
+
+const auditGood = {
+  checks: { P1: true, P2: true, P3: false }, note: '',
+  blinded: true, assessed_at: '2026-10-30T10:00:00.000Z', revealed_at: null,
+};
+
+test('validateAuditDecision enforces check-level shapes', () => {
+  assert.deepEqual(validateAuditDecision('r1::t1', KEYS, auditGood), []);
+  assert.ok(validateAuditDecision('nope::x', KEYS, auditGood).length === 1);
+  assert.match(validateAuditDecision('nope::x', KEYS, auditGood)[0], /not one of the 2 packet episodes/);
+  assert.ok(validateAuditDecision('r1::t1', KEYS, { ...auditGood, checks: { P1: true } }).length);
+  assert.ok(validateAuditDecision('r1::t1', KEYS, { ...auditGood, checks: { P1: true, P2: 'yes', P3: false } }).length);
+  assert.ok(validateAuditDecision('r1::t1', KEYS, 'not-an-object').length);
+  const unaud = {
+    verdict: 'unauditable', reason: 'snapshot missing', blinded: true,
+    assessed_at: '2026-10-30T10:00:00.000Z', revealed_at: null,
+  };
+  assert.deepEqual(validateAuditDecision('r1::t1', KEYS, unaud), []);
+  assert.ok(validateAuditDecision('r1::t1', KEYS, { ...unaud, reason: '  ' }).length);
+  assert.ok(validateAuditDecision('r1::t1', KEYS, { ...unaud, checks: { P1: true, P2: true, P3: true } }).length);
+  const early = { ...auditGood, revealed_at: '2026-10-30T09:00:00.000Z', blinded: true };
+  assert.ok(validateAuditDecision('r1::t1', KEYS, early).length); // assessed after reveal
+  assert.deepEqual(validateAuditDecision('r1::t1', KEYS, { ...early, blinded: false }), []);
+});
+
+test('validateImport and exportDoc honor the audit schema', async () => {
+  const doc = { schema: AUDIT_DECISIONS_SCHEMA, packet_sha256: 'abc', decisions: { 'r1::t1': auditGood } };
+  const opts = { packetKeys: KEYS, packetSha: 'abc', schema: AUDIT_DECISIONS_SCHEMA, audit: true };
+  assert.deepEqual(validateImport(doc, opts), []);
+  assert.ok(validateImport({ ...doc, schema: DECISIONS_SCHEMA }, opts).length);
+  assert.ok(validateImport(doc, { packetKeys: KEYS, packetSha: 'abc' }).length); // mini schema rejects checks
+  const out = await exportDoc({ packetText: '{}', state: {}, schema: AUDIT_DECISIONS_SCHEMA });
+  assert.equal(out.schema, AUDIT_DECISIONS_SCHEMA);
+});
+
+test('summarizeAudit keeps populations separate and computes strict agreement', () => {
+  const mk = (key, runId, pop, code, checks) => ({
+    key, run_id: runId, population: pop, driver_code: code, verifier: { checks },
+  });
+  const rec = [
+    { postcondition_id: 'P1', satisfied: true },
+    { postcondition_id: 'P2', satisfied: true },
+    { postcondition_id: 'P3', satisfied: true },
+  ];
+  const packet = {
+    episodes: [
+      mk('a::1', 'a', 'pop-one', 'Driver A', rec),
+      mk('b::1', 'b', 'pop-two', 'Driver B', rec),
+      mk('b::2', 'b', 'pop-two', 'Driver B', rec),
+    ],
+  };
+  const s = summarizeAudit(packet, {
+    reviewer: 'ann',
+    decisions: {
+      'a::1': { ...auditGood, checks: { P1: true, P2: true, P3: true } },
+      'b::1': { ...auditGood, checks: { P1: false, P2: true, P3: true } },
+    },
+  });
+  assert.equal(s.recorded, 2);
+  assert.equal(s.total, 3);
+  assert.equal(s.complete, false);
+  assert.deepEqual(s.populations.map((p) => p.label), ['pop-one', 'pop-two']);
+  const one = s.populations[0].runs[0];
+  const two = s.populations[1].runs[0];
+  assert.equal(one.agrees, 1);
+  assert.equal(two.disagrees, 1);
+  assert.equal(two.recorded, 1);
+  assert.equal(two.total, 2);
+  assert.ok(!('agrees' in s) && !('disagrees' in s)); // never pooled at top level
+});
+
+test('storage keys keep the mini and audit queues apart', () => {
+  const store = {};
+  const storage = { getItem: (k) => (k in store ? store[k] : null), setItem: (k, v) => { store[k] = String(v); } };
+  saveState(storage, { reviewer: 'mini', decisions: {}, partials: {} });
+  saveState(storage, { reviewer: 'audit', decisions: {}, partials: {} }, AUDIT_STORAGE_KEY);
+  assert.equal(loadState(storage).reviewer, 'mini');
+  assert.equal(loadState(storage, AUDIT_STORAGE_KEY).reviewer, 'audit');
 });

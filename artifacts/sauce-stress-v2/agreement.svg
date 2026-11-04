@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="214" role="img" aria-label="v2 matched pairs — driver agreement (20 pairs)">
+<rect width="640" height="214" fill="#0b0f1a"/>
+<text x="16" y="24" fill="#e8ecf4" font-size="15" font-family="sans-serif" font-weight="bold">v2 matched pairs — driver agreement (20 pairs)</text>
+<text x="190" y="50" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">both success</text>
+<rect x="200" y="38" width="116.0" height="15" fill="#4cc38a"/>
+<text x="324.0" y="51" fill="#8b93a7" font-size="12" font-family="monospace">8</text>
+<text x="190" y="84" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">both failure</text>
+<rect x="200" y="72" width="174.0" height="15" fill="#e5606e"/>
+<text x="382.0" y="85" fill="#8b93a7" font-size="12" font-family="monospace">12</text>
+<text x="190" y="118" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">chimera only</text>
+<rect x="200" y="106" width="0.0" height="15" fill="#39d0d8"/>
+<text x="208.0" y="119" fill="#8b93a7" font-size="12" font-family="monospace">0</text>
+<text x="190" y="152" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">baseline only</text>
+<rect x="200" y="140" width="0.0" height="15" fill="#a78bfa"/>
+<text x="208.0" y="153" fill="#8b93a7" font-size="12" font-family="monospace">0</text>
+<text x="190" y="186" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">unpaired/unknown</text>
+<rect x="200" y="174" width="0.0" height="15" fill="#8b93a7"/>
+<text x="208.0" y="187" fill="#8b93a7" font-size="12" font-family="monospace">0</text>
+</svg>

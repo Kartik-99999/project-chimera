@@ -1,7 +1,7 @@
 /* Audit & Reproducibility: samples, verdicts, manifests, rerun facts. */
 import { getState, auditStatus, esc, shortHash } from '../data.js';
 import { link } from '../app.js';
-import { pageHead, pill, auditPill, kvList, jsonView, epLink } from '../components.js';
+import { pageHead, pill, auditPill, kvList, jsonView, epLink, art, secHead } from '../components.js';
 
 function planSummary(p) {
   if (!p.data) return { cells: 0, sampled: 0, verdicts: 0, agreed: 0, disagreed: 0, unauditable: 0 };
@@ -30,8 +30,10 @@ export async function pageAudit(el) {
   const runs = [...s.runs.values()].filter((r) => r.data);
   const runCards = runs.map((r) => {
     const a = auditStatus(r.runId);
-    return `<div class="card tight"><h3 class="mono" style="font-size:13px">${esc(r.runId)}</h3>
+    const pct = a.cells > 0 ? Math.round((100 * a.auditedCells) / a.cells) : 0;
+    return `<div class="card tight">${art(a.state === 'audited' ? 2 : 0)}<h3 class="mono" style="font-size:13px">${esc(r.runId)}</h3>
       <p>${auditPill(a.state)}</p>
+      <div class="audit-meter" role="img" aria-label="${a.auditedCells} of ${a.cells} cells adjudicated"><span style="width:${pct}%"></span></div>
       <p style="color:var(--ink-2);font-size:13px">${a.auditedCells}/${a.cells} cells adjudicated`
       + (a.episodes ? ` · ${a.agreed}/${a.episodes} agreed` : ' · no verdicts recorded') + `</p></div>`;
   }).join('');
@@ -46,7 +48,7 @@ export async function pageAudit(el) {
       + `<td class="mono" style="font-size:12px">${esc(p.runId.replace('20261028-', ''))}</td>`
       + `<td>${p.kind === 'mini' ? pill('violet', 'mini sample') : pill('dim', 'full sample')}</td>`
       + `<td class="num">${sum.sampled}</td><td class="num">${sum.verdicts}</td>`
-      + `<td>${status}<span style="color:var(--ink-3);font-size:12px">${agree}</span></td></tr>`;
+      + `<td>${status}<br><span style="color:var(--ink-3);font-size:12px;white-space:nowrap">${agree}</span></td></tr>`;
   }).join('');
 
   let reviewQueue = '';
@@ -93,13 +95,24 @@ export async function pageAudit(el) {
       ]) + `</div>`;
   }).join('');
 
-  el.innerHTML = pageHead('Audit & Reproducibility', [['Audit & Reproducibility']])
+  let totSampled = 0, totVerdicts = 0;
+  for (const p of s.plans) {
+    const sum = planSummary(p);
+    totSampled += sum.sampled; totVerdicts += sum.verdicts;
+  }
+  el.innerHTML = pageHead('Audit & Reproducibility', [['Audit & Reproducibility']], '', {
+    kicker: 'Routes #/audit · #/review',
+    lede: 'Samples, verdicts, manifests, rerun facts. Human review is the gate — nothing here adjudicates, and nothing is styled to look finished before it is.',
+    meta: `${pill('dim', `${totSampled} sampled · ${totVerdicts} verdicts`)} ${pill('dim', `${s.plans.length} plans`)}`,
+  })
     + `<div class="banner warn"><strong>Human review is the gate.</strong> Nothing here adjudicates: dev verdicts below were recorded by a human; eval verdicts are still zero because adjudication was deferred. An empty verdict map is pending work, not agreement.</div>`
-    + `<h2>Audit status by run</h2><div class="grid two" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">${runCards || '<div class="card">No runs loaded.</div>'}</div>`
+    + secHead('Audit status by run', `${runs.length} runs · applied verdicts take precedence`)
+    + `<div class="grid g2">${runCards || '<div class="card">No runs loaded.</div>'}</div>`
     + `<div class="card"><h2>Audit plans &amp; verdict counts</h2>`
     + (s.plans.length ? `<div class="table-wrap"><table class="data"><thead><tr><th>Plan file</th><th>Run</th><th>Kind</th><th class="num">Sampled</th><th class="num">Verdicts</th><th>Status</th></tr></thead><tbody>${planRows}</tbody></table></div>`
       : '<p style="color:var(--ink-3)">No audit plans loaded.</p>') + `</div>`
     + (reviewQueue ? `<div class="card"><h2>Deferred review queue (mini sample)</h2><p style="color:var(--ink-2)">Adjudicate in the <a href="${link('review')}">mini-review queue</a> (blinded protocol, decisions export to <code>decisions.json</code>) — this console never writes verdict files itself. The plan-verdict CLI remains available for the apply_audit path:</p><pre class="code">.venv/bin/python tools/audit_review.py artifacts/eval-20261028/run-chimera.audit-plan-mini.json artifacts/eval-20261028/run-baseline-a.audit-plan-mini.json</pre>${reviewQueue}</div>` : '')
-    + `<h2>Manifests</h2>${manifests || '<div class="card">No manifests loaded.</div>'}`
-    + `<h2>Execution environments</h2><div class="grid two">${envs}</div>`;
+    + secHead('Manifests & environments', 'Reproduce anything from these cards.')
+    + `${manifests || '<div class="card">No manifests loaded.</div>'}`
+    + `<div class="grid g2">${envs}</div>`;
 }

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Chimera is an experimental browser agent you can check up on: what it does, how it works, what the held-out evaluation measured, and where it still fails.">
+<title>Chimera — a browser agent you can check up on</title>
+<link rel="stylesheet" href="/research/css/tokens.css">
+<link rel="icon" type="image/svg+xml" href="/site/assets/favicon.svg">
+<link rel="stylesheet" href="/site/site.css?v=20261101e">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <!--
+    Chimera main-site UI icon set · elegance pass (design artifact).
+    24-grid, 1.8px round stroke, currentColor body + ONE weave accent (#535BD5).
+    Rule (mirrors workbench sprite): NAV icons carry exactly one accent element;
+    BUTTON GLYPHS are monochrome currentColor (12-16px affordances).
+    Symbols marked COPIED are byte-copies of workbench/web/index.html art
+    (source of truth for shared concepts); NEW symbols are authored here.
+    Deployment note (PLAN.md risk): inline this block per page; do NOT load as an
+    external file (file:// <use> fails). Icons are aria-hidden, never focusable.
+  -->
+
+  <!-- ===== NAV ICONS (10) · one accent each ===== -->
+  <!-- NEW · Home -->
+  <symbol id="site-home" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4.5 11.2L12 4.8l7.5 6.4"/>
+      <path d="M6.3 10.4V19a1 1 0 0 0 1 1h9.4a1 1 0 0 0 1-1v-8.6"/>
+    </g>
+    <circle cx="12" cy="14.6" r="1.5" fill="#535BD5"/>
+  </symbol>
+  <!-- NEW · Product (cube; accent vertex) -->
+  <symbol id="site-product" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12,4.6 19,8.6 19,16 12,20 5,16 5,8.6"/>
+      <path d="M12 12v8M12 12l-7-3.4M12 12l7-3.4"/>
+    </g>
+    <circle cx="12" cy="4.6" r="1.6" fill="#535BD5"/>
+  </symbol>
+  <!-- NEW · Workflows (S-route with accent terminus) -->
+  <symbol id="site-workflows" viewBox="0 0 24 24">
+    <path d="M4.5 18.5H12a3.75 3.75 0 0 0 0-7.5h0A3.75 3.75 0 0 1 12 3.5h7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="4.5" cy="18.5" r="1.4" fill="currentColor"/>
+    <circle cx="19.5" cy="3.5" r="1.7" fill="#535BD5"/>
+  </symbol>
+  <!-- COPIED from #act-play · Demo -->
+  <symbol id="site-demo" viewBox="0 0 24 24">
+    <path d="M8 5.5v13l10-6.5z" fill="currentColor"/>
+  </symbol>
+  <!-- COPIED from #nav-analytics · Results -->
+  <symbol id="site-results" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4.5" y="12" width="3.6" height="7" rx="1"/>
+      <rect x="10.2" y="8.6" width="3.6" height="10.4" rx="1"/>
+      <rect x="15.9" y="5.2" width="3.6" height="13.8" rx="1"/>
+      <path d="M4 21.5h16"/>
+    </g>
+    <polyline points="4,14.5 9,10.5 14,12 20,5" fill="none" stroke="#535BD5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="20" cy="5" r="1.9" fill="#535BD5"/>
+  </symbol>
+  <!-- NEW · Evidence (shield; accent check) -->
+  <symbol id="site-evidence" viewBox="0 0 24 24">
+    <path d="M12 3.5l7 2.6v5.2c0 4.6-3 7.6-7 9.2-4-1.6-7-4.6-7-9.2V6.1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M8.8 12l2.3 2.3 4.2-4.6" fill="none" stroke="#535BD5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <!-- NEW · Applications grid (accent tile) -->
+  <symbol id="site-apps" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="4.5" y="4.5" width="6.6" height="6.6" rx="1.8"/>
+      <rect x="12.9" y="4.5" width="6.6" height="6.6" rx="1.8"/>
+      <rect x="4.5" y="12.9" width="6.6" height="6.6" rx="1.8"/>
+    </g>
+    <rect x="12.9" y="12.9" width="6.6" height="6.6" rx="1.8" fill="#535BD5"/>
+  </symbol>
+  <!-- COPIED from #nav-workspace · Workbench -->
+  <symbol id="site-workbench" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="7" height="7" rx="2"/>
+      <rect x="4" y="13" width="7" height="7" rx="2"/>
+      <rect x="13" y="13" width="7" height="7" rx="2"/>
+    </g>
+    <circle cx="16.5" cy="7.5" r="4.4" fill="none" stroke="#535BD5" stroke-width="1.4" opacity="0.38"/>
+    <circle cx="16.5" cy="7.5" r="2" fill="#535BD5"/>
+  </symbol>
+  <!-- COPIED from #nav-studio · Workflow Studio -->
+  <symbol id="site-studio" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7.2 15.3l2.9-2M13.9 11l2.9-2"/>
+      <circle cx="5" cy="17" r="2.6"/>
+      <circle cx="12" cy="12" r="2.6"/>
+    </g>
+    <circle cx="19" cy="7" r="4.3" fill="none" stroke="#535BD5" stroke-width="1.4" opacity="0.38"/>
+    <circle cx="19" cy="7" r="2" fill="#535BD5"/>
+  </symbol>
+  <!-- COPIED from #nav-lab · Campaign Lab -->
+  <symbol id="site-lab" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 3.5h4"/>
+      <path d="M10.7 3.5v5.1L5.8 17.6a1.6 1.6 0 0 0 1.4 2.4h9.6a1.6 1.6 0 0 0 1.4-2.4L13.3 8.6V3.5"/>
+      <path d="M8 14.8h8"/>
+    </g>
+    <circle cx="15.5" cy="5.8" r="1.5" fill="#535BD5"/>
+    <circle cx="18.2" cy="9.4" r="1" fill="none" stroke="currentColor" stroke-width="1.3"/>
+  </symbol>
+  <!-- COPIED from #nav-research · Research Console -->
+  <symbol id="site-research" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3.5" y="5" width="17" height="14" rx="2.5"/>
+      <path d="M3.5 9.2h17"/>
+      <polyline points="7.5,13.6 10,15.4 7.5,17.2"/>
+      <path d="M12.5 17.4h4.5"/>
+    </g>
+    <circle cx="5.9" cy="7.1" r="1" fill="currentColor"/>
+    <circle cx="8.7" cy="7.1" r="1" fill="currentColor" opacity="0.45"/>
+    <circle cx="18.2" cy="7.1" r="1.3" fill="#535BD5"/>
+  </symbol>
+
+  <!-- ===== BUTTON GLYPHS (7) · monochrome ===== -->
+  <!-- NEW · arrow-up-right (pairs with #act-external box variant) -->
+  <symbol id="g-arrow-ur" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6.5 17.5L17.5 6.5"/>
+      <path d="M9 6.5h8.5V15"/>
+    </g>
+  </symbol>
+  <!-- NEW · arrow-down -->
+  <symbol id="g-arrow-down" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 4.5V19"/>
+      <path d="M6.5 13.5L12 19l5.5-5.5"/>
+    </g>
+  </symbol>
+  <!-- NEW · arrow-right (replaces text glyph) -->
+  <symbol id="g-arrow-right" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4.5 12H19"/>
+      <path d="M13.5 6.5L19 12l-5.5 5.5"/>
+    </g>
+  </symbol>
+  <!-- NEW · dossier / book -->
+  <symbol id="g-dossier" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 3.5h8L19 8.5V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"/>
+      <path d="M14 3.5V8.5H19"/>
+      <path d="M8.5 12.5h7M8.5 15.8h4.5"/>
+    </g>
+    <circle cx="16.5" cy="15.8" r="1.4" fill="#535BD5"/>
+  </symbol>
+  <!-- NEW · menu (formalizes existing hamburger) -->
+  <symbol id="g-menu" viewBox="0 0 24 24">
+    <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <!-- COPIED from #act-cancel · close -->
+  <symbol id="g-close" viewBox="0 0 24 24">
+    <path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <!-- NEW · chevron (replaces text caret) -->
+  <symbol id="g-chevron" viewBox="0 0 24 24">
+    <path d="M6 9.5l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+<header class="site-top">
+  <a class="brand" href="/" aria-label="Chimera home"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 20,8 20,16 12,22 4,16 4,8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><line x1="12" y1="2" x2="12" y2="22" stroke="#C0563B" stroke-width="2"/><line x1="4" y1="8" x2="20" y2="16" stroke="#1E9A8A" stroke-width="1.4"/><line x1="20" y1="8" x2="4" y2="16" stroke="#3A6EA5" stroke-width="1.4"/></svg>chimera</a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="/" aria-current="page"><svg class="nav-ic" aria-hidden="true"><use href="#site-home"/></svg>Home</a>
+    <div class="nav-drop">
+      <a href="/product/" aria-haspopup="true" aria-expanded="false"><svg class="nav-ic" aria-hidden="true"><use href="#site-product"/></svg>Product <svg class="nav-caret" aria-hidden="true"><use href="#g-chevron"/></svg></a>
+      <ul class="nav-menu" aria-label="Product sections">
+        <li><div class="mega-inner">
+          <div><p class="mega-kicker">Product</p>
+            <ul class="mega-grid">
+              <li><a href="/product/#arch"><span class="tile" style="--t:#0e7490"><svg aria-hidden="true"><use href="#site-product"/></svg></span><span><strong>Architecture</strong><small>Fixed script, five stages</small></span></a></li>
+        <li><a href="/product/#verify"><span class="tile" style="--t:#0e7a3d"><svg aria-hidden="true"><use href="#site-evidence"/></svg></span><span><strong>Verification &amp; P1–P3</strong><small>Independent checker</small></span></a></li>
+        <li><a href="/product/#retry"><span class="tile" style="--t:#b45309"><svg aria-hidden="true"><use href="#site-workflows"/></svg></span><span><strong>Retry policies</strong><small>Bounded, evidence-gated</small></span></a></li>
+        <li><a href="/product/#bounds"><span class="tile" style="--t:#C0563B"><svg aria-hidden="true"><use href="#g-dossier"/></svg></span><span><strong>Boundaries</strong><small>What is not claimed</small></span></a></li>
+            </ul>
+          </div>
+          <a class="mega-card" href="/demo/"><span class="mega-card-art" aria-hidden="true"><svg viewBox="0 0 288 190" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".8"><path d="M-10 150 C 70 110, 150 160, 300 90"/><path d="M-10 165 C 90 130, 180 175, 300 110" opacity=".6"/><circle cx="228" cy="42" r="16" opacity=".7"/><circle cx="52" cy="52" r="8" opacity=".6"/></g></svg><b>See it run</b></span><span class="mega-card-cap"><span>Demo · Recorded executions</span><strong>Every run, check by check</strong><em>Watch a recorded execution →</em></span></a>
+        </div></li>
+      </ul>
+    </div>
+    <div class="nav-drop">
+      <a href="/workflows/" aria-haspopup="true" aria-expanded="false"><svg class="nav-ic" aria-hidden="true"><use href="#site-workflows"/></svg>Workflows <svg class="nav-caret" aria-hidden="true"><use href="#g-chevron"/></svg></a>
+      <ul class="nav-menu" aria-label="Workflow sections">
+        <li><div class="mega-inner">
+          <div><p class="mega-kicker">Workflows</p>
+            <ul class="mega-grid">
+              <li><a href="/workflows/#demo-flows"><span class="tile" style="--t:#0B9FB8"><svg aria-hidden="true"><use href="#site-demo"/></svg></span><span><strong>Demo flows</strong><small>Task Manager + contact form</small></span></a></li>
+        <li><a href="/workflows/#saucedemo"><span class="tile" style="--t:#1E9A8A"><svg aria-hidden="true"><use href="#site-workflows"/></svg></span><span><strong>Stores</strong><small>SauceDemo + Flipkart</small></span></a></li>
+        <li><a href="/workflows/#general-use"><span class="tile" style="--t:#0e7490"><svg aria-hidden="true"><use href="#site-apps"/></svg></span><span><strong>General-use lookups</strong><small>10 site adapters</small></span></a></li>
+        <li><a href="/workflows/#pilots"><span class="tile" style="--t:#b45309"><svg aria-hidden="true"><use href="#site-lab"/></svg></span><span><strong>User-session pilots</strong><small>SO + Amazon</small></span></a></li>
+        <li><a href="/workflows/#studio"><span class="tile" style="--t:#3A6EA5"><svg aria-hidden="true"><use href="#site-studio"/></svg></span><span><strong>Workflow Studio</strong><small>9 step types</small></span></a></li>
+        <li><a href="/workflows/#roadmap"><span class="tile" style="--t:#64748b"><svg aria-hidden="true"><use href="#g-arrow-right"/></svg></span><span><strong>Implemented vs roadmap</strong><small>Honest split</small></span></a></li>
+            </ul>
+          </div>
+          <a class="mega-card" href="/workbench/web/#/studio"><span class="mega-card-art" aria-hidden="true"><svg viewBox="0 0 288 190" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".8"><path d="M-10 150 C 70 110, 150 160, 300 90"/><path d="M-10 165 C 90 130, 180 175, 300 110" opacity=".6"/><circle cx="228" cy="42" r="16" opacity=".7"/><circle cx="52" cy="52" r="8" opacity=".6"/></g></svg><b>Compose a workflow</b></span><span class="mega-card-cap"><span>Workflow Studio · 9 step types</span><strong>Steps compose, runs verify</strong><em>Open the Studio →</em></span></a>
+        </div></li>
+      </ul>
+    </div>
+    <a href="/demo/"><svg class="nav-ic" aria-hidden="true"><use href="#site-demo"/></svg>Demo</a>
+    <div class="nav-drop">
+      <a href="/results/" aria-haspopup="true" aria-expanded="false"><svg class="nav-ic" aria-hidden="true"><use href="#site-results"/></svg>Results <svg class="nav-caret" aria-hidden="true"><use href="#g-chevron"/></svg></a>
+      <ul class="nav-menu" aria-label="Result sections">
+        <li><div class="mega-inner">
+          <div><p class="mega-kicker">Results</p>
+            <ul class="mega-grid">
+              <li><a href="/results/#heldout"><span class="tile" style="--t:#0e7490"><svg aria-hidden="true"><use href="#site-results"/></svg></span><span><strong>Held-out evaluation</strong><small>Chimera vs replay</small></span></a></li>
+        <li><a href="/results/#matched-budget"><span class="tile" style="--t:#b45309"><svg aria-hidden="true"><use href="#site-workflows"/></svg></span><span><strong>Matched-budget</strong><small>Budget, not capability</small></span></a></li>
+        <li><a href="/results/#sauce"><span class="tile" style="--t:#1E9A8A"><svg aria-hidden="true"><use href="#site-lab"/></svg></span><span><strong>SauceDemo campaigns</strong><small>Stress v2 · 40 trials</small></span></a></li>
+        <li><a href="/results/#smoke"><span class="tile" style="--t:#0e7a3d"><svg aria-hidden="true"><use href="#site-demo"/></svg></span><span><strong>Live smoke check</strong><small>17 workflows run</small></span></a></li>
+            </ul>
+          </div>
+          <a class="mega-card" href="/evidence/"><span class="mega-card-art" aria-hidden="true"><svg viewBox="0 0 288 190" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".8"><path d="M-10 150 C 70 110, 150 160, 300 90"/><path d="M-10 165 C 90 130, 180 175, 300 110" opacity=".6"/><circle cx="228" cy="42" r="16" opacity=".7"/><circle cx="52" cy="52" r="8" opacity=".6"/></g></svg><b>Where results come from</b></span><span class="mega-card-cap"><span>Evidence · Reports + traces</span><strong>Every report, trace, and hash</strong><em>Inspect the evidence →</em></span></a>
+        </div></li>
+      </ul>
+    </div>
+    <div class="nav-drop">
+      <a href="/evidence/" aria-haspopup="true" aria-expanded="false"><svg class="nav-ic" aria-hidden="true"><use href="#site-evidence"/></svg>Evidence <svg class="nav-caret" aria-hidden="true"><use href="#g-chevron"/></svg></a>
+      <ul class="nav-menu" aria-label="Evidence sections">
+        <li><div class="mega-inner">
+          <div><p class="mega-kicker">Evidence</p>
+            <ul class="mega-grid">
+              <li><a href="/evidence/#method"><span class="tile" style="--t:#0e7490"><svg aria-hidden="true"><use href="#g-dossier"/></svg></span><span><strong>Method</strong><small>Design + criteria</small></span></a></li>
+        <li><a href="/evidence/#provenance"><span class="tile" style="--t:#3A6EA5"><svg aria-hidden="true"><use href="#site-evidence"/></svg></span><span><strong>Provenance</strong><small>Seed, hashes, chain</small></span></a></li>
+        <li><a href="/evidence/#audits"><span class="tile" style="--t:#0e7a3d"><svg aria-hidden="true"><use href="#site-results"/></svg></span><span><strong>Audits</strong><small>Mini 8/8 · full pending</small></span></a></li>
+        <li><a href="/evidence/#reports"><span class="tile" style="--t:#64748b"><svg aria-hidden="true"><use href="#g-arrow-down"/></svg></span><span><strong>Reports</strong><small>Every rendered report</small></span></a></li>
+            </ul>
+          </div>
+          <a class="mega-card" href="/research/#/audit"><span class="mega-card-art" aria-hidden="true"><svg viewBox="0 0 288 190" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".8"><path d="M-10 150 C 70 110, 150 160, 300 90"/><path d="M-10 165 C 90 130, 180 175, 300 110" opacity=".6"/><circle cx="228" cy="42" r="16" opacity=".7"/><circle cx="52" cy="52" r="8" opacity=".6"/></g></svg><b>Audit &amp; reproducibility</b></span><span class="mega-card-cap"><span>Research Console · Human-gated</span><strong>Samples, verdicts, manifests</strong><em>Reproduce every figure →</em></span></a>
+        </div></li>
+      </ul>
+    </div>
+    <div class="nav-drop">
+      <button type="button" aria-haspopup="true" aria-expanded="false"><svg class="nav-ic" aria-hidden="true"><use href="#site-apps"/></svg>Applications <svg class="nav-caret" aria-hidden="true"><use href="#g-chevron"/></svg></button>
+      <ul class="nav-menu" aria-label="Applications">
+        <li><div class="mega-inner">
+          <div><p class="mega-kicker">Applications</p>
+            <ul class="mega-grid">
+              <li><a href="/workbench/web/#/workspace"><span class="tile" style="--t:#0f172a"><svg aria-hidden="true"><use href="#site-workbench"/></svg></span><span><strong>Workbench</strong><small>Run + inspect executions</small></span></a></li>
+        <li><a href="/workbench/web/#/studio"><span class="tile" style="--t:#3A6EA5"><svg aria-hidden="true"><use href="#site-studio"/></svg></span><span><strong>Workflow Studio</strong><small>Compose step workflows</small></span></a></li>
+        <li><a href="/workbench/web/#/lab"><span class="tile" style="--t:#1E9A8A"><svg aria-hidden="true"><use href="#site-lab"/></svg></span><span><strong>Campaign Lab</strong><small>Campaign analytics</small></span></a></li>
+        <li><a href="/research/#/command"><span class="tile" style="--t:#0e7490"><svg aria-hidden="true"><use href="#site-research"/></svg></span><span><strong>Research Console</strong><small>Evidence explorer</small></span></a></li>
+            </ul>
+          </div>
+          <a class="mega-card" href="/research/#/river"><span class="mega-card-art" aria-hidden="true"><svg viewBox="0 0 288 190" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".8"><path d="M-10 150 C 70 110, 150 160, 300 90"/><path d="M-10 165 C 90 130, 180 175, 300 110" opacity=".6"/><circle cx="228" cy="42" r="16" opacity=".7"/><circle cx="52" cy="52" r="8" opacity=".6"/></g></svg><b>Evidence River</b></span><span class="mega-card-cap"><span>Research Console · One trial</span><strong>Follow one trial end to end</strong><em>Open the River →</em></span></a>
+        </div></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="site-ctas">
+    <a class="btn-obsidian btn-sm" href="/workbench/web/#/workspace">Open Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-ur"/></svg></a>
+    <button type="button" class="btn-ivory-pill btn-sm hide-sm" data-open-dossier="studies"><svg class="btn-ic" aria-hidden="true"><use href="#g-dossier"/></svg>Design dossier</button>
+    <button id="menuBtn" type="button" class="menu-btn" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Toggle menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><use href="#g-menu"/></svg>
+    </button>
+  </div>
+  <div id="mobileDrawer" class="mobile-drawer" hidden>
+    <nav class="drawer-nav" aria-label="Mobile">
+      <a href="/" aria-current="page"><svg class="drawer-ic" aria-hidden="true"><use href="#site-home"/></svg>Home</a>
+      <a href="/demo/"><svg class="drawer-ic" aria-hidden="true"><use href="#site-demo"/></svg>Demo</a>
+      <div class="drawer-group"><span>Product</span>
+        <a class="top" href="/product/"><svg class="drawer-ic" aria-hidden="true"><use href="#site-product"/></svg>Product overview</a>
+        <a href="/product/#arch">Architecture</a>
+        <a href="/product/#verify">Verification &amp; P1–P3</a>
+        <a href="/product/#retry">Retry policies</a>
+        <a href="/product/#bounds">Boundaries</a>
+      </div>
+      <div class="drawer-group"><span>Workflows</span>
+        <a class="top" href="/workflows/"><svg class="drawer-ic" aria-hidden="true"><use href="#site-workflows"/></svg>Workflows overview</a>
+        <a href="/workflows/#demo-flows">Demo flows</a>
+        <a href="/workflows/#saucedemo">Stores</a>
+        <a href="/workflows/#general-use">General-use lookups</a>
+        <a href="/workflows/#pilots">User-session pilots</a>
+        <a href="/workflows/#studio">Workflow Studio</a>
+        <a href="/workflows/#roadmap">Implemented vs roadmap</a>
+      </div>
+      <div class="drawer-group"><span>Results</span>
+        <a class="top" href="/results/"><svg class="drawer-ic" aria-hidden="true"><use href="#site-results"/></svg>Results overview</a>
+        <a href="/results/#heldout">Held-out evaluation</a>
+        <a href="/results/#matched-budget">Matched-budget</a>
+        <a href="/results/#sauce">SauceDemo campaigns</a>
+        <a href="/results/#smoke">Live smoke check</a>
+      </div>
+      <div class="drawer-group"><span>Evidence</span>
+        <a class="top" href="/evidence/"><svg class="drawer-ic" aria-hidden="true"><use href="#site-evidence"/></svg>Evidence overview</a>
+        <a href="/evidence/#method">Method</a>
+        <a href="/evidence/#provenance">Provenance</a>
+        <a href="/evidence/#audits">Audits</a>
+        <a href="/evidence/#reports">Reports</a>
+      </div>
+      <div class="drawer-group"><span>Applications</span>
+        <a class="top" href="/workbench/web/#/workspace"><svg class="drawer-ic" aria-hidden="true"><use href="#site-workbench"/></svg>Workbench</a>
+        <a class="top" href="/workbench/web/#/studio"><svg class="drawer-ic" aria-hidden="true"><use href="#site-studio"/></svg>Workflow Studio</a>
+        <a class="top" href="/workbench/web/#/lab"><svg class="drawer-ic" aria-hidden="true"><use href="#site-lab"/></svg>Campaign Lab</a>
+        <a class="top" href="/research/#/command"><svg class="drawer-ic" aria-hidden="true"><use href="#site-research"/></svg>Research Console</a>
+      </div>
+      <div class="drawer-group"><span>Featured</span>
+        <a href="/demo/">See it run — recorded executions</a>
+        <a href="/workbench/web/#/studio">Compose a workflow — Studio</a>
+        <a href="/evidence/">Where results come from</a>
+        <a href="/research/#/audit">Audit &amp; reproducibility</a>
+        <a href="/research/#/river">Evidence River — follow one trial</a>
+      </div>
+      <button type="button" data-open-dossier="studies"><svg class="drawer-ic" aria-hidden="true"><use href="#g-dossier"/></svg>Design dossier</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<!-- ============ HERO · Computational Weave ============ -->
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="hero-inner">
+  <div class="copy">
+    <p class="report-meta copy-enter" style="--d:.1s"><span class="overline-dot" aria-hidden="true"></span><span><strong>Held-out evaluation: provisional</strong></span><span class="overline-index">Lab report · experimental prototype</span></p>
+    <h1 id="hero-h" class="display-serif copy-enter" style="--d:.2s"><span class="h1-line">Every browser action,</span><span class="h1-line grad">woven into proof.</span></h1>
+    <p class="lede copy-enter" style="--d:.32s">Chimera executes a supported browser task, observes what changed, and checks the result independently. Every run becomes a record you can inspect.</p>
+    <p class="hero-ctas copy-enter" style="--d:.44s">
+      <a class="btn-obsidian" href="/workbench/web/#/workspace">Open Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-ur"/></svg></a>
+      <a class="btn-ivory-pill" href="#five-stages">Explore the five stages <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-down"/></svg></a>
+    </p>
+    <p class="hero-load-error loading" id="hero-load-error" hidden></p>
+  </div>
+  <figure class="weave-art copy-enter" style="--d:.5s" id="weaveArtwork" data-stage="0" aria-label="Computational weave artwork: fine filaments converge through five coloured nodes along one horizontal axis into a shared centre">
+    <img src="/site/assets/chimera-computational-weave.png" alt="A sparse, symmetrical computational line artwork. Fine cyan, indigo, pink, orange and amber filaments converge through a central circular core, with five coloured nodes along one horizontal axis." width="1774" height="650" fetchpriority="high">
+    <div class="weave-nodes" aria-hidden="true">
+      <span class="weave-node" data-node="0" style="--node:var(--weave-1);--x:13.5%"></span>
+      <span class="weave-node" data-node="1" style="--node:var(--weave-2);--x:32.9%"></span>
+      <span class="weave-node" data-node="2" style="--node:var(--weave-3);--x:50.1%"></span>
+      <span class="weave-node" data-node="3" style="--node:var(--weave-4);--x:67.4%"></span>
+      <span class="weave-node" data-node="4" style="--node:var(--weave-5);--x:86.2%"></span>
+    </div>
+    <figcaption class="weave-caption">
+      <span><b>FIG. 01 — ONE TASK IN, FIVE STAGES OUT</b><small>ARTWORK IS ILLUSTRATIVE; COUNTS ARE EXACT</small></span>
+      <span class="weave-caption-right">COMPUTATIONAL WEAVE <i aria-hidden="true"></i> 2026</span>
+    </figcaption>
+  </figure>
+
+  <div class="hero-stage-system copy-enter" id="five-stages" style="--d:.6s; scroll-margin-top: 84px;">
+    <div class="stage-control-heading">
+      <span class="hero-stage-kicker">One task · five stages</span>
+      <button type="button" id="playPauseBtn" class="replay-button" aria-label="Pause stage sequence"><span id="playPauseIcon" aria-hidden="true">Ⅱ</span> <span id="playPauseLabel">Pause sequence</span></button>
+    </div>
+    <div class="hero-stage-tabs" role="tablist" aria-label="Five Chimera stages">
+      <button type="button" role="tab" id="stageTab-0" aria-controls="stage-note" data-stage="0" aria-selected="true" aria-label="Stage 1 Action: one create-a-project flow"><span class="stage-tab-index">01</span><span class="stage-tab-dot" style="--stage-color:var(--weave-1)"></span><span class="stage-tab-text"><span class="stage-tab-name">Action</span><span class="stage-tab-cap">one create-a-project flow</span></span></button>
+      <button type="button" role="tab" id="stageTab-1" aria-controls="stage-note" data-stage="1" aria-selected="false" tabindex="-1" aria-label="Stage 2 Execution: 520 episodes, 360 held-out plus 160 development"><span class="stage-tab-index">02</span><span class="stage-tab-dot" style="--stage-color:var(--weave-2)"></span><span class="stage-tab-text"><span class="stage-tab-name">Execution</span><span class="stage-tab-cap"><span data-fig="episodes">…</span> episodes · 360 held-out + 160 dev</span></span></button>
+      <button type="button" role="tab" id="stageTab-2" aria-controls="stage-note" data-stage="2" aria-selected="false" tabindex="-1" aria-label="Stage 3 Observation: 4 fault conditions — normal, slow, disabled, slow plus disabled"><span class="stage-tab-index">03</span><span class="stage-tab-dot" style="--stage-color:var(--weave-3)"></span><span class="stage-tab-text"><span class="stage-tab-name">Observation</span><span class="stage-tab-cap"><span data-fig="conditions">…</span> fault conditions · slow · disabled</span></span></button>
+      <button type="button" role="tab" id="stageTab-3" aria-controls="stage-note" data-stage="3" aria-selected="false" tabindex="-1" aria-label="Stage 4 Verification: zero false successes of 520 episodes"><span class="stage-tab-index">04</span><span class="stage-tab-dot" style="--stage-color:var(--weave-4)"></span><span class="stage-tab-text"><span class="stage-tab-name">Verification</span><span class="stage-tab-cap"><span data-fig="falsesucc">…</span> false successes <span data-fig="falsesucc-den"></span></span></span></button>
+      <button type="button" role="tab" id="stageTab-4" aria-controls="stage-note" data-stage="4" aria-selected="false" tabindex="-1" aria-label="Stage 5 Evidence: two drivers on identical cells, seed 20261030"><span class="stage-tab-index">05</span><span class="stage-tab-dot" style="--stage-color:var(--weave-5)"></span><span class="stage-tab-text"><span class="stage-tab-name">Evidence</span><span class="stage-tab-cap">2 drivers · identical cells</span></span></button>
+    </div>
+    <p class="hero-stage-detail" id="stage-note" aria-live="polite">STAGE 01/05 · One create-a-project flow enters the weave — the only thing Chimera is asked to do.</p>
+  </div>
+
+  <div class="hero-surface-strip copy-enter" style="--d:.64s">
+    <span>Application surfaces</span>
+    <div>
+      <a href="/workbench/web/#/workspace">Workbench</a>
+      <a href="/workbench/web/#/studio">Workflow Studio</a>
+      <a href="/workbench/web/#/lab">Campaign Lab</a>
+      <a href="/research/#/command">Research Console</a>
+    </div>
+  </div>
+
+  <p class="hero-note copy-enter" style="--d:.68s">New here? An <strong>episode</strong> is one attempt at the task.
+    A <strong>cell</strong> is one test condition, tried 5 times. The
+    <strong>baseline</strong> is a fixed replay script — no waiting, no retries —
+    run through the same cells so Chimera's waiting and retrying can be isolated.</p>
+  </div>
+  <footer class="hero-foot">
+    <span>seed 20261030 · deterministic · figures from frozen records</span>
+    <span>520 episodes · five stages · one sealed record</span>
+  </footer>
+</section>
+
+<!-- ============ POWERING VERIFIABLE BROWSER AUTOMATION ============ -->
+<section class="band" id="powering" aria-labelledby="powering-h">
+  <div class="band-head">
+    <h2 id="powering-h" class="display-serif">Powering verifiable browser automation</h2>
+  </div>
+  <div class="power-grid">
+    <div class="power-art">
+      <svg viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Layered chromatic scalloped arches rising toward Chimera's woven proof sigil" role="img">
+        <defs>
+          <linearGradient id="pw-archBgGrad" x1="320" y1="0" x2="320" y2="480" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#A5B4FC"/>
+            <stop offset="45%" stop-color="#E0E7FF"/>
+            <stop offset="100%" stop-color="#C7D2FE"/>
+          </linearGradient>
+          <radialGradient id="pw-coreGlow" cx="50%" cy="38%" r="42%">
+            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+            <stop offset="60%" stop-color="#EEF2FF" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="pw-scallopTier1" x1="320" y1="220" x2="320" y2="480" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#6366F1" stop-opacity="0.72"/>
+            <stop offset="100%" stop-color="#EEF2FF" stop-opacity="0.9"/>
+          </linearGradient>
+          <linearGradient id="pw-scallopTier2" x1="320" y1="300" x2="320" y2="480" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#4F46E5" stop-opacity="0.82"/>
+            <stop offset="100%" stop-color="#C7D2FE" stop-opacity="0.95"/>
+          </linearGradient>
+          <linearGradient id="pw-scallopTier3" x1="320" y1="375" x2="320" y2="480" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#4338CA" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.95"/>
+          </linearGradient>
+        </defs>
+        <rect width="640" height="480" fill="url(#pw-archBgGrad)"/>
+        <circle cx="320" cy="185" r="185" fill="url(#pw-coreGlow)"/>
+        <g opacity="0.45" stroke="#FFFFFF" stroke-width="0.9">
+          <path d="M320 175 C220 210, 120 310, 40 480"/>
+          <path d="M320 175 C250 230, 170 330, 110 480"/>
+          <path d="M320 175 C280 250, 230 350, 190 480"/>
+          <path d="M320 175 C420 210, 520 310, 600 480"/>
+          <path d="M320 175 C390 230, 470 330, 530 480"/>
+          <path d="M320 175 C360 250, 410 350, 450 480"/>
+          <circle cx="320" cy="175" r="110" stroke-dasharray="3 4"/>
+          <circle cx="320" cy="175" r="155" stroke-dasharray="2 5"/>
+        </g>
+        <path d="M-20 480 C-10 400, 45 385, 85 405 C105 335, 175 325, 215 350 C245 280, 295 285, 320 245 C345 285, 395 280, 425 350 C465 325, 535 335, 555 405 C595 385, 650 400, 660 480 Z" fill="url(#pw-scallopTier1)"/>
+        <path d="M50 480 C70 425, 125 415, 160 435 C185 375, 235 370, 265 390 C288 345, 308 345, 320 315 C332 345, 352 345, 375 390 C405 370, 455 375, 480 435 C515 415, 570 425, 590 480 Z" fill="url(#pw-scallopTier2)"/>
+        <path d="M145 480 C165 445, 205 440, 230 455 C252 415, 295 415, 320 385 C345 415, 388 415, 410 455 C435 440, 475 445, 495 480 Z" fill="url(#pw-scallopTier3)"/>
+        <g transform="translate(320, 172)">
+          <circle cx="0" cy="0" r="46" stroke="#FFFFFF" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="0" cy="-20" r="22" stroke="#FFFFFF" stroke-width="2.2"/>
+          <circle cx="14" cy="-14" r="22" stroke="#FFFFFF" stroke-width="2.2"/>
+          <circle cx="20" cy="0" r="22" stroke="#FFFFFF" stroke-width="2.2"/>
+          <circle cx="14" cy="14" r="22" stroke="#FFFFFF" stroke-width="2.2"/>
+          <circle cx="0" cy="20" r="22" stroke="#FFFFFF" stroke-width="2.2"/>
+          <circle cx="-14" cy="14" r="22" stroke="#FFFFFF" stroke-width="2.2"/>
+          <circle cx="-20" cy="0" r="22" stroke="#FFFFFF" stroke-width="2.2"/>
+          <circle cx="-14" cy="-14" r="22" stroke="#FFFFFF" stroke-width="2.2"/>
+          <path d="M0 -8 L8 0 L0 8 L-8 0 Z" fill="#FFFFFF"/>
+        </g>
+      </svg>
+    </div>
+    <div class="power-pillars">
+      <div class="power-pillar">
+        <svg class="spark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" fill="url(#pw-spark1)"/>
+          <defs>
+            <linearGradient id="pw-spark1" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#10B981"/>
+              <stop offset="100%" stop-color="#3B82F6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div>
+          <h3>Deterministic by design</h3>
+          <p>Execute defined, supported browser workflows through explicit adapters with full control — never mistaking an unverified click for a completed task.</p>
+        </div>
+      </div>
+      <div class="power-pillar">
+        <svg class="spark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" fill="url(#pw-spark2)"/>
+          <defs>
+            <linearGradient id="pw-spark2" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#6366F1"/>
+              <stop offset="100%" stop-color="#EC4899"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div>
+          <h3>Decoupled independent verification</h3>
+          <p>An independent verifier checks recorded DOM snapshots against P1–P3 post-conditions, catching silent UI failures automatically.</p>
+        </div>
+      </div>
+      <div class="power-pillar">
+        <svg class="spark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" fill="url(#pw-spark3)"/>
+          <defs>
+            <linearGradient id="pw-spark3" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#F59E0B"/>
+              <stop offset="100%" stop-color="#EF4444"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div>
+          <h3>Inspectable evidence at the core</h3>
+          <p>Every execution resolves into an auditable evidence bundle of execution traces, DOM snapshots, and P1–P3 verdicts ready for human inspection.</p>
+        </div>
+      </div>
+      <p class="power-cta">
+        <a class="btn-obsidian btn-block" href="/workbench/web/#/workspace">Launch Chimera Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-ur"/></svg></a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT CHIMERA DOES ============ -->
+<section class="band" id="what" aria-labelledby="what-h">
+  <div class="band-head">
+    <p class="kicker">What Chimera does</p>
+    <h2 id="what-h" class="display-serif">One small task, performed the same way every time.</h2>
+    <p class="lede">Right now Chimera is <strong>fixed scripts, not an AI model</strong>:
+      no learning, no randomness, and network calls only to each workflow's approved target
+      site. It runs seventeen fixed workflows — demo flows, store checkouts, site lookups —
+      and the measured 520-episode evaluation covers the create-a-project flow against four
+      fault conditions: <strong>normal</strong>, <strong>slow</strong>,
+      <strong>disabled</strong>, and <strong>slow&nbsp;+&nbsp;disabled</strong>.
+      <a href="/workflows/">All seventeen workflows</a>.</p>
+  </div>
+  <div class="arch-pillars">
+    <div class="pillar">
+      <svg class="spark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" fill="#3B82F6"/></svg>
+      <div><h3>Fixed scripts, seventeen of them</h3><p>Deterministic by design. One fixed procedure per workflow — never mistaken for general autonomy. <a href="/product/">How it works <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></p></div>
+    </div>
+    <div class="pillar">
+      <svg class="spark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" fill="#8B5CF6"/></svg>
+      <div><h3>A separate checker</h3><p>An independent P1–P3 verifier reads harness-captured DOM snapshots only — never the agent's own claims. <a href="/product/#verify">Verification <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></p></div>
+    </div>
+    <div class="pillar">
+      <svg class="spark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" fill="#F59E0B"/></svg>
+      <div><h3>Evidence you can inspect</h3><p>520 measured episodes resolve into step traces, DOM snapshots, and P1–P3 verdicts — plus an 8/8 human mini-audit. <a href="/evidence/">Evidence chain <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></a></p></div>
+    </div>
+  </div>
+  <div class="metrics-strip" aria-label="Key metrics with denominators">
+    <div class="fig"><div class="fig-num display-serif"><span data-fig="episodes">…</span></div><div class="fig-cap">Measured episodes · 360 held-out + 160 dev · warm-ups excluded</div></div>
+    <div class="fig"><div class="fig-num display-serif"><span data-fig="falsesucc">…</span></div><div class="fig-cap">False successes <span data-fig="falsesucc-den"></span> · the headline safety metric</div></div>
+    <div class="fig"><div class="fig-num display-serif"><span data-fig="conditions">…</span></div><div class="fig-cap">Fault conditions · normal, slow, disabled, slow+disabled</div></div>
+    <div class="fig"><div class="fig-num display-serif">Provisional</div><div class="fig-cap">Held-out status · full human audit pending</div></div>
+  </div>
+</section>
+
+<!-- ============ EXPLORE ============ -->
+<section class="band" id="explore" aria-labelledby="explore-h">
+  <div class="band-head">
+    <p class="kicker">Explore the report</p>
+    <h2 id="explore-h" class="display-serif">Five pages, one sealed record.</h2>
+  </div>
+  <div class="teaser-grid">
+    <a class="teaser" href="/product/"><span class="teaser-idx" aria-hidden="true">01</span><span><h3>Product</h3><p>Architecture, fixed script vs independent verification, observation capture, retry policies, and honest boundaries.</p></span><span class="teaser-go" aria-hidden="true"><svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></span></a>
+    <a class="teaser" href="/workflows/"><span class="teaser-idx" aria-hidden="true">02</span><span><h3>Workflows</h3><p>Four runnable workflows, Workflow Studio's nine step types, and the implemented-vs-roadmap split.</p></span><span class="teaser-go" aria-hidden="true"><svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></span></a>
+    <a class="teaser" href="/demo/"><span class="teaser-idx" aria-hidden="true">03</span><span><h3>Demo</h3><p>Recorded executions only: a verified pass and an honest failure, opened up step by step.</p></span><span class="teaser-go" aria-hidden="true"><svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></span></a>
+    <a class="teaser" href="/results/"><span class="teaser-idx" aria-hidden="true">04</span><span><h3>Results</h3><p>Held-out matrix, terminal correctness, latency, the matched-budget experiment, and SauceDemo stress v2.</p></span><span class="teaser-go" aria-hidden="true"><svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></span></a>
+    <a class="teaser" href="/evidence/"><span class="teaser-idx" aria-hidden="true">05</span><span><h3>Evidence</h3><p>Methodology, provenance, mini- and full-audit status, limitations, and every report.</p></span><span class="teaser-go" aria-hidden="true"><svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-right"/></svg></span></a>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="band cta-band" aria-labelledby="cta-h">
+  <div class="cta-dome">
+    <div class="tactile-grain" aria-hidden="true"></div>
+    <svg class="cta-spark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0 L9.6 6.4 L16 8 L9.6 9.6 L8 16 L6.4 9.6 L0 8 L6.4 6.4 Z" fill="#fff" opacity=".9"/></svg>
+    <svg class="cta-spark is-b" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0 L9.6 6.4 L16 8 L9.6 9.6 L8 16 L6.4 9.6 L0 8 L6.4 6.4 Z" fill="#fff" opacity=".9"/></svg>
+    <svg class="dome-wire" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g stroke="#FFFFFF" stroke-width="1" fill="none">
+        <circle cx="600" cy="420" r="360"/><circle cx="600" cy="420" r="300"/><circle cx="600" cy="420" r="240"/>
+        <ellipse cx="600" cy="420" rx="120" ry="360"/><ellipse cx="600" cy="420" rx="220" ry="360"/><ellipse cx="600" cy="420" rx="310" ry="360"/>
+        <circle cx="480" cy="360" r="260"/><circle cx="720" cy="360" r="260"/>
+        <circle cx="540" cy="320" r="220"/><circle cx="660" cy="320" r="220"/>
+      </g>
+    </svg>
+    <div class="cta-inner">
+      <h2 id="cta-h" class="display-serif">Inspect the proof behind every episode</h2>
+      <div class="cta-actions">
+        <a class="btn-obsidian" href="/workbench/web/#/workspace">Open Workbench <svg class="btn-ic" aria-hidden="true"><use href="#g-arrow-ur"/></svg></a>
+        <button type="button" class="btn-ivory-pill" data-open-dossier="studies">Design dossier</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="foot-word">chimera</span>
+      <p>An experimental browser agent you can check up on. Action → Execution → Observation → Independent Verification → Inspectable Evidence.</p>
+    </div>
+    <div>
+      <div class="foot-h">Application surfaces</div>
+      <ul>
+        <li><a href="/workbench/web/#/workspace"><svg class="foot-ic" aria-hidden="true"><use href="#site-workbench"/></svg>Workbench</a></li>
+        <li><a href="/workbench/web/#/studio"><svg class="foot-ic" aria-hidden="true"><use href="#site-studio"/></svg>Workflow Studio</a></li>
+        <li><a href="/workbench/web/#/lab"><svg class="foot-ic" aria-hidden="true"><use href="#site-lab"/></svg>Campaign Lab</a></li>
+        <li><a href="/research/#/command"><svg class="foot-ic" aria-hidden="true"><use href="#site-research"/></svg>Research Console</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Sitemap</div>
+      <ul>
+        <li><a href="/"><svg class="foot-ic" aria-hidden="true"><use href="#site-home"/></svg>Home</a></li>
+        <li><a href="/product/"><svg class="foot-ic" aria-hidden="true"><use href="#site-product"/></svg>Product</a></li>
+        <li><a href="/workflows/"><svg class="foot-ic" aria-hidden="true"><use href="#site-workflows"/></svg>Workflows</a></li>
+        <li><a href="/demo/"><svg class="foot-ic" aria-hidden="true"><use href="#site-demo"/></svg>Demo</a></li>
+        <li><a href="/results/"><svg class="foot-ic" aria-hidden="true"><use href="#site-results"/></svg>Results</a></li>
+        <li><a href="/evidence/"><svg class="foot-ic" aria-hidden="true"><use href="#site-evidence"/></svg>Evidence</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Evidence</div>
+      <ul>
+        <li><a href="/artifacts/eval-20261028/report.md"><svg class="foot-ic" aria-hidden="true"><use href="#g-arrow-down"/></svg>Held-out report</a></li>
+        <li><a href="/docs/benchmark_design.md"><svg class="foot-ic" aria-hidden="true"><use href="#g-dossier"/></svg>Benchmark design</a></li>
+        <li><a href="/docs/evaluation.md"><svg class="foot-ic" aria-hidden="true"><use href="#g-dossier"/></svg>Evaluation criteria</a></li>
+        <li><a href="/research/#/audit"><svg class="foot-ic" aria-hidden="true"><use href="#site-research"/></svg>Audit &amp; reproducibility</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>Chimera research prototype · figures computed live from frozen evidence</span>
+    <span>Pure white foundation (#FFFFFF) · zero runtime dependencies</span>
+  </div>
+</footer>
+
+<div id="dossierModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="dossierTitle">
+  <div class="modal-card">
+    <div class="modal-head">
+      <span class="modal-dot" aria-hidden="true"></span>
+      <h2 id="dossierTitle">Design dossier — evidence, system, limits</h2>
+      <button type="button" class="modal-close" data-close-dossier>Close [ESC]</button>
+    </div>
+    <div class="modal-tabs" role="tablist" aria-label="Dossier sections">
+      <button type="button" role="tab" id="dossierTab-studies" data-dossier="studies" aria-selected="true" aria-controls="dossierPane-studies">1 · Computational Weave</button>
+      <button type="button" role="tab" id="dossierTab-evidence" data-dossier="evidence" aria-selected="false" aria-controls="dossierPane-evidence" tabindex="-1">2 · Evidence &amp; denominators</button>
+      <button type="button" role="tab" id="dossierTab-tokens" data-dossier="tokens" aria-selected="false" aria-controls="dossierPane-tokens" tabindex="-1">3 · Color &amp; type system</button>
+      <button type="button" role="tab" id="dossierTab-limits" data-dossier="limits" aria-selected="false" aria-controls="dossierPane-limits" tabindex="-1">4 · Limits</button>
+      <button type="button" role="tab" id="dossierTab-repro" data-dossier="repro" aria-selected="false" aria-controls="dossierPane-repro" tabindex="-1">5 · Reproducibility</button>
+    </div>
+    <div class="modal-body">
+      <section class="dossier-pane" role="tabpanel" id="dossierPane-studies" aria-labelledby="dossierTab-studies" tabindex="0">
+        <p class="dossier-kicker">Current hero art direction</p>
+        <h3 class="display-serif">The Computational Weave</h3>
+        <p>A two-dimensional generative line composition: five coloured filament systems approach a shared proof core. The artwork stays intentionally open, with a clear centre and wide white margins. Stage names, metrics, and explanations remain live HTML rather than being baked into the image.</p>
+        <div class="dossier-cards">
+          <div><span>01 / Form</span><strong>Woven geometry</strong><p>Fine, controlled arcs form five distinct lobes without filling the whole canvas.</p></div>
+          <div><span>02 / Colour</span><strong>Continuous spectrum</strong><p>Cyan, indigo, rose, orange, and gold mark the progression across the artwork.</p></div>
+          <div><span>03 / Interaction</span><strong>Stage-linked focus</strong><p>Selecting a stage highlights its node; the optional sequence advances gently.</p></div>
+        </div>
+      </section>
+      <section class="dossier-pane" role="tabpanel" id="dossierPane-evidence" aria-labelledby="dossierTab-evidence" tabindex="0" hidden>
+        <p class="dossier-kicker">Chimera / Evidence &amp; denominators</p>
+        <h3 class="display-serif">Every number carries its denominator</h3>
+        <p>All figures on this site are computed live from the frozen run, manifest, audit-plan, and review files. No number is typed in by hand.</p>
+        <div id="dossierFigures"><p class="loading">Loading figures…</p></div>
+      </section>
+      <section class="dossier-pane" role="tabpanel" id="dossierPane-tokens" aria-labelledby="dossierTab-tokens" tabindex="0" hidden>
+        <p class="dossier-kicker">Chimera / Colour and type system</p>
+        <h3 class="display-serif">White canvas, chromatic linework</h3>
+        <div class="dossier-cards">
+          <div><span>Foundation</span><strong>Canvas #FFFFFF · ink #0F172A</strong><p>Secondary ink #475569 · muted #64748B · hairlines #E3E5EA. Separation comes from hairlines and ink type, never tinted grounds.</p></div>
+          <div><span>Five stage accents</span><strong>Cyan → gold spectrum</strong><p>Action #0B9FB8 · Execution #535BD5 · Observation #E94C91 · Verification #EF6A24 · Evidence #E9A400.</p></div>
+          <div><span>Type</span><strong>Newsreader display · system body &amp; mono</strong><p>Display serif is vendored locally (no webfont requests); body and data labels use system stacks. Zero remote dependencies.</p></div>
+        </div>
+      </section>
+      <section class="dossier-pane" role="tabpanel" id="dossierPane-limits" aria-labelledby="dossierTab-limits" tabindex="0" hidden>
+        <p class="dossier-kicker">Chimera / Capability boundaries</p>
+        <h3 class="display-serif">What is not claimed</h3>
+        <ul class="dossier-list">
+          <li><strong>One measured workflow</strong> — the 520-episode benchmark covers a single create-a-project flow on a local demo page.</li>
+          <li><strong>No AI model</strong> — the agent is a deterministic script; no model adapter or Baseline B.</li>
+          <li><strong>Two fault knobs</strong> — slowness and disabled inputs only; held-out varies values, not fault types.</li>
+          <li><strong>No recovery layer</strong> — bounded retry plus honest failure reports.</li>
+          <li><strong>Provisional evaluation</strong> — held-out figures await the full human audit (144 sampled, 0 verdicts).</li>
+          <li><strong>Same-machine timings</strong> — latencies compare only within this machine.</li>
+        </ul>
+      </section>
+      <section class="dossier-pane" role="tabpanel" id="dossierPane-repro" aria-labelledby="dossierTab-repro" tabindex="0" hidden>
+        <p class="dossier-kicker">Chimera / Reproducibility</p>
+        <h3 class="display-serif">Re-run it yourself</h3>
+        <ul class="dossier-list">
+          <li><strong>Seed 20261030</strong> — deterministic runs; identical cells across both drivers.</li>
+          <li><strong>Frozen records</strong> — figures come from static JSON under <code>artifacts/</code> plus <code>benchmarks/manifests/</code>; there is no telemetry backend.</li>
+          <li><strong>Serve locally</strong> — <code>python3 -m http.server</code> from the repository root, then open the landing.</li>
+          <li><strong>Verify</strong> — <code>.venv/bin/python -m pytest tests/test_main_site.py</code> recomputes every displayed figure independently.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+<script type="module" src="/site/home.js"></script>
+</body>
+</html>

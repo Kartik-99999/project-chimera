@@ -804,8 +804,8 @@ class IndependenceTests(unittest.TestCase):
     def test_observer_source_imports_only_stdlib_and_schemas(self) -> None:
         import ast as _ast
 
-        allowed = {"json", "time", "dataclasses", "pathlib", "typing",
-                   "benchmarks.results", "__future__"}
+        allowed = {"json", "re", "time", "dataclasses", "pathlib",
+                   "typing", "benchmarks.results", "__future__"}
         source = (PROJECT_DIR / "benchmarks" / "observer.py").read_text(
             encoding="utf-8")
         for node in _ast.walk(_ast.parse(source)):

@@ -3,7 +3,7 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dotPlot, heatmap, groupedBars, barCell } from './charts.js';
+import { dotPlot, heatmap, groupedBars, barCell, constellation } from './charts.js';
 
 test('dotPlot: estimates, Wilson whiskers, and explicit missing denominators', () => {
   const svg = dotPlot({ rows: [
@@ -25,6 +25,29 @@ test('heatmap: observed rates as text, untested cells as em-dash', () => {
   assert.match(svg, /3\/5/);
   assert.match(svg, /no data/);
   assert.match(svg, />—</);
+});
+
+test('constellation: stable node/link/panel contract for the map workspace', () => {
+  const model = {
+    runs: [{ runId: 'dev-20261028-chimera', baseline: 'chimera', split: 'development',
+      data: { cells: [{ scenario_id: 'S-SLOW' }], episodes: [{}, {}] } }],
+    episodes: [{ scenario_id: 'S-SLOW', trial_id: 't1' }],
+    auditNodes: [{ runId: 'dev-20261028-chimera', state: 'pending', label: '… dev·chimera', blurb: '0/9 cells' }],
+  };
+  const html = constellation({ compact: false }).render(model);
+  assert.match(html, /data-node="hub"/);
+  assert.match(html, /data-node="run:dev-20261028-chimera"/);
+  assert.match(html, /data-node="sc:S-SLOW"/);
+  assert.match(html, /data-node="audit:dev-20261028-chimera"/);
+  assert.match(html, /data-link="hub run:dev-20261028-chimera"/);
+  assert.match(html, /data-panel/);
+  assert.match(html, /node-list/);
+  // Orbit structure and radial labels: audits read left-to-right, scenarios centered.
+  assert.match(html, /const-orbit/);
+  assert.match(html, /text-anchor="start">… dev·chimera/);
+  assert.match(html, /text-anchor="middle">S-SLOW/);
+  // Links are curved paths carrying the same data-link contract.
+  assert.match(html, /<path class="const-link" data-link="hub run:dev-20261028-chimera" d="M[^"]*Q[^"]*"/);
 });
 
 test('groupedBars and barCell label exact values', () => {

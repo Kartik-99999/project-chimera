@@ -14,6 +14,7 @@ import { pageRiver } from './pages/river.js';
 import { pageLineage } from './pages/lineage.js';
 import { pageReview } from './pages/review.js';
 import { start as startAmbient, setMotionEnabled, isMotionEnabled } from './viz/particles.js';
+import { hideTip } from './viz/tooltip.js';
 
 const ICONS = {
   command: '<circle cx="10" cy="10" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 1.5v3M10 15.5v3M1.5 10h3M15.5 10h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
@@ -80,6 +81,106 @@ function buildNav() {
   )).join('');
 }
 
+/* Mega-menu: Workbench-style grouped dropdowns in the topbar. Titles and
+ * icons resolve from ROUTES so menu labels stay byte-identical to the
+ * sidebar; the hidden parameterized Evidence Inspector stays out (needs
+ * run/trial params). Taglines are the only new copy. The Workbench
+ * cross-link lives in the sidebar foot, not in a dropdown. */
+/* Group-trigger glyphs: same 20-grid, 1.6-stroke language as the route
+ * ICONS, but distinct silhouettes so a trigger never duplicates a tile. */
+const GROUP_ICONS = {
+  overview: '<g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="5.5" height="5.5" rx="1.2"/><rect x="11" y="3.5" width="5.5" height="5.5" rx="1.2"/><rect x="3.5" y="11" width="5.5" height="5.5" rx="1.2"/><rect x="11" y="11" width="5.5" height="5.5" rx="1.2"/></g>',
+  evidence: '<circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 10l1.8 1.8 3.4-3.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+  flow: '<path d="M4 10h12" stroke="currentColor" stroke-width="1.6"/><circle cx="4" cy="10" r="1.9" fill="currentColor"/><circle cx="10" cy="10" r="1.9" fill="currentColor"/><circle cx="16" cy="10" r="1.9" fill="currentColor"/>',
+};
+const BROWSE = [
+  { group: 'Overview', icon: 'overview', items: [
+    { id: 'command', tag: 'Chimera vs replay, at a glance', color: '#0e7490' },
+    { id: 'map', tag: 'Orient across episodes', color: '#3A6EA5' },
+    { id: 'atlas', tag: 'Search every episode', color: '#1E9A8A' },
+    { id: 'observatory', tag: 'Per-cell dots + whiskers', color: '#0B9FB8' },
+  ] },
+  { group: 'Evidence & audit', icon: 'evidence', items: [
+    { id: 'failures', tag: 'Where failures cluster', color: '#C0563B' },
+    { id: 'recovery', tag: 'Bounded failure, proposed fixes', color: '#b45309' },
+    { id: 'audit', tag: 'Samples, verdicts, manifests', color: '#0e7a3d' },
+    { id: 'archive', tag: 'Every artifact, filed', color: '#64748b' },
+  ] },
+  { group: 'Flow & lineage', icon: 'flow', items: [
+    { id: 'terrain', tag: 'Cells as a landscape', color: '#5C8F3E' },
+    { id: 'river', tag: 'Width is episodes', color: '#0B9FB8' },
+    { id: 'lineage', tag: 'Manifest to verdict', color: '#3A6EA5' },
+    { id: 'review', tag: 'Human spot-checks', color: '#b45309' },
+  ] },
+];
+
+function titleOf(id) {
+  const r = ROUTES.find((x) => x.id === id);
+  return r ? r.title : id;
+}
+
+const CARET = '<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
+
+function buildMenus() {
+  const nav = document.getElementById('menus');
+  nav.innerHTML = BROWSE.map((g, i) => (
+    `<div class="menu" data-menu="${i}">`
+    + `<button aria-haspopup="true" aria-expanded="false" aria-controls="menu-panel-${i}">`
+    + `<svg class="nav-ic" viewBox="0 0 20 20" aria-hidden="true">${GROUP_ICONS[g.icon] || ''}</svg>`
+    + `${esc(g.group)}${CARET}</button>`
+    + `<div class="menu-panel" id="menu-panel-${i}" role="region" aria-label="${esc(g.group)}"><ul>`
+    + g.items.map((it) => (
+      `<li><a href="${link(it.id)}"><span class="tile" style="--t:${it.color}">`
+      + `<svg viewBox="0 0 20 20" aria-hidden="true">${ICONS[it.id] || ''}</svg></span>`
+      + `<span><strong>${esc(titleOf(it.id))}</strong><small>${esc(it.tag)}</small></span></a></li>`
+    )).join('') + '</ul></div></div>'
+  )).join('');
+}
+
+function setMenuOpen(menu, open) {
+  menu.classList.toggle('open', open);
+  menu.querySelector('button').setAttribute('aria-expanded', String(open));
+}
+
+function closeMenus(except = null) {
+  document.querySelectorAll('#menus .menu.open').forEach((m) => {
+    if (m !== except) setMenuOpen(m, false);
+  });
+}
+
+function bindMenus() {
+  const nav = document.getElementById('menus');
+  nav.querySelectorAll('.menu').forEach((menu) => {
+    const btn = menu.querySelector('button');
+    const panel = menu.querySelector('.menu-panel');
+    btn.addEventListener('click', () => {
+      const willOpen = !menu.classList.contains('open');
+      closeMenus(menu);
+      setMenuOpen(menu, willOpen);
+    });
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') {
+        const first = panel.querySelector('a');
+        if (first) { e.preventDefault(); closeMenus(menu); setMenuOpen(menu, true); first.focus(); }
+      } else if (e.key === 'Escape') {
+        setMenuOpen(menu, false);
+      }
+    });
+    menu.addEventListener('focusout', (e) => {
+      if (!menu.contains(e.relatedTarget)) setMenuOpen(menu, false);
+    });
+    panel.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { setMenuOpen(menu, false); btn.focus(); }
+    });
+    panel.addEventListener('click', (e) => {
+      if (e.target.closest('a')) setMenuOpen(menu, false);
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#menus')) closeMenus();
+  });
+}
+
 function setActive(routeId) {
   document.querySelectorAll('#nav-list a').forEach((a) => {
     if (a.dataset.route === routeId) a.setAttribute('aria-current', 'page');
@@ -114,13 +215,19 @@ function updateDataChrome() {
     return;
   }
   dot.className = s.failed.length ? 'data-dot' : 'data-dot ok';
-  label.textContent = `${runsOk}/4 runs · ${s.episodes.length} episodes`;
+  // Indexed records include warm-ups; page figures count measured episodes
+  // (warm-ups excluded), so say 'indexed' here to avoid a 524-vs-520 clash.
+  label.textContent = `${runsOk}/4 runs · ${s.episodes.length} indexed`;
+  label.title = 'Indexed records, including warm-up episodes. Page figures count measured episodes (warm-ups excluded).';
   foot.textContent = s.failed.length
     ? `${s.failed.length} optional source(s) missing`
     : `${s.episodes.length} episodes · ${s.cells.length} cells indexed`;
+  foot.title = 'Indexed records, including warm-up episodes.';
 }
 
 async function render() {
+  hideTip(); // the tooltip outlives #main: never carry it across routes
+  closeMenus();
   const main = document.getElementById('main');
   const { segments, query } = parseHash();
   const routeId = segments[0] || 'command';
@@ -198,6 +305,8 @@ function bindChrome() {
 
 async function boot() {
   buildNav();
+  buildMenus();
+  bindMenus();
   bindChrome();
   bindMotionToggle();
   startAmbient();

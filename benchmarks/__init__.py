@@ -49,7 +49,12 @@ The report template renders persisted runs into the specified report:
   verbatim disclaimers/limitations, and artifacts. No benchmark run
   has been performed yet.
 
-Baseline B is a later stage and is deliberately absent.
+Baseline B adds the model-driven driver:
+
+- :mod:`benchmarks.baseline_b` — Muse Spark proposes one JSON action
+  per step from a harness-enumerated element list; the same verifier
+  and observer judge the run. The model never verifies.
+
 
 :mod:`benchmarks.manifest` and :mod:`benchmarks.results` import nothing
 outside the standard library. :mod:`benchmarks.runner` couples to ``chimera.agent`` (for the AMB-9
@@ -63,4 +68,4 @@ opened at import time.
 from __future__ import annotations
 
 __all__ = ["manifest", "results", "runner", "verifier", "observer",
-         "baseline_a", "audit", "report"]
+         "baseline_a", "baseline_b", "audit", "report"]

@@ -1,8 +1,8 @@
 /* Failure Cartography: where the system fails, with honest boundaries. */
-import { measuredEpisodes, getRun, isHarnessError, isFalseSuccess, wilsonUpper,
+import { measuredEpisodes, getState, getRun, isHarnessError, isFalseSuccess, wilsonUpper,
   esc, fmtPct, fmtInt, SCENARIOS } from '../data.js';
 import { link } from '../app.js';
-import { pageHead, dataTable, bindTable, outcomePill, baselineTag, pill, epLink } from '../components.js';
+import { pageHead, dataTable, bindTable, outcomePill, baselineTag, pill, epLink, art, secHead } from '../components.js';
 import { heatmap, faultTransect } from '../charts.js';
 import { groupSoundings } from '../viz/faultModel.js';
 import { attachTip } from '../viz/tooltip.js';
@@ -22,14 +22,21 @@ export async function pageFailures(el, { query }) {
   const fs = eps.filter(isFalseSuccess);
   const fsBound = wilsonUpper(fs.length, eps.length);
 
-  const maps = ['chimera', 'baseline-a'].map((b) => {
+  const s = getState();
+  const manRun = [...s.runs.values()].find((r) => r.split === split && r.data);
+  const man = manRun ? s.manifests.get(manRun.manifestFile) : null;
+  const expectedOf = (sc) => {
+    const hit = man && (man.scenarios || []).find((x) => x.id === sc);
+    return hit ? hit.expected_outcome : null;
+  };
+  const maps = ['chimera', 'baseline-a'].map((b, bi) => {
     const cells = [];
     for (const sc of scenarios) for (const inp of inputs) {
       const group = eps.filter((e) => e.scenario_id === sc && e.input_id === inp && e.baseline === b);
       cells.push({ row: sc, col: inp, k: group.filter((e) => e.outcome === 'succeeded').length, n: group.length,
-        href: link('atlas', [], { scenario: sc, search: inp }) });
+        exp: expectedOf(sc), href: link('atlas', [], { scenario: sc, search: inp }) });
     }
-    return `<div class="card"><h2>${b === 'chimera' ? 'Chimera' : 'A — replay'} — success by scenario × input <span style="color:var(--ink-3);font-weight:400">(${esc(split)}, pooled over fault variants)</span></h2>`
+    return `<div class="card">${art(bi)}<h2>${b === 'chimera' ? 'Chimera' : 'A — replay'} — success by scenario × input <span style="color:var(--ink-3);font-weight:400">(${esc(split)}, pooled over fault variants)</span></h2>`
       + heatmap({ rows: scenarios, cols: inputs, cells, id: `success map ${b} ${split}` }) + `</div>`;
   }).join('');
 
@@ -75,16 +82,22 @@ export async function pageFailures(el, { query }) {
     + `<td class="num">${list.length}</td>`
     + `<td>${epLink(list[0].runId, list[0].trial_id, 'example →')}</td></tr>`)).join('');
 
-  el.innerHTML = pageHead('Failure Cartography', [['Failure Cartography']])
+  el.innerHTML = pageHead('Failure Cartography', [['Failure Cartography']], '', {
+    kicker: `Routes #/failures · #/recovery · #/terrain · split = ${split}`,
+    lede: 'Heat matrices become pastel tiles, the fault transect becomes a sounding stream, and every failure keeps its error text one click away.',
+    meta: `${fails.length ? pill('bad', `${fails.length}/${eps.length} non-success (${split})`) : pill('ok', 'no failures')} ${(() => { const he = eps.filter(isHarnessError).length; return he === 0 ? pill('ok', '0 harness errors') : pill('bad', `${he} harness errors`); })()}`,
+  })
     + `<div class="banner info"><strong>Reading guide.</strong> Green cells are unanimous success, red are unanimous failure — both are <em>observed</em> boundaries. Grey “—” cells are untested regions, not safe ones. The runner never sets <code>failure_category</code> (always null), so grouping below uses recorded outcomes and error text instead.</div>`
-    + `<div class="card"><div class="filters"><div class="field"><label for="f-split">Split</label><select id="f-split">
+    + `<div class="card"><div class="filters fail-head"><div class="field"><label for="f-split">Split</label><select id="f-split">
         <option value="evaluation"${split === 'evaluation' ? ' selected' : ''}>evaluation (held out)</option>
         <option value="development"${split === 'development' ? ' selected' : ''}>development</option>
       </select></div>
-      <div class="field"><label>Non-success episodes</label><div style="padding-top:6px"><strong>${fails.length}</strong> of ${eps.length} measured (${fmtPct(fails.length, eps.length)})</div></div>
-      <div class="field"><label>False successes</label><div style="padding-top:6px"><strong>${fs.length}</strong> of ${eps.length}${fsBound == null ? '' : ` (95% Wilson ≤ ${(fsBound * 100).toFixed(1)}%)`} ${fs.length ? `<a href="${link('atlas', [], { outcome: 'false-success' })}">inspect →</a>` : ''}</div></div>
+      <div class="field"><label>Non-success episodes</label><div class="fail-stat"><strong>${fails.length}</strong> of ${eps.length} measured (${fmtPct(fails.length, eps.length)})</div></div>
+      <div class="field"><label>False successes</label><div class="fail-stat"><strong>${fs.length}</strong> of ${eps.length}${fsBound == null ? '' : ` (95% Wilson ≤ ${(fsBound * 100).toFixed(1)}%)`} ${fs.length ? `<a href="${link('atlas', [], { outcome: 'false-success' })}">inspect →</a>` : ''}</div></div>
     </div></div>`
+    + secHead('Sounding stream — fault transect', 'Soft-graph pattern soundings — discrete levels, no implied boundary between them.')
     + topo
+    + secHead('Success tiles by scenario × input', 'Soft-graph pattern tilefield — rounded, luminous, k/n in every tile.')
     + maps
     + `<div class="card"><h2>Error text groups (${errGroups.size})</h2>
       <div class="table-wrap"><table class="data"><thead><tr><th>Error text</th><th class="num">Episodes</th><th></th></tr></thead><tbody>${errRows || '<tr><td colspan="3">No failures recorded.</td></tr>'}</tbody></table></div></div>`

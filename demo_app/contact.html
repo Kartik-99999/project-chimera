@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chimera Task Manager — Contact</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+        .hidden { display: none; }
+        #confirmation { color: green; font-weight: bold; margin-top: 10px; }
+        #form-error { color: #b00020; font-weight: bold; margin-top: 10px; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 8px; margin: 4px 0; background: #f0f0f0; border-radius: 4px; }
+        fieldset { margin: 16px 0; padding: 10px; }
+        fieldset legend { font-weight: bold; }
+        .status { font-family: monospace; font-size: 0.9em; color: #555; margin-top: 6px; }
+        button[disabled], input[disabled], textarea[disabled] { opacity: 0.5; cursor: not-allowed; }
+        label { display: block; margin-top: 8px; }
+        input[type="text"], input[type="email"], textarea { width: 100%; max-width: 420px; }
+    </style>
+</head>
+<body>
+    <h1>Project Chimera - Contact Form</h1>
+
+    <fieldset id="fault-panel" aria-label="Fault injection panel">
+        <legend>Fault injection (manual)</legend>
+        <label>
+            Slow load (ms):
+            <input type="number" id="fault-slow" min="0" step="100" value="0" aria-label="Slow load milliseconds">
+        </label>
+        <label>
+            <input type="checkbox" id="fault-disabled" aria-label="Disable Send button">
+            Disable Send button
+        </label>
+        <button type="button" id="apply-faults-btn" aria-label="Apply faults">Apply</button>
+        <button type="button" id="reset-btn" aria-label="Reset demo">Reset</button>
+        <div class="status" id="fault-status" aria-live="polite">No faults active.</div>
+    </fieldset>
+
+    <form id="contact-form" novalidate>
+        <label for="contact-name">Full Name:</label>
+        <input type="text" id="contact-name" name="contact-name" required aria-label="Full Name">
+        <label for="contact-email">Email:</label>
+        <input type="email" id="contact-email" name="contact-email" required aria-label="Email">
+        <label for="contact-subject">Subject (optional):</label>
+        <input type="text" id="contact-subject" name="contact-subject" aria-label="Subject">
+        <label for="contact-message">Message:</label>
+        <textarea id="contact-message" name="contact-message" rows="4" required aria-label="Message"></textarea>
+        <br><br>
+        <button type="submit" id="contact-submit">Send Message</button>
+    </form>
+
+    <div id="form-error" class="hidden" role="alert"></div>
+    <div id="confirmation" class="hidden" role="status">Message sent successfully!</div>
+
+    <h2>Sent messages</h2>
+    <ul id="submission-list" aria-label="Submitted entries"></ul>
+
+    <script>
+        (function () {
+            "use strict";
+
+            var slowTimer = null;
+            var activeFaults = { slow: 0, disabled: false };
+
+            function getParam(name) {
+                var match = window.location.search.match(
+                    new RegExp("[?&]" + name + "=([^&]*)")
+                );
+                return match ? decodeURIComponent(match[1]) : null;
+            }
+
+            function readInitialFaultsFromUrl() {
+                var slowRaw = getParam("slow");
+                var disabledRaw = getParam("disabled");
+                if (slowRaw !== null) {
+                    var n = parseInt(slowRaw, 10);
+                    if (!isNaN(n) && n >= 0) {
+                        activeFaults.slow = n;
+                    }
+                }
+                if (disabledRaw === "1" || disabledRaw === "true") {
+                    activeFaults.disabled = true;
+                }
+            }
+
+            function describeFaults() {
+                var parts = [];
+                if (activeFaults.slow > 0) {
+                    parts.push("slow=" + activeFaults.slow + "ms");
+                }
+                if (activeFaults.disabled) {
+                    parts.push("disabled");
+                }
+                return parts.length
+                    ? "Active faults: " + parts.join(", ")
+                    : "No faults active.";
+            }
+
+            function setFormDisabled(disabled) {
+                var ids = ["contact-name", "contact-email", "contact-subject",
+                    "contact-message", "contact-submit"];
+                ids.forEach(function (id) {
+                    document.getElementById(id).disabled = disabled;
+                });
+            }
+
+            function applyFaultsToDom() {
+                var status = document.getElementById("fault-status");
+                if (slowTimer !== null) {
+                    clearTimeout(slowTimer);
+                    slowTimer = null;
+                }
+                if (activeFaults.slow > 0) {
+                    setFormDisabled(true);
+                    status.textContent =
+                        "Slow load: " + activeFaults.slow + "ms remaining...";
+                    slowTimer = setTimeout(function () {
+                        setFormDisabled(activeFaults.disabled);
+                        status.textContent = "Slow load complete. " + describeFaults();
+                        slowTimer = null;
+                    }, activeFaults.slow);
+                } else {
+                    setFormDisabled(activeFaults.disabled);
+                    status.textContent = describeFaults();
+                }
+                document.getElementById("fault-slow").value = String(activeFaults.slow);
+                document.getElementById("fault-disabled").checked = activeFaults.disabled;
+            }
+
+            function resetAll() {
+                activeFaults = { slow: 0, disabled: false };
+                if (slowTimer !== null) {
+                    clearTimeout(slowTimer);
+                    slowTimer = null;
+                }
+                document.getElementById("submission-list").innerHTML = "";
+                document.getElementById("confirmation").classList.add("hidden");
+                var errBox = document.getElementById("form-error");
+                errBox.classList.add("hidden");
+                errBox.textContent = "";
+                ["contact-name", "contact-email", "contact-subject",
+                    "contact-message"].forEach(function (id) {
+                    document.getElementById(id).value = "";
+                });
+                if (window.location.search) {
+                    history.replaceState(null, "", window.location.pathname);
+                }
+                applyFaultsToDom();
+            }
+
+            function showError(message) {
+                var errBox = document.getElementById("form-error");
+                errBox.textContent = message;
+                errBox.classList.remove("hidden");
+            }
+
+            function isValidEmail(value) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+            }
+
+            // Deterministic entry text: the verifier matches it exactly.
+            function entryText(name, email, subject, message) {
+                return name + " <" + email + "> [" + subject + "] " + message;
+            }
+
+            document.getElementById("contact-form").addEventListener("submit", function (event) {
+                event.preventDefault();
+                document.getElementById("form-error").classList.add("hidden");
+                var name = document.getElementById("contact-name").value.trim();
+                var email = document.getElementById("contact-email").value.trim();
+                var subject = document.getElementById("contact-subject").value.trim();
+                var message = document.getElementById("contact-message").value.trim();
+                if (document.getElementById("contact-submit").disabled) return;
+                if (!name) { showError("Full name is required."); return; }
+                if (!email) { showError("Email is required."); return; }
+                if (!isValidEmail(email)) { showError("Email address is invalid."); return; }
+                if (!message) { showError("Message is required."); return; }
+
+                var list = document.getElementById("submission-list");
+                var item = document.createElement("li");
+                item.textContent = entryText(name, email, subject, message);
+                list.appendChild(item);
+
+                document.getElementById("confirmation").classList.remove("hidden");
+                ["contact-name", "contact-email", "contact-subject",
+                    "contact-message"].forEach(function (id) {
+                    document.getElementById(id).value = "";
+                });
+            });
+
+            document.getElementById("apply-faults-btn").addEventListener("click", function () {
+                var slowVal = parseInt(document.getElementById("fault-slow").value, 10);
+                activeFaults.slow = isNaN(slowVal) || slowVal < 0 ? 0 : slowVal;
+                activeFaults.disabled = document.getElementById("fault-disabled").checked;
+                applyFaultsToDom();
+            });
+
+            document.getElementById("reset-btn").addEventListener("click", resetAll);
+
+            readInitialFaultsFromUrl();
+            applyFaultsToDom();
+        })();
+    </script>
+</body>
+</html>

@@ -74,6 +74,10 @@ from benchmarks.baseline_a import (
     load_driver_report,
     replay_executor,
 )
+from benchmarks.baseline_b import (
+    MODEL_BASELINE_ID,
+    model_executor,
+)
 from benchmarks.observer import (
     ActionLog,
     ActionLogValidationError,
@@ -109,9 +113,10 @@ from benchmarks.verifier import (
 #: exist; a manifest naming one is refused as invalid configuration.
 SUPPORTED_SCENARIOS: Tuple[str, ...] = ("S-NORM", "S-SLOW", "S-DIS", "S-SLOWDIS")
 
-#: Baselines the runner can execute. Baseline B (model-driven) is a
-#: later stage (design §6).
-SUPPORTED_BASELINES: Tuple[str, ...] = ("chimera", REPLAY_BASELINE_ID)
+#: Baselines the runner can execute: the deterministic agent, the
+#: fixed-step replay, and the model-driven agent (design §6).
+SUPPORTED_BASELINES: Tuple[str, ...] = ("chimera", REPLAY_BASELINE_ID,
+                                        MODEL_BASELINE_ID)
 
 #: Terminal statuses a trace artifact may legitimately carry.
 TRACE_TERMINALS: Tuple[str, ...] = ("succeeded", "failed", "cancelled")
@@ -663,6 +668,13 @@ def _median(values: Sequence[int]) -> float:
     return (ordered[middle - 1] + ordered[middle]) / 2.0
 
 
+def _model_metric_reason(baseline: str) -> str:
+    if baseline == MODEL_BASELINE_ID:
+        return ("model usage is recorded per episode in <run>.model.json "
+                "sidecars, not in this cell aggregate")
+    return REASON_NO_MODEL
+
+
 def _aggregate_cell(
     *,
     scenario_id: str,
@@ -789,8 +801,10 @@ def _aggregate_cell(
             "min": Metric.measured(min(latencies)),
             "max": Metric.measured(max(latencies)),
         },
-        model_calls=Metric.unavailable(REASON_NO_MODEL),
-        model_cost_usd=Metric.unavailable(REASON_NO_MODEL),
+        model_calls=Metric.unavailable(
+            _model_metric_reason(baseline)),
+        model_cost_usd=Metric.unavailable(
+            _model_metric_reason(baseline)),
         human_interventions=Metric.unavailable(REASON_NO_OPERATOR),
         failure_categories=categories,
         trace_artifacts=tuple(e.trace_artifact for e in episodes if e.trace_artifact),
@@ -824,9 +838,9 @@ class Runner:
     environment:
         The environment record. Defaults to :func:`collect_environment`.
     baseline:
-        The baseline under test: ``"chimera"`` or ``"baseline-a"``.
-        Exactly one baseline per run; results are never mixed across
-        baselines in one file.
+        The baseline under test: ``"chimera"``, ``"baseline-a"`` or
+        ``"baseline-b"``. Exactly one baseline per run; results are
+        never mixed across baselines in one file.
     run_id:
         Optional fixed run identifier (tests). Defaults to a fresh UUID4.
     """
@@ -846,10 +860,12 @@ class Runner:
         self.output_path = Path(output_path)
         self.trace_dir = Path(trace_dir)
         if executor is None:
-            self.executor: Executor = (
-                replay_executor if baseline == REPLAY_BASELINE_ID
-                else default_executor
-            )
+            if baseline == REPLAY_BASELINE_ID:
+                self.executor: Executor = replay_executor
+            elif baseline == MODEL_BASELINE_ID:
+                self.executor = model_executor
+            else:
+                self.executor = default_executor
         else:
             self.executor = executor
         self.environment = environment
@@ -864,8 +880,7 @@ class Runner:
         if self.baseline not in SUPPORTED_BASELINES:
             raise ConfigurationError(
                 f"unsupported baseline {self.baseline!r}: supported baselines "
-                f"are {list(SUPPORTED_BASELINES)} (Baseline B is a later "
-                "stage); refusing to execute"
+                f"are {list(SUPPORTED_BASELINES)}; refusing to execute"
             )
         unsupported = [s.id for s in self.manifest.scenarios
                        if s.id not in SUPPORTED_SCENARIOS]

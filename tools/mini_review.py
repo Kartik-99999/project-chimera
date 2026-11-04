@@ -59,6 +59,16 @@ DEFAULT_OUT = "artifacts/eval-20261028/mini-review"
 
 PACKET_SCHEMA = "chimera-mini-review-packet/1"
 DECISIONS_SCHEMA = "chimera-mini-review-decisions/1"
+# Check-level decisions for full-audit packets: the human records
+# their own P1-P3 booleans (appliable to plan verdicts), never an
+# assessment label. Separate schema so the two can never mix.
+AUDIT_DECISIONS_SCHEMA = "chimera-audit-decisions/1"
+AUDIT_CHECKS = ("P1", "P2", "P3")
+# Seed for the reviewer-facing driver-code shuffle. Fixed and
+# recorded so the mapping is reproducible; the mapping itself lives
+# in the packet (answer-side, like recorded verdicts) and is masked
+# in the review UI until each episode is revealed.
+DRIVER_CODE_SEED = "audit-full-v1-driver-codes"
 
 ASSESSMENTS = ("verified-success", "verified-failure", "inconclusive")
 AGREEMENTS = ("agrees", "disagrees", "undetermined")
@@ -187,7 +197,11 @@ def _summarize_actions(actions: Any) -> Tuple[List[Dict[str, Any]], Dict[str, An
 
 
 def _build_episode(run_id: str, run: Dict[str, Any], plan_path: Path,
-                   cell_key: str, bundle: Dict[str, Any]) -> Dict[str, Any]:
+                   cell_key: str, bundle: Dict[str, Any],
+                   neutral_gaps: bool = False,
+                   manifest_ref: Optional[Dict[str, str]] = None,
+                   population: Optional[str] = None,
+                   driver_code: Optional[str] = None) -> Dict[str, Any]:
     trial_id = bundle.get("trial_id")
     episode = next((e for e in run.get("episodes", [])
                     if e.get("trial_id") == trial_id), None)
@@ -236,12 +250,15 @@ def _build_episode(run_id: str, run: Dict[str, Any], plan_path: Path,
         gaps.append("no screenshots attached (expected: the harness "
                     "captures one only on action failure)")
     if kind == "replay":
-        gaps.append("replay driver report carries step indexes only — no "
-                    "timestamps or trace sequence numbers")
+        gaps.append(("step report carries step indexes only — no "
+                     "timestamps or trace sequence numbers"
+                     if neutral_gaps else
+                     "replay driver report carries step indexes only — no "
+                     "timestamps or trace sequence numbers"))
     if verification.get("status") != "verified":
         gaps.append("independent verification status is "
                     f"{verification.get('status')!r} rather than 'verified'")
-    return {
+    episode = {
         "key": _episode_key(run_id, trial_id),
         "run_id": run_id, "trial_id": trial_id,
         "plan": _rel(plan_path), "plan_cell": cell_key,
@@ -281,17 +298,80 @@ def _build_episode(run_id: str, run: Dict[str, Any], plan_path: Path,
                       for k, v in artifacts.items()},
         "gaps": gaps,
     }
+    # Optional full-audit fields — omitted entirely when unset so the
+    # frozen 8-episode mini packet shape is unchanged.
+    if manifest_ref is not None:
+        episode["manifest"] = dict(manifest_ref)
+    if population is not None:
+        episode["population"] = population
+    if driver_code is not None:
+        episode["driver_code"] = driver_code
+    return episode
+
+
+def _driver_codes(run_ids: List[str]) -> Dict[str, str]:
+    """Map run ids to neutral Driver A/B/… codes in seeded-shuffle order.
+
+    The shuffle hides the packet's presentation order (which groups
+    episodes by population and run, as the review queue requires) from
+    the reviewer-facing label. Deterministic and documented; the
+    mapping is recorded in the packet (answer-side) and masked in the
+    review UI until each episode is revealed.
+    """
+    ordered = sorted(run_ids,
+                     key=lambda r: _sha256_bytes(
+                         f"{DRIVER_CODE_SEED}:{r}".encode()))
+    return {run_id: f"Driver {chr(ord('A') + i)}"
+            for i, run_id in enumerate(ordered)}
 
 
 def build_packet(plan_run_pairs: List[Tuple[Path, Path]], manifest_path: Path,
                  out_dir: Path, expect: int = 8,
-                 created_at: Optional[str] = None) -> Dict[str, Any]:
-    """Verify the frozen selection and write the review packet."""
-    manifest = load_manifest(manifest_path)
-    manifest_sha = manifest.sha256()
+                 created_at: Optional[str] = None,
+                 manifests: Optional[List[Path]] = None,
+                 run_order: Optional[List[str]] = None,
+                 populations: Optional[List[str]] = None,
+                 neutral_gaps: bool = False,
+                 assign_driver_codes: bool = False,
+                 title: Optional[str] = None,
+                 check_level: bool = False) -> Dict[str, Any]:
+    """Verify the frozen selection and write the review packet.
+
+    All parameters after ``created_at`` are optional extensions for
+    consolidated full-audit packets; omitting them reproduces the
+    original 8-episode mini packet shape exactly.
+    """
+    manifest_paths = ([manifest_path] * len(plan_run_pairs)
+                      if manifests is None else list(manifests))
+    if len(manifest_paths) != len(plan_run_pairs):
+        raise PacketError(
+            f"need one manifest per plan/run pair "
+            f"({len(plan_run_pairs)} pairs, "
+            f"{len(manifest_paths)} manifests)")
+    if populations is not None and len(populations) != len(plan_run_pairs):
+        raise PacketError(
+            f"need one population label per plan/run pair "
+            f"({len(plan_run_pairs)} pairs, "
+            f"{len(populations)} labels)")
+    primary_manifest: Optional[Manifest] = None
+    primary_sha = ""
+    manifest_blocks: List[Dict[str, str]] = []
+    manifest_refs: List[Dict[str, str]] = []
+    for manifest_path_i in manifest_paths:
+        manifest = load_manifest(manifest_path_i)
+        ref = {"path": _rel(manifest_path_i),
+               "manifest_id": manifest.manifest_id,
+               "sha256": manifest.sha256()}
+        manifest_blocks.append(ref)
+        manifest_refs.append(ref)
+        if primary_manifest is None:
+            primary_manifest, primary_sha = manifest, manifest.sha256()
+    assert primary_manifest is not None
+    run_ids = [str(_read_json(p).get("run_id")) for p, _ in plan_run_pairs]
+    codes = _driver_codes(run_ids) if assign_driver_codes else {}
     episodes: List[Dict[str, Any]] = []
     plan_infos = []
-    for plan_path, run_path in plan_run_pairs:
+    for i, (plan_path, run_path) in enumerate(plan_run_pairs):
         load_plan(plan_path)  # validates shape, incl. empty verdict maps
         plan = _read_json(plan_path)
         run = _read_json(run_path)
@@ -301,10 +381,11 @@ def build_packet(plan_run_pairs: List[Tuple[Path, Path]], manifest_path: Path,
                               f"{run.get('run_id')}")
         for label, value in (("plan", plan.get("manifest_sha256")),
                              ("run", run.get("manifest_sha256"))):
-            if value != manifest_sha:
+            if value != manifest_blocks[i]["sha256"]:
                 raise PacketError(
                     f"{plan_path.name}: {label} manifest sha does not match "
-                    f"the frozen {manifest_path} ({manifest_sha[:12]}…)")
+                    f"the frozen {manifest_paths[i]} "
+                    f"({manifest_blocks[i]['sha256'][:12]}…)")
         plan_infos.append({
             "path": _rel(plan_path),
             "sha256": _sha256_bytes(_read_bytes(plan_path)),
@@ -314,18 +395,32 @@ def build_packet(plan_run_pairs: List[Tuple[Path, Path]], manifest_path: Path,
         for cell_key in sorted(plan.get("cells", {})):
             for bundle in plan["cells"][cell_key].get("sampled", []):
                 episodes.append(_build_episode(
-                    plan["run_id"], run, plan_path, cell_key, bundle))
+                    plan["run_id"], run, plan_path, cell_key, bundle,
+                    neutral_gaps=neutral_gaps,
+                    manifest_ref=(manifest_refs[i]
+                                  if manifests is not None else None),
+                    population=(populations[i]
+                                if populations is not None else None),
+                    driver_code=codes.get(plan["run_id"])))
     if len(episodes) != expect:
         raise PacketError(f"expected exactly {expect} sampled episodes, "
                           f"found {len(episodes)} — refusing to repackage a "
                           f"different selection")
-    episodes.sort(key=lambda e: (e["run_id"], e["trial_id"]))
+    if run_order is not None:
+        rank = {run_id: n for n, run_id in enumerate(run_order)}
+        unknown = [e["run_id"] for e in episodes
+                   if e["run_id"] not in rank]
+        if unknown:
+            raise PacketError(
+                f"run_order omits episodes from run(s) "
+                f"{sorted(set(unknown))} — refusing a partial order")
+        episodes.sort(key=lambda e: (rank[e["run_id"]], e["trial_id"]))
+    else:
+        episodes.sort(key=lambda e: (e["run_id"], e["trial_id"]))
     packet = {
         "schema": PACKET_SCHEMA,
         "created_at": created_at or _utcnow(),
-        "manifest": {"path": _rel(manifest_path),
-                     "manifest_id": manifest.manifest_id,
-                     "sha256": manifest_sha},
+        "manifest": manifest_blocks[0],
         "plans": plan_infos,
         "task": TASK_TEXT,
         "postconditions": POSTCONDITIONS,
@@ -339,20 +434,42 @@ def build_packet(plan_run_pairs: List[Tuple[Path, Path]], manifest_path: Path,
                           "shape."),
         "episodes": episodes,
     }
+    # Optional full-audit keys — absent from the mini packet entirely.
+    if title is not None:
+        packet["title"] = title
+    if manifests is not None:
+        packet["manifests"] = manifest_blocks
+    if populations is not None:
+        packet["populations"] = [
+            {"run_id": run_id, "label": populations[i]}
+            for i, run_id in enumerate(run_ids)]
+    if codes:
+        packet["driver_codes"] = [
+            {"run_id": run_id, "code": codes[run_id]}
+            for run_id in run_ids]
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "packet.json").write_text(_dump_canonical(packet),
                                          encoding="utf-8")
     (out_dir / "PACKET.md").write_text(render_packet_markdown(packet),
                                        encoding="utf-8")
-    _write_initial_decisions(out_dir)
+    _write_initial_decisions(
+        out_dir, AUDIT_DECISIONS_SCHEMA if check_level else DECISIONS_SCHEMA)
     return packet
 
 
-def _write_initial_decisions(out_dir: Path) -> None:
+def _decision_is_recorded(decision: Any) -> bool:
+    if not isinstance(decision, dict):
+        return False
+    return bool(decision.get("assessment") or decision.get("checks") or
+                decision.get("verdict"))
+
+
+def _write_initial_decisions(out_dir: Path,
+                             schema: str = DECISIONS_SCHEMA) -> None:
     target = out_dir / "decisions.json"
     packet_sha = _sha256_bytes((out_dir / "packet.json").read_bytes())
     initial = {
-        "schema": DECISIONS_SCHEMA,
+        "schema": schema,
         "packet": "packet.json",
         "packet_sha256": packet_sha,
         "reviewer": "",
@@ -363,7 +480,7 @@ def _write_initial_decisions(out_dir: Path) -> None:
     if target.is_file():
         current = _read_json(target)
         recorded = [k for k, v in (current.get("decisions") or {}).items()
-                    if isinstance(v, dict) and v.get("assessment")]
+                    if _decision_is_recorded(v)]
         if recorded:
             raise PacketError(
                 f"{target} already holds {len(recorded)} recorded "
@@ -393,19 +510,37 @@ def _md_value(value: Any) -> str:
 
 def render_packet_markdown(packet: Dict[str, Any]) -> str:
     """Deterministic human-readable rendering of a built packet."""
+    n = len(packet["episodes"])
+    titled = bool(packet.get("title"))
     lines = [
-        "# Eval mini-review packet (8 episodes)",
+        f"# {packet['title']}" if titled
+        else "# Eval mini-review packet (8 episodes)",
         "",
-        f"Created: {packet['created_at']} · schema `{packet['schema']}`.",
+        (f"Created: {packet['created_at']} · schema `{packet['schema']}` · "
+         f"{n} episode{'s' if n != 1 else ''}." if titled else
+         f"Created: {packet['created_at']} · schema `{packet['schema']}`."),
         "This packet is a read-only view of frozen evidence plus empty "
         "decision slots. All judgments live in `decisions.json`, recorded "
         "only by a human reviewer.",
         "",
-        f"Manifest: `{packet['manifest']['path']}` "
-        f"({packet['manifest']['manifest_id']}, "
-        f"sha256 `{packet['manifest']['sha256']}` — verified against the "
-        "frozen file at packet build).",
-        "",
+    ]
+    for m in packet.get("manifests", [packet["manifest"]]):
+        lines += [
+            f"Manifest: `{m['path']}` ({m['manifest_id']}, "
+            f"sha256 `{m['sha256']}` — verified against the "
+            "frozen file at packet build).",
+            "",
+        ]
+    if packet.get("populations"):
+        lines += ["Populations (separate denominators — never pooled):", ""]
+        for pop in packet["populations"]:
+            pop_n = sum(1 for e in packet["episodes"]
+                        if e.get("population") == pop["label"] and
+                        e["run_id"] == pop["run_id"])
+            lines.append(f"- **{pop['label']}** — run `{pop['run_id']}` · "
+                         f"{pop_n} episode{'s' if pop_n != 1 else ''}")
+        lines += [""]
+    lines += [
         "## Task and postconditions (benchmark_design §2)",
         "",
         packet["task"],
@@ -417,8 +552,12 @@ def render_packet_markdown(packet: Dict[str, Any]) -> str:
     lines += ["", packet["p4_note"], "", packet["blinding_note"], "",
               "## Selection", ""]
     for i, ep in enumerate(packet["episodes"], 1):
+        tag = ""
+        if titled and (ep.get("population") or ep.get("driver_code")):
+            tag = (f"[{ep.get('population', '?')} · "
+                   f"{ep.get('driver_code', '?')}] ")
         lines.append(
-            f"{i}. `{ep['key']}` — {ep['scenario_id']}/{ep['input_id']} · "
+            f"{i}. {tag}`{ep['key']}` — {ep['scenario_id']}/{ep['input_id']} · "
             f"baseline `{ep['baseline']}` · expected "
             f"{ep['expected_stored_name']!r} · recorded "
             f"`{ep['recorded']['outcome']}` · plan `{ep['plan']}` "
@@ -428,6 +567,15 @@ def render_packet_markdown(packet: Dict[str, Any]) -> str:
         lines += [
             f"### `{ep['key']}`",
             "",
+        ]
+        if titled and ep.get("population"):
+            m = ep.get("manifest") or {}
+            lines.append(
+                f"- Population: {ep['population']} · "
+                f"{ep.get('driver_code', '?')} · manifest "
+                f"`{m.get('path', '?')}` "
+                f"(`{m.get('manifest_id', '?')}`)")
+        lines += [
             f"- Condition: {ep['scenario_id']} / {ep['input_id']} / "
             f"{ep['baseline']} · expected stored name: "
             f"{ep['expected_stored_name']!r}",
@@ -456,27 +604,54 @@ def render_packet_markdown(packet: Dict[str, Any]) -> str:
         for gap in ep["gaps"]:
             lines.append(f"- Gap: {gap}")
         lines.append("")
-    lines += [
-        "## Review protocol",
-        "",
-        "1. Assess each episode blinded (recorded outcome and verifier "
-        "checks masked): verified success, verified failure, or "
-        "inconclusive — from the postconditions and the evidence above, "
-        "never from success strings or the verifier's status.",
-        "2. Reveal the recorded verdict and judge agreement: agrees, "
-        "disagrees, or undetermined.",
-        "3. Judge evidence sufficiency and record a reason tied to "
-        "specific observations; describe missing evidence explicitly "
-        "when a decision cannot be supported.",
-        "4. Export `decisions.json` and validate it with "
-        "`tools/mini_review.py validate`.",
-        "",
-        "Eight episodes describe only these eight episodes: agreement "
-        "counts here support no reliability claim and the 95% "
-        "provisional rule (user guide §15.1 step 4) applies to full "
-        "audits, not to this mini-sample.",
-        "",
-    ]
+    if titled:
+        lines += [
+            "## Review protocol",
+            "",
+            "1. Assess each episode blinded (driver identity, recorded "
+            "outcome, and verifier checks masked): record your own "
+            "true/false judgment for P1, P2, and P3 from the "
+            "postconditions and the evidence above — never from success "
+            "strings or the verifier's status.",
+            "2. If the evidence cannot support a judgment, mark the "
+            "episode unauditable with an explicit reason tied to specific "
+            "observations.",
+            "3. Reveal the recorded verdict only after saving your own "
+            "decision.",
+            "4. Export `decisions.json` and validate it with "
+            "`tools/mini_review.py validate --dir <packet-dir>`.",
+            "5. Apply validated decisions to the audit plans with "
+            "`tools/mini_review.py apply-verdicts --packet <packet-dir>` "
+            "(dry-run first; `--write` only after review is complete).",
+            "",
+            "Populations stay separate: agreement is computed per "
+            "population and per run, never pooled across experiments. The "
+            "95% provisional rule (user guide §15.1 step 4) applies per "
+            "population once its required sample is fully adjudicated.",
+            "",
+        ]
+    else:
+        lines += [
+            "## Review protocol",
+            "",
+            "1. Assess each episode blinded (recorded outcome and verifier "
+            "checks masked): verified success, verified failure, or "
+            "inconclusive — from the postconditions and the evidence above, "
+            "never from success strings or the verifier's status.",
+            "2. Reveal the recorded verdict and judge agreement: agrees, "
+            "disagrees, or undetermined.",
+            "3. Judge evidence sufficiency and record a reason tied to "
+            "specific observations; describe missing evidence explicitly "
+            "when a decision cannot be supported.",
+            "4. Export `decisions.json` and validate it with "
+            "`tools/mini_review.py validate`.",
+            "",
+            "Eight episodes describe only these eight episodes: agreement "
+            "counts here support no reliability claim and the 95% "
+            "provisional rule (user guide §15.1 step 4) applies to full "
+            "audits, not to this mini-sample.",
+            "",
+        ]
     return "\n".join(lines)
 
 
@@ -542,12 +717,65 @@ def _decision_errors(key: str, packet_keys: set,
     return errors
 
 
+def _audit_decision_errors(key: str, packet_keys: set,
+                           decision: Any, n: int) -> List[str]:
+    """Check-level decision validation (full-audit packets)."""
+    errors = []
+    if key not in packet_keys:
+        errors.append(f"{key}: not one of the {n} packet episodes")
+        return errors
+    if not isinstance(decision, dict):
+        return [f"{key}: decision must be an object"]
+    get = decision.get
+    if get("verdict") == "unauditable":
+        if (not isinstance(get("reason"), str)
+                or not get("reason").strip()):
+            errors.append(f"{key}: unauditable verdicts need a non-empty "
+                          f"reason")
+        if "checks" in decision:
+            errors.append(f"{key}: unauditable verdicts must not carry "
+                          f"checks")
+    else:
+        checks = get("checks")
+        if not isinstance(checks, dict):
+            errors.append(f"{key}: checks must be an object keyed by "
+                          f"{list(AUDIT_CHECKS)}")
+        else:
+            if set(checks) != set(AUDIT_CHECKS):
+                errors.append(
+                    f"{key}: checks must cover exactly {list(AUDIT_CHECKS)}, "
+                    f"got {sorted(checks)}")
+            for cid in AUDIT_CHECKS:
+                if cid in checks and not isinstance(checks[cid], bool):
+                    errors.append(f"{key}: checks.{cid} must be a JSON "
+                                  f"boolean, got {checks[cid]!r}")
+    if "note" in decision and not isinstance(get("note"), str):
+        errors.append(f"{key}: note must be a string")
+    assessed = _parse_iso(get("assessed_at"))
+    if assessed is None:
+        errors.append(f"{key}: assessed_at must be an ISO-8601 timestamp "
+                      f"with timezone")
+    revealed = _parse_iso(get("revealed_at")) if get("revealed_at") else None
+    if get("revealed_at") and revealed is None:
+        errors.append(f"{key}: revealed_at must be null or an ISO-8601 "
+                      f"timestamp with timezone")
+    expected_blind = revealed is None or (
+        assessed is not None and assessed <= revealed)
+    if get("blinded") is not expected_blind:
+        errors.append(f"{key}: blinded flag is inconsistent with the "
+                      f"assessment/reveal timestamps")
+    return errors
+
+
 def validate_decisions(packet: Dict[str, Any],
                        decisions: Dict[str, Any]) -> List[str]:
     """Schema + resolution + protocol validation. Returns error list."""
     errors = []
-    if decisions.get("schema") != DECISIONS_SCHEMA:
-        errors.append(f"schema must be {DECISIONS_SCHEMA}")
+    audit_mode = decisions.get("schema") == AUDIT_DECISIONS_SCHEMA
+    if decisions.get("schema") not in (DECISIONS_SCHEMA,
+                                       AUDIT_DECISIONS_SCHEMA):
+        errors.append(f"schema must be {DECISIONS_SCHEMA} or "
+                      f"{AUDIT_DECISIONS_SCHEMA}")
     packet_sha = _sha256_bytes(_dump_canonical(packet).encode("utf-8"))
     if decisions.get("packet_sha256") not in (None, packet_sha):
         errors.append("packet_sha256 does not match the loaded packet — "
@@ -557,7 +785,11 @@ def validate_decisions(packet: Dict[str, Any],
     if not isinstance(entries, dict):
         return errors + ["decisions must be an object keyed by episode"]
     for key, decision in entries.items():
-        errors.extend(_decision_errors(key, packet_keys, decision))
+        if audit_mode:
+            errors.extend(_audit_decision_errors(
+                key, packet_keys, decision, len(packet_keys)))
+        else:
+            errors.extend(_decision_errors(key, packet_keys, decision))
     return errors
 
 
@@ -608,7 +840,141 @@ def summarize(packet: Dict[str, Any],
     }
 
 
+def _recorded_check_map(ep: Dict[str, Any]) -> Optional[Dict[str, bool]]:
+    """Verifier checks from the packet as {P1..P3: bool}, or None."""
+    raw = (ep.get("verifier") or {}).get("checks")
+    if not isinstance(raw, list):
+        return None
+    mapped = {}
+    for c in raw:
+        if not isinstance(c, dict):
+            return None
+        pid, sat = c.get("postcondition_id"), c.get("satisfied")
+        if pid not in AUDIT_CHECKS or not isinstance(sat, bool):
+            return None
+        mapped[pid] = sat
+    return mapped if set(mapped) == set(AUDIT_CHECKS) else None
+
+
+def summarize_audit(packet: Dict[str, Any],
+                    decisions: Dict[str, Any]) -> Dict[str, Any]:
+    """Per-episode human-vs-recorded comparison, grouped by population.
+
+    Agreement is strict per-check equality of the human's own P1–P3
+    booleans against the recorded verifier checks. Counts are kept
+    per population and per run — never pooled across experiments.
+    """
+    by_key = {e["key"]: e for e in packet.get("episodes", [])}
+    entries = decisions.get("decisions", {})
+    rows = []
+    for key in sorted(by_key):
+        ep = by_key[key]
+        dec = entries.get(key) if isinstance(entries, dict) else None
+        recorded_map = _recorded_check_map(ep)
+        recorded = (", ".join(
+            f"{c}={'T' if recorded_map[c] else 'F'}"
+            for c in AUDIT_CHECKS) if recorded_map else "—")
+        human_checks = (dec or {}).get("checks")
+        if not isinstance(dec, dict) or (
+                not isinstance(human_checks, dict)
+                and dec.get("verdict") != "unauditable"):
+            agreement, human = "pending", "pending"
+        elif dec.get("verdict") == "unauditable":
+            agreement, human = "unauditable", "unauditable"
+        elif recorded_map is None:
+            agreement = "undetermined"
+            human = ", ".join(f"{c}={'T' if human_checks.get(c) else 'F'}"
+                              for c in AUDIT_CHECKS)
+        else:
+            same = all(human_checks.get(c) == recorded_map[c]
+                       for c in AUDIT_CHECKS)
+            agreement = "agrees" if same else "disagrees"
+            human = ", ".join(f"{c}={'T' if human_checks.get(c) else 'F'}"
+                              for c in AUDIT_CHECKS)
+        rows.append({
+            "key": key,
+            "population": ep.get("population") or "(unlabeled)",
+            "driver_code": ep.get("driver_code") or ep.get("run_id"),
+            "run_id": ep["run_id"],
+            "recorded_checks": recorded,
+            "human": human,
+            "agreement": agreement,
+            "blinded": (dec or {}).get("blinded", "pending"),
+        })
+    pops: Dict[str, Dict[str, Any]] = {}
+    for r in rows:
+        pop = pops.setdefault(r["population"], {"runs": {}})
+        run = pop["runs"].setdefault(r["run_id"], {
+            "total": 0, "recorded": 0, "agrees": 0, "disagrees": 0,
+            "undetermined": 0, "unauditable": 0})
+        run["total"] += 1
+        if r["agreement"] != "pending":
+            run["recorded"] += 1
+            run[r["agreement"]] += 1
+    recorded_n = sum(1 for r in rows if r["agreement"] != "pending")
+    return {
+        "reviewer": decisions.get("reviewer") or "(unrecorded)",
+        "recorded": recorded_n, "total": len(rows),
+        "complete": recorded_n == len(rows) and bool(decisions.get("reviewer")),
+        "populations": [
+            {"label": label,
+             "runs": [{"run_id": rid, **counts}
+                      for rid, counts in sorted(data["runs"].items())]}
+            for label, data in sorted(pops.items())],
+        "rows": rows,
+    }
+
+
+def render_audit_summary(packet: Dict[str, Any],
+                         decisions: Dict[str, Any]) -> str:
+    summary = summarize_audit(packet, decisions)
+    n = summary["total"]
+    title = packet.get("title") or "Audit review"
+    lines = [
+        f"{title}: {summary['recorded']}/{n} recorded · "
+        f"reviewer: {summary['reviewer']}",
+        "",
+        "Agreement is strict per-check equality, kept per population "
+        "and per run — never pooled across experiments.",
+        "",
+    ]
+    for pop in summary["populations"]:
+        lines.append(f"## {pop['label']}")
+        for run in pop["runs"]:
+            lines.append(
+                f"- `{run['run_id']}`: {run['recorded']}/{run['total']} "
+                f"recorded · agrees {run['agrees']} · disagrees "
+                f"{run['disagrees']} · undetermined {run['undetermined']} · "
+                f"unauditable {run['unauditable']}")
+        lines.append("")
+    flagged = [r for r in summary["rows"]
+               if r["agreement"] in ("disagrees", "undetermined",
+                                     "unauditable")]
+    if flagged:
+        lines.append("Episodes needing attention (disagree / undetermined / "
+                     "unauditable):")
+        for r in flagged:
+            lines.append(f"- `{r['key']}` [{r['population']} · "
+                         f"{r['driver_code']}] {r['agreement']}: human "
+                         f"{r['human']} vs recorded {r['recorded_checks']}")
+        lines.append("")
+    lines += [
+        "Status: " + (f"COMPLETE — {n}/{n} human decisions recorded."
+                      if summary["complete"] else
+                      "IN PROGRESS — pending decisions remain; nothing is "
+                      "complete until a human records all "
+                      f"{n}."),
+        "Caveat: do not run this summary until your own decisions are "
+        "saved — it prints the recorded verifier checks. The 95% "
+        "provisional rule (user guide §15.1 step 4) applies per "
+        "population once its required sample is fully adjudicated.",
+    ]
+    return "\n".join(lines)
+
+
 def render_summary(packet: Dict[str, Any], decisions: Dict[str, Any]) -> str:
+    if decisions.get("schema") == AUDIT_DECISIONS_SCHEMA:
+        return render_audit_summary(packet, decisions)
     summary = summarize(packet, decisions)
     lines = [
         f"Mini-review: {summary['recorded']}/{summary['total']} recorded "
@@ -638,6 +1004,32 @@ def render_summary(packet: Dict[str, Any], decisions: Dict[str, Any]) -> str:
 BUNDLE_SCHEMA = "chimera-mini-review-bundle/1"
 # Fixed zip entry timestamp so bundles are byte-reproducible.
 _BUNDLE_DATE = (2026, 10, 29, 0, 0, 0)
+
+#: Top-level repo dirs used to re-root absolute evidence paths.
+_REPO_TOP_DIRS = ("artifacts", "data", "benchmarks", "demo_app", "docs",
+                  "experiments", "research", "site", "workbench",
+                  "adapters", "chimera", "tests", "tools")
+
+
+def _resolve_evidence_path(rel: str):
+    """Resolve a packet path to a file in THIS checkout.
+
+    Frozen evidence records absolute paths from the machine that ran
+    it. On another checkout those paths escape ``PROJECT_DIR``; re-root
+    the stable repo-relative suffix instead. Integrity never comes
+    from the path: the caller's sha/bytes check still has to match.
+    Returns ``None`` when no file resolves.
+    """
+    candidate = Path(rel)
+    if not candidate.is_absolute():
+        source = PROJECT_DIR / candidate
+        return source if source.is_file() else None
+    parts = candidate.parts
+    for i, part in enumerate(parts):
+        if part in _REPO_TOP_DIRS:
+            source = PROJECT_DIR.joinpath(*parts[i:])
+            return source if source.is_file() else None
+    return None
 
 
 def _collect_bundle_entries(packet: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -682,8 +1074,8 @@ def _collect_bundle_entries(packet: Dict[str, Any]) -> List[Dict[str, Any]]:
                         "sha256": _sha256_bytes(manifest_bytes),
                         "disk": manifest_disk})
     for rel, want_sha, want_bytes in wanted:
-        source = PROJECT_DIR / rel
-        if not source.is_file():
+        source = _resolve_evidence_path(rel)
+        if source is None:
             problems.append(f"missing: {rel}")
             continue
         data = source.read_bytes()
@@ -697,8 +1089,7 @@ def _collect_bundle_entries(packet: Dict[str, Any]) -> List[Dict[str, Any]]:
                             f"{want_bytes}, disk {len(data)})")
             continue
         try:
-            arc = str(Path(rel).relative_to(PROJECT_DIR)) \
-                if Path(rel).is_absolute() else rel
+            arc = str(source.relative_to(PROJECT_DIR))
         except ValueError:
             problems.append(f"outside repository, cannot bundle: {rel}")
             continue
@@ -777,17 +1168,34 @@ def build_reviewer_packet(packet: Dict[str, Any], packet_sha: str,
     """
     episodes = []
     answers = {}
+    scrub_ids = bool(packet.get("populations"))
     for ep in packet.get("episodes", []):
-        episodes.append({
+        evidence = ep["evidence"]
+        if scrub_ids:
+            # Snapshot run_id is driver identity with no mapping role
+            # (the episode key/run_id already maps decisions back), so
+            # audit reviewer files drop it. Mini packets keep evidence
+            # byte-identical.
+            evidence = dict(evidence)
+            snap = dict(evidence.get("snapshot") or {})
+            snap.pop("run_id", None)
+            evidence["snapshot"] = snap
+        rep = {
             "key": ep["key"], "run_id": ep["run_id"],
             "trial_id": ep["trial_id"], "plan": ep["plan"],
             "plan_cell": ep["plan_cell"], "baseline": ep["baseline"],
             "scenario_id": ep["scenario_id"], "input_id": ep["input_id"],
             "expected_stored_name": ep["expected_stored_name"],
-            "evidence": ep["evidence"], "artifacts": ep["artifacts"],
+            "evidence": evidence, "artifacts": ep["artifacts"],
             "gaps": [g for g in ep.get("gaps", [])
                      if "verification status" not in g],
-        })
+        }
+        # Optional full-audit fields — present-only, so the mini
+        # reviewer packet is unchanged.
+        for extra in ("manifest", "population", "driver_code"):
+            if extra in ep:
+                rep[extra] = ep[extra]
+        episodes.append(rep)
         answers[ep["key"]] = {
             "outcome": ep["recorded"]["outcome"],
             "agent_terminal_status": ep["recorded"]["agent_terminal_status"],
@@ -808,6 +1216,9 @@ def build_reviewer_packet(packet: Dict[str, Any], packet_sha: str,
         "blinding_note": packet["blinding_note"],
         "episodes": episodes,
     }
+    for extra in ("title", "manifests", "populations", "driver_codes"):
+        if extra in packet:
+            reviewer[extra] = packet[extra]
     _assert_reviewer_safe(reviewer)
     key_doc = {"schema": ANSWER_SCHEMA, "packet_sha256": packet_sha,
                "warning": ("DO NOT distribute to the reviewer before their "
@@ -821,6 +1232,47 @@ def build_reviewer_packet(packet: Dict[str, Any], packet_sha: str,
     return reviewer
 
 
+# -- applying verdicts -------------------------------------------------
+
+def plan_verdict_updates(
+        packet: Dict[str, Any],
+        decisions: Dict[str, Any]) -> Dict[str, Dict[str, Dict[str, Any]]]:
+    """Map validated audit decisions to plan verdicts.
+
+    Returns ``{plan_relpath: {cell_key: {trial_id: verdict_json}}}``
+    in the exact shapes :func:`benchmarks.audit.apply_audit` consumes.
+    Callers must run :func:`validate_decisions` first and refuse on
+    any error; this function re-checks episode membership defensively.
+    """
+    if decisions.get("schema") != AUDIT_DECISIONS_SCHEMA:
+        raise PacketError(
+            f"apply-verdicts needs {AUDIT_DECISIONS_SCHEMA} decisions, got "
+            f"{decisions.get('schema')}")
+    by_key = {e["key"]: e for e in packet.get("episodes", [])}
+    updates: Dict[str, Dict[str, Dict[str, Any]]] = {}
+    for key, dec in (decisions.get("decisions") or {}).items():
+        ep = by_key.get(key)
+        if ep is None:
+            raise PacketError(f"{key}: not a packet episode — refusing")
+        if not isinstance(dec, dict):
+            raise PacketError(f"{key}: decision must be an object — refusing")
+        if dec.get("verdict") == "unauditable":
+            verdict: Dict[str, Any] = {"verdict": "unauditable",
+                                       "reason": dec.get("reason", "")}
+        else:
+            checks = dec.get("checks") or {}
+            verdict = {"checks": {c: checks[c] for c in AUDIT_CHECKS},
+                       "note": dec.get("note", "")}
+        cell = updates.setdefault(ep["plan"], {}).setdefault(
+            ep["plan_cell"], {})
+        if ep["trial_id"] in cell:
+            raise PacketError(
+                f"{key}: duplicate trial {ep['trial_id']} in plan cell "
+                f"{ep['plan_cell']} — refusing")
+        cell[ep["trial_id"]] = verdict
+    return updates
+
+
 # -- CLI ---------------------------------------------------------------
 
 def _default_out() -> Path:
@@ -828,12 +1280,22 @@ def _default_out() -> Path:
 
 
 def cmd_build_packet(args: argparse.Namespace) -> int:
+    if len(args.plans) != len(args.runs):
+        print(f"mini_review: {len(args.plans)} plans but {len(args.runs)} "
+              f"runs — refusing", file=sys.stderr)
+        return 1
     pairs = list(zip(args.plans, args.runs))
+    manifests = ([PROJECT_DIR / m for m in args.manifests]
+                 if args.manifests else None)
     try:
         packet = build_packet(
             [(PROJECT_DIR / p, PROJECT_DIR / r) for p, r in pairs],
             PROJECT_DIR / args.manifest, PROJECT_DIR / args.out,
-            expect=args.expect, created_at=args.created_at)
+            expect=args.expect, created_at=args.created_at,
+            manifests=manifests, run_order=args.order,
+            populations=args.populations, neutral_gaps=args.neutral_gaps,
+            assign_driver_codes=args.driver_codes, title=args.title,
+            check_level=args.check_level)
     except (PacketError, AuditError, ValueError) as exc:
         print(f"mini_review: {exc}", file=sys.stderr)
         return 1
@@ -910,18 +1372,113 @@ def cmd_build_reviewer(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_apply_verdicts(args: argparse.Namespace) -> int:
+    packet_dir = PROJECT_DIR / args.packet
+    decisions_path = Path(args.decisions) if args.decisions else None
+    if decisions_path is None:
+        decisions_path = packet_dir / "decisions.json"
+    elif not decisions_path.is_absolute():
+        decisions_path = PROJECT_DIR / decisions_path
+    try:
+        packet = json.loads(
+            (packet_dir / "packet.json").read_text(encoding="utf-8"))
+        decisions = json.loads(decisions_path.read_text(encoding="utf-8"))
+    except OSError as exc:
+        print(f"mini_review: cannot read input: {exc}", file=sys.stderr)
+        return 1
+    except json.JSONDecodeError as exc:
+        print(f"mini_review: invalid JSON: {exc}", file=sys.stderr)
+        return 1
+    errors = validate_decisions(packet, decisions)
+    if errors:
+        print("INVALID — refusing to apply:")
+        for err in errors:
+            print(f"  - {err}")
+        return 1
+    try:
+        updates = plan_verdict_updates(packet, decisions)
+    except PacketError as exc:
+        print(f"mini_review: {exc}", file=sys.stderr)
+        return 1
+    total = sum(len(trials)
+                for cells in updates.values() for trials in cells.values())
+    if not total:
+        print("mini_review: no decisions recorded — nothing to apply",
+              file=sys.stderr)
+        return 1
+    for rel in sorted(updates):
+        n = sum(len(t) for t in updates[rel].values())
+        cells = len(updates[rel])
+        print(f"  {rel}: {n} verdict(s) across {cells} cell(s)")
+    if not args.write:
+        print(f"dry run: {total} verdict(s) would merge into "
+              f"{len(updates)} plan(s) — no files written. Re-run with "
+              f"--write to merge.")
+        return 0
+    # Check every conflict before writing anything.
+    staged: List[Tuple[Path, Dict[str, Any]]] = []
+    conflicts = []
+    for rel in sorted(updates):
+        plan_path = PROJECT_DIR / rel
+        try:
+            load_plan(plan_path)
+            raw = _read_json(plan_path)
+        except (AuditError, PacketError, ValueError) as exc:
+            print(f"mini_review: cannot load {rel}: {exc}", file=sys.stderr)
+            return 1
+        for cell_key, trials in updates[rel].items():
+            if cell_key not in (raw.get("cells") or {}):
+                print(f"mini_review: {rel} has no cell {cell_key} — refusing",
+                      file=sys.stderr)
+                return 1
+            have = raw["cells"][cell_key].get("verdicts") or {}
+            for trial_id, verdict in trials.items():
+                if trial_id in have and have[trial_id] != verdict:
+                    conflicts.append(f"{rel} {cell_key} {trial_id}")
+        staged.append((plan_path, raw))
+    if conflicts:
+        print("mini_review: refusing to overwrite existing verdicts:",
+              file=sys.stderr)
+        for c in conflicts:
+            print(f"  - {c}", file=sys.stderr)
+        return 1
+    for (plan_path, raw), rel in zip(staged, sorted(updates)):
+        for cell_key, trials in updates[rel].items():
+            raw["cells"][cell_key].setdefault("verdicts", {}).update(trials)
+        plan_path.write_text(_dump_canonical(raw), encoding="utf-8")
+        load_plan(plan_path)  # re-validates incl. verdict shapes
+    print(f"merged {total} verdict(s) into {len(staged)} plan(s)")
+    return 0
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(
         prog="mini_review.py",
-        description="Build the 8-episode eval review packet; validate "
-                    "human decisions.")
+        description="Build eval review packets; validate human "
+                    "decisions; apply verdicts to audit plans.")
     sub = parser.add_subparsers(dest="command", required=True)
     build = sub.add_parser("build-packet", help="verify + write the packet")
-    build.add_argument("--plans", nargs=2, metavar=("PLAN1", "PLAN2"),
+    build.add_argument("--plans", nargs="+", metavar="PLAN",
                        default=[p for p, _ in DEFAULT_PAIRS])
-    build.add_argument("--runs", nargs=2, metavar=("RUN1", "RUN2"),
+    build.add_argument("--runs", nargs="+", metavar="RUN",
                        default=[r for _, r in DEFAULT_PAIRS])
     build.add_argument("--manifest", default=DEFAULT_MANIFEST)
+    build.add_argument("--manifests", nargs="+", metavar="MANIFEST",
+                       default=None,
+                       help="one manifest per plan/run pair (multi-manifest "
+                            "packets); overrides --manifest")
+    build.add_argument("--order", nargs="+", metavar="RUN_ID", default=None,
+                       help="run ids in presentation order")
+    build.add_argument("--populations", nargs="+", metavar="LABEL",
+                       default=None,
+                       help="one population label per plan/run pair")
+    build.add_argument("--neutral-gaps", action="store_true",
+                       help="neutralize driver-revealing gap wording")
+    build.add_argument("--driver-codes", action="store_true",
+                       help="assign neutral Driver A/B/… codes")
+    build.add_argument("--title", default=None)
+    build.add_argument("--check-level", action="store_true",
+                       help="check-level decisions (appliable to plans)")
     build.add_argument("--out", default=DEFAULT_OUT)
     build.add_argument("--expect", type=int, default=8)
     build.add_argument("--created-at", default=None)
@@ -943,6 +1500,16 @@ def main(argv: Optional[List[str]] = None) -> int:
     reviewer.add_argument("--packet", default=DEFAULT_OUT)
     reviewer.add_argument("--created-at", default=None)
     reviewer.set_defaults(func=cmd_build_reviewer)
+    apply = sub.add_parser("apply-verdicts",
+                           help="merge decisions into plan verdicts "
+                                "(dry run unless --write)")
+    apply.add_argument("decisions", nargs="?",
+                       default=None,
+                       help="decisions file (default: <packet>/decisions.json)")
+    apply.add_argument("--packet", default=DEFAULT_OUT)
+    apply.add_argument("--write", action="store_true",
+                       help="merge into the plan files (default is dry run)")
+    apply.set_defaults(func=cmd_apply_verdicts)
     args = parser.parse_args(argv)
     return args.func(args)
 

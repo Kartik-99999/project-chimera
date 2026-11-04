@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chimera — Convergence Sigil (prototype)</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="sigil.css">
+</head>
+<body>
+<canvas id="stage" aria-hidden="true"></canvas>
+<div id="labels" aria-label="Research entities"></div>
+
+<nav id="rail" aria-label="Experience stages">
+  <a href="#hero" data-stage="0"><span class="rdot" aria-hidden="true"></span><span class="rlabel">Convergence</span></a>
+  <a href="#separation" data-stage="1"><span class="rdot" aria-hidden="true"></span><span class="rlabel">Separation</span></a>
+  <a href="#assembly" data-stage="2"><span class="rdot" aria-hidden="true"></span><span class="rlabel">Assembly</span></a>
+  <a href="#atlas" data-stage="3"><span class="rdot" aria-hidden="true"></span><span class="rlabel">Exploration</span></a>
+  <a href="#resolution" data-stage="4"><span class="rdot" aria-hidden="true"></span><span class="rlabel">Resolution</span></a>
+</nav>
+
+<header id="hero">
+  <div id="hero-text">
+    <p class="eyebrow">Project Chimera · visual prototype</p>
+    <h1>Evidence, converged.</h1>
+    <p class="lede">Thousands of readings, one instrument. A particle sigil that releases into the real evidence network behind Project Chimera — then returns.</p>
+    <p id="signature" role="status">Loading evidence signature…</p>
+    <p class="guide">Move to disturb the field <span aria-hidden="true">·</span> Scroll to descend through five stages</p>
+    <p class="cue" aria-hidden="true">scroll<span></span></p>
+    <p class="skip"><a href="../index.html">Open the Research Console →</a></p>
+  </div>
+</header>
+
+<section id="separation" aria-label="Stage B — Separation">
+  <div class="band">
+    <p class="eyebrow">Stage B — Separation</p>
+    <h2>One reading becomes many travelers.</h2>
+    <p class="body">The instrument lets go. Each particle keeps the trajectory it earned in formation — the ring peels into streams, the arms diverge, the hexagon holds a moment longer. This is evidence in transit: no longer a symbol, not yet a network.</p>
+    <ul id="layer-states" aria-label="Sigil layer transit states">
+      <li data-layer="ring"><span class="sdot" aria-hidden="true"></span><span class="sname">Ring</span><span class="sstate">holding</span></li>
+      <li data-layer="streams"><span class="sdot" aria-hidden="true"></span><span class="sname">Streams</span><span class="sstate">holding</span></li>
+      <li data-layer="hexagon"><span class="sdot" aria-hidden="true"></span><span class="sname">Hexagon</span><span class="sstate">holding</span></li>
+      <li data-layer="core"><span class="sdot" aria-hidden="true"></span><span class="sname">Core</span><span class="sstate">holding</span></li>
+    </ul>
+    <p class="noev" hidden>Evidence unavailable — the transit still plays, but no network can assemble.</p>
+  </div>
+</section>
+
+<section id="assembly" aria-label="Stage C — Assembly">
+  <div class="band">
+    <p class="eyebrow">Stage C — Assembly</p>
+    <h2>Travelers become neighbors.</h2>
+    <p class="body">Particles arrive at real destinations: the manifests, runs, audit plans, and reports behind Project Chimera. Each run executes a manifest; each audit plan samples a run; each report cites the runs it judges. Only validated relationships are drawn — sixteen in all.</p>
+    <p id="arrival-readout"><span id="seated">0</span> of <span id="seated-total">…</span> entities seated · <span id="drawn">0</span> of <span id="drawn-total">…</span> relations drawn</p>
+    <p class="noev" hidden>Evidence unavailable — nothing can assemble, so the sigil holds its form.</p>
+  </div>
+</section>
+
+<section id="atlas" aria-label="Stage D — Exploration">
+  <div id="atlas-row">
+    <div id="caption">
+      <p class="eyebrow">Stage D — Exploration</p>
+      <h2>Every entity, one field</h2>
+      <p id="counts" role="status">Loading evidence…</p>
+      <div id="search-row">
+        <label for="search">Search</label>
+        <input id="search" type="search" placeholder="Filter entities…" autocomplete="off" spellcheck="false">
+        <span id="match-count" role="status"></span>
+      </div>
+    </div>
+    <aside id="panel" aria-live="polite" aria-label="Selected entity">
+      <p class="empty">Select a cluster to inspect a real workspace — runs, audit plans, reports.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="resolution" aria-label="Stage E — Resolution">
+  <div id="resolution-text">
+    <p class="eyebrow">Stage E — Resolution</p>
+    <h2>Every inquiry returns to the instrument.</h2>
+    <p class="lede">Fifteen entities, sixteen validated relations — and the sigil that started it all. Continue into the Research Console to inspect the evidence behind this prototype.</p>
+    <p class="cta-row"><a class="cta" href="../index.html">Enter the Research Console →</a> <a class="toplink" href="#hero">Back to the top ↑</a></p>
+  </div>
+</section>
+
+<footer>
+  <p>Prototype — particle study only. No metrics are visualized here. <a href="../index.html">Back to console →</a></p>
+</footer>
+
+<noscript><p class="noscript">This prototype needs JavaScript for its particle field. The <a href="../index.html">Research Console</a> works without it.</p></noscript>
+<script type="module" src="sigil.js"></script>
+</body>
+</html>

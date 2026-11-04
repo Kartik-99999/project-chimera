@@ -56,4 +56,5 @@ test('faultTransect: untested rows, split markers, unverified rings', () => {
   assert.match(svg, /stroke-dasharray/); // unverified ring
   assert.match(svg, /<rect[^>]*width="15"/); // disabled square marker
   assert.match(svg, /A 8 8/); // split half-disc arc
+  assert.equal(svg.split('>n=5<').length - 1, 2); // per-level denominators
 });

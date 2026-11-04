@@ -2,7 +2,7 @@
 import { getState, getRun, measuredEpisodes, isFalseSuccess, isHarnessError,
   wilsonUpper, auditStatus, esc, fmtInt, fmtMs, fmtPct, baselineLabel, SCENARIOS } from '../data.js';
 import { link } from '../app.js';
-import { pageHead, pill, statCard, outcomePill, baselineTag, emptyState, kvList } from '../components.js';
+import { pageHead, pill, statCard, outcomePill, baselineTag, emptyState, kvList, art, globes, secHead } from '../components.js';
 import { constellation } from '../charts.js';
 
 function successBy(split, scenario, baseline) {
@@ -81,10 +81,10 @@ export async function pageCommand(el) {
     : `<div class="banner warn"><strong>Evaluation provisional.</strong> Held-out runs are complete but no eval audit sample is adjudicated. Figures below are measurements with denominators, not vetted claims. ${`<a href="${link('audit')}">Review audit status →</a>`}</div>`;
 
   const kpis = [
-    statCard({ value: fmtInt(eps.length), label: 'Measured episodes', sub: 'warm-ups excluded', href: link('atlas') }),
-    statCard({ value: `${fmtInt(succ)}<span style="color:var(--ink-3);font-size:16px">/${fmtInt(eps.length)}</span>`, label: 'Succeeded (pooled)', sub: `${fmtPct(succ, eps.length)} — splits differ, drill down`, href: link('observatory') }),
-    statCard({ value: `${fs}<span style="color:var(--ink-3);font-size:16px">/${eps.length}</span>`, label: 'False successes', sub: bound == null ? 'no denominator' : `95% Wilson ≤ ${(bound * 100).toFixed(1)}%`, href: link('atlas', [], { outcome: 'false-success' }) }),
-    statCard({ value: String(he), label: 'Harness errors', sub: he === 0 ? 'clean execution' : 'needs triage', href: link('atlas', [], { outcome: 'harness-error' }) }),
+    statCard({ value: fmtInt(eps.length), label: 'Measured episodes', sub: 'warm-ups excluded', href: link('atlas'), cls: 'rise' }),
+    statCard({ value: `${fmtInt(succ)}<span style="color:var(--ink-3);font-size:16px">/${fmtInt(eps.length)}</span>`, label: 'Succeeded (pooled)', sub: `${fmtPct(succ, eps.length)} — splits differ, drill down`, href: link('observatory'), cls: 'rise d1' }),
+    statCard({ value: `${fs}<span style="color:var(--ink-3);font-size:16px">/${eps.length}</span>`, label: 'False successes', sub: bound == null ? 'no denominator' : `95% Wilson ≤ ${(bound * 100).toFixed(1)}%`, href: link('atlas', [], { outcome: 'false-success' }), cls: 'rise d2' }),
+    statCard({ value: String(he), label: 'Harness errors', sub: he === 0 ? 'clean execution' : 'needs triage', href: link('atlas', [], { outcome: 'harness-error' }), cls: 'rise d3' }),
   ].join('');
 
   const finds = findings();
@@ -109,14 +109,38 @@ export async function pageCommand(el) {
       + `<td class="num">${c}</td><td class="num">${n}</td><td>${audit}</td></tr>`;
   }).join('');
 
+  const runCount = [...s.runs.values()].filter((r) => r.data).length;
+  const evalPills = ['eval-20261028-chimera', 'eval-20261028-baseline-a']
+    .map((id) => {
+      const a = auditStatus(id);
+      const short = id.replace('eval-20261028-', 'eval·');
+      return a.state === 'audited' ? pill('ok', `${short} audited`) : pill('warn', `${short} provisional`);
+    }).join('');
+  const brief = `<div class="cmd-brief"><p class="kicker">Research overview</p>`
+    + `<h2>Two drivers, identical cells, every denominator shown</h2>`
+    + `<p class="lede">Chimera's agent and a deterministic replay driver ran identical development and held-out cells. `
+    + `Every figure below carries its denominator — <strong>${fmtInt(succ)} of ${fmtInt(eps.length)}</strong> measured episodes succeeded pooled, `
+    + `with <strong>${fs}</strong> false ${fs === 1 ? 'success' : 'successes'} and <strong>${he}</strong> harness ${he === 1 ? 'error' : 'errors'}. `
+    + `Splits and scenarios differ sharply, so pooled rates are a starting point, not a verdict.</p>`
+    + `<div class="cmd-figures">`
+    + `<div class="cmd-figure"><div class="fig-value">${fmtInt(eps.length)}</div><div class="fig-label">measured episodes · ${runCount} runs</div></div>`
+    + `<div class="cmd-figure"><div class="fig-value">${fmtPct(succ, eps.length)}</div><div class="fig-label">pooled success · ${fmtInt(succ)}/${fmtInt(eps.length)}</div></div>`
+    + `</div><div class="statusline">${evalPills}<a href="${link('audit')}">Audit status →</a></div></div>`;
   const cons = constellation({ compact: true });
-  el.innerHTML = pageHead('Command Center', [['Command Center']])
+  const head = pageHead('Command Center', [['Command Center']], '', {
+    kicker: 'Chimera Research Console · route #/command',
+    lede: `Local evidence only — four runs, two splits, every figure carrying its denominator. Held-out numbers are measurements, not vetted claims, until audit adjudication lands.`,
+    meta: `${evalAudited ? pill('ok', 'Eval audited') : pill('warn', 'Eval provisional')} ${pill('dim', `${runCount}/4 runs · ${fmtInt(eps.length)} episodes`)} ${he === 0 ? pill('ok', '0 harness errors') : pill('bad', `${he} harness errors`)}`,
+  });
+  el.innerHTML = head
     + banner
     + `<div class="grid kpi" role="list">${kpis}</div>`
-    + `<div class="grid two-wide"><div class="card"><h2>Evidence constellation</h2>${cons.render(constellationModel())}`
-    + `<p style="margin-top:8px"><a href="${link('map')}">Open fullscreen map →</a></p></div>`
-    + `<div class="card"><h2>Notable findings</h2>${findsHtml}</div></div>`
-    + (pending.length ? `<div class="card"><h2>Pending audit work</h2>${pending.join('')}</div>` : '')
-    + `<div class="card"><h2>Runs</h2><div class="table-wrap"><table class="data"><thead><tr><th>Run</th><th>Split</th><th>Baseline</th><th class="num">Cells</th><th class="num">Episodes</th><th>Audit</th></tr></thead><tbody>${runRows}</tbody></table></div></div>`;
+    + `<div class="cmd-hero">${brief}<div class="cmd-centerpiece navy">${globes()}<h2>Evidence constellation</h2>${cons.render(constellationModel())}`
+    + `<p class="foot">Runs, shared scenarios, and audit states — every node opens its workspace. <a href="${link('map')}">Open fullscreen map →</a></p></div></div>`
+    + `<div class="card">${art(0)}${secHead('Notable findings', 'Derived live from the loaded runs — never hand-written.')}${findsHtml}`
+    + (pending.length ? `<hr class="hairline">${pending.join('')}` : '') + `</div>`
+    + `${secHead('Runs', '4 run files · manifests dev-v1 / eval-v1', `<a class="btn btn-light" href="${link('archive')}">Run files</a>`)}`
+    + `<div class="card slim"><div class="table-wrap"><table class="data"><thead><tr><th>Run</th><th>Split</th><th>Baseline</th><th class="num">Cells</th><th class="num">Episodes</th><th>Audit</th></tr></thead><tbody>${runRows}</tbody></table></div>`
+    + `<p class="cap"><strong>Denominators exact.</strong> ${fmtInt(eps.length)} measured episodes pooled; warm-ups excluded everywhere.</p></div>`;
   cons.bind(el);
 }

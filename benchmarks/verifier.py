@@ -169,7 +169,13 @@ def snapshot_path_for(trace_dir: Path, run_id: str) -> Path:
 # ---------------------------------------------------------------------------
 
 
-def capture_page_state(page: Any) -> Dict[str, Any]:
+PROJECT_LIST_SELECTOR = "#project-list li"
+CONTACT_LIST_SELECTOR = "#submission-list li"
+
+
+def capture_page_state(page: Any,
+                       items_selector: str = PROJECT_LIST_SELECTOR
+                       ) -> Dict[str, Any]:
     """Read the raw postcondition state from a live Playwright page.
 
     This is the harness's observation callback, passed to the agent's
@@ -177,9 +183,13 @@ def capture_page_state(page: Any) -> Dict[str, Any]:
     ``textContent`` only — it performs no matching and shares no logic
     with the agent's ``has_text`` verification. Duck-typed on the page
     object, so this module imports nothing from Playwright.
+
+    ``items_selector`` names the submitted-entry list; the default
+    keeps the project workflow unchanged, while the contact workflow
+    passes :data:`CONTACT_LIST_SELECTOR`.
     """
     confirmation = page.locator("#confirmation")
-    project_items = page.locator("#project-list li")
+    project_items = page.locator(items_selector)
     return {
         "confirmation_visible": bool(confirmation.is_visible()),
         "items": list(project_items.all_text_contents()),
@@ -320,7 +330,9 @@ def summarize_checks(
 
 
 __all__ = [
+    "CONTACT_LIST_SELECTOR",
     "DOMSnapshot",
+    "PROJECT_LIST_SELECTOR",
     "SNAPSHOT_SUFFIX",
     "VERIFIER_VERSION",
     "SnapshotValidationError",

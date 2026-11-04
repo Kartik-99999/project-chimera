@@ -57,6 +57,10 @@ test('eval river renders 360 counted episodes with links, nodes, and list rows',
   // Click-through targets keep their filter parameters.
   assert.match(el.innerHTML, /#\/atlas\?scenario=S-SLOW&baseline=chimera/);
   assert.match(el.innerHTML, /#\/audit/);
+  // Every stage header carries its honest column total; links expose identity.
+  assert.equal(count(el.innerHTML, 'river-col-total'), 4);
+  assert.match(el.innerHTML, /Σ 360/);
+  assert.match(el.innerHTML, /data-from="S-SLOW" data-to-col="1" data-to="chimera"/);
 });
 
 test('dev river renders 160 episodes across audited cells', async () => {

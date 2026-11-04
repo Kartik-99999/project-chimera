@@ -1,0 +1,33 @@
+{
+  "generated_at_utc": "2026-11-02 06:12",
+  "counts": {
+    "reports": 3,
+    "runs": 4,
+    "episodes": 524,
+    "measured": 520,
+    "warmups": 4,
+    "plans": 6,
+    "sampled": 216,
+    "verdicts": 64,
+    "manifests": 2
+  },
+  "pdf_bytes": 1053574,
+  "pdf_pages": 124,
+  "sources": {
+    "artifacts/dev-20261028/run-chimera.json": "666c3b93c8f5ee3e900bb2a6fac2d1a938c59d093f8f1d10feafca52dd5edd86",
+    "artifacts/dev-20261028/run-baseline-a.json": "c6d40dac54781e1bef5fea9eed18bb1f3e224f5201302ad75697e08a95d7387d",
+    "artifacts/eval-20261028/run-chimera.json": "45131714c170fe71eb89e3674e3a91ee87b91e7432c596432782cdda2212d590",
+    "artifacts/eval-20261028/run-baseline-a.json": "af521d002514b7ceacc8adc6db9878539e947db7c151dad8e829aa70d64be005",
+    "artifacts/dev-20261028/run-chimera.audit-plan.json": "7381c77db058c134869c5adf4c06d47cafdc93197e1a197722358c471451cd39",
+    "artifacts/dev-20261028/run-baseline-a.audit-plan.json": "87dbd9631d607fa492dcb69dbb290933a869d73ad2d9f5cb2f2ffa22f0df97af",
+    "artifacts/eval-20261028/run-chimera.audit-plan.json": "b116ebdfeaa47ed1ccb6afc9f5febd58d00d1ba2b3b54a6625576322c8a06edb",
+    "artifacts/eval-20261028/run-baseline-a.audit-plan.json": "4d1081f7c8506daec5ff070cefe91b80d5b984be77e6abeffad1c9145f8a5327",
+    "artifacts/eval-20261028/run-chimera.audit-plan-mini.json": "e98339e260ca64f7528a4d7d0f718f82149fd89aba108d589ad883aa88f46030",
+    "artifacts/eval-20261028/run-baseline-a.audit-plan-mini.json": "f1f2c76f601cbb27302b2d043ec17712e91821e045d8eecedceaef0d6c48f90b",
+    "artifacts/dev-20261028/report.md": "47c38ece43f8543d02287d85239faf1c91a5e4732a7182163394bd4f6e362b30",
+    "artifacts/dev-20261028/report-audited.md": "5db89c2df3dbe2c44084d8118a85a9442d94585b40346fc93a46bd123dda1a1c",
+    "artifacts/eval-20261028/report.md": "60a4df313ee84e0dd06c93555693c7091251af0dec58cf86806524e57f445672",
+    "benchmarks/manifests/dev-v1.json": "28812afc6861ba340fa9e67458022d95265961d4fb899bd010d8a0661a3b5b3c",
+    "benchmarks/manifests/eval-v1.json": "e91084e9362381edba72aa9cfd9b1ea84ded811163f00a091782c36fed6db0f4"
+  }
+}

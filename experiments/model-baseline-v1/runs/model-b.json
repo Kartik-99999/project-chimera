@@ -1,0 +1,2651 @@
+{
+  "agent_version": "milestone-1-foundation",
+  "benchmark_id": "chimera-local",
+  "benchmark_version": "1.0.0",
+  "cells": [
+    {
+      "actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 3.0,
+          "total": 15
+        }
+      },
+      "baseline": "baseline-b",
+      "failure_categories": {},
+      "false_successes": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "fault_params": {
+        "disabled": false,
+        "slow_ms": 0
+      },
+      "human_interventions": {
+        "unavailable_reason": "no operator in the loop (docs/benchmark_design.md §8.1)",
+        "value": null
+      },
+      "independent_verification": {
+        "P1_confirmation_visible": {
+          "unavailable_reason": null,
+          "value": 5
+        },
+        "P2_exact_name_in_list": {
+          "unavailable_reason": null,
+          "value": 5
+        },
+        "P3_no_unexpected_entries": {
+          "unavailable_reason": null,
+          "value": 5
+        }
+      },
+      "input_id": "I-PLAIN",
+      "latency_ms": {
+        "max": {
+          "unavailable_reason": null,
+          "value": 27586
+        },
+        "min": {
+          "unavailable_reason": null,
+          "value": 17908
+        },
+        "p50": {
+          "unavailable_reason": null,
+          "value": 23153.0
+        },
+        "p95": {
+          "unavailable_reason": null,
+          "value": 27586
+        }
+      },
+      "model_calls": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "model_cost_usd": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "outcomes": {
+        "cancelled": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "failed": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "inconclusive": {
+          "unavailable_reason": "inconclusive is not an observable category: verification timeouts are reported as failed (docs/benchmark_design.md §8.3, ADR-004 Q4)",
+          "value": null
+        },
+        "succeeded": {
+          "unavailable_reason": null,
+          "value": 5
+        }
+      },
+      "retries": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "scenario_id": "S-NORM",
+      "trace_artifacts": [
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/f4649c2d-4f33-4033-9c6a-971b805a307e.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/944d9720-4475-4289-a1b3-df1fab2a3b90.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/bdf39d86-0c4a-42ff-a9e9-24693c37a749.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/e4257a1c-2319-4549-a9fb-1bc7f32ef271.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/bf7ab13f-625a-49fb-8d08-10578a39d66f.json"
+      ],
+      "trials": 5,
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "verifier_audit": null,
+      "verifier_disagreements": {
+        "unavailable_reason": null,
+        "value": 0
+      }
+    },
+    {
+      "actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 7.6,
+          "total": 38
+        }
+      },
+      "baseline": "baseline-b",
+      "failure_categories": {},
+      "false_successes": {
+        "unavailable_reason": null,
+        "value": 2
+      },
+      "fault_params": {
+        "disabled": false,
+        "slow_ms": 0
+      },
+      "human_interventions": {
+        "unavailable_reason": "no operator in the loop (docs/benchmark_design.md §8.1)",
+        "value": null
+      },
+      "independent_verification": {
+        "P1_confirmation_visible": {
+          "unavailable_reason": null,
+          "value": 5
+        },
+        "P2_exact_name_in_list": {
+          "unavailable_reason": null,
+          "value": 3
+        },
+        "P3_no_unexpected_entries": {
+          "unavailable_reason": null,
+          "value": 3
+        }
+      },
+      "input_id": "I-SPACE",
+      "latency_ms": {
+        "max": {
+          "unavailable_reason": null,
+          "value": 195829
+        },
+        "min": {
+          "unavailable_reason": null,
+          "value": 53661
+        },
+        "p50": {
+          "unavailable_reason": null,
+          "value": 98733.0
+        },
+        "p95": {
+          "unavailable_reason": null,
+          "value": 195829
+        }
+      },
+      "model_calls": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "model_cost_usd": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "outcomes": {
+        "cancelled": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "failed": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "inconclusive": {
+          "unavailable_reason": "inconclusive is not an observable category: verification timeouts are reported as failed (docs/benchmark_design.md §8.3, ADR-004 Q4)",
+          "value": null
+        },
+        "succeeded": {
+          "unavailable_reason": null,
+          "value": 5
+        }
+      },
+      "retries": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 4.2,
+          "total": 21
+        }
+      },
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "scenario_id": "S-NORM",
+      "trace_artifacts": [
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c2fe1be2-0f58-4b1d-ab27-3dd0e46fc090.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/6503e281-ef22-467c-af7d-ceb6ad773d9e.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b1043725-21f4-442a-859c-74d558bc63d6.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/f5cd96ec-c29e-4f63-b91c-247d8b9aa9c9.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d0dd9ab0-7eef-4e6c-87f7-da285901951e.json"
+      ],
+      "trials": 5,
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "verifier_audit": null,
+      "verifier_disagreements": {
+        "unavailable_reason": null,
+        "value": 0
+      }
+    },
+    {
+      "actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 3.6,
+          "total": 18
+        }
+      },
+      "baseline": "baseline-b",
+      "failure_categories": {},
+      "false_successes": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "fault_params": {
+        "disabled": false,
+        "slow_ms": 800
+      },
+      "human_interventions": {
+        "unavailable_reason": "no operator in the loop (docs/benchmark_design.md §8.1)",
+        "value": null
+      },
+      "independent_verification": {
+        "P1_confirmation_visible": {
+          "unavailable_reason": null,
+          "value": 5
+        },
+        "P2_exact_name_in_list": {
+          "unavailable_reason": null,
+          "value": 5
+        },
+        "P3_no_unexpected_entries": {
+          "unavailable_reason": null,
+          "value": 5
+        }
+      },
+      "input_id": "I-PLAIN",
+      "latency_ms": {
+        "max": {
+          "unavailable_reason": null,
+          "value": 42216
+        },
+        "min": {
+          "unavailable_reason": null,
+          "value": 25603
+        },
+        "p50": {
+          "unavailable_reason": null,
+          "value": 30519.0
+        },
+        "p95": {
+          "unavailable_reason": null,
+          "value": 42216
+        }
+      },
+      "model_calls": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "model_cost_usd": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "outcomes": {
+        "cancelled": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "failed": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "inconclusive": {
+          "unavailable_reason": "inconclusive is not an observable category: verification timeouts are reported as failed (docs/benchmark_design.md §8.3, ADR-004 Q4)",
+          "value": null
+        },
+        "succeeded": {
+          "unavailable_reason": null,
+          "value": 5
+        }
+      },
+      "retries": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "scenario_id": "S-SLOW",
+      "trace_artifacts": [
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/ab8e0c2e-1ec6-4642-84e1-67a3133fe0ea.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/05553bdb-cea3-4eb4-bf7f-90816bd32817.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/dd248ceb-b4fd-4035-ac3a-978ec439884e.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/82b8e432-ddf6-424d-a47d-e7d4e2b9d8bc.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d1225402-a700-42e5-839d-d37d1160296b.json"
+      ],
+      "trials": 5,
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "verifier_audit": null,
+      "verifier_disagreements": {
+        "unavailable_reason": null,
+        "value": 0
+      }
+    },
+    {
+      "actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 3.0,
+          "total": 15
+        }
+      },
+      "baseline": "baseline-b",
+      "failure_categories": {},
+      "false_successes": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "fault_params": {
+        "disabled": false,
+        "slow_ms": 2500
+      },
+      "human_interventions": {
+        "unavailable_reason": "no operator in the loop (docs/benchmark_design.md §8.1)",
+        "value": null
+      },
+      "independent_verification": {
+        "P1_confirmation_visible": {
+          "unavailable_reason": null,
+          "value": 5
+        },
+        "P2_exact_name_in_list": {
+          "unavailable_reason": null,
+          "value": 5
+        },
+        "P3_no_unexpected_entries": {
+          "unavailable_reason": null,
+          "value": 5
+        }
+      },
+      "input_id": "I-PLAIN",
+      "latency_ms": {
+        "max": {
+          "unavailable_reason": null,
+          "value": 45445
+        },
+        "min": {
+          "unavailable_reason": null,
+          "value": 23948
+        },
+        "p50": {
+          "unavailable_reason": null,
+          "value": 29960.0
+        },
+        "p95": {
+          "unavailable_reason": null,
+          "value": 45445
+        }
+      },
+      "model_calls": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "model_cost_usd": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "outcomes": {
+        "cancelled": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "failed": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "inconclusive": {
+          "unavailable_reason": "inconclusive is not an observable category: verification timeouts are reported as failed (docs/benchmark_design.md §8.3, ADR-004 Q4)",
+          "value": null
+        },
+        "succeeded": {
+          "unavailable_reason": null,
+          "value": 5
+        }
+      },
+      "retries": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "scenario_id": "S-SLOW",
+      "trace_artifacts": [
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c8b10807-ae70-4fff-8016-94e358754170.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/fa62c5c9-a33b-4d31-a1c1-fd4fdd80b77c.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/0636cdfb-1f3d-4906-a391-f9b2552c7ae3.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/ac9c2a29-2599-4376-9c5a-e122a20fb03a.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b2b778b6-5a94-4dea-a191-cab4efd61cfd.json"
+      ],
+      "trials": 5,
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "verifier_audit": null,
+      "verifier_disagreements": {
+        "unavailable_reason": null,
+        "value": 0
+      }
+    },
+    {
+      "actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 4.0,
+          "total": 20
+        }
+      },
+      "baseline": "baseline-b",
+      "failure_categories": {},
+      "false_successes": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "fault_params": {
+        "disabled": true,
+        "slow_ms": 0
+      },
+      "human_interventions": {
+        "unavailable_reason": "no operator in the loop (docs/benchmark_design.md §8.1)",
+        "value": null
+      },
+      "independent_verification": {
+        "P1_confirmation_visible": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "P2_exact_name_in_list": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "P3_no_unexpected_entries": {
+          "unavailable_reason": null,
+          "value": 0
+        }
+      },
+      "input_id": "I-PLAIN",
+      "latency_ms": {
+        "max": {
+          "unavailable_reason": null,
+          "value": 56860
+        },
+        "min": {
+          "unavailable_reason": null,
+          "value": 50095
+        },
+        "p50": {
+          "unavailable_reason": null,
+          "value": 53065.0
+        },
+        "p95": {
+          "unavailable_reason": null,
+          "value": 56860
+        }
+      },
+      "model_calls": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "model_cost_usd": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "outcomes": {
+        "cancelled": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "failed": {
+          "unavailable_reason": null,
+          "value": 5
+        },
+        "inconclusive": {
+          "unavailable_reason": "inconclusive is not an observable category: verification timeouts are reported as failed (docs/benchmark_design.md §8.3, ADR-004 Q4)",
+          "value": null
+        },
+        "succeeded": {
+          "unavailable_reason": null,
+          "value": 0
+        }
+      },
+      "retries": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 1.0,
+          "total": 5
+        }
+      },
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "scenario_id": "S-DIS",
+      "trace_artifacts": [
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/9ba8f8ba-5b07-4767-9ecb-a778fd8cf56b.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/17c84738-ba3d-4c78-b443-f32f847241b4.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/86e7715e-70ff-4300-ae88-648fab493ef0.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/45fd39b4-01d9-498a-b4ed-086f0cd4a273.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d128d365-8ac8-4122-83dc-01839431a81f.json"
+      ],
+      "trials": 5,
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "verifier_audit": null,
+      "verifier_disagreements": {
+        "unavailable_reason": null,
+        "value": 0
+      }
+    },
+    {
+      "actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 4.0,
+          "total": 20
+        }
+      },
+      "baseline": "baseline-b",
+      "failure_categories": {},
+      "false_successes": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "fault_params": {
+        "disabled": true,
+        "slow_ms": 0
+      },
+      "human_interventions": {
+        "unavailable_reason": "no operator in the loop (docs/benchmark_design.md §8.1)",
+        "value": null
+      },
+      "independent_verification": {
+        "P1_confirmation_visible": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "P2_exact_name_in_list": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "P3_no_unexpected_entries": {
+          "unavailable_reason": null,
+          "value": 0
+        }
+      },
+      "input_id": "I-SPACE",
+      "latency_ms": {
+        "max": {
+          "unavailable_reason": null,
+          "value": 185092
+        },
+        "min": {
+          "unavailable_reason": null,
+          "value": 49658
+        },
+        "p50": {
+          "unavailable_reason": null,
+          "value": 53137.0
+        },
+        "p95": {
+          "unavailable_reason": null,
+          "value": 185092
+        }
+      },
+      "model_calls": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "model_cost_usd": {
+        "unavailable_reason": "model usage is recorded per episode in <run>.model.json sidecars, not in this cell aggregate",
+        "value": null
+      },
+      "outcomes": {
+        "cancelled": {
+          "unavailable_reason": null,
+          "value": 0
+        },
+        "failed": {
+          "unavailable_reason": null,
+          "value": 5
+        },
+        "inconclusive": {
+          "unavailable_reason": "inconclusive is not an observable category: verification timeouts are reported as failed (docs/benchmark_design.md §8.3, ADR-004 Q4)",
+          "value": null
+        },
+        "succeeded": {
+          "unavailable_reason": null,
+          "value": 0
+        }
+      },
+      "retries": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 1.0,
+          "total": 5
+        }
+      },
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "scenario_id": "S-DIS",
+      "trace_artifacts": [
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b6ce75e2-4286-4f4a-af32-e069f76b36f0.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c5b31507-b607-4ceb-82b4-bc61f32d5ab1.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/1e35fe0b-4344-4a43-a45e-729849bd6cb3.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/1d781627-3878-4c95-b9e7-80e0f1c32638.json",
+        "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b2037a49-7a8f-4d75-b47c-15aeec4faccf.json"
+      ],
+      "trials": 5,
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": {
+          "mean_per_trial": 0.0,
+          "total": 0
+        }
+      },
+      "verifier_audit": null,
+      "verifier_disagreements": {
+        "unavailable_reason": null,
+        "value": 0
+      }
+    }
+  ],
+  "completed_at": "2026-11-04T08:58:29.303Z",
+  "config": {
+    "action_timeout_ms": 5000,
+    "baseline": "baseline-b",
+    "episode_timeout_seconds": 600.0,
+    "policy": {
+      "base_delay_seconds": 0.05,
+      "max_attempts": 2,
+      "max_delay_seconds": 0.2,
+      "max_total_seconds": 5.0
+    },
+    "split": "development",
+    "trials_per_cell": 5,
+    "warmup_episodes": 1
+  },
+  "environment": {
+    "browser": "chromium",
+    "browser_build": "unknown",
+    "demo_app_sha256": "b20340c34d3b0c91ebbcf8ee723ab625f435f6f7fc7a6fbd495bd7771184dd47",
+    "dev_manifest_sha256": "54dc5bb6b5f4f9f810c37330b4ff69b604d0d491d23439563d6c7d34d31d9e28",
+    "eval_manifest_sha256": "b23580c8c07c3528a33f10f25780138cd58455a1f334c48e4fd889125c038cf5",
+    "platform": "macOS-27.2-arm64-arm-64bit",
+    "playwright_version": "1.60.0",
+    "python_version": "3.9.6"
+  },
+  "episodes": [
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:24:32.288Z",
+      "duration_ms": 18530,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "9847b375-18f7-4842-9c97-a888165aa7e0",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-NORM",
+      "started_at": "2026-11-04T08:24:13.758Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/9847b375-18f7-4842-9c97-a888165aa7e0.json",
+      "trial_id": "warmup:0001",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/9847b375-18f7-4842-9c97-a888165aa7e0.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/9847b375-18f7-4842-9c97-a888165aa7e0.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/9847b375-18f7-4842-9c97-a888165aa7e0.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:24:55.441Z",
+      "duration_ms": 23153,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "f4649c2d-4f33-4033-9c6a-971b805a307e",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-NORM",
+      "started_at": "2026-11-04T08:24:32.288Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/f4649c2d-4f33-4033-9c6a-971b805a307e.json",
+      "trial_id": "trial-0001",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/f4649c2d-4f33-4033-9c6a-971b805a307e.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/f4649c2d-4f33-4033-9c6a-971b805a307e.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/f4649c2d-4f33-4033-9c6a-971b805a307e.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:25:23.027Z",
+      "duration_ms": 27586,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "944d9720-4475-4289-a1b3-df1fab2a3b90",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-NORM",
+      "started_at": "2026-11-04T08:24:55.441Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/944d9720-4475-4289-a1b3-df1fab2a3b90.json",
+      "trial_id": "trial-0002",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/944d9720-4475-4289-a1b3-df1fab2a3b90.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/944d9720-4475-4289-a1b3-df1fab2a3b90.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/944d9720-4475-4289-a1b3-df1fab2a3b90.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:25:48.151Z",
+      "duration_ms": 25123,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "bdf39d86-0c4a-42ff-a9e9-24693c37a749",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-NORM",
+      "started_at": "2026-11-04T08:25:23.027Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/bdf39d86-0c4a-42ff-a9e9-24693c37a749.json",
+      "trial_id": "trial-0003",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/bdf39d86-0c4a-42ff-a9e9-24693c37a749.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/bdf39d86-0c4a-42ff-a9e9-24693c37a749.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/bdf39d86-0c4a-42ff-a9e9-24693c37a749.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:26:10.303Z",
+      "duration_ms": 22151,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "e4257a1c-2319-4549-a9fb-1bc7f32ef271",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-NORM",
+      "started_at": "2026-11-04T08:25:48.151Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/e4257a1c-2319-4549-a9fb-1bc7f32ef271.json",
+      "trial_id": "trial-0004",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/e4257a1c-2319-4549-a9fb-1bc7f32ef271.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/e4257a1c-2319-4549-a9fb-1bc7f32ef271.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/e4257a1c-2319-4549-a9fb-1bc7f32ef271.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:26:28.209Z",
+      "duration_ms": 17908,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "bf7ab13f-625a-49fb-8d08-10578a39d66f",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-NORM",
+      "started_at": "2026-11-04T08:26:10.303Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/bf7ab13f-625a-49fb-8d08-10578a39d66f.json",
+      "trial_id": "trial-0005",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/bf7ab13f-625a-49fb-8d08-10578a39d66f.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/bf7ab13f-625a-49fb-8d08-10578a39d66f.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/bf7ab13f-625a-49fb-8d08-10578a39d66f.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 8
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:28:02.648Z",
+      "duration_ms": 94442,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-SPACE",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "run_id": "c2fe1be2-0f58-4b1d-ab27-3dd0e46fc090",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-NORM",
+      "started_at": "2026-11-04T08:26:28.209Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c2fe1be2-0f58-4b1d-ab27-3dd0e46fc090.json",
+      "trial_id": "trial-0006",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c2fe1be2-0f58-4b1d-ab27-3dd0e46fc090.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "3 of 3 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c2fe1be2-0f58-4b1d-ab27-3dd0e46fc090.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=3, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c2fe1be2-0f58-4b1d-ab27-3dd0e46fc090.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 12
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:31:18.476Z",
+      "duration_ms": 195829,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-SPACE",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 8
+      },
+      "run_id": "6503e281-ef22-467c-af7d-ceb6ad773d9e",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-NORM",
+      "started_at": "2026-11-04T08:28:02.648Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/6503e281-ef22-467c-af7d-ceb6ad773d9e.json",
+      "trial_id": "trial-0007",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/6503e281-ef22-467c-af7d-ceb6ad773d9e.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/6503e281-ef22-467c-af7d-ceb6ad773d9e.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/6503e281-ef22-467c-af7d-ceb6ad773d9e.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 5
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:32:57.209Z",
+      "duration_ms": 98733,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-SPACE",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 2
+      },
+      "run_id": "b1043725-21f4-442a-859c-74d558bc63d6",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-NORM",
+      "started_at": "2026-11-04T08:31:18.476Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b1043725-21f4-442a-859c-74d558bc63d6.json",
+      "trial_id": "trial-0008",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b1043725-21f4-442a-859c-74d558bc63d6.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "2 of 2 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b1043725-21f4-442a-859c-74d558bc63d6.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=2, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b1043725-21f4-442a-859c-74d558bc63d6.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 8
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:34:50.044Z",
+      "duration_ms": 112836,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-SPACE",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 5
+      },
+      "run_id": "f5cd96ec-c29e-4f63-b91c-247d8b9aa9c9",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-NORM",
+      "started_at": "2026-11-04T08:32:57.209Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/f5cd96ec-c29e-4f63-b91c-247d8b9aa9c9.json",
+      "trial_id": "trial-0009",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/f5cd96ec-c29e-4f63-b91c-247d8b9aa9c9.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/f5cd96ec-c29e-4f63-b91c-247d8b9aa9c9.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/f5cd96ec-c29e-4f63-b91c-247d8b9aa9c9.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 5
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:35:43.706Z",
+      "duration_ms": 53661,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-SPACE",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 2
+      },
+      "run_id": "d0dd9ab0-7eef-4e6c-87f7-da285901951e",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-NORM",
+      "started_at": "2026-11-04T08:34:50.045Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d0dd9ab0-7eef-4e6c-87f7-da285901951e.json",
+      "trial_id": "trial-0010",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d0dd9ab0-7eef-4e6c-87f7-da285901951e.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d0dd9ab0-7eef-4e6c-87f7-da285901951e.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d0dd9ab0-7eef-4e6c-87f7-da285901951e.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:36:09.310Z",
+      "duration_ms": 25603,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "ab8e0c2e-1ec6-4642-84e1-67a3133fe0ea",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-SLOW",
+      "started_at": "2026-11-04T08:35:43.706Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/ab8e0c2e-1ec6-4642-84e1-67a3133fe0ea.json",
+      "trial_id": "trial-0011",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/ab8e0c2e-1ec6-4642-84e1-67a3133fe0ea.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/ab8e0c2e-1ec6-4642-84e1-67a3133fe0ea.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/ab8e0c2e-1ec6-4642-84e1-67a3133fe0ea.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:36:51.526Z",
+      "duration_ms": 42216,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "05553bdb-cea3-4eb4-bf7f-90816bd32817",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-SLOW",
+      "started_at": "2026-11-04T08:36:09.310Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/05553bdb-cea3-4eb4-bf7f-90816bd32817.json",
+      "trial_id": "trial-0012",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/05553bdb-cea3-4eb4-bf7f-90816bd32817.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/05553bdb-cea3-4eb4-bf7f-90816bd32817.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/05553bdb-cea3-4eb4-bf7f-90816bd32817.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:37:26.315Z",
+      "duration_ms": 34789,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "dd248ceb-b4fd-4035-ac3a-978ec439884e",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-SLOW",
+      "started_at": "2026-11-04T08:36:51.527Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/dd248ceb-b4fd-4035-ac3a-978ec439884e.json",
+      "trial_id": "trial-0013",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/dd248ceb-b4fd-4035-ac3a-978ec439884e.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/dd248ceb-b4fd-4035-ac3a-978ec439884e.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/dd248ceb-b4fd-4035-ac3a-978ec439884e.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:37:56.835Z",
+      "duration_ms": 30519,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "82b8e432-ddf6-424d-a47d-e7d4e2b9d8bc",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-SLOW",
+      "started_at": "2026-11-04T08:37:26.316Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/82b8e432-ddf6-424d-a47d-e7d4e2b9d8bc.json",
+      "trial_id": "trial-0014",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/82b8e432-ddf6-424d-a47d-e7d4e2b9d8bc.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/82b8e432-ddf6-424d-a47d-e7d4e2b9d8bc.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/82b8e432-ddf6-424d-a47d-e7d4e2b9d8bc.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:38:25.394Z",
+      "duration_ms": 28559,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "d1225402-a700-42e5-839d-d37d1160296b",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-SLOW",
+      "started_at": "2026-11-04T08:37:56.835Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d1225402-a700-42e5-839d-d37d1160296b.json",
+      "trial_id": "trial-0015",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d1225402-a700-42e5-839d-d37d1160296b.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d1225402-a700-42e5-839d-d37d1160296b.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d1225402-a700-42e5-839d-d37d1160296b.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:38:49.343Z",
+      "duration_ms": 23948,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "c8b10807-ae70-4fff-8016-94e358754170",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-SLOW",
+      "started_at": "2026-11-04T08:38:25.395Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c8b10807-ae70-4fff-8016-94e358754170.json",
+      "trial_id": "trial-0016",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c8b10807-ae70-4fff-8016-94e358754170.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c8b10807-ae70-4fff-8016-94e358754170.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c8b10807-ae70-4fff-8016-94e358754170.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:39:16.103Z",
+      "duration_ms": 26760,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "fa62c5c9-a33b-4d31-a1c1-fd4fdd80b77c",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-SLOW",
+      "started_at": "2026-11-04T08:38:49.343Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/fa62c5c9-a33b-4d31-a1c1-fd4fdd80b77c.json",
+      "trial_id": "trial-0017",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/fa62c5c9-a33b-4d31-a1c1-fd4fdd80b77c.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/fa62c5c9-a33b-4d31-a1c1-fd4fdd80b77c.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/fa62c5c9-a33b-4d31-a1c1-fd4fdd80b77c.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:39:46.064Z",
+      "duration_ms": 29960,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "0636cdfb-1f3d-4906-a391-f9b2552c7ae3",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-SLOW",
+      "started_at": "2026-11-04T08:39:16.104Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/0636cdfb-1f3d-4906-a391-f9b2552c7ae3.json",
+      "trial_id": "trial-0018",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/0636cdfb-1f3d-4906-a391-f9b2552c7ae3.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/0636cdfb-1f3d-4906-a391-f9b2552c7ae3.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/0636cdfb-1f3d-4906-a391-f9b2552c7ae3.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:40:31.510Z",
+      "duration_ms": 45445,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "ac9c2a29-2599-4376-9c5a-e122a20fb03a",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-SLOW",
+      "started_at": "2026-11-04T08:39:46.065Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/ac9c2a29-2599-4376-9c5a-e122a20fb03a.json",
+      "trial_id": "trial-0019",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/ac9c2a29-2599-4376-9c5a-e122a20fb03a.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/ac9c2a29-2599-4376-9c5a-e122a20fb03a.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/ac9c2a29-2599-4376-9c5a-e122a20fb03a.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 3
+      },
+      "agent_terminal_status": "succeeded",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:41:16.660Z",
+      "duration_ms": 45149,
+      "error": null,
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "succeeded",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "run_id": "b2b778b6-5a94-4dea-a191-cab4efd61cfd",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-SLOW",
+      "started_at": "2026-11-04T08:40:31.510Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b2b778b6-5a94-4dea-a191-cab4efd61cfd.json",
+      "trial_id": "trial-0020",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": true,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=True",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b2b778b6-5a94-4dea-a191-cab4efd61cfd.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": true
+          },
+          {
+            "detail": "1 of 1 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b2b778b6-5a94-4dea-a191-cab4efd61cfd.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": true
+          },
+          {
+            "detail": "project-list count=1, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b2b778b6-5a94-4dea-a191-cab4efd61cfd.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": true
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "failed",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:42:12.679Z",
+      "duration_ms": 56019,
+      "error": "fill kept failing: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button, input, select, textarea, a[href], [role='button']\").nth(4)\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"Benchmark Project\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "failed",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 1
+      },
+      "run_id": "9ba8f8ba-5b07-4767-9ecb-a778fd8cf56b",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-DIS",
+      "started_at": "2026-11-04T08:41:16.660Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/9ba8f8ba-5b07-4767-9ecb-a778fd8cf56b.json",
+      "trial_id": "trial-0021",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/9ba8f8ba-5b07-4767-9ecb-a778fd8cf56b.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/9ba8f8ba-5b07-4767-9ecb-a778fd8cf56b.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/9ba8f8ba-5b07-4767-9ecb-a778fd8cf56b.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "failed",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:43:09.543Z",
+      "duration_ms": 56860,
+      "error": "fill kept failing: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button, input, select, textarea, a[href], [role='button']\").nth(4)\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"Benchmark Project\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "failed",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 1
+      },
+      "run_id": "17c84738-ba3d-4c78-b443-f32f847241b4",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-DIS",
+      "started_at": "2026-11-04T08:42:12.679Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/17c84738-ba3d-4c78-b443-f32f847241b4.json",
+      "trial_id": "trial-0022",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/17c84738-ba3d-4c78-b443-f32f847241b4.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/17c84738-ba3d-4c78-b443-f32f847241b4.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/17c84738-ba3d-4c78-b443-f32f847241b4.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "failed",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:44:02.389Z",
+      "duration_ms": 52846,
+      "error": "fill kept failing: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button, input, select, textarea, a[href], [role='button']\").nth(4)\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"Benchmark Project\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "failed",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 1
+      },
+      "run_id": "86e7715e-70ff-4300-ae88-648fab493ef0",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-DIS",
+      "started_at": "2026-11-04T08:43:09.543Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/86e7715e-70ff-4300-ae88-648fab493ef0.json",
+      "trial_id": "trial-0023",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/86e7715e-70ff-4300-ae88-648fab493ef0.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/86e7715e-70ff-4300-ae88-648fab493ef0.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/86e7715e-70ff-4300-ae88-648fab493ef0.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "failed",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:44:55.455Z",
+      "duration_ms": 53065,
+      "error": "fill kept failing: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button, input, select, textarea, a[href], [role='button']\").nth(4)\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"Benchmark Project\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "failed",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 1
+      },
+      "run_id": "45fd39b4-01d9-498a-b4ed-086f0cd4a273",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-DIS",
+      "started_at": "2026-11-04T08:44:02.390Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/45fd39b4-01d9-498a-b4ed-086f0cd4a273.json",
+      "trial_id": "trial-0024",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/45fd39b4-01d9-498a-b4ed-086f0cd4a273.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/45fd39b4-01d9-498a-b4ed-086f0cd4a273.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/45fd39b4-01d9-498a-b4ed-086f0cd4a273.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "failed",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:45:45.550Z",
+      "duration_ms": 50095,
+      "error": "fill kept failing: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button, input, select, textarea, a[href], [role='button']\").nth(4)\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"Benchmark Project\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_category": null,
+      "input_id": "I-PLAIN",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "failed",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 1
+      },
+      "run_id": "d128d365-8ac8-4122-83dc-01839431a81f",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-DIS",
+      "started_at": "2026-11-04T08:44:55.455Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d128d365-8ac8-4122-83dc-01839431a81f.json",
+      "trial_id": "trial-0025",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d128d365-8ac8-4122-83dc-01839431a81f.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Benchmark Project' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d128d365-8ac8-4122-83dc-01839431a81f.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/d128d365-8ac8-4122-83dc-01839431a81f.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "failed",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:53:48.425Z",
+      "duration_ms": 185092,
+      "error": "fill kept failing: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button, input, select, textarea, a[href], [role='button']\").nth(4)\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_category": null,
+      "input_id": "I-SPACE",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "failed",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 1
+      },
+      "run_id": "b6ce75e2-4286-4f4a-af32-e069f76b36f0",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-DIS",
+      "started_at": "2026-11-04T08:45:45.550Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b6ce75e2-4286-4f4a-af32-e069f76b36f0.json",
+      "trial_id": "trial-0026",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b6ce75e2-4286-4f4a-af32-e069f76b36f0.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b6ce75e2-4286-4f4a-af32-e069f76b36f0.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b6ce75e2-4286-4f4a-af32-e069f76b36f0.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "failed",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:54:40.539Z",
+      "duration_ms": 52114,
+      "error": "fill kept failing: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button, input, select, textarea, a[href], [role='button']\").nth(4)\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_category": null,
+      "input_id": "I-SPACE",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "failed",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 1
+      },
+      "run_id": "c5b31507-b607-4ceb-82b4-bc61f32d5ab1",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-DIS",
+      "started_at": "2026-11-04T08:53:48.425Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c5b31507-b607-4ceb-82b4-bc61f32d5ab1.json",
+      "trial_id": "trial-0027",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c5b31507-b607-4ceb-82b4-bc61f32d5ab1.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c5b31507-b607-4ceb-82b4-bc61f32d5ab1.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/c5b31507-b607-4ceb-82b4-bc61f32d5ab1.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "failed",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:56:46.507Z",
+      "duration_ms": 81496,
+      "error": "fill kept failing: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button, input, select, textarea, a[href], [role='button']\").nth(4)\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_category": null,
+      "input_id": "I-SPACE",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "failed",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 1
+      },
+      "run_id": "1e35fe0b-4344-4a43-a45e-729849bd6cb3",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-DIS",
+      "started_at": "2026-11-04T08:54:40.540Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/1e35fe0b-4344-4a43-a45e-729849bd6cb3.json",
+      "trial_id": "trial-0028",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/1e35fe0b-4344-4a43-a45e-729849bd6cb3.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/1e35fe0b-4344-4a43-a45e-729849bd6cb3.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/1e35fe0b-4344-4a43-a45e-729849bd6cb3.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "failed",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:57:39.645Z",
+      "duration_ms": 53137,
+      "error": "fill kept failing: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button, input, select, textarea, a[href], [role='button']\").nth(4)\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_category": null,
+      "input_id": "I-SPACE",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "failed",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 1
+      },
+      "run_id": "1d781627-3878-4c95-b9e7-80e0f1c32638",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-DIS",
+      "started_at": "2026-11-04T08:56:46.507Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/1d781627-3878-4c95-b9e7-80e0f1c32638.json",
+      "trial_id": "trial-0029",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/1d781627-3878-4c95-b9e7-80e0f1c32638.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/1d781627-3878-4c95-b9e7-80e0f1c32638.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/1d781627-3878-4c95-b9e7-80e0f1c32638.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    },
+    {
+      "actions_executed": {
+        "unavailable_reason": null,
+        "value": 4
+      },
+      "agent_terminal_status": "failed",
+      "baseline": "baseline-b",
+      "completed_at": "2026-11-04T08:58:29.303Z",
+      "duration_ms": 49658,
+      "error": "fill kept failing: Locator.fill: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button, input, select, textarea, a[href], [role='button']\").nth(4)\n    - locator resolved to <input disabled type=\"text\" required=\"\" id=\"project-name\" name=\"project-name\" aria-label=\"Project Name\"/>\n    - fill(\"  Padded Name  \")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not enabled\n    - retrying fill action\n      - waiting 100ms\n    10 × waiting for element to be visible, enabled and editable\n       - element is not enabled\n     - retrying fill action\n       - waiting 500ms\n",
+      "failure_category": null,
+      "input_id": "I-SPACE",
+      "manifest_id": "model-v1",
+      "manifest_schema_version": 1,
+      "manifest_version": "1.0.0",
+      "outcome": "failed",
+      "retries": {
+        "unavailable_reason": null,
+        "value": 1
+      },
+      "run_id": "b2037a49-7a8f-4d75-b47c-15aeec4faccf",
+      "safety_violations": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "scenario_id": "S-DIS",
+      "started_at": "2026-11-04T08:57:39.645Z",
+      "trace_artifact": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b2037a49-7a8f-4d75-b47c-15aeec4faccf.json",
+      "trial_id": "trial-0030",
+      "unauthorized_actions": {
+        "unavailable_reason": null,
+        "value": 0
+      },
+      "verification": {
+        "all_satisfied": false,
+        "audit": null,
+        "checks": [
+          {
+            "detail": "confirmation_visible=False",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b2037a49-7a8f-4d75-b47c-15aeec4faccf.snapshot.json#P1",
+            "postcondition_id": "P1",
+            "satisfied": false
+          },
+          {
+            "detail": "0 of 0 items equal 'Padded Name' (exact match)",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b2037a49-7a8f-4d75-b47c-15aeec4faccf.snapshot.json#P2",
+            "postcondition_id": "P2",
+            "satisfied": false
+          },
+          {
+            "detail": "project-list count=0, expected 1",
+            "evidence_reference": "/Users/kartikbhardwaj/project-chimera/experiments/model-baseline-v1/runs/traces-model-b/b2037a49-7a8f-4d75-b47c-15aeec4faccf.snapshot.json#P3",
+            "postcondition_id": "P3",
+            "satisfied": false
+          }
+        ],
+        "status": "verified",
+        "unavailable_reason": null,
+        "verifier_version": "independent-verifier-1.0"
+      }
+    }
+  ],
+  "manifest_id": "model-v1",
+  "manifest_schema_version": 1,
+  "manifest_sha256": "0336a1ded94d025ec432bf25da964615e34a8c953fa7c6e4b727bffa76588698",
+  "manifest_version": "1.0.0",
+  "notes": "split=development; manifest_id=model-v1; warmup_episodes_executed=1; policy: the manifest declares the agent's effective retry policy (AMB-9/ADR-005 enforced before the first episode); independent verification and action observation are wired per episode; Baselines A/B are not implemented, so the metrics gated on them are unavailable with reasons.",
+  "run_id": "model-b",
+  "schema_version": 1,
+  "srs_mapping": "adr-004",
+  "started_at": "2026-11-04T08:24:13.732Z",
+  "status": "measured",
+  "totals": {
+    "by_baseline": {
+      "baseline-b": 30
+    },
+    "episodes": 30,
+    "false_success_rate": {
+      "unavailable_reason": "rate reporting with confidence bounds is a report-stage concern; per-cell false-success counts are measured",
+      "value": null
+    },
+    "unauthorized_actions": {
+      "unavailable_reason": null,
+      "value": 0
+    }
+  }
+}

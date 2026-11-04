@@ -1,0 +1,64 @@
+{
+  "run_id": "ab8e0c2e-1ec6-4642-84e1-67a3133fe0ea",
+  "baseline": "baseline-b",
+  "model": "muse-spark-1.3",
+  "terminal_status": "succeeded",
+  "steps": 3,
+  "blocked_attempts": 0,
+  "max_tokens": 2048,
+  "reasoning_effort": null,
+  "calls": [
+    {
+      "step": 1,
+      "latency_ms": 8042,
+      "prompt_tokens": 495,
+      "completion_tokens": 695,
+      "total_tokens": 1190,
+      "reasoning_tokens": 635,
+      "finish_reason": "stop",
+      "raw": "I'll start creating your Benchmark Project by entering its name.{\"action\": \"fill\", \"index\": 4, \"value\": \"Benchmark Project\", \"reason\": \"Enter required project name into Project Name field\"}",
+      "parsed": {
+        "action": "fill",
+        "index": 4,
+        "value": "Benchmark Project",
+        "reason": "Enter required project name into Project Name field"
+      },
+      "executed": "fill",
+      "observed": "filled",
+      "reason": "Enter required project name into Project Name field"
+    },
+    {
+      "step": 2,
+      "latency_ms": 6975,
+      "prompt_tokens": 531,
+      "completion_tokens": 624,
+      "total_tokens": 1155,
+      "reasoning_tokens": 566,
+      "finish_reason": "stop",
+      "raw": "Project name entered \u2014 now creating the project.{\"action\": \"click\", \"index\": 5, \"reason\": \"Project name is filled; click Create Project to create 'Benchmark Project'.\"}",
+      "parsed": {
+        "action": "click",
+        "index": 5,
+        "reason": "Project name is filled; click Create Project to create 'Benchmark Project'."
+      },
+      "executed": "click",
+      "observed": "clicked",
+      "reason": "Project name is filled; click Create Project to create 'Benchmark Project'."
+    },
+    {
+      "step": 3,
+      "latency_ms": 10081,
+      "prompt_tokens": 541,
+      "completion_tokens": 998,
+      "total_tokens": 1539,
+      "reasoning_tokens": 955,
+      "finish_reason": "stop",
+      "raw": "{\"action\": \"done\", \"claim\": \"success\", \"reason\": \"Page shows 'Project created successfully!' and lists 'Benchmark Project', confirming task complete.\"}",
+      "parsed": {
+        "action": "done",
+        "claim": "success",
+        "reason": "Page shows 'Project created successfully!' and lists 'Benchmark Project', confirming task complete."
+      }
+    }
+  ]
+}

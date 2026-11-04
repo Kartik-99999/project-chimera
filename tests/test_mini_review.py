@@ -215,6 +215,47 @@ def test_build_bundle_zips_verified_originals_deterministically(tmp_path):
             manifest["files"]
 
 
+def test_collect_bundle_reroots_absolute_paths(tmp_path, monkeypatch):
+    """Absolute evidence paths from another machine resolve here.
+
+    Regression (clone portability): frozen evidence records absolute
+    paths, so at any other checkout they escape PROJECT_DIR. The
+    bundle re-roots the repo-relative suffix; the recorded sha still
+    has to match, so a wrong file fails closed.
+    """
+    import hashlib
+    import shutil
+
+    import tools.mini_review as mr
+
+    root = tmp_path / "checkout"
+    trace_rel = "artifacts/eval-20261028/run-x.json"
+    (root / "artifacts" / "eval-20261028").mkdir(parents=True)
+    payload = b'{"evidence": true}'
+    (root / trace_rel).write_bytes(payload)
+    (root / "benchmarks" / "manifests").mkdir(parents=True)
+    shutil.copy(MANIFEST, root / "benchmarks" / "manifests"
+                / "eval-v1.json")
+    monkeypatch.setattr(mr, "PROJECT_DIR", root)
+    other_root = "/some/other/machine/project-chimera"
+    packet = {
+        "episodes": [{"artifacts": {"trace": {
+            "path": f"{other_root}/{trace_rel}",
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload)}}, "evidence": {"screenshots": []}}],
+        "plans": [],
+        "manifest": {"path": "benchmarks/manifests/eval-v1.json",
+                     "sha256": FROZEN_SHA},
+    }
+    entries = mr._collect_bundle_entries(packet)
+    assert sorted(e["path"] for e in entries) == sorted(
+        ["benchmarks/manifests/eval-v1.json", trace_rel])
+    bad = json.loads(json.dumps(packet))
+    (root / trace_rel).write_bytes(b'{"tampered": true}')
+    with pytest.raises(PacketError, match="sha256 mismatch"):
+        mr._collect_bundle_entries(bad)
+
+
 def test_build_bundle_fails_closed_on_damage(tmp_path):
     import copy
     packet = _build(tmp_path)

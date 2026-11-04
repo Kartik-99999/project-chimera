@@ -13,6 +13,7 @@ performance (``docs/evaluation.md`` §1).
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -23,6 +24,7 @@ from typing import Any, Dict, List, Optional
 from benchmarks.baseline_a import (
     BASELINE_ID,
     REPORT_SCHEMA,
+    REPLAY_ACTION_TIMEOUT_ENV_VAR,
     DriverReport,
     DriverReportError,
     load_driver_report,
@@ -197,6 +199,15 @@ class ReplayDriverTests(unittest.TestCase):
         self.page = self._Page()
         self.context = self._Context()
         self.browser = self._Browser()
+        # Budget-override env var must never leak between tests.
+        self._saved_env = os.environ.pop(REPLAY_ACTION_TIMEOUT_ENV_VAR, None)
+        self.addCleanup(self._restore_env)
+
+    def _restore_env(self) -> None:
+        if self._saved_env is None:
+            os.environ.pop(REPLAY_ACTION_TIMEOUT_ENV_VAR, None)
+        else:
+            os.environ[REPLAY_ACTION_TIMEOUT_ENV_VAR] = self._saved_env
 
     def _factory(self, page: Optional["_Page"] = None):
         page = page if page is not None else self.page
@@ -274,6 +285,48 @@ class ReplayDriverTests(unittest.TestCase):
             for fault in scenario.fault_variants
             if fault.slow_ms)
         self.assertLess(REPLAY_ACTION_TIMEOUT_MS, slowest)
+
+    def test_explicit_timeout_override_reaches_fill_and_click(self) -> None:
+        run_replay(project_name="P", url="file://demo", trace_dir=self.tmp,
+                   page_factory=self._factory(), run_id="run-t2500",
+                   action_timeout_ms=2500)
+        (_, _, fill_kwargs), = self.page.input.calls
+        self.assertEqual(fill_kwargs.get("timeout"), 2500)
+        (_, click_kwargs), = self.page.button.calls
+        self.assertEqual(click_kwargs.get("timeout"), 2500)
+
+    def test_env_timeout_override_reaches_fill_and_click(self) -> None:
+        os.environ[REPLAY_ACTION_TIMEOUT_ENV_VAR] = "5000"
+        run_replay(project_name="P", url="file://demo", trace_dir=self.tmp,
+                   page_factory=self._factory(), run_id="run-tenv")
+        (_, _, fill_kwargs), = self.page.input.calls
+        self.assertEqual(fill_kwargs.get("timeout"), 5000)
+        (_, click_kwargs), = self.page.button.calls
+        self.assertEqual(click_kwargs.get("timeout"), 5000)
+
+    def test_explicit_override_beats_env_var(self) -> None:
+        os.environ[REPLAY_ACTION_TIMEOUT_ENV_VAR] = "5000"
+        run_replay(project_name="P", url="file://demo", trace_dir=self.tmp,
+                   page_factory=self._factory(), run_id="run-tboth",
+                   action_timeout_ms=1200)
+        (_, _, fill_kwargs), = self.page.input.calls
+        self.assertEqual(fill_kwargs.get("timeout"), 1200)
+
+    def test_invalid_timeouts_fail_loudly(self) -> None:
+        for bad in (0, -100):
+            with self.assertRaises(ValueError, msg=bad):
+                run_replay(project_name="P", url="file://demo",
+                           trace_dir=self.tmp,
+                           page_factory=self._factory(),
+                           run_id=f"run-bad{bad}",
+                           action_timeout_ms=bad)
+        for raw in ("0", "-5", "abc"):
+            os.environ[REPLAY_ACTION_TIMEOUT_ENV_VAR] = raw
+            with self.assertRaises(ValueError, msg=raw):
+                run_replay(project_name="P", url="file://demo",
+                           trace_dir=self.tmp,
+                           page_factory=self._factory(),
+                           run_id=f"run-badenv{raw}")
 
     def test_cancelled_token_before_start_cancels_cleanly(self) -> None:
         from chimera.safety import CancellationToken

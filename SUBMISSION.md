@@ -45,7 +45,9 @@ Dev runs complete and audited; held-out eval runs complete with a
 - Audit: seeded per-cell human adjudication, strict per-check
   agreement, 95% provisional rule intact. An 8-episode stratified
   eval mini-sample (one median cell per scenario per baseline) is
-  drawn and awaiting deferred review.
+  adjudicated 8/8 agree (`artifacts/eval-20261028/mini-review/
+  MINI_AUDIT_REPORT.md`) — eight episodes only, supporting no
+  general-reliability claim; full-sample review still deferred.
 
 ## Observed results and test status
 
@@ -57,7 +59,9 @@ Dev runs complete and audited; held-out eval runs complete with a
   S-NORM 15/15, S-SLOW 75/75, S-DIS 0/15 and S-SLOWDIS 0/75 bounded
   as expected; Baseline A S-NORM 15/15, all fault cells 0. Zero
   measured false successes, zero unauthorized actions, zero harness
-  errors. Verdict **PROVISIONAL** (0 eval verdicts recorded).
+  errors. Verdict **PROVISIONAL** (0 full-sample eval verdicts
+  recorded; the separate 8-episode mini-audit does not change
+  the verdict).
 - Regression: **421 tests pass** (83 application + 338 harness;
   30 need Chromium). Full evidence (traces, snapshots, action logs,
   driver reports, plans) preserved under `artifacts/`.

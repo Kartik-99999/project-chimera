@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112" fill="none"><defs>
+<linearGradient id="petalA" x1="28" y1="19" x2="58" y2="59" gradientUnits="userSpaceOnUse"><stop stop-color="#B8E7FF"/><stop offset="1" stop-color="#3989EE"/></linearGradient>
+<linearGradient id="petalB" x1="82" y1="23" x2="55" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#A6E6F7"/><stop offset="1" stop-color="#576DE8"/></linearGradient>
+<linearGradient id="petalC" x1="30" y1="88" x2="56" y2="55" gradientUnits="userSpaceOnUse"><stop stop-color="#FF9D61"/><stop offset="1" stop-color="#F05C48"/></linearGradient>
+<linearGradient id="petalD" x1="85" y1="89" x2="56" y2="55" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB86B"/><stop offset="1" stop-color="#E85B78"/></linearGradient>
+<filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+<circle cx="56" cy="56" r="43" fill="#5A8BEA" opacity=".15" filter="url(#glow)"/>
+<path d="M56 53C26 53 16 35 21 22c13-7 31 3 35 31Z" fill="url(#petalA)"/>
+<path d="M59 53c3-28 21-38 34-31 5 13-5 31-34 31Z" fill="url(#petalB)"/>
+<path d="M56 59c-4 29-22 39-35 32-5-13 5-31 35-32Z" fill="url(#petalC)"/>
+<path d="M59 59c29 1 39 19 34 32-13 7-31-3-34-32Z" fill="url(#petalD)"/>
+<circle cx="56" cy="56" r="15" fill="#FFF" fill-opacity=".9"/><circle cx="56" cy="56" r="8.5" fill="#F27D59"/><circle cx="56" cy="56" r="3" fill="#FFF9F0"/>
+<path d="M56 5v8M107 56h-8M56 107v-8M5 56h8" stroke="#8AA7E9" stroke-width="2" stroke-linecap="round" opacity=".65"/>
+</svg>

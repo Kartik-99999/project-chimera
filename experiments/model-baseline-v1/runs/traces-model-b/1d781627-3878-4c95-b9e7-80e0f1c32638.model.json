@@ -1,0 +1,55 @@
+{
+  "run_id": "1d781627-3878-4c95-b9e7-80e0f1c32638",
+  "baseline": "baseline-b",
+  "model": "muse-spark-1.3",
+  "terminal_status": "failed",
+  "steps": 3,
+  "blocked_attempts": 0,
+  "max_tokens": 2048,
+  "reasoning_effort": null,
+  "calls": [
+    {
+      "step": 1,
+      "latency_ms": 7781,
+      "prompt_tokens": 495,
+      "completion_tokens": 654,
+      "total_tokens": 1149,
+      "reasoning_tokens": 586,
+      "finish_reason": "stop",
+      "raw": "The create control is disabled, so I'll enter the project name first to test the form.{\"action\": \"fill\", \"index\": 4, \"value\": \" Padded Name \", \"reason\": \"Enter required project name with padding\"}",
+      "parsed": {
+        "action": "fill",
+        "index": 4,
+        "value": "  Padded Name  ",
+        "reason": "Enter required project name with padding"
+      }
+    },
+    {
+      "step": 2,
+      "latency_ms": 19781,
+      "prompt_tokens": 691,
+      "completion_tokens": 2048,
+      "total_tokens": 2739,
+      "reasoning_tokens": 2046,
+      "finish_reason": "length",
+      "raw": "",
+      "parsed": null
+    },
+    {
+      "step": 3,
+      "latency_ms": 15149,
+      "prompt_tokens": 502,
+      "completion_tokens": 1401,
+      "total_tokens": 1903,
+      "reasoning_tokens": 1342,
+      "finish_reason": "stop",
+      "raw": "I'll enter the padded project name to begin creation.{\"action\":\"fill\",\"index\":4,\"value\":\" Padded Name \",\"reason\":\"Enter required project name with padding\"}",
+      "parsed": {
+        "action": "fill",
+        "index": 4,
+        "value": "  Padded Name  ",
+        "reason": "Enter required project name with padding"
+      }
+    }
+  ]
+}

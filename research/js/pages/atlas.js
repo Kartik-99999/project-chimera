@@ -2,7 +2,7 @@
 import { getState, getRun, filterEpisodes, isWarmup, isHarnessError, isFalseSuccess,
   esc, fmtInt, fmtMs, SCENARIOS, BASELINES, baselineLabel, shortHash } from '../data.js';
 import { link } from '../app.js';
-import { pageHead, dataTable, bindTable, outcomePill, baselineTag, emptyState, epLink, pill } from '../components.js';
+import { pageHead, dataTable, bindTable, outcomePill, baselineTag, emptyState, epLink, pill, art, secHead } from '../components.js';
 
 const PER_PAGE = 20;
 
@@ -20,19 +20,25 @@ export async function pageAtlas(el, { query }) {
     sort: query.sort || 'trial_id', dir: query.dir === '-1' ? -1 : 1,
     page: Math.max(1, parseInt(query.page || '1', 10) || 1),
   };
-  const runCards = runs.map((r) => {
+  const runCards = runs.map((r, ri) => {
     const d = r.data;
-    const measured = (d.episodes || []).filter((e) => !String(e.trial_id).startsWith('warmup:')).length;
+    const eps = (d.episodes || []).filter((e) => !String(e.trial_id).startsWith('warmup:'));
+    const k = eps.filter((e) => e.outcome === 'succeeded').length;
     const sel = f.run === r.runId;
-    return `<div class="card tight stat" style="${sel ? 'border-color:var(--cyan)' : ''}">
-      <div class="stat-value" style="font-size:16px"><a class="mono" href="${link('atlas', [], { ...q(f), run: r.runId, page: 1 })}">${esc(r.runId)}</a></div>
-      <div class="stat-label">${esc(r.split)} · ${baselineTag(r.baseline)}</div>
-      <div class="stat-sub">${(d.cells || []).length} cells · ${measured} measured episodes<br>manifest <code>${esc(d.manifest_id)}</code> ${shortHash(d.manifest_sha256)}</div>
+    return `<div class="card tight run-card${sel ? ' sel' : ''}"${sel ? ' aria-current="true"' : ''}>${art(ri + 1)}
+      <div class="run-card-top"><a class="mono" href="${link('atlas', [], { ...q(f), run: r.runId, page: 1 })}">${esc(r.runId)}</a>${baselineTag(r.baseline)}</div>
+      <div class="run-card-fig"><strong>${k}/${eps.length}</strong> succeeded</div>
+      <div class="stat-sub">${esc(r.split)} · ${(d.cells || []).length} cells · ${eps.length} measured episodes<br>manifest <code>${esc(d.manifest_id)}</code> ${shortHash(d.manifest_sha256)}</div>
     </div>`;
   }).join('');
 
-  el.innerHTML = pageHead('Experiment Atlas', [['Experiment Atlas']])
-    + `<div class="grid two" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">${runCards}</div>`
+  el.innerHTML = pageHead('Experiment Atlas', [['Experiment Atlas']], '', {
+    kicker: 'Routes #/map · #/atlas · #/evidence/:run/:trial',
+    lede: 'Run cards for orientation, then the searchable episode explorer. Every row deep-links to its Evidence Inspector.',
+    meta: `<span class="pill"><span class="dot"></span>${runs.length} run cards</span><span class="pill"><span class="dot"></span>${fmtInt(s.episodes.length)} episodes indexed</span>`,
+  })
+    + secHead('Experiment Atlas', `${runs.length} run cards · searchable episode explorer`)
+    + `<div class="grid g2">${runCards}</div>`
     + `<div class="card"><h2>Episode explorer</h2>
       <div class="filters" role="search">
         <div class="field"><label for="f-search">Search</label><input type="search" id="f-search" value="${esc(f.search)}" placeholder="trial, scenario, input, error…"></div>

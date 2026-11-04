@@ -128,3 +128,75 @@ test('episodes outside the frozen 8 are refused', async () => {
   await pageReview(el, { params: ['eval-20261028-chimera', 'trial-0001'], query: {} });
   assert.match(el.innerHTML, /not in the packet/);
 });
+
+const FULL = { packet: 'full' };
+const DRIVER_STRINGS = ['eval-20261028-chimera', 'eval-20261028-baseline-a', 'main-mb-v1', 'traces-chimera', 'traces-baseline', 'baseline-a'];
+
+test('full queue renders 184 blinded episodes grouped by population', async () => {
+  globalThis.localStorage = memStorage();
+  const el = pageEl();
+  await pageReview(el, { params: [], query: FULL });
+  assert.match(el.innerHTML, /Full audit queue/);
+  assert.equal(count(el.innerHTML, 'Episode '), 184);
+  assert.match(el.innerHTML, /<strong>0\/184<\/strong> reviewed/);
+  assert.match(el.innerHTML, /primary evaluation \(eval-20261028\)/);
+  assert.match(el.innerHTML, /matched-budget follow-up \(mb-v1\)/);
+  assert.match(el.innerHTML, /never pooled/);
+  assert.match(el.innerHTML, /apply-verdicts/);
+  for (const code of ['Driver A', 'Driver B', 'Driver C', 'Driver D', 'Driver E', 'Driver F', 'Driver G']) {
+    assert.ok(el.innerHTML.includes(code), code);
+  }
+  // Recorded columns stay masked; driver identity stays out of the page.
+  assert.ok(count(el.innerHTML, 'class="mask"') >= 184);
+  for (const s of DRIVER_STRINGS) assert.ok(!el.innerHTML.includes(s), s);
+});
+
+test('full item page masks identity, paths, and verdicts before reveal', async () => {
+  for (const idx of ['0', '72']) {
+    globalThis.localStorage = memStorage();
+    const el = pageEl();
+    await pageReview(el, { params: ['ep', idx], query: FULL });
+    assert.match(el.innerHTML, new RegExp(`Review Episode ${Number(idx) + 1}`));
+    assert.match(el.innerHTML, /Record decision — your own P1–P3/);
+    assert.match(el.innerHTML, /data-testid="recorded-masked"/);
+    assert.match(el.innerHTML, /withheld until reveal/);
+    assert.ok(!el.innerHTML.includes('Single-attempt replay'), 'neutral step caption');
+    for (const s of DRIVER_STRINGS) assert.ok(!el.innerHTML.includes(s), `${idx}:${s}`);
+  }
+});
+
+test('full reveal unmasks recorded values and identity after a decision', async () => {
+  const { readFileSync } = await import('node:fs');
+  const packet = JSON.parse(readFileSync(join(root, 'artifacts/audit-full-v1/review/packet.json'), 'utf8'));
+  const key = packet.episodes[0].key;
+  globalThis.localStorage = memStorage({
+    'chimera-audit-full-v1:v1': JSON.stringify({
+      reviewer: 'ann',
+      decisions: {
+        [key]: {
+          checks: { P1: true, P2: true, P3: true }, note: '',
+          blinded: true, assessed_at: '2026-10-30T10:00:00.000Z',
+          revealed_at: '2026-10-30T10:05:00.000Z', corrections: [],
+        },
+      },
+      partials: {},
+    }),
+  });
+  const el = pageEl();
+  await pageReview(el, { params: ['ep', '0'], query: FULL });
+  assert.match(el.innerHTML, /Recorded decision/);
+  assert.match(el.innerHTML, /data-testid="recorded-values"/);
+  assert.match(el.innerHTML, /P1=<strong>true<\/strong>/);
+  // Identity is visible only after the decision is saved and revealed.
+  assert.ok(el.innerHTML.includes('eval-20261028-chimera'), 'run id after reveal');
+  const queue = pageEl();
+  await pageReview(queue, { params: [], query: FULL });
+  assert.match(queue.innerHTML, /<strong>1\/184<\/strong> reviewed/);
+});
+
+test('full queue refuses out-of-range episode indexes', async () => {
+  globalThis.localStorage = memStorage();
+  const el = pageEl();
+  await pageReview(el, { params: ['ep', '184'], query: FULL });
+  assert.match(el.innerHTML, /not in the packet/);
+});

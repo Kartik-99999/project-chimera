@@ -429,3 +429,39 @@ def test_mini_review_queue_flow(page, server):
     page.reload(wait_until="networkidle")
     page.wait_for_selector(".finding", timeout=15000)
     assert "1/8" in (page.text_content("#main") or "")
+
+
+def test_tooltip_does_not_survive_route_change(page, server):
+    page.goto(f"{server}#/terrain", wait_until="networkidle")
+    page.wait_for_selector(".terrain-cell", timeout=15000)
+    page.hover(".terrain-cell >> nth=0")
+    page.wait_for_selector(".viz-tip:not([hidden])", timeout=5000)
+    page.goto(f"{server}#/observatory?scenario=S-SLOW", wait_until="networkidle")
+    page.wait_for_selector("#signal-card svg", timeout=15000)
+    assert page.eval_on_selector_all(
+        ".viz-tip", "els => els.filter(e => !e.hidden).length") == 0
+
+
+def test_archive_pdf_download(page, server):
+    pdf = ROOT / "research" / "assets" / "research-archive.pdf"
+    meta_path = ROOT / "research" / "assets" / "research-archive.meta.json"
+    assert pdf.exists() and pdf.stat().st_size > 100_000
+    assert pdf.read_bytes()[:5] == b"%PDF-"
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    assert meta["counts"]["episodes"] == sum(
+        len(_read_run(r)["episodes"]) for r in RUN_FILES)
+    assert meta["pdf_bytes"] == pdf.stat().st_size
+    page.goto(f"{server}#/archive", wait_until="networkidle")
+    page.wait_for_selector("#archive-pdf", timeout=15000)
+    link = page.locator("#archive-pdf a[download]")
+    assert link.count() == 1
+    href = link.first.get_attribute("href")
+    assert href.endswith("research-archive.pdf")
+    origin = server.split("/research/")[0]
+    resp = page.request.get(origin + href if href.startswith("/") else server + href)
+    assert resp.status == 200
+    assert resp.headers.get("content-type", "").startswith("application/pdf")
+    assert len(resp.body()) == pdf.stat().st_size
+    page.wait_for_function(
+        "() => !document.querySelector('#archive-pdf-meta')"
+        ".textContent.includes('in one document')", timeout=10000)

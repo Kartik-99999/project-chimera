@@ -63,6 +63,8 @@ test('node selection renders identifiers and search dims the rest', async () => 
   assert.match(el.innerHTML, /Node detail/);
   assert.match(el.innerHTML, /Audited file/);
   assert.match(el.innerHTML, /Open record/);
+  assert.match(el.innerHTML, /Relationships \(\d+\)/);
+  assert.match(el.innerHTML, /rel-list/);
 
   const el2 = pageEl({ q: 'trial-0001' });
   await pageLineage(el2, { query: { q: 'trial-0001' } });

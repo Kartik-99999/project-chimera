@@ -2,7 +2,7 @@
 import { getState, getRun, mVal, isHarnessError, isFalseSuccess, verdictIndex, rootPath,
   esc, fmtInt, fmtMs, baselineLabel } from '../data.js';
 import { link } from '../app.js';
-import { pageHead, outcomePill, baselineTag, pill, emptyState, kvList, metricCell, jsonView } from '../components.js';
+import { pageHead, outcomePill, baselineTag, pill, emptyState, kvList, metricCell, jsonView, art, globes, secHead } from '../components.js';
 import { scopeStrip } from '../charts.js';
 import { buildScope } from '../viz/scopeModel.js';
 import { attachTip } from '../viz/tooltip.js';
@@ -85,7 +85,7 @@ export function traceTimeline(trace) {
     + `<ol class="timeline" id="trace-timeline">${items}</ol>`;
 }
 
-export function replaySteps(report) {
+export function replaySteps(report, { neutral = false } = {}) {
   if (!report || !Array.isArray(report.steps)) return '';
   const items = report.steps.map((st, i) => {
     const ok = st.outcome === 'ok';
@@ -93,8 +93,11 @@ export function replaySteps(report) {
       + `<div class="t-head">step ${i + 1} · ${esc(st.step || '?')} → <code>${esc(st.target || '')}</code></div>`
       + `<div class="t-sub">outcome: ${esc(st.outcome || '?')}${st.error_type ? ` · ${esc(st.error_type)}` : ''}</div></li>`;
   }).join('');
+  // Neutral wording for blinded review: the step SHAPE still differs
+  // by driver (a documented residual), but the label must not name it.
+  const kind = neutral ? 'Single-attempt execution' : 'Single-attempt replay';
   return `<ol class="timeline">${items}</ol>
-    <p style="color:var(--ink-3);font-size:12.5px">Single-attempt replay: each fixed step runs at most once. Attempts per step: ${esc(String(report.attempts_per_step ?? 'unrecorded'))}.</p>`;
+    <p style="color:var(--ink-3);font-size:12.5px">${kind}: each fixed step runs at most once. Attempts per step: ${esc(String(report.attempts_per_step ?? 'unrecorded'))}.</p>`;
 }
 
 export function snapshotView(d) {
@@ -147,11 +150,25 @@ export async function pageEvidence(el, { params }) {
     return `<div class="finding"><span class="marker" aria-hidden="true">◆</span><span>${esc(v.planKind)} plan · cell <code>${esc(v.cellKey)}</code><br>${body}</span></div>`;
   }).join('') : '<p style="color:var(--ink-3)">This episode carries no recorded human verdict in any loaded audit plan. Absence of a verdict is not agreement.</p>';
 
+  const vstat = ep.verification || {};
+  const vPill = vstat.status === 'verified'
+    ? `<span class="glass"><span class="dot" style="background:#8fb4ff"></span>verified · ${(vstat.checks || []).filter((c) => c.satisfied).length}/${(vstat.checks || []).length} satisfied</span>`
+    : `<span class="glass"><span class="dot" style="background:#fbbf24"></span>verification unavailable</span>`;
+  const navy = `<div class="navy">${globes()}`
+    + `<p class="sub" style="margin-bottom:4px">Trial ${esc(trialId)} · ${esc(ep.scenario_id)} / ${esc(ep.input_id)} · ${esc(baselineLabel(ep.baseline))} · ${esc(run.split || '')}</p>`
+    + `<h2>${esc(ep.outcome === 'succeeded' ? 'Succeeded' : ep.outcome)} in ${esc(fmtMs(ep.duration_ms))}</h2>`
+    + `<p><span class="glass"><span class="dot" style="background:${ep.outcome === 'succeeded' ? '#6ee7a0' : '#f87171'}"></span>${esc(ep.outcome)}</span>${vPill}`
+    + `<span class="glass"><span class="dot" style="background:#c4b5fd"></span>${isFalseSuccess(ep) ? 'false success' : 'not a false success'}</span></p></div>`;
   el.innerHTML = pageHead(`Trial ${trialId}`, [
     ['Atlas', link('atlas', [], { run: runId })],
     [runId.replace('20261028-', ''), link('atlas', [], { run: runId })],
     [trialId],
-  ]) + `<div class="card"><h2>Episode record</h2>
+  ], '', {
+    kicker: `#/evidence/${esc(runId)}/${esc(trialId)}`,
+    lede: 'One episode, fully expanded from stored files — record, outcome narrative, verification, oscilloscope, trace, snapshot, actions, and human review.',
+    meta: `${outcomePill(ep.outcome, isHarnessError(ep))} ${baselineTag(ep.baseline)}`,
+  }) + navy + secHead('Evidence Inspector', 'Episode record · outcome narrative · P1–P3 · lazy-loaded artifacts')
+    + `<div class="grid g2"><div class="card"><h2>Episode record</h2>
       <p>${outcomePill(ep.outcome, isHarnessError(ep))} ${baselineTag(ep.baseline)} ${isFalseSuccess(ep) ? pill('bad', 'false success') : ''}</p>
       ${kvList([
         ['Run', `<code>${esc(runId)}</code>`],
@@ -168,8 +185,8 @@ export async function pageEvidence(el, { params }) {
         ['Trace artifact', ep.trace_artifact ? `<code>${esc(ep.trace_artifact)}</code>` : '<span style="color:var(--ink-3)">none recorded</span>'],
       ])}
     </div>
-    <div class="card"><h2>Why this outcome</h2>${outcomeExplainer(ep, verdicts).map((t) => `<p>${t}</p>`).join('')}</div>
-    <div class="card" id="ev-checks"><h2>Independent verification (P1–P3)</h2>${checksTable(ep)}</div>
+    <div class="card"><h2>Why this outcome</h2>${outcomeExplainer(ep, verdicts).map((t) => `<p>${t}</p>`).join('')}</div></div>
+    <div class="card" id="ev-checks">${art(2)}<h2>Independent verification (P1–P3)</h2>${checksTable(ep)}</div>
     <div class="card" id="ev-scope"><h2>Episode oscilloscope</h2><p style="color:var(--ink-3)">Loading lanes…</p></div>
     <div class="card" id="ev-trace"><h2>Execution trace</h2><p style="color:var(--ink-3)">Loading ${esc(ep.trace_artifact || 'artifact')}…</p></div>
     <div class="card" id="ev-snapshot"><h2>Captured page snapshot</h2><p style="color:var(--ink-3)">Loading…</p></div>
@@ -268,13 +285,16 @@ export async function pageEvidence(el, { params }) {
       drawScope();
     }));
     const detail = scopeHost.querySelector('#scope-detail');
-    scopeHost.querySelectorAll('.scope-event').forEach((g) => {
+    const marks = [...scopeHost.querySelectorAll('.scope-event')];
+    marks.forEach((g) => {
       const fire = () => {
         const lane = scope.lanes.find((l) => l.id === g.dataset.lane);
-        const mark = lane && lane.marks[Number(g.dataset.idx)];
+        const idx = Number(g.dataset.idx);
+        const mark = lane && lane.marks[idx];
         if (!mark) return;
         const [href, label] = SOURCES[mark.target.kind] || ['#ev-trace', 'Evidence'];
-        detail.innerHTML = `<h3 style="font-size:13px;margin:10px 0 6px">${esc(mark.title)}</h3>`
+        detail.innerHTML = `<p class="scope-pos">Mark ${idx + 1} of ${lane.marks.length} on lane “${esc(lane.title)}” · coordinate ${esc(lane.coord)}</p>`
+          + `<h3 style="font-size:13px;margin:10px 0 6px">${esc(mark.title)}</h3>`
           + kvList(mark.detail.map(([k, v]) => [k, `<code>${esc(v)}</code>`]))
           + `<p><a href="${href}">source: ${esc(label)} ↓</a></p>`;
         scopeHost.querySelectorAll('.scope-event').forEach((o) => o.classList.toggle('sel', o === g));
@@ -288,7 +308,16 @@ export async function pageEvidence(el, { params }) {
         }
       };
       g.addEventListener('click', fire);
-      g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fire(); } });
+      g.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fire(); }
+        else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const at = marks.indexOf(g);
+          const next = marks[at + (e.key === 'ArrowRight' ? 1 : -1)];
+          if (next) { next.focus(); next.dispatchEvent(new Event('scope:select')); }
+        }
+      });
+      g.addEventListener('scope:select', fire);
       attachTip(g, g.dataset.tip);
     });
   }

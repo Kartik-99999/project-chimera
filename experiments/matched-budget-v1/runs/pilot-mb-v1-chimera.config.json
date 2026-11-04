@@ -1,0 +1,11 @@
+{
+ "arm": "mb-v1-chimera",
+ "tag": "pilot",
+ "baseline": "chimera",
+ "replay_action_timeout_ms": null,
+ "manifest": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/manifest-mb-v1-pilot.json",
+ "run_id": "pilot-mb-v1-chimera",
+ "started_at": "2026-10-30T08:55:47.842Z",
+ "completed_at": "2026-10-30T08:55:56.018Z",
+ "episodes": 3
+}

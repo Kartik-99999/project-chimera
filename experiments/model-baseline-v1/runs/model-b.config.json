@@ -1,0 +1,9 @@
+{
+ "baseline": "baseline-b",
+ "manifest": "/Users/kartikbhardwaj/project-chimera/benchmarks/manifests/model-v1.json",
+ "manifest_sha256": "0336a1ded94d025ec432bf25da964615e34a8c953fa7c6e4b727bffa76588698",
+ "run_id": "model-b",
+ "started_at": "2026-11-04T08:24:13.725Z",
+ "completed_at": "2026-11-04T08:58:29.307Z",
+ "episodes": 31
+}

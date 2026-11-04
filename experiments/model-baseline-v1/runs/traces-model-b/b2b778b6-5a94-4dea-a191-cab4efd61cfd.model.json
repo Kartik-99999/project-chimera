@@ -1,0 +1,64 @@
+{
+  "run_id": "b2b778b6-5a94-4dea-a191-cab4efd61cfd",
+  "baseline": "baseline-b",
+  "model": "muse-spark-1.3",
+  "terminal_status": "succeeded",
+  "steps": 3,
+  "blocked_attempts": 0,
+  "max_tokens": 2048,
+  "reasoning_effort": null,
+  "calls": [
+    {
+      "step": 1,
+      "latency_ms": 15778,
+      "prompt_tokens": 498,
+      "completion_tokens": 609,
+      "total_tokens": 1107,
+      "reasoning_tokens": 546,
+      "finish_reason": "stop",
+      "raw": "I'll create the Benchmark Project by entering its name and submitting the form.{\"action\": \"fill\", \"index\": 4, \"value\": \"Benchmark Project\", \"reason\": \"Enter required project name into Project Name field\"}",
+      "parsed": {
+        "action": "fill",
+        "index": 4,
+        "value": "Benchmark Project",
+        "reason": "Enter required project name into Project Name field"
+      },
+      "executed": "fill",
+      "observed": "filled",
+      "reason": "Enter required project name into Project Name field"
+    },
+    {
+      "step": 2,
+      "latency_ms": 11648,
+      "prompt_tokens": 534,
+      "completion_tokens": 684,
+      "total_tokens": 1218,
+      "reasoning_tokens": 629,
+      "finish_reason": "stop",
+      "raw": "Project name is entered \u2014 I'll create the project now.{\"action\": \"click\", \"index\": 5, \"reason\": \"Click Create Project to create 'Benchmark Project'.\"}",
+      "parsed": {
+        "action": "click",
+        "index": 5,
+        "reason": "Click Create Project to create 'Benchmark Project'."
+      },
+      "executed": "click",
+      "observed": "clicked",
+      "reason": "Click Create Project to create 'Benchmark Project'."
+    },
+    {
+      "step": 3,
+      "latency_ms": 17230,
+      "prompt_tokens": 539,
+      "completion_tokens": 1023,
+      "total_tokens": 1562,
+      "reasoning_tokens": 978,
+      "finish_reason": "stop",
+      "raw": "{\"action\": \"done\", \"claim\": \"success\", \"reason\": \"Page visibly shows 'Project created successfully!' and 'Projects Benchmark Project', confirming project creation.\"}",
+      "parsed": {
+        "action": "done",
+        "claim": "success",
+        "reason": "Page visibly shows 'Project created successfully!' and 'Projects Benchmark Project', confirming project creation."
+      }
+    }
+  ]
+}

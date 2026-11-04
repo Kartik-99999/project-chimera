@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="248" role="img" aria-label="v2 login readiness p50 by account × driver">
+<rect width="640" height="248" fill="#0b0f1a"/>
+<text x="16" y="24" fill="#e8ecf4" font-size="15" font-family="sans-serif" font-weight="bold">v2 login readiness p50 by account × driver</text>
+<text x="190" y="50" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">glitch · baseline-a</text>
+<rect x="200" y="38" width="290.0" height="15" fill="#a78bfa"/>
+<text x="498.0" y="51" fill="#8b93a7" font-size="12" font-family="monospace">p50 5058ms n=8</text>
+<text x="190" y="84" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">glitch · chimera</text>
+<rect x="200" y="72" width="289.8" height="15" fill="#39d0d8"/>
+<text x="497.8279952550415" y="85" fill="#8b93a7" font-size="12" font-family="monospace">p50 5055ms n=8</text>
+<text x="190" y="118" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">problem · baseline-a</text>
+<rect x="200" y="106" width="8.4" height="15" fill="#a78bfa"/>
+<text x="216.37089758797944" y="119" fill="#8b93a7" font-size="12" font-family="monospace">p50 146ms n=6</text>
+<text x="190" y="152" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">problem · chimera</text>
+<rect x="200" y="140" width="8.1" height="15" fill="#39d0d8"/>
+<text x="216.14155792803479" y="153" fill="#8b93a7" font-size="12" font-family="monospace">p50 142ms n=6</text>
+<text x="190" y="186" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">standard · baseline-a</text>
+<rect x="200" y="174" width="8.1" height="15" fill="#a78bfa"/>
+<text x="216.14155792803479" y="187" fill="#8b93a7" font-size="12" font-family="monospace">p50 142ms n=6</text>
+<text x="190" y="220" fill="#e8ecf4" font-size="12" font-family="sans-serif" text-anchor="end">standard · chimera</text>
+<rect x="200" y="208" width="8.4" height="15" fill="#39d0d8"/>
+<text x="216.4282325029656" y="221" fill="#8b93a7" font-size="12" font-family="monospace">p50 147ms n=6</text>
+</svg>

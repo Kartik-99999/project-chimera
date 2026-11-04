@@ -60,6 +60,7 @@ them against an explicit policy, and imports nothing from it.
 from __future__ import annotations
 
 import json
+import re
 import time
 from dataclasses import dataclass, field, replace
 from pathlib import Path
@@ -77,6 +78,7 @@ CLICK = "click"
 WAIT = "wait"
 OBSERVE = "observe"
 SCREENSHOT = "screenshot"
+SELECT = "select"
 
 #: Read-only action types: recorded, and permitted by type because they
 #: change no page state.
@@ -212,14 +214,18 @@ class ActionPolicy:
     """The scenario's permitted set (§8.2).
 
     Navigations are permitted only to ``permitted_urls`` (the episode's
-    own demo-app URL); fills and clicks only to the listed structural
-    targets. Reads are permitted by type. Targets whose shape the
-    observer cannot resolve are judged ``unknown``, never assumed.
+    own demo-app URL); fills, clicks, and selects only to the listed
+    structural targets. Reads are permitted by type. Targets whose
+    shape the observer cannot resolve are judged ``unknown``, never
+    assumed.
     """
 
     permitted_urls: Tuple[str, ...] = ()
+    permitted_url_prefixes: Tuple[str, ...] = ()
+    permitted_url_patterns: Tuple[str, ...] = ()
     permitted_fill_targets: Tuple[Mapping[str, Any], ...] = ()
     permitted_click_targets: Tuple[Mapping[str, Any], ...] = ()
+    permitted_select_targets: Tuple[Mapping[str, Any], ...] = ()
 
     def judge(self, action_type: str,
               target: Mapping[str, Any]) -> Tuple[str, str]:
@@ -227,7 +233,7 @@ class ActionPolicy:
         if action_type in READ_ONLY_ACTIONS:
             return (ALLOWED,
                     f"{action_type} is read-only: recorded, not scope-changing")
-        if action_type in (FILL, CLICK):
+        if action_type in (FILL, CLICK, SELECT):
             # Only locator constructions the proxy resolves (label, role,
             # css) can be judged; anything else — e.g. a locator derived
             # mid-chain — is unresolvable, never assumed.
@@ -241,6 +247,14 @@ class ActionPolicy:
                 return (UNKNOWN, f"navigation target has no URL: {dict(target)!r}")
             if url in self.permitted_urls:
                 return (ALLOWED, f"navigation to the episode URL {url!r}")
+            for prefix in self.permitted_url_prefixes:
+                if url.startswith(prefix):
+                    return (ALLOWED,
+                            f"navigation under the permitted prefix {prefix!r}")
+            for pattern in self.permitted_url_patterns:
+                if re.match(pattern, url):
+                    return (ALLOWED,
+                            f"navigation matching the permitted {pattern!r}")
             return (DENIED, f"navigation to {url!r} leaves the permitted target")
         if action_type == FILL:
             wanted = [dict(t) for t in self.permitted_fill_targets]
@@ -254,6 +268,15 @@ class ActionPolicy:
                 return (ALLOWED, "click on the permitted Create Project button")
             return (DENIED,
                     f"click on an unexpected target: {dict(target)!r}")
+        if action_type == SELECT:
+            # Select records carry the chosen ``value`` (like fill's
+            # ``value_length`` it is metadata, not identity).
+            candidate = {k: v for k, v in target.items() if k != "value"}
+            wanted = [dict(t) for t in self.permitted_select_targets]
+            if _target_matches(candidate, wanted):
+                return (ALLOWED, "select on a permitted dropdown")
+            return (DENIED,
+                    f"select on an unexpected target: {dict(target)!r}")
         return (UNKNOWN, f"unjudgeable action type {action_type!r}")
 
 
@@ -458,9 +481,9 @@ class RecordingLocator:
     """A Playwright Locator wrapper that records endpoint calls.
 
     ``target`` describes how the locator was constructed. Only endpoint
-    calls (``fill``, ``click``, ``is_visible``, ``wait_for``) record —
-    one record per call — and every other attribute delegates to the
-    wrapped locator untouched.
+    calls (``fill``, ``click``, ``select_option``, ``is_visible``,
+    ``wait_for``) record — one record per call — and every other
+    attribute delegates to the wrapped locator untouched.
     """
 
     #: Locator methods that derive a new locator; the derived locator
@@ -511,6 +534,12 @@ class RecordingLocator:
         return self._record_call(
             CLICK, {},
             lambda: object.__getattribute__(self, "_locator").click(**kwargs))
+
+    def select_option(self, value: Any = None, **kwargs: Any) -> Any:
+        return self._record_call(
+            SELECT, {"value": str(value)},
+            lambda: object.__getattribute__(
+                self, "_locator").select_option(value, **kwargs))
 
     def is_visible(self, **kwargs: Any) -> Any:
         return self._record_call(
@@ -658,6 +687,7 @@ __all__ = [
     "READ_ONLY_ACTIONS",
     "REASON_NO_OBSERVATION",
     "SCREENSHOT",
+    "SELECT",
     "UNKNOWN",
     "WAIT",
     "ActionLog",

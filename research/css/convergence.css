@@ -1,0 +1,94 @@
+/* Living Convergence signature layer. Shared by the landing page,
+ * Workbench, and Research Console: verification seal, journey
+ * waypoints, stream rules, and the convergence-canvas frame. */
+.display { font-family: var(--font-display); }
+
+/* -- verification seal: verified states only ------------------- */
+.seal {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12.5px; font-weight: 700; color: var(--seal);
+  vertical-align: middle;
+}
+.seal svg { width: 26px; height: 26px; flex: none; }
+.seal.ring-fail { color: var(--red); }
+
+/* -- journey waypoints: action → evidence ---------------------- */
+.waypoints {
+  list-style: none; margin: 14px 0 0; padding: 0;
+  display: flex; align-items: flex-start;
+}
+.waypoints li { flex: 1 1 0; position: relative; text-align: center; min-width: 0; }
+.waypoints li::before {
+  content: ""; position: absolute; top: 11px; left: -50%;
+  width: 100%; height: 2px; background: var(--line-2);
+}
+.waypoints li:first-child::before { display: none; }
+.waypoints li.done::before { background: var(--green); }
+.waypoints li.sealed::before, .waypoints li.failed::before { background: var(--green); }
+.waypoints .wp-dot {
+  position: relative; z-index: 1; display: inline-flex;
+  align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--bg-1); border: 2px solid var(--line-2);
+  font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3);
+}
+.waypoints li.done .wp-dot { border-color: var(--green); color: var(--green); }
+.waypoints li.now .wp-dot {
+  border-color: var(--cyan); color: var(--cyan);
+  box-shadow: var(--glow-cyan);
+}
+.waypoints li.sealed .wp-dot {
+  border-color: var(--seal); background: var(--seal); color: #fff;
+}
+.waypoints li.failed .wp-dot { border-color: var(--red); color: var(--red); }
+.waypoints .wp-name {
+  display: block; font-size: 11px; font-weight: 650; margin-top: 5px;
+  color: var(--ink-3); letter-spacing: 0.02em;
+}
+.waypoints li.done .wp-name, .waypoints li.now .wp-name { color: var(--ink-1); }
+.waypoints li.now .wp-name { color: var(--cyan); }
+.waypoints li.sealed .wp-name { color: var(--seal); }
+.waypoints li.failed .wp-name { color: var(--red); }
+.waypoints .wp-sub {
+  display: block; font-size: 10.5px; color: var(--ink-3);
+  font-family: var(--font-mono); margin-top: 1px;
+}
+@media (max-width: 560px) {
+  .waypoints .wp-sub { display: none; }
+  .waypoints .wp-name { font-size: 10px; }
+}
+@media (max-width: 420px) {
+  .waypoints .wp-name { font-size: 8.5px; letter-spacing: 0; }
+  .waypoints li::before { top: 10px; }
+  .waypoints .wp-dot { width: 20px; height: 20px; font-size: 9px; }
+}
+
+/* -- convergence canvas frame ---------------------------------- */
+.convergence-frame {
+  position: relative; border: 1px solid var(--line-1);
+  border-radius: var(--r-md); background: var(--card);
+  overflow: hidden;
+}
+.convergence-frame canvas { display: block; width: 100%; height: auto; }
+.convergence-cap {
+  font-size: 12.5px; color: var(--ink-2); margin: 8px 0 0; max-width: 78ch;
+}
+.convergence-cap strong { color: var(--ink-1); }
+
+/* -- stream rule: converging-lines divider -------------------- */
+.stream-rule {
+  border: none; height: 14px; margin: 26px 0;
+  background:
+    linear-gradient(178deg, transparent 6px, var(--line-1) 6px, var(--line-1) 7px, transparent 7px),
+    linear-gradient(182deg, transparent 6px, var(--line-1) 6px, var(--line-1) 7px, transparent 7px);
+  background-size: 50% 100%, 50% 100%;
+  background-position: left center, right center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+}
+
+/* -- figure caption with denominators -------------------------- */
+.fig-cap {
+  font-size: 12.5px; color: var(--ink-2); margin: 8px 0 0; max-width: 78ch;
+}
+.fig-cap strong { color: var(--ink-1); font-variant-numeric: tabular-nums; }

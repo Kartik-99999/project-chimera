@@ -1,0 +1,243 @@
+{
+  "auditor": "",
+  "cells": {
+    "S-DIS|I-PLAIN|baseline-a|disabled=True,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/4d56431e-c2a4-4ed9-9c37-41d4d6763df1.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "66e9db8727a342aa2a72f0ed8577933988e20e9f366b7d6ec513136498c05f6c",
+            "snapshot": "985ce5278a28c70a4326037489edc76eb38fd48f63f4bbca4329bed56fa97ee1",
+            "trace": "28b1b82c743453896aa7b31d64f5331ff0868cc3680b4cd4092dad96469bc29c"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "mb-v1",
+          "outcome": "failed",
+          "run_id": "4d56431e-c2a4-4ed9-9c37-41d4d6763df1",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/4d56431e-c2a4-4ed9-9c37-41d4d6763df1.snapshot.json",
+          "trace_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/4d56431e-c2a4-4ed9-9c37-41d4d6763df1.replay.json",
+          "trial_id": "trial-0015",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/192af011-4f17-47ed-9ec2-f47566377c2e.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "4929ea475073b5ffd213648f224da1c8c9340fb9cb12c9ae425393a745c4bb17",
+            "snapshot": "29dd7383f88324ac8a6118cd93e0295b8afc6e1582d282b441c7d1863a299626",
+            "trace": "b13bf82e4292f6004e34634c2da6424382383d2b96917cae1e30fe322409f5d0"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "mb-v1",
+          "outcome": "failed",
+          "run_id": "192af011-4f17-47ed-9ec2-f47566377c2e",
+          "scenario_id": "S-DIS",
+          "snapshot_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/192af011-4f17-47ed-9ec2-f47566377c2e.snapshot.json",
+          "trace_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/192af011-4f17-47ed-9ec2-f47566377c2e.replay.json",
+          "trial_id": "trial-0013",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-DIS",
+      "seed": "main-mb-v1-replay-1000:S-DIS|I-PLAIN|baseline-a|disabled=True,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-NORM|I-PLAIN|baseline-a|disabled=False,slow_ms=0": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/28a8e12a-8f79-4b8b-8f9c-874d05ac4778.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "2c16dfb69203b2e947fbb3c9288f4b600c8bde4958b451436b3a046818304ecf",
+            "snapshot": "47a39f5c511366cbdae95c8908544a5c7ccfbdd9fc18d9b465c04ab9594cd029",
+            "trace": "c4f45c6e138c305999b5249342320c5617db351a537156c7cb1ca43ba9bfab86"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "mb-v1",
+          "outcome": "succeeded",
+          "run_id": "28a8e12a-8f79-4b8b-8f9c-874d05ac4778",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/28a8e12a-8f79-4b8b-8f9c-874d05ac4778.snapshot.json",
+          "trace_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/28a8e12a-8f79-4b8b-8f9c-874d05ac4778.replay.json",
+          "trial_id": "trial-0003",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        },
+        {
+          "actions_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/83e3ff9d-c60c-4644-920d-ebe637b95387.actions.json",
+          "agent_terminal_status": "succeeded",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "afd81a2f7ea28c4512a57868beaafdbf2a97df2f1d79f26c020d51b15539cf9f",
+            "snapshot": "33e26eef4912f3dff88ed0df4771e6521aa43cd60eed54f24c1493e1f0dece76",
+            "trace": "32065fca5192dfd6da1f07d30cf48a50a6c8bb2e7bab25c28150ce6bb099c4df"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "mb-v1",
+          "outcome": "succeeded",
+          "run_id": "83e3ff9d-c60c-4644-920d-ebe637b95387",
+          "scenario_id": "S-NORM",
+          "snapshot_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/83e3ff9d-c60c-4644-920d-ebe637b95387.snapshot.json",
+          "trace_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/83e3ff9d-c60c-4644-920d-ebe637b95387.replay.json",
+          "trial_id": "trial-0004",
+          "verifier_checks": {
+            "P1": true,
+            "P2": true,
+            "P3": true
+          }
+        }
+      ],
+      "scenario_id": "S-NORM",
+      "seed": "main-mb-v1-replay-1000:S-NORM|I-PLAIN|baseline-a|disabled=False,slow_ms=0",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/873320bd-5539-402a-8e16-5478d4d39c46.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "36403ac4d2a9ce659c5012c78fb7c0067943f7d8b2317ea3633456eecf02f4b7",
+            "snapshot": "fc974897b7494729477d69c02f400055675c9b4556e4af231dfcbf4ac8edbf2d",
+            "trace": "3f5382b9cc09b43d0a80b8f8875ee150782f13ae25ebcfc2862e2a7adb51ab2b"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "mb-v1",
+          "outcome": "failed",
+          "run_id": "873320bd-5539-402a-8e16-5478d4d39c46",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/873320bd-5539-402a-8e16-5478d4d39c46.snapshot.json",
+          "trace_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/873320bd-5539-402a-8e16-5478d4d39c46.replay.json",
+          "trial_id": "trial-0016",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/5a16b46d-9b50-443a-a8c9-aa506dfc6118.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "1f1b9b3456d9c1a5ab695eee0332be09508d172cd5228dc684ef2c3f87f45329",
+            "snapshot": "bdc4de3353db151a8bbe15752064fddbd7cdd71f3204d931ec7d739a1e2ef6d6",
+            "trace": "76370a4b9a875d6e69e72ea5ae5b3e57e2dbeeafd67fe95a0aa893debc03a79f"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "mb-v1",
+          "outcome": "failed",
+          "run_id": "5a16b46d-9b50-443a-a8c9-aa506dfc6118",
+          "scenario_id": "S-SLOWDIS",
+          "snapshot_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/5a16b46d-9b50-443a-a8c9-aa506dfc6118.snapshot.json",
+          "trace_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/5a16b46d-9b50-443a-a8c9-aa506dfc6118.replay.json",
+          "trial_id": "trial-0017",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOWDIS",
+      "seed": "main-mb-v1-replay-1000:S-SLOWDIS|I-PLAIN|baseline-a|disabled=True,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    },
+    "S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=2100": {
+      "baseline": "baseline-a",
+      "input_id": "I-PLAIN",
+      "sampled": [
+        {
+          "actions_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/50aff475-9f29-4127-9754-81a687bab293.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "e8d249009bfcb6e721c289389d91e0fbe72307728e33e3769ed8b967fa2e3275",
+            "snapshot": "015bf33fdfe04e334a9464c0ba645016c926bb6a8e5e612bec20f39c7a3c6c22",
+            "trace": "7b1ac22eb9e80434b3d9c6be114976a4f133bc63abb6ed0a1890cb7e6667afd5"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "mb-v1",
+          "outcome": "failed",
+          "run_id": "50aff475-9f29-4127-9754-81a687bab293",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/50aff475-9f29-4127-9754-81a687bab293.snapshot.json",
+          "trace_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/50aff475-9f29-4127-9754-81a687bab293.replay.json",
+          "trial_id": "trial-0009",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        },
+        {
+          "actions_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/625ac7ec-153c-4c0c-ae54-f829dd2d8467.actions.json",
+          "agent_terminal_status": "failed",
+          "baseline": "baseline-a",
+          "digests": {
+            "actions": "95abb64946e0c54b3be6d913e841699836e8e69f12424f9aeff9c9034e54c323",
+            "snapshot": "32b09324ba2585c552e87dc58d0c6530fef229995315c1dba067c9966781a803",
+            "trace": "5a7e71c47313945624c0e7651be7fc84814566a5517fe1b386a8acdaaa2ad6ee"
+          },
+          "expected_stored_name": "Benchmark Project",
+          "input_id": "I-PLAIN",
+          "manifest_id": "mb-v1",
+          "outcome": "failed",
+          "run_id": "625ac7ec-153c-4c0c-ae54-f829dd2d8467",
+          "scenario_id": "S-SLOW",
+          "snapshot_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/625ac7ec-153c-4c0c-ae54-f829dd2d8467.snapshot.json",
+          "trace_path": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/runs/traces-main-mb-v1-replay-1000/625ac7ec-153c-4c0c-ae54-f829dd2d8467.replay.json",
+          "trial_id": "trial-0006",
+          "verifier_checks": {
+            "P1": false,
+            "P2": false,
+            "P3": false
+          }
+        }
+      ],
+      "scenario_id": "S-SLOW",
+      "seed": "main-mb-v1-replay-1000:S-SLOW|I-PLAIN|baseline-a|disabled=False,slow_ms=2100",
+      "skipped": [],
+      "verdicts": {}
+    }
+  },
+  "created_at": "2026-10-30T09:23:49.939Z",
+  "manifest_id": "mb-v1",
+  "manifest_sha256": "1b246fbd0d93442710a482eabd5384b4ff147d8722b70023b5bc3940b574fd98",
+  "run_id": "main-mb-v1-replay-1000",
+  "sample_size": 2,
+  "schema": "chimera-audit-plan/1"
+}

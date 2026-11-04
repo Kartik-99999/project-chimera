@@ -69,3 +69,20 @@ test('outcome highlight dims non-matching trials without hiding counts', async (
   assert.match(el.innerHTML, /opacity="0.18"/);
   assert.match(el.innerHTML, /<strong>36<\/strong> cells/);
 });
+
+test('scenario bands group tiles in run order; mirror cell is inspectable', async () => {
+  const el = pageEl();
+  await pageTerrain(el, { query: {} });
+  assert.equal(count(el.innerHTML, '<section class="terrain-group"'), 4);
+  assert.match(el.innerHTML, /manifest expects succeeded/);
+  assert.match(el.innerHTML, /cells · <strong>\d+\/\d+<\/strong> succeeded/);
+
+  const run = getRun('eval-20261028-chimera');
+  const { cell } = sliceCells(run.data.cells, run.data.episodes)[0];
+  const key = `${cell.scenario_id}|${cell.input_id}|${JSON.stringify(cell.fault_params || {})}`;
+  const el2 = pageEl();
+  await pageTerrain(el2, { query: { cell: key } });
+  assert.match(el2.innerHTML, /terrain-cell anim-in sel/);
+  assert.match(el2.innerHTML, /mirror-strip/);
+  assert.match(el2.innerHTML, /Open mirror cell →/);
+});

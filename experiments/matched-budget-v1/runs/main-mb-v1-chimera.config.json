@@ -1,0 +1,11 @@
+{
+ "arm": "mb-v1-chimera",
+ "tag": "main",
+ "baseline": "chimera",
+ "replay_action_timeout_ms": null,
+ "manifest": "/Users/kartikbhardwaj/project-chimera/experiments/matched-budget-v1/manifest-mb-v1.json",
+ "run_id": "main-mb-v1-chimera",
+ "started_at": "2026-10-30T09:01:51.141Z",
+ "completed_at": "2026-10-30T09:02:59.468Z",
+ "episodes": 21
+}

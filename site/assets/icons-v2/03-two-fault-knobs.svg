@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112" fill="none"><defs>
+<linearGradient id="wave" x1="12" y1="29" x2="98" y2="37" gradientUnits="userSpaceOnUse"><stop stop-color="#11BBC6"/><stop offset=".52" stop-color="#5379E8"/><stop offset="1" stop-color="#B14CE4"/></linearGradient>
+<linearGradient id="body" x1="22" y1="50" x2="90" y2="92" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB5C7"/><stop offset=".5" stop-color="#F47C75"/><stop offset="1" stop-color="#E34F77"/></linearGradient>
+<linearGradient id="toggle" x1="36" y1="58" x2="74" y2="78" gradientUnits="userSpaceOnUse"><stop stop-color="#6BD9D7"/><stop offset="1" stop-color="#377FDF"/></linearGradient>
+<filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7"/></filter></defs>
+<ellipse cx="56" cy="59" rx="42" ry="37" fill="#EF83B8" opacity=".15" filter="url(#glow)"/>
+<path d="M11 30c9 0 9-14 18-14s9 14 18 14 9-14 18-14 9 14 18 14 9-14 18-14" stroke="url(#wave)" stroke-width="10" stroke-linecap="round"/>
+<path d="M11 30c9 0 9-14 18-14s9 14 18 14 9-14 18-14 9 14 18 14 9-14 18-14" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="2" stroke-linecap="round"/>
+<rect x="20" y="47" width="72" height="45" rx="17" fill="url(#body)"/>
+<rect x="28" y="55" width="56" height="29" rx="11" fill="#FFF9FC"/>
+<rect x="35" y="62" width="41" height="15" rx="8" fill="#E9F2FC"/>
+<circle cx="44" cy="69.5" r="11" fill="url(#toggle)" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="44" cy="69.5" r="3.2" fill="#FFFFFF"/>
+<path d="M68 60v19" stroke="#ED6880" stroke-width="3" stroke-linecap="round"/>
+</svg>

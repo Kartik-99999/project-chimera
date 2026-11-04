@@ -5,7 +5,7 @@
  */
 import { measuredEpisodes, mVal, esc, fmtMs, fmtInt } from '../data.js';
 import { link } from '../app.js';
-import { pageHead, pill } from '../components.js';
+import { pageHead, pill, art, secHead } from '../components.js';
 import { barCell } from '../charts.js';
 
 function pct(sorted, q) {
@@ -43,18 +43,25 @@ export async function pageRecovery(el, { query }) {
     + `${e.error ? ` · <code>${esc(e.error.length > 80 ? `${e.error.slice(0, 77).replace(/\s+\S*$/, '')}…` : e.error)}</code>` : ''} <a href="${link('evidence', [e.runId, e.trial_id])}">Inspect →</a></span></div>`
   )).join('');
 
-  el.innerHTML = pageHead('Recovery Studio', [['Recovery Studio']])
+  const totN = groups.reduce((a, g) => a + g.n, 0);
+  const totUnexpected = groups.reduce((a, g) => a + g.unexpectedSuccess, 0);
+  el.innerHTML = pageHead('Recovery Studio', [['Recovery Studio']], '', {
+    kicker: `Routes #/failures · #/recovery · #/terrain · split = ${split}`,
+    lede: 'Bounded failure on persistent faults — the failure that behaves. Nothing here runs simulations; every forward item stays PROPOSED.',
+    meta: `${totUnexpected === 0 ? pill('ok', `0/${totN} unexpected`) : pill('bad', `${totUnexpected}/${totN} unexpected`)} ${pill('dim', 'not implemented')}`,
+  })
     + `<div class="banner warn"><strong>No recovery engine exists in this repository.</strong> Nothing here runs simulations or recovery attempts. This workspace inspects the bounded-failure evidence that a future recovery study would start from, and labels every forward item <strong>PROPOSED</strong>.</div>`
-    + `<div class="card"><div class="filters"><div class="field"><label for="r-split">Split</label><select id="r-split">
+    + secHead('Recovery Studio', 'Bounded failure on persistent faults — the failure that behaves.')
+    + `<div class="card">${art(2)}<div class="filters"><div class="field"><label for="r-split">Split</label><select id="r-split">
         <option value="evaluation"${split === 'evaluation' ? ' selected' : ''}>evaluation (held out)</option>
         <option value="development"${split === 'development' ? ' selected' : ''}>development</option>
       </select></div></div>
       <h2>Bounded failure on persistent faults (S-DIS + S-SLOWDIS)</h2>
       <div class="table-wrap"><table class="data"><thead><tr><th>Baseline</th><th class="num">Episodes</th><th class="num">Terminal correctness</th><th class="num">Duration p50</th><th class="num">Duration p95</th><th class="num">Max retries</th><th>Unexpected success</th></tr></thead><tbody>${rows}</tbody></table></div>
       <p style="color:var(--ink-3);font-size:12.5px">“Terminal correctness” counts episodes whose agent-reported terminal is <code>failed</code> — the only correct report when success is impossible. Percentiles recomputed from episode durations.</p></div>`
-    + `<div class="card"><h2>Failure episodes to study</h2>${examples || '<p style="color:var(--ink-3)">None recorded.</p>'}
+    + `<div class="card">${art(1)}<h2>Failure episodes to study</h2>${examples || '<p style="color:var(--ink-3)">None recorded.</p>'}
       <p><a href="${link('failures', [], { split })}">All failures on this split →</a></p></div>`
-    + `<div class="card"><h2>Proposed experiments ${pill('dim', 'not implemented')}</h2>
+    + `<div class="card">${art(0)}<h2>Proposed experiments ${pill('dim', 'not implemented')}</h2>
       <div class="finding"><span class="marker" aria-hidden="true">○</span><span><strong>Designated recoverable set.</strong> Define which failures count as recoverable before measuring any recovery rate. Blocked on: an owner ruling + a recovery implementation. ${pill('dim', 'PROPOSED')}</span></div>
       <div class="finding"><span class="marker" aria-hidden="true">○</span><span><strong>Reset-and-retry protocol.</strong> The demo app exposes an in-page Reset; a recovery study could measure re-attempt success after reset. Blocked on: agent support for reset + a recovery baseline. ${pill('dim', 'PROPOSED')}</span></div>
       <div class="finding"><span class="marker" aria-hidden="true">○</span><span><strong>Recovery attribution vs Baseline A.</strong> Any future recovery rate needs the same replay comparison the success rate uses. Blocked on: the two items above. ${pill('dim', 'PROPOSED')}</span></div>

@@ -4,7 +4,7 @@
  * Adaptive: sustained slow frames shed particles down to a static
  * frame. Toggle persisted in localStorage ('chimera-motion').
  */
-const COLORS = ['57,208,216', '167,139,250', '140,155,175'];
+const COLORS = ['14,116,144', '109,40,217', '110,99,70'];
 let canvas = null;
 let ctx = null;
 let dots = [];
@@ -64,7 +64,7 @@ function draw(static_, dt) {
         const b = dots[j];
         const dx = a.x - b.x, dy = a.y - b.y;
         if (dx * dx + dy * dy < 8100) {
-          ctx.strokeStyle = `rgba(120,150,190,${(0.05 * (1 - (dx * dx + dy * dy) / 8100)).toFixed(3)})`;
+          ctx.strokeStyle = `rgba(110,99,70,${(0.05 * (1 - (dx * dx + dy * dy) / 8100)).toFixed(3)})`;
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
       }
